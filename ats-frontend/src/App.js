@@ -2,6 +2,8 @@ import LoginForm from "./components/LoginForm";
 import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 
+import styled from "styled-components";
+
 import {
   Container,
   AppBar,
@@ -9,6 +11,8 @@ import {
   Toolbar,
   createTheme,
   ThemeProvider,
+  Typography,
+  AppBar as MuiAppBar,
 } from "@mui/material";
 
 const websiteTheme = createTheme({
@@ -22,17 +26,38 @@ const websiteTheme = createTheme({
   },
 });
 
+const StyledAppBar = styled(MuiAppBar)`
+  padding: 1rem;
+  margin: 0rem;
+`;
+
+const StyledToolBar = styled(Toolbar)`
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+  font-size: 1.3rem;
+  font-weight: 900;
+`;
+
 function App() {
   return (
-    <div>
-      <h1>Applicant Tracking System - get your pipeline under control!</h1>
-      <p>
-        <i>Log in to see your pipeline</i>
-      </p>
-      <LoginForm />
-      <InfoTab />
-      <TipsTab />
-    </div>
+    <ThemeProvider theme={websiteTheme}>
+      <Container>
+        <StyledAppBar position="static">
+          <StyledToolBar>
+            ATS
+            <InfoTab />
+            <TipsTab />
+            <LoginForm />
+          </StyledToolBar>
+        </StyledAppBar>
+
+        <h1>Applicant Tracking System - get your pipeline under control!</h1>
+        <p>
+          <i>Log in to see your pipeline</i>
+        </p>
+      </Container>
+    </ThemeProvider>
   );
 }
 
