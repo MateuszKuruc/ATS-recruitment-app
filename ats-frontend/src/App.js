@@ -14,7 +14,6 @@ import {
   createTheme,
   ThemeProvider,
   Typography,
-  AppBar as MuiAppBar,
 } from "@mui/material";
 
 const websiteTheme = createTheme({
@@ -28,7 +27,7 @@ const websiteTheme = createTheme({
   },
 });
 
-const StyledAppBar = styled(MuiAppBar)`
+const StyledAppBar = styled(AppBar)`
   padding: 1rem;
   margin: 0rem;
 `;
