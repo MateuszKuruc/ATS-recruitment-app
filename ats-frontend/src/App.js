@@ -57,13 +57,13 @@ function App() {
       <Container>
         <StyledAppBar position="static">
           <StyledToolBar>
-            <StyledButton color="inherit">
+            <StyledButton color="inherit" component={Link} to="/faq">
               <StyledTypography>FAQ</StyledTypography>
             </StyledButton>
-            <StyledButton color="inherit">
+            <StyledButton color="inherit" component={Link} to="/tips">
               <StyledTypography>Tips</StyledTypography>
             </StyledButton>
-            <StyledButton color="inherit">
+            <StyledButton color="inherit" component={Link} to="/login">
               <StyledTypography>Login</StyledTypography>
             </StyledButton>
           </StyledToolBar>
@@ -71,6 +71,8 @@ function App() {
 
         <Routes>
           <Route path="/faq" element={<InfoTab />} />
+          <Route path="/tips" element={<TipsTab />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
 
         <h1>Applicant Tracking System - get your pipeline under control!</h1>
