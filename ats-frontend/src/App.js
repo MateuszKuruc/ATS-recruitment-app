@@ -1,6 +1,7 @@
 import LoginForm from "./components/LoginForm";
 import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
+import HomePage from "./components/HomePage";
 
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -63,6 +64,9 @@ function App() {
       <Container>
         <StyledAppBar position="static">
           <StyledToolBar>
+            <StyledButton color="inherit" component={Link} to="/">
+              <StyledTypography>Home</StyledTypography>
+            </StyledButton>
             <StyledButton color="inherit" component={Link} to="/faq">
               <StyledTypography>FAQ</StyledTypography>
             </StyledButton>
@@ -76,15 +80,11 @@ function App() {
         </StyledAppBar>
 
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/faq" element={<InfoTab />} />
           <Route path="/tips" element={<TipsTab />} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
-
-        <h1>Applicant Tracking System - get your pipeline under control!</h1>
-        <p>
-          <i>Log in to see your pipeline and work on new placements</i>
-        </p>
       </Container>
     </ThemeProvider>
   );
