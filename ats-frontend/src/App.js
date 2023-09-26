@@ -67,6 +67,9 @@ function App() {
             <StyledButton color="inherit" component={Link} to="/">
               <StyledTypography>Home</StyledTypography>
             </StyledButton>
+            <StyledButton color="inherit" component={Link} to="/dashboard">
+              <StyledTypography>My Dashboard</StyledTypography>
+            </StyledButton>
             <StyledButton color="inherit" component={Link} to="/faq">
               <StyledTypography>FAQ</StyledTypography>
             </StyledButton>
@@ -84,6 +87,19 @@ function App() {
           <Route path="/faq" element={<InfoTab />} />
           <Route path="/tips" element={<TipsTab />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route
+            path="/dashboard"
+            element={
+              login === null && (
+                <div>
+                  <p>
+                    <i>Please log in to access your dashboard</i>
+                  </p>
+                  <LoginForm />
+                </div>
+              )
+            }
+          />
         </Routes>
       </Container>
     </ThemeProvider>
