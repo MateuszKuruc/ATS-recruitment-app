@@ -3,8 +3,10 @@ import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 
 import { useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
+import { setLogin } from "./reducers/loginReducer";
 
 import styled from "styled-components";
 
@@ -53,7 +55,8 @@ const StyledTypography = styled(Typography)`
 `;
 
 function App() {
-  
+  const dispatch = useDispatch();
+  const login = useSelector((state) => state.login);
 
   return (
     <ThemeProvider theme={websiteTheme}>
@@ -80,7 +83,7 @@ function App() {
 
         <h1>Applicant Tracking System - get your pipeline under control!</h1>
         <p>
-          <i>Log in to see your pipeline</i>
+          <i>Log in to see your pipeline and work on new placements</i>
         </p>
       </Container>
     </ThemeProvider>
