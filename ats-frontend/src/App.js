@@ -2,6 +2,8 @@ import LoginForm from "./components/LoginForm";
 import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 
 import {
@@ -35,8 +37,18 @@ const StyledToolBar = styled(Toolbar)`
   display: flex;
   gap: 2rem;
   justify-content: space-around;
-  font-size: 1.3rem;
+`;
+
+const StyledButton = styled(Button)`
+  font-size: 2.3rem;
   font-weight: 900;
+`;
+
+const StyledTypography = styled(Typography)`
+  && {
+    font-size: 1.3rem;
+    font-weight: 900;
+  }
 `;
 
 function App() {
@@ -45,10 +57,15 @@ function App() {
       <Container>
         <StyledAppBar position="static">
           <StyledToolBar>
-            ATS
-            <InfoTab />
-            <TipsTab />
-            <LoginForm />
+            <StyledButton color="inherit">
+              <StyledTypography>FAQ</StyledTypography>
+            </StyledButton>
+            <StyledButton color="inherit">
+              <StyledTypography>Tips</StyledTypography>
+            </StyledButton>
+            <StyledButton color="inherit">
+              <StyledTypography>Login</StyledTypography>
+            </StyledButton>
           </StyledToolBar>
         </StyledAppBar>
 
