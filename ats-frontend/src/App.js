@@ -69,6 +69,10 @@ function App() {
           </StyledToolBar>
         </StyledAppBar>
 
+        <Routes>
+          <Route path="/faq" element={<InfoTab />} />
+        </Routes>
+
         <h1>Applicant Tracking System - get your pipeline under control!</h1>
         <p>
           <i>Log in to see your pipeline</i>
