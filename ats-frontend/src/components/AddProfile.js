@@ -3,6 +3,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
 import { DatePicker } from "@mui/x-date-pickers";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 
 const Container = styled.div`
   display: flex;
@@ -18,13 +22,13 @@ const StyledTextField = styled(TextField)`
 `;
 
 const AddProfile = () => {
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [phone, setPhone] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [firstContact, setFirstContact] = useState();
-  const [skill, setSkill] = useState(null); /// use radio buttons in the form
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
+  const [firstContact, setFirstContact] = useState("");
+  const [skill, setSkill] = useState("");
 
   return (
     <div
@@ -98,6 +102,25 @@ const AddProfile = () => {
                 label="Location"
                 onChange={({ target }) => setLocation(target.value)}
               ></StyledTextField>
+            </div>
+            <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}>
+              <FormControl fullWidth>
+                <InputLabel id="skill">Skill</InputLabel>
+                <Select
+                  labelId="skill"
+                  label="Skill"
+                  value={skill}
+                  onChange={({ target }) => setSkill(target.value)}
+                >
+                  <MenuItem value="Java">Java</MenuItem>
+                  <MenuItem value="Python">Python</MenuItem>
+                  <MenuItem value="JavaScript">JavaScript</MenuItem>
+                  <MenuItem value="C">C/C#/C++</MenuItem>
+                  <MenuItem value="Scala">Scala</MenuItem>
+                  <MenuItem value="BigData">Big Data</MenuItem>
+                  <MenuItem value="DevOps">DevOps</MenuItem>
+                </Select>
+              </FormControl>
             </div>
           </div>
         </Container>
