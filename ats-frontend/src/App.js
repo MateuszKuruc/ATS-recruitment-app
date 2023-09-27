@@ -3,6 +3,7 @@ import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 import HomePage from "./components/HomePage";
 import Dashboard from "./components/Dashboard";
+import AddProfile from "./components/AddProfile";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -102,7 +103,7 @@ function App() {
                   <LoginForm />
                 </div>
               ) : (
-                login === null && <Dashboard secondaryColor={secondaryColor} />
+                login === null && <Dashboard />
               )
             }
           />
@@ -120,7 +121,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <div>Add profile tab</div>
+                <AddProfile />
               </>
             }
           />

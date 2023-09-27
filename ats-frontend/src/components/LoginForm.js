@@ -7,10 +7,6 @@ const StyledTextField = styled(TextField)`
   }
 `;
 
-// const StyledField = styled.div`
-// padding: 1rem;
-// `
-
 const LoginForm = ({
   handleSubmit,
   handleUsernameChange,
