@@ -107,6 +107,42 @@ function App() {
               )
             }
           />
+          <Route
+            path="/all"
+            element={
+              <>
+                <Dashboard />
+                <div>All candidates tab</div>
+              </>
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <>
+                <Dashboard />
+                <div>Add profile tab</div>
+              </>
+            }
+          />
+          <Route
+            path="/pools"
+            element={
+              <>
+                <Dashboard />
+                <div>Pools tab</div>
+              </>
+            }
+          />
+          <Route
+            path="/hot"
+            element={
+              <>
+                <Dashboard />
+                <div>Hot profiles tab</div>
+              </>
+            }
+          />
         </Routes>
       </Container>
     </ThemeProvider>
