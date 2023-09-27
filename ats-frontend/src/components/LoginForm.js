@@ -1,7 +1,7 @@
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
 
-const StyledTextField = styled(TextField)`
+export const StyledTextField = styled(TextField)`
   && {
     margin-bottom: 5px;
   }

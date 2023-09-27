@@ -1,5 +1,6 @@
-import { TextField, Button } from "@mui/material";
+import { Textfield, Button } from "@mui/material";
 import { useState } from "react";
+import { StyledTextField } from "./LoginForm";
 
 const AddProfile = () => {
   const [firstName, setFirstName] = useState(null);
@@ -13,42 +14,44 @@ const AddProfile = () => {
     <div>
       <h1>Add new profile</h1>
       <form>
-        <div className="firstColumn"></div>
-        <div>
-          <TextField
-            label="First name"
-            onChange={({ target }) => setFirstName(target.value)}
-          ></TextField>
+        <div className="firstColumn">
+          <div>
+            <StyledTextField
+              label="First name"
+              onChange={({ target }) => setFirstName(target.value)}
+            ></StyledTextField>
+          </div>
+          <div>
+            <StyledTextField
+              label="Last name"
+              onChange={({ target }) => setLastName(target.value)}
+            ></StyledTextField>
+          </div>
+          <div>
+            <StyledTextField
+              label="Phone number"
+              onChange={({ target }) => setPhone(target.value)}
+            ></StyledTextField>
+          </div>
         </div>
+
         <div>
-          <TextField
-            label="Last name"
-            onChange={({ target }) => setLastName(target.value)}
-          ></TextField>
-        </div>
-        <div>
-          <TextField
-            label="Phone number"
-            onChange={({ target }) => setPhone(target.value)}
-          ></TextField>
-        </div>
-        <div>
-          <TextField
+          <StyledTextField
             label="Email address"
             onChange={({ target }) => setEmail(target.value)}
-          ></TextField>
+          ></StyledTextField>
         </div>
         <div>
-          <TextField
+          <StyledTextField
             label="Location"
             onChange={({ target }) => setLocation(target.value)}
-          ></TextField>
+          ></StyledTextField>
         </div>
         <div>
-          <TextField
+          <StyledTextField
             label="Skill"
             onChange={({ target }) => setSkill(target.value)}
-          ></TextField>
+          ></StyledTextField>
         </div>
       </form>
     </div>
