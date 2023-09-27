@@ -56,8 +56,10 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
+export const secondaryColor = websiteTheme.palette.secondary.main;
+
 function App() {
-  const secondaryColor = websiteTheme.palette.secondary.main;
+  // const secondaryColor = websiteTheme.palette.secondary.main;
 
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
