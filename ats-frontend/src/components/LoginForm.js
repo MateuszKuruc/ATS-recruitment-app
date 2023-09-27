@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyledTextField = styled(TextField)`
   && {
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
   }
 `;
 
