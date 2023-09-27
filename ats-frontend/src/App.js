@@ -4,9 +4,8 @@ import TipsTab from "./components/TipsTab";
 import HomePage from "./components/HomePage";
 import Dashboard from "./components/Dashboard";
 
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 import { setLogin } from "./reducers/loginReducer";
 
