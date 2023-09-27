@@ -2,6 +2,7 @@ import LoginForm from "./components/LoginForm";
 import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 import HomePage from "./components/HomePage";
+import Dashboard from "./components/Dashboard";
 
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,17 +28,17 @@ const websiteTheme = createTheme({
       main: "#084c61",
     },
     secondary: {
-      main: "#FCA311",
+      main: "#990033",
     },
   },
 });
 
-const StyledAppBar = styled(AppBar)`
+export const StyledAppBar = styled(AppBar)`
   padding: 1rem;
   margin: 0rem;
 `;
 
-const StyledToolBar = styled(Toolbar)`
+export const StyledToolBar = styled(Toolbar)`
   display: flex;
   gap: 2rem;
   justify-content: space-around;
@@ -56,6 +57,8 @@ const StyledTypography = styled(Typography)`
 `;
 
 function App() {
+  const secondaryColor = websiteTheme.palette.secondary.main;
+
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
 
@@ -90,13 +93,15 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              login === null && (
+              login !== null ? (
                 <div>
                   <p>
                     <i>Please log in to access your dashboard</i>
                   </p>
                   <LoginForm />
                 </div>
+              ) : (
+                login === null && <Dashboard secondaryColor={secondaryColor} />
               )
             }
           />
