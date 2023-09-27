@@ -1,18 +1,18 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-// import { StyledTextField } from "./LoginForm";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
+import { DatePicker } from "@mui/x-date-pickers";
 
 const Container = styled.div`
   display: flex;
-  gap: 1rem;
+  //   gap: 1rem;
 `;
 
 const StyledTextField = styled(TextField)`
   && {
     margin-bottom: 2rem;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 0.5rem;
   }
 `;
@@ -23,6 +23,7 @@ const AddProfile = () => {
   const [phone, setPhone] = useState(null);
   const [email, setEmail] = useState(null);
   const [location, setLocation] = useState(null);
+  const [firstContact, setFirstContact] = useState();
   const [skill, setSkill] = useState(null); /// use radio buttons in the form
 
   return (
@@ -35,7 +36,6 @@ const AddProfile = () => {
       <form
         style={{
           border: "0.25rem solid",
-
           display: "inline-flex",
           justifyContent: "center",
           flexDirection: "column",
@@ -71,6 +71,19 @@ const AddProfile = () => {
                 onChange={({ target }) => setPhone(target.value)}
               ></StyledTextField>
             </div>
+            <div
+              style={{
+                marginBottom: "2rem",
+                width: "85%",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+              }}
+            >
+              <DatePicker
+                label="First contact"
+                onChange={(newValue) => setFirstContact(newValue)}
+              />
+            </div>
           </div>
 
           <div className="secondColumn">
@@ -86,14 +99,9 @@ const AddProfile = () => {
                 onChange={({ target }) => setLocation(target.value)}
               ></StyledTextField>
             </div>
-            <div>
-              <StyledTextField
-                label="Skill"
-                onChange={({ target }) => setSkill(target.value)}
-              ></StyledTextField>
-            </div>
           </div>
         </Container>
+
         <Button id="addButton" variant="contained">
           Add profile
         </Button>
