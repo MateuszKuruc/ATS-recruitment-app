@@ -137,7 +137,7 @@ const AddProfile = () => {
                 <Select
                   labelId="seniority"
                   label="Seniority"
-                  value={skill}
+                  value={seniority}
                   onChange={({ target }) => setSeniority(target.value)}
                 >
                   <MenuItem value="Intern">Intern</MenuItem>
