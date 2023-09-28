@@ -5,6 +5,7 @@ import HomePage from "./components/HomePage";
 import Dashboard from "./components/Dashboard";
 import AddProfile from "./components/AddProfile";
 import AllCandidates from "./components/AllCandidates";
+import MainAppBar from "./components/MainAppBar";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -140,7 +141,7 @@ export const StyledToolBar = styled(Toolbar)`
   justify-content: space-around;
 `;
 
-const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)`
   font-size: 2.3rem;
   font-weight: 900;
 `;
@@ -164,25 +165,7 @@ function App() {
   return (
     <ThemeProvider theme={websiteTheme}>
       <Container>
-        <StyledAppBar position="static">
-          <StyledToolBar>
-            <StyledButton color="inherit" component={Link} to="/">
-              <StyledTypography>Home</StyledTypography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/dashboard">
-              <StyledTypography>My Dashboard</StyledTypography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/faq">
-              <StyledTypography>FAQ</StyledTypography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/tips">
-              <StyledTypography>Tips</StyledTypography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/login">
-              <StyledTypography>Login</StyledTypography>
-            </StyledButton>
-          </StyledToolBar>
-        </StyledAppBar>
+        <MainAppBar />
 
         <Routes>
           <Route path="/" element={<HomePage />} />
