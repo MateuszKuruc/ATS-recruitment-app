@@ -18,7 +18,7 @@ const AllCandidates = ({ candidates }) => {
         <TableBody>
           <TableRow>
             <TableCell>
-              <Typography variant="h5">Name</Typography>
+              <Typography variant="h1">Name</Typography>
             </TableCell>
             <TableCell>
               <h3>Location</h3>

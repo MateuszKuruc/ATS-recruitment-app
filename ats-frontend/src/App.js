@@ -79,6 +79,52 @@ const websiteTheme = createTheme({
       main: "#990033",
     },
   },
+  typography: {
+    fontFamily: "Roboto, sans-serif",
+    h1: {
+      fontSize: "2.5rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+      marginBottom: "1rem",
+    },
+    h2: {
+      fontSize: "2rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+      marginBottom: "1rem",
+    },
+
+    h3: {
+      fontSize: "1.75rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+      marginBottom: "0.75rem",
+    },
+
+    h4: {
+      fontSize: "1.5rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+      marginBottom: "0.5rem",
+    },
+
+    h5: {
+      fontSize: "1.25rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+      marginBottom: "0.25rem",
+    },
+    body1: {
+      fontSize: "1rem",
+      lineHeight: 1.5,
+      // marginBottom: "1rem",
+    },
+    body2: {
+      fontSize: "0.875rem",
+      lineHeight: 1.5,
+      // marginBottom: "1rem",
+    },
+  },
 });
 
 export const StyledAppBar = styled(AppBar)`
