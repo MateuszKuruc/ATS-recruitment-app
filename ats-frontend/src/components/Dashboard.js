@@ -26,7 +26,7 @@ const Dashboard = () => {
         style={{ backgroundColor: secondaryColor, padding: 4 }}
       >
         <StyledToolBar>
-          <Button color="inherit" component={Link} to="/all">
+          <Button color="inherit" component={Link} to="/candidates">
             <Typography variant="h6">All candidates</Typography>
           </Button>
           <Button color="inherit" component={Link} to="/add">

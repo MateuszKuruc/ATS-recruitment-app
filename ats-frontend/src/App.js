@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard";
 import AddProfile from "./components/AddProfile";
 import AllCandidates from "./components/AllCandidates";
 import MainAppBar from "./components/MainAppBar";
+import CandidateDetails from "./components/CandidateDetails";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -188,7 +189,7 @@ function App() {
             }
           />
           <Route
-            path="/all"
+            path="/candidates"
             element={
               <>
                 <Dashboard />
@@ -220,6 +221,15 @@ function App() {
               <>
                 <Dashboard />
                 <div>Hot profiles tab</div>
+              </>
+            }
+          />
+          <Route
+            path="/candidates/:id"
+            element={
+              <>
+                <Dashboard />
+                <CandidateDetails candidates={candidates} />
               </>
             }
           />
