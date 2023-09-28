@@ -8,7 +8,7 @@ const StyledPaper = styled(Paper)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0.5rem solid;
+  border: 0.5rem solid #990033;
   padding: 1rem;
 `;
 
@@ -18,8 +18,7 @@ const StyledTextField = styled(TextField)`
     margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
-   padding-right: 3rem;
-
+    padding-right: 3rem;
   }
 `;
 
@@ -37,7 +36,7 @@ const CandidateDetails = ({ candidates }) => {
   }
 
   return (
-    <div style={{ backgroundColor: primaryColor, padding: "2rem"}}>
+    <div style={{ backgroundColor: primaryColor, padding: "2rem" }}>
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
           <StyledPaper>
@@ -45,50 +44,79 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.firstName}
               label="First name"
+              disabled={!editOn}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Location</Typography>
-            <StyledTextField value={candidate.location}></StyledTextField>
+            <Typography variant="italic">Location</Typography>
+            <StyledTextField
+              value={candidate.location}
+              label="Location"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Last name</Typography>
-            <StyledTextField value={candidate.lastName}></StyledTextField>
+            <Typography variant="italic">Last name</Typography>
+            <StyledTextField
+              value={candidate.lastName}
+              label="Last name"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Phone number</Typography>
-            <StyledTextField value={candidate.phone}></StyledTextField>
+            <Typography variant="italic">Phone number</Typography>
+            <StyledTextField
+              value={candidate.phone}
+              label="Phone number"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Specialization</Typography>
-            <StyledTextField value={candidate.skill}></StyledTextField>
+            <Typography variant="italic">Specialization</Typography>
+            <StyledTextField
+              value={candidate.skill}
+              label="Specialization"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Email address</Typography>
-            <StyledTextField value={candidate.email}></StyledTextField>
+            <Typography variant="italic">Email address</Typography>
+            <StyledTextField
+              value={candidate.email}
+              label="Email address"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">Seniority</Typography>
-            <StyledTextField value={candidate.seniority}></StyledTextField>
+            <Typography variant="italic">Seniority</Typography>
+            <StyledTextField
+              value={candidate.seniority}
+              label="Seniority"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
           <StyledPaper>
-          <Typography variant="italic">First contact date</Typography>
-            <StyledTextField value={candidate.firstContact}></StyledTextField>
+            <Typography variant="italic">First contact</Typography>
+            <StyledTextField
+              value={candidate.firstContact}
+              label="First contact"
+              disabled={!editOn}
+            ></StyledTextField>
           </StyledPaper>
         </Grid>
       </Grid>
