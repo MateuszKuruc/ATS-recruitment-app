@@ -29,6 +29,7 @@ const AddProfile = () => {
   const [location, setLocation] = useState("");
   const [firstContact, setFirstContact] = useState("");
   const [skill, setSkill] = useState("");
+  const [seniority, setSeniority] = useState("");
 
   return (
     <div
@@ -71,10 +72,11 @@ const AddProfile = () => {
             </div>
             <div>
               <StyledTextField
-                label="Phone number"
-                onChange={({ target }) => setPhone(target.value)}
+                label="Location"
+                onChange={({ target }) => setLocation(target.value)}
               ></StyledTextField>
             </div>
+
             <div
               style={{
                 marginBottom: "2rem",
@@ -99,11 +101,17 @@ const AddProfile = () => {
             </div>
             <div>
               <StyledTextField
-                label="Location"
-                onChange={({ target }) => setLocation(target.value)}
+                label="Phone number"
+                onChange={({ target }) => setPhone(target.value)}
               ></StyledTextField>
             </div>
-            <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}>
+            <div
+              style={{
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+                marginBottom: "2rem",
+              }}
+            >
               <FormControl fullWidth>
                 <InputLabel id="skill">Skill</InputLabel>
                 <Select
@@ -119,6 +127,25 @@ const AddProfile = () => {
                   <MenuItem value="Scala">Scala</MenuItem>
                   <MenuItem value="BigData">Big Data</MenuItem>
                   <MenuItem value="DevOps">DevOps</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+
+            <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}>
+              <FormControl fullWidth>
+                <InputLabel id="seniority">Seniority</InputLabel>
+                <Select
+                  labelId="seniority"
+                  label="Seniority"
+                  value={skill}
+                  onChange={({ target }) => setSkill(target.value)}
+                >
+                  <MenuItem value="Intern">Intern</MenuItem>
+                  <MenuItem value="Junior">Junior</MenuItem>
+                  <MenuItem value="Regular">Regular</MenuItem>
+                  <MenuItem value="Senior">Senior</MenuItem>
+                  <MenuItem value="Lead">Lead</MenuItem>
+                  <MenuItem value="Manager">Manager</MenuItem>
                 </Select>
               </FormControl>
             </div>
