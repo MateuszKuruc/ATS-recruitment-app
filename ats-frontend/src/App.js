@@ -4,6 +4,7 @@ import TipsTab from "./components/TipsTab";
 import HomePage from "./components/HomePage";
 import Dashboard from "./components/Dashboard";
 import AddProfile from "./components/AddProfile";
+import AllCandidates from "./components/AllCandidates";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -32,6 +33,7 @@ const candidates = [
     phone: "531380713",
     skill: "JavaScript",
     seniority: "Junior",
+    id: 1,
   },
   {
     firstName: "Puszek",
@@ -42,6 +44,7 @@ const candidates = [
     phone: "999666333",
     skill: "Java",
     seniority: "Manager",
+    id: 2,
   },
   {
     firstName: "Pamelitto",
@@ -52,6 +55,7 @@ const candidates = [
     phone: "555777111",
     skill: "Python",
     seniority: "Regular",
+    id: 3,
   },
   {
     firstName: "Arjen",
@@ -62,6 +66,7 @@ const candidates = [
     phone: "321321321",
     skill: "DevOps",
     seniority: "Lead",
+    id: 4,
   },
 ];
 
@@ -156,7 +161,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <div>All candidates tab</div>
+                <AllCandidates candidates={candidates} />
               </>
             }
           />
