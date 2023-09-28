@@ -85,34 +85,31 @@ const websiteTheme = createTheme({
       fontSize: "2.5rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      marginBottom: "1rem",
+      // marginBottom: "1rem",
     },
     h2: {
       fontSize: "2rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      marginBottom: "1rem",
+      // marginBottom: "1rem",
     },
-
     h3: {
       fontSize: "1.75rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      marginBottom: "0.75rem",
+      // marginBottom: "0.75rem",
     },
-
     h4: {
       fontSize: "1.5rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      marginBottom: "0.5rem",
+      // marginBottom: "0.5rem",
     },
-
     h5: {
       fontSize: "1.25rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      marginBottom: "0.25rem",
+      // marginBottom: "0.25rem",
     },
     body1: {
       fontSize: "1rem",

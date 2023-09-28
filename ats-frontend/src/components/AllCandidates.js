@@ -6,7 +6,7 @@ import {
   TableRow,
   Paper,
   Button,
-  Typography
+  Typography,
 } from "@mui/material";
 
 const AllCandidates = ({ candidates }) => {
@@ -18,27 +18,36 @@ const AllCandidates = ({ candidates }) => {
         <TableBody>
           <TableRow>
             <TableCell>
-              <Typography variant="h1">Name</Typography>
+              <Typography variant="h4">Name</Typography>
             </TableCell>
             <TableCell>
-              <h3>Location</h3>
+              <Typography variant="h4">Location</Typography>
             </TableCell>
             <TableCell>
-              <h3>Skill</h3>
+              <Typography variant="h4">Skill</Typography>
             </TableCell>
             <TableCell>
-              <h3>Seniority</h3>
+              <Typography variant="h4">Seniority</Typography>
             </TableCell>
             <TableCell>
-              <h3>Assessment</h3>
+              <Typography variant="h4">Assessment</Typography>
             </TableCell>
           </TableRow>
           {candidates.map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
-                <h4>
+                <Typography variant="body1">
                   {candidate.firstName} {candidate.lastName}
-                </h4>
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="body1">{candidate.location}</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="body1">{candidate.skill}</Typography>
+              </TableCell>
+              <TableCell>
+                <Typography variant="body1">{candidate.seniority}</Typography>
               </TableCell>
             </TableRow>
           ))}
