@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Grid, Paper, Typography, TextField } from "@mui/material";
+import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
 
@@ -23,13 +23,16 @@ const StyledTextField = styled(TextField)`
 `;
 
 const CandidateDetails = ({ candidates }) => {
-  const [editOn, setEditOn] = useState(false);
-  const [editOff, setEditOff] = useState(true);
+  const [editMode, setEditMode] = useState(false);
 
   console.log("candidates details", candidates);
   const id = Number(useParams().id);
   console.log("id", id);
   const candidate = candidates.find((candidate) => candidate.id === id);
+
+  const toggleEdit = () => {
+    setEditMode(!editMode);
+  };
 
   if (!candidate) {
     return null;
@@ -44,7 +47,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.firstName}
               label="First name"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -55,7 +58,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.location}
               label="Location"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -65,7 +68,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.lastName}
               label="Last name"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -75,7 +78,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.phone}
               label="Phone number"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -85,7 +88,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.skill}
               label="Specialization"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -95,7 +98,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.email}
               label="Email address"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -105,7 +108,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.seniority}
               label="Seniority"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -115,9 +118,14 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.firstContact}
               label="First contact"
-              disabled={!editOn}
+              disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" color="secondary" onClick={toggleEdit}>
+            {editMode ? "Save" : "Edit"}
+          </Button>
         </Grid>
       </Grid>
     </div>
