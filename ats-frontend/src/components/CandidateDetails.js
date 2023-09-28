@@ -8,7 +8,7 @@ const StyledPaper = styled(Paper)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0.5rem solid #990033;
+  border: 0.25rem solid #990033;
   padding: 1rem;
 `;
 
@@ -126,6 +126,11 @@ const CandidateDetails = ({ candidates }) => {
           <Button variant="contained" color="secondary" onClick={toggleEdit}>
             {editMode ? "Save" : "Edit"}
           </Button>
+          {editMode ? (
+            <Button variant="contained" color="inherit" onClick={toggleEdit}>
+              Cancel
+            </Button>
+          ) : null}
         </Grid>
       </Grid>
     </div>
