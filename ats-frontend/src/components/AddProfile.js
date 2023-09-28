@@ -138,7 +138,7 @@ const AddProfile = () => {
                   labelId="seniority"
                   label="Seniority"
                   value={skill}
-                  onChange={({ target }) => setSkill(target.value)}
+                  onChange={({ target }) => setSeniority(target.value)}
                 >
                   <MenuItem value="Intern">Intern</MenuItem>
                   <MenuItem value="Junior">Junior</MenuItem>
