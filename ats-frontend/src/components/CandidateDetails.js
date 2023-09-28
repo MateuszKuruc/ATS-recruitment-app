@@ -1,7 +1,27 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { StyledTextField } from "./AddProfile";
-import { Grid, Paper } from "@mui/material";
+import { Grid, Paper, Typography, TextField } from "@mui/material";
+import styled from "styled-components";
+import { secondaryColor, primaryColor } from "../App";
+
+const StyledPaper = styled(Paper)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.5rem solid;
+  padding: 1rem;
+`;
+
+const StyledTextField = styled(TextField)`
+  && {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+   padding-right: 3rem;
+
+  }
+`;
 
 const CandidateDetails = ({ candidates }) => {
   const [editOn, setEditOn] = useState(false);
@@ -17,48 +37,59 @@ const CandidateDetails = ({ candidates }) => {
   }
 
   return (
-    <div>
-      <Grid container>
+    <div style={{ backgroundColor: primaryColor, padding: "2rem"}}>
+      <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
-          <Paper>
-            <StyledTextField value={candidate.firstName}></StyledTextField>
-          </Paper>
+          <StyledPaper>
+            <Typography variant="italic">First name</Typography>
+            <StyledTextField
+              value={candidate.firstName}
+              label="First name"
+            ></StyledTextField>
+          </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Location</Typography>
             <StyledTextField value={candidate.location}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Last name</Typography>
             <StyledTextField value={candidate.lastName}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Phone number</Typography>
             <StyledTextField value={candidate.phone}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Specialization</Typography>
             <StyledTextField value={candidate.skill}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Email address</Typography>
             <StyledTextField value={candidate.email}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">Seniority</Typography>
             <StyledTextField value={candidate.seniority}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper>
+          <StyledPaper>
+          <Typography variant="italic">First contact date</Typography>
             <StyledTextField value={candidate.firstContact}></StyledTextField>
-          </Paper>
+          </StyledPaper>
         </Grid>
       </Grid>
     </div>

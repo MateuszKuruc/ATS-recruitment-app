@@ -128,6 +128,12 @@ const websiteTheme = createTheme({
       lineHeight: 1.5,
       // marginBottom: "1rem",
     },
+    italic: {
+      fontSize: "1.3rem",
+      fontStyle: "italic",
+      lineHeight: 1.5,
+      paddingLeft: "3rem",
+    },
   },
 });
 
