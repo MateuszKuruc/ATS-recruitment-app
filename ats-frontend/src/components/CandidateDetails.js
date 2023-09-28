@@ -19,44 +19,45 @@ const CandidateDetails = ({ candidates }) => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={6}>
           <Paper>
             <StyledTextField value={candidate.firstName}></StyledTextField>
           </Paper>
         </Grid>
-        <Grid item xs={6} md={4}>
-          <Paper>
-            <StyledTextField value={candidate.lastName}></StyledTextField>
-          </Paper>
-        </Grid>
-        <Grid item xs={6} md={4}>
+
+        <Grid item xs={12} md={6}>
           <Paper>
             <StyledTextField value={candidate.location}></StyledTextField>
           </Paper>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={6}>
+          <Paper>
+            <StyledTextField value={candidate.lastName}></StyledTextField>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
           <Paper>
             <StyledTextField value={candidate.phone}></StyledTextField>
           </Paper>
         </Grid>
-        <Grid item xs={6} md={4}>
-          <Paper>
-            <StyledTextField value={candidate.email}></StyledTextField>
-          </Paper>
-        </Grid>
-        <Grid item xs={6} md={4}>
-          <Paper>
-            <StyledTextField value={candidate.firstContact}></StyledTextField>
-          </Paper>
-        </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={6}>
           <Paper>
             <StyledTextField value={candidate.skill}></StyledTextField>
           </Paper>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={6}>
+          <Paper>
+            <StyledTextField value={candidate.email}></StyledTextField>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
           <Paper>
             <StyledTextField value={candidate.seniority}></StyledTextField>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper>
+            <StyledTextField value={candidate.firstContact}></StyledTextField>
           </Paper>
         </Grid>
       </Grid>
