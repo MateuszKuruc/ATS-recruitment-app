@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
@@ -23,12 +23,15 @@ const StyledTextField = styled(TextField)`
 `;
 
 const CandidateDetails = ({ candidates }) => {
-  const [editMode, setEditMode] = useState(false);
-
-  console.log("candidates details", candidates);
   const id = Number(useParams().id);
-  console.log("id", id);
-  const candidate = candidates.find((candidate) => candidate.id === id);
+
+  const [editMode, setEditMode] = useState(false);
+  const [candidate, setCandidate] = useState(null);
+
+  useEffect(() => {
+    const foundCandidate = candidates.find((candidate) => candidate.id === id);
+    setCandidate(foundCandidate);
+  }, [candidates, id]);
 
   const toggleEdit = () => {
     setEditMode(!editMode);
@@ -46,7 +49,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">First name</Typography>
             <StyledTextField
               value={candidate.firstName}
-              label="First name"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -57,7 +59,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Location</Typography>
             <StyledTextField
               value={candidate.location}
-              label="Location"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -67,7 +68,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
               value={candidate.lastName}
-              label="Last name"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -77,7 +77,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
               value={candidate.phone}
-              label="Phone number"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -87,7 +86,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Specialization</Typography>
             <StyledTextField
               value={candidate.skill}
-              label="Specialization"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -97,7 +95,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
               value={candidate.email}
-              label="Email address"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -107,7 +104,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Seniority</Typography>
             <StyledTextField
               value={candidate.seniority}
-              label="Seniority"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -117,7 +113,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">First contact</Typography>
             <StyledTextField
               value={candidate.firstContact}
-              label="First contact"
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
