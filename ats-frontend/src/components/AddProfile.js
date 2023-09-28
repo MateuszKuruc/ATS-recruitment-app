@@ -10,7 +10,6 @@ import MenuItem from "@mui/material/MenuItem";
 
 const Container = styled.div`
   display: flex;
-  //   gap: 1rem;
 `;
 
 const StyledTextField = styled(TextField)`
@@ -50,12 +49,10 @@ const AddProfile = () => {
           paddingLeft: "1rem",
           margin: "2rem",
           borderRadius: "0.5rem",
-          //   borderColor: secondaryColor,
           backgroundColor: secondaryColor,
-          //   backgroundColor: primaryColor,
         }}
       >
-        <h1>Add new profile</h1>
+        <h1>Create new profile</h1>
         <Container>
           <div className="firstColumn">
             <div>
