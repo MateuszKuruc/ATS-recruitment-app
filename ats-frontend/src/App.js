@@ -111,6 +111,11 @@ const websiteTheme = createTheme({
       lineHeight: 1.2,
       // marginBottom: "0.25rem",
     },
+    h6: {
+      fontSize: "1rem",
+      fontWeight: 600,
+      lineHeight: 1.2,
+    },
     body1: {
       fontSize: "1rem",
       lineHeight: 1.5,

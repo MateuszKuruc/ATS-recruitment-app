@@ -1,6 +1,6 @@
 import { StyledAppBar } from "../App";
 import { StyledToolBar } from "../App";
-import { Button, InputBase } from "@mui/material";
+import { Button, InputBase, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 import { secondaryColor } from "../App";
@@ -27,16 +27,16 @@ const Dashboard = () => {
       >
         <StyledToolBar>
           <Button color="inherit" component={Link} to="/all">
-            All candidates
+            <Typography variant="h6">All candidates</Typography>
           </Button>
           <Button color="inherit" component={Link} to="/add">
-            Add profile
+            <Typography variant="h6">Add profile</Typography>
           </Button>
           <Button color="inherit" component={Link} to="/pools">
-            Pools
+            <Typography variant="h6">Pools</Typography>
           </Button>
           <Button color="inherit" component={Link} to="/hot">
-            Hot profiles
+            <Typography variant="h6">Hot profiles</Typography>
           </Button>
           <Search>
             <SearchIcon />
