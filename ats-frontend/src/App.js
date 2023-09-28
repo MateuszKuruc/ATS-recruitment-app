@@ -22,6 +22,49 @@ import {
   Typography,
 } from "@mui/material";
 
+const candidates = [
+  {
+    firstName: "Mateusz",
+    lastName: "Kuruc",
+    location: "Katowice",
+    firstContact: "2023-09-28",
+    email: "mateuszkuruc@gmail.com",
+    phone: "531380713",
+    skill: "JavaScript",
+    seniority: "Junior",
+  },
+  {
+    firstName: "Puszek",
+    lastName: "Okruszek",
+    location: "Katowice",
+    firstContact: "2023-07-13",
+    email: "kotekpsotek@gmail.com",
+    phone: "999666333",
+    skill: "Java",
+    seniority: "Manager",
+  },
+  {
+    firstName: "Pamelitto",
+    lastName: "Bubbito",
+    location: "Katowice",
+    firstContact: "2022-03-14",
+    email: "pamelisko92@gmail.com",
+    phone: "555777111",
+    skill: "Python",
+    seniority: "Regular",
+  },
+  {
+    firstName: "Arjen",
+    lastName: "Robben",
+    location: "Monachium",
+    firstContact: "2013-06-06",
+    email: "cuttingwinger@gmail.com",
+    phone: "321321321",
+    skill: "DevOps",
+    seniority: "Lead",
+  },
+];
+
 const websiteTheme = createTheme({
   palette: {
     primary: {
