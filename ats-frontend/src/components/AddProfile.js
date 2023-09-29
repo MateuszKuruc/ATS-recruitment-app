@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
 import { DatePicker } from "@mui/x-date-pickers";
-import { FormControl, Select, InputLabel, MenuItem } from "@mui/material"
+import { FormControl, Select, InputLabel, MenuItem } from "@mui/material";
 
 const FieldContainer = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const AddProfile = () => {
         // border: "1px solid blue",
         flex: "1",
         // height: "100%"
-        marginBottom: "1rem"
+        marginBottom: "1rem",
       }}
     >
       <form
@@ -65,7 +65,8 @@ const AddProfile = () => {
           paddingLeft: "1rem",
           // margin: "2rem",
           borderRadius: "0.5rem",
-          backgroundColor: secondaryColor,
+          // backgroundColor: secondaryColor,
+          backgroundColor: primaryColor,
           flex: "1",
         }}
       >
@@ -142,6 +143,8 @@ const AddProfile = () => {
                     <MenuItem value="Scala">Scala</MenuItem>
                     <MenuItem value="BigData">Big Data</MenuItem>
                     <MenuItem value="DevOps">DevOps</MenuItem>
+                    <MenuItem value="Mobile">Mobile</MenuItem>
+                    <MenuItem value="Golang">Golang</MenuItem>
                   </Select>
                 </FormControl>
               </div>

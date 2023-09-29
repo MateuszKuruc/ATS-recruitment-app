@@ -8,6 +8,7 @@ import AllCandidates from "./components/AllCandidates";
 import MainAppBar from "./components/MainAppBar";
 import CandidateDetails from "./components/CandidateDetails";
 import Footer from "./components/Footer";
+import Pools from "./components/Pools";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -210,7 +211,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <div>Pools tab</div>
+                <Pools />
               </>
             }
           />

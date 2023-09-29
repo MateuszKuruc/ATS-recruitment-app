@@ -22,7 +22,7 @@ const StyledContainer = styled.div`
 
 const Footer = () => {
   return (
-    <StyledPaper style={{ background: "#084c61" }}>
+    <StyledPaper style={{ background: "#990033" }}>
       <StyledContainer>
         <Typography variant="h5" style={{ color: "#FFFFFF" }}>
           Applicant Tracking System by Mateusz Kuruc
