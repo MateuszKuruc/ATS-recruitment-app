@@ -10,6 +10,7 @@ const StyledButton = styled(Button)`
     width: 100%;
     height: 100%;
     border-radius: 0.5rem;
+    border: 0.3rem solid #084c61;
   }
 `;
 
@@ -19,63 +20,63 @@ const Pools = () => {
       <Grid container spacing={2} style={{ display: "flex", height: "100vh" }}>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">Java</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">Python</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">JavaScript</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">C/C#/C++</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">Scala</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">Big Data</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">DevOps</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               <Typography variant="h1">Mobile</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="contained">
+            <StyledButton variant="text">
               {" "}
               <Typography variant="h1">Golang</Typography>
             </StyledButton>
