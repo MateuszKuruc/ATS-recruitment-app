@@ -1,4 +1,4 @@
-import { Container, Typography, Paper } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
 import githubIcon from "../icons/github.svg";
 import linkedinIcon from "../icons/linkedin.svg";
@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <StyledPaper style={{ background: "#084c61" }}>
       <StyledContainer>
-        <Typography variant="h5">
+        <Typography variant="h5" style={{ color: "#FFFFFF" }}>
           Applicant Tracking System by Mateusz Kuruc
         </Typography>
 

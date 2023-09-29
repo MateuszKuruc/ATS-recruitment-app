@@ -50,6 +50,7 @@ const AddProfile = () => {
         // border: "1px solid blue",
         flex: "1",
         // height: "100%"
+        marginBottom: "1rem"
       }}
     >
       <form

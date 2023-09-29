@@ -49,6 +49,7 @@ const CandidateDetails = ({ candidates }) => {
         padding: "2rem",
         marginTop: "1rem",
         borderRadius: "0.5rem",
+        marginBottom: "1rem"
       }}
     >
       {!candidate.assessment ? (
