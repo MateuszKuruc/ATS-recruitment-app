@@ -4,7 +4,14 @@ import { Typography } from "@mui/material";
 
 const MainAppBar = () => {
   return (
-    <StyledAppBar position="static">
+    <StyledAppBar
+      position="static"
+      style={{
+        borderTopLeftRadius: "0.5rem",
+        borderTopRightRadius: "0.5rem",
+        marginBottom: "0.1rem",
+      }}
+    >
       <StyledToolBar>
         <StyledButton color="inherit" component={Link} to="/">
           <Typography variant="h4">Home</Typography>

@@ -23,7 +23,12 @@ const Dashboard = () => {
     <div>
       <StyledAppBar
         position="static"
-        style={{ backgroundColor: secondaryColor, padding: 4 }}
+        style={{
+          backgroundColor: secondaryColor,
+          padding: 4,
+          borderBottomLeftRadius: "0.5rem",
+          borderBottomRightRadius: "0.5rem",
+        }}
       >
         <StyledToolBar>
           <Button color="inherit" component={Link} to="/candidates">
