@@ -42,7 +42,14 @@ const CandidateDetails = ({ candidates }) => {
   }
 
   return (
-    <div style={{ backgroundColor: primaryColor, padding: "2rem" }}>
+    <div
+      style={{
+        backgroundColor: primaryColor,
+        padding: "2rem",
+        marginTop: "1rem",
+        borderRadius: "0.5rem",
+      }}
+    >
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
           <StyledPaper>

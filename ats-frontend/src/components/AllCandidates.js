@@ -15,7 +15,10 @@ const AllCandidates = ({ candidates }) => {
   console.log(candidates);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      component={Paper}
+      style={{ marginTop: "1rem", borderRadius: "0.5rem" }}
+    >
       <Table>
         <TableBody>
           <TableRow>
