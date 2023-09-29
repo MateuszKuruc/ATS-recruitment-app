@@ -12,8 +12,6 @@ import Footer from "./components/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
 
-import { setLogin } from "./reducers/loginReducer";
-
 import styled from "styled-components";
 
 import {
@@ -89,31 +87,26 @@ const websiteTheme = createTheme({
       fontSize: "2.5rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      // marginBottom: "1rem",
     },
     h2: {
       fontSize: "2rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      // marginBottom: "1rem",
     },
     h3: {
       fontSize: "1.75rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      // marginBottom: "0.75rem",
     },
     h4: {
       fontSize: "1.5rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      // marginBottom: "0.5rem",
     },
     h5: {
       fontSize: "1.25rem",
       fontWeight: 600,
       lineHeight: 1.2,
-      // marginBottom: "0.25rem",
     },
     h6: {
       fontSize: "1rem",
@@ -123,12 +116,10 @@ const websiteTheme = createTheme({
     body1: {
       fontSize: "1rem",
       lineHeight: 1.5,
-      // marginBottom: "1rem",
     },
     body2: {
       fontSize: "0.875rem",
       lineHeight: 1.5,
-      // marginBottom: "1rem",
     },
     italic: {
       fontSize: "1.3rem",
@@ -166,8 +157,6 @@ export const primaryColor = websiteTheme.palette.primary.main;
 export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
-  // const secondaryColor = websiteTheme.palette.secondary.main;
-
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
 

@@ -55,7 +55,7 @@ const AddProfile = () => {
     >
       <form
         style={{
-          border: "0.25rem solid",
+          // border: "0.25rem solid",
           display: "flex",
           // justifyContent: "center",
           flexDirection: "column",
