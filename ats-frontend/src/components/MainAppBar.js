@@ -7,8 +7,7 @@ const MainAppBar = () => {
     <StyledAppBar
       position="static"
       style={{
-        borderTopLeftRadius: "0.5rem",
-        borderTopRightRadius: "0.5rem",
+        borderRadius: "0.5rem",
         marginBottom: "0.1rem",
       }}
     >

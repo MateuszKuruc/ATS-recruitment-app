@@ -7,6 +7,7 @@ import AddProfile from "./components/AddProfile";
 import AllCandidates from "./components/AllCandidates";
 import MainAppBar from "./components/MainAppBar";
 import CandidateDetails from "./components/CandidateDetails";
+import Footer from "./components/Footer";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -36,6 +37,7 @@ const candidates = [
     skill: "JavaScript",
     seniority: "Junior",
     id: 1,
+    assessment: "6 - Rockstar",
   },
   {
     firstName: "Puszek",
@@ -242,6 +244,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </Container>
     </ThemeProvider>
   );

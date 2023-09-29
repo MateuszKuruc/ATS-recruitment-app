@@ -3,10 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
 import { DatePicker } from "@mui/x-date-pickers";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
+import { FormControl, Select, InputLabel, MenuItem } from "@mui/material"
 
 const FieldContainer = styled.div`
   display: flex;
@@ -19,7 +16,7 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  // padding: 2rem;
+  margin-top: 3rem;
   border-radius: 0.5rem;
   align-items: center;
   padding: 2rem;

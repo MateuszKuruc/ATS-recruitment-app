@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
+import { FormControl, Select, InputLabel, MenuItem } from "@mui/material";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -50,6 +51,15 @@ const CandidateDetails = ({ candidates }) => {
         borderRadius: "0.5rem",
       }}
     >
+      {!candidate.assessment ? (
+        <Button variant="contained" color="secondary">
+          Provide feedback
+        </Button>
+      ) : (
+        <Button variant="contained" color="secondary">
+          Edit feedback
+        </Button>
+      )}
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
           <StyledPaper>
@@ -124,6 +134,18 @@ const CandidateDetails = ({ candidates }) => {
             ></StyledTextField>
           </StyledPaper>
         </Grid>
+        {candidate.assessment ? (
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="italic">Assessment</Typography>
+              <StyledTextField
+                value={candidate.assessment}
+                disabled={!editMode}
+              ></StyledTextField>
+            </StyledPaper>
+          </Grid>
+        ) : null}
+
         <Grid item xs={12}>
           <Button variant="contained" color="secondary" onClick={toggleEdit}>
             {editMode ? "Save" : "Edit"}
