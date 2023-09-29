@@ -10,6 +10,9 @@ import MenuItem from "@mui/material/MenuItem";
 
 const Container = styled.div`
   display: flex;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
 `;
 
 export const StyledTextField = styled(TextField)`
@@ -34,22 +37,28 @@ const AddProfile = () => {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
+        // justifyContent: "center",
+        marginTop: "1rem",
+        // border: "1px solid blue",
+        flex: "1",
+        // height: "100%"
       }}
     >
       <form
         style={{
           border: "0.25rem solid",
-          display: "inline-flex",
-          justifyContent: "center",
+          display: "flex",
+          // justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
           padding: "2rem",
           paddingRight: "1rem",
           paddingLeft: "1rem",
-          margin: "2rem",
+          // margin: "2rem",
           borderRadius: "0.5rem",
           backgroundColor: secondaryColor,
+          flex: "1",
         }}
       >
         <h1>Create new profile</h1>
@@ -149,7 +158,11 @@ const AddProfile = () => {
           </div>
         </Container>
 
-        <Button id="addButton" variant="contained">
+        <Button
+          id="addButton"
+          variant="contained"
+          style={{ marginTop: "1rem" }}
+        >
           Add profile
         </Button>
       </form>
