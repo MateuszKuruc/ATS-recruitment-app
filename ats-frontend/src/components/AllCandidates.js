@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 
+import { Link } from "react-router-dom";
+
 const AllCandidates = ({ candidates }) => {
   console.log(candidates);
 
@@ -36,9 +38,11 @@ const AllCandidates = ({ candidates }) => {
           {candidates.map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
-                <Typography variant="body1">
-                  {candidate.firstName} {candidate.lastName}
-                </Typography>
+                <Link to={`/candidates/${candidate.id}`}>
+                  <Button variant="text">
+                    {candidate.firstName} {candidate.lastName}
+                  </Button>
+                </Link>
               </TableCell>
               <TableCell>
                 <Typography variant="body1">{candidate.location}</Typography>
