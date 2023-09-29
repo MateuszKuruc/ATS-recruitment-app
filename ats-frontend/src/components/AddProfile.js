@@ -8,11 +8,21 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 
-const Container = styled.div`
+const FieldContainer = styled.div`
   display: flex;
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 0.5rem;
+`;
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  // padding: 2rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  padding: 2rem;
 `;
 
 export const StyledTextField = styled(TextField)`
@@ -61,110 +71,110 @@ const AddProfile = () => {
           flex: "1",
         }}
       >
-        <h1>Create new profile</h1>
-        <Container>
-          <div className="firstColumn">
-            <div>
-              <StyledTextField
-                label="First name"
-                onChange={({ target }) => setFirstName(target.value)}
-              ></StyledTextField>
-            </div>
-            <div>
-              <StyledTextField
-                label="Last name"
-                onChange={({ target }) => setLastName(target.value)}
-              ></StyledTextField>
-            </div>
-            <div>
-              <StyledTextField
-                label="Location"
-                onChange={({ target }) => setLocation(target.value)}
-              ></StyledTextField>
+        <FormContainer>
+          <h1>Create new profile</h1>
+          <FieldContainer>
+            <div className="firstColumn">
+              <div>
+                <StyledTextField
+                  label="First name"
+                  onChange={({ target }) => setFirstName(target.value)}
+                ></StyledTextField>
+              </div>
+              <div>
+                <StyledTextField
+                  label="Last name"
+                  onChange={({ target }) => setLastName(target.value)}
+                ></StyledTextField>
+              </div>
+              <div>
+                <StyledTextField
+                  label="Location"
+                  onChange={({ target }) => setLocation(target.value)}
+                ></StyledTextField>
+              </div>
+
+              <div
+                style={{
+                  marginBottom: "2rem",
+                  width: "85%",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "0.5rem",
+                }}
+              >
+                <DatePicker
+                  label="First contact"
+                  onChange={(newValue) => setFirstContact(newValue)}
+                />
+              </div>
             </div>
 
-            <div
-              style={{
-                marginBottom: "2rem",
-                width: "85%",
-                backgroundColor: "#FFFFFF",
-                borderRadius: "0.5rem",
-              }}
-            >
-              <DatePicker
-                label="First contact"
-                onChange={(newValue) => setFirstContact(newValue)}
-              />
-            </div>
-          </div>
+            <div className="secondColumn">
+              <div>
+                <StyledTextField
+                  label="Email address"
+                  onChange={({ target }) => setEmail(target.value)}
+                ></StyledTextField>
+              </div>
+              <div>
+                <StyledTextField
+                  label="Phone number"
+                  onChange={({ target }) => setPhone(target.value)}
+                ></StyledTextField>
+              </div>
+              <div
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "0.5rem",
+                  marginBottom: "2rem",
+                }}
+              >
+                <FormControl fullWidth>
+                  <InputLabel id="skill">Skill</InputLabel>
+                  <Select
+                    labelId="skill"
+                    label="Skill"
+                    value={skill}
+                    onChange={({ target }) => setSkill(target.value)}
+                  >
+                    <MenuItem value="Java">Java</MenuItem>
+                    <MenuItem value="Python">Python</MenuItem>
+                    <MenuItem value="JavaScript">JavaScript</MenuItem>
+                    <MenuItem value="C">C/C#/C++</MenuItem>
+                    <MenuItem value="Scala">Scala</MenuItem>
+                    <MenuItem value="BigData">Big Data</MenuItem>
+                    <MenuItem value="DevOps">DevOps</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
 
-          <div className="secondColumn">
-            <div>
-              <StyledTextField
-                label="Email address"
-                onChange={({ target }) => setEmail(target.value)}
-              ></StyledTextField>
+              <div
+                style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}
+              >
+                <FormControl fullWidth>
+                  <InputLabel id="seniority">Seniority</InputLabel>
+                  <Select
+                    labelId="seniority"
+                    label="Seniority"
+                    value={seniority}
+                    onChange={({ target }) => setSeniority(target.value)}
+                  >
+                    <MenuItem value="Intern">Intern</MenuItem>
+                    <MenuItem value="Junior">Junior</MenuItem>
+                    <MenuItem value="Regular">Regular</MenuItem>
+                    <MenuItem value="Senior">Senior</MenuItem>
+                    <MenuItem value="Lead">Lead</MenuItem>
+                    <MenuItem value="Manager">Manager</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
             </div>
-            <div>
-              <StyledTextField
-                label="Phone number"
-                onChange={({ target }) => setPhone(target.value)}
-              ></StyledTextField>
-            </div>
-            <div
-              style={{
-                backgroundColor: "#FFFFFF",
-                borderRadius: "0.5rem",
-                marginBottom: "2rem",
-              }}
-            >
-              <FormControl fullWidth>
-                <InputLabel id="skill">Skill</InputLabel>
-                <Select
-                  labelId="skill"
-                  label="Skill"
-                  value={skill}
-                  onChange={({ target }) => setSkill(target.value)}
-                >
-                  <MenuItem value="Java">Java</MenuItem>
-                  <MenuItem value="Python">Python</MenuItem>
-                  <MenuItem value="JavaScript">JavaScript</MenuItem>
-                  <MenuItem value="C">C/C#/C++</MenuItem>
-                  <MenuItem value="Scala">Scala</MenuItem>
-                  <MenuItem value="BigData">Big Data</MenuItem>
-                  <MenuItem value="DevOps">DevOps</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
+          </FieldContainer>
 
-            <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}>
-              <FormControl fullWidth>
-                <InputLabel id="seniority">Seniority</InputLabel>
-                <Select
-                  labelId="seniority"
-                  label="Seniority"
-                  value={seniority}
-                  onChange={({ target }) => setSeniority(target.value)}
-                >
-                  <MenuItem value="Intern">Intern</MenuItem>
-                  <MenuItem value="Junior">Junior</MenuItem>
-                  <MenuItem value="Regular">Regular</MenuItem>
-                  <MenuItem value="Senior">Senior</MenuItem>
-                  <MenuItem value="Lead">Lead</MenuItem>
-                  <MenuItem value="Manager">Manager</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-        </Container>
-
-        <Button
-          id="addButton"
-          variant="contained"
-          style={{ marginTop: "1rem" }}
-        >
-          Add profile
-        </Button>
+          <Button id="addButton" variant="contained">
+            Add profile
+          </Button>
+        </FormContainer>
       </form>
     </div>
   );
