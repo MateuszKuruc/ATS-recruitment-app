@@ -17,6 +17,9 @@ const AllCandidates = ({ candidates }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - candidates.length) : 0;
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -104,6 +107,11 @@ const AllCandidates = ({ candidates }) => {
               </TableCell>
             </TableRow>
           ))}
+          {emptyRows > 0 && (
+            <TableRow style={{ height: 69.5 * emptyRows }}>
+              <TableCell colSpan={5} />
+            </TableRow>
+          )}
         </TableBody>
       </Table>
       <TablePagination
