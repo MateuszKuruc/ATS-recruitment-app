@@ -81,6 +81,9 @@ const websiteTheme = createTheme({
     secondary: {
       main: "#990033",
     },
+    accent: {
+      main: "#c0d9e7",
+    },
   },
   typography: {
     fontFamily: "Roboto, sans-serif",

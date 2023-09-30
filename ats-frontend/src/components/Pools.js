@@ -8,6 +8,7 @@ const StyledPaper = styled(Paper)`
 const StyledButton = styled(Button)`
   && {
     width: 100%;
+    background-color: #c0d9e7;
     height: 100%;
     border-radius: 0.5rem;
     border: 0.3rem solid #084c61;

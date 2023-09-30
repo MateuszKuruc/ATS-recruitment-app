@@ -66,7 +66,7 @@ const AddProfile = () => {
           // margin: "2rem",
           borderRadius: "0.5rem",
           // backgroundColor: secondaryColor,
-          backgroundColor: primaryColor,
+          backgroundColor: "#c0d9e7",
           flex: "1",
         }}
       >
