@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import styled from "styled-components";
@@ -49,17 +49,21 @@ const CandidateDetails = ({ candidates }) => {
         padding: "2rem",
         marginTop: "1rem",
         borderRadius: "0.5rem",
-        marginBottom: "1rem"
+        marginBottom: "1rem",
       }}
     >
       {!candidate.assessment ? (
-        <Button variant="contained" color="secondary">
-          Provide feedback
-        </Button>
+        <Link to={`/candidates/${candidate.id}/feedback`}>
+          <Button variant="contained" color="secondary">
+            Provide feedback
+          </Button>
+        </Link>
       ) : (
-        <Button variant="contained" color="secondary">
-          Edit feedback
-        </Button>
+        <Link to={`/candidates/${candidate.id}/feedback`}>
+          <Button variant="contained" color="secondary">
+            Edit feedback
+          </Button>
+        </Link>
       )}
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>

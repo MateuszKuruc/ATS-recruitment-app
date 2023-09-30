@@ -9,6 +9,7 @@ import MainAppBar from "./components/MainAppBar";
 import CandidateDetails from "./components/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
+import Feedback from "./components/Feedback";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -48,7 +49,6 @@ const candidates = [
     skill: "Java",
     seniority: "Manager",
     id: 2,
-    assessment: "4 - Good candidate",
   },
   {
     firstName: "Pamelitto",
@@ -440,6 +440,15 @@ function App() {
               <>
                 <Dashboard />
                 <CandidateDetails candidates={candidates} />
+              </>
+            }
+          />
+          <Route
+            path="/candidates/:id/feedback"
+            element={
+              <>
+                <Dashboard />
+                <Feedback candidates={candidates} />
               </>
             }
           />
