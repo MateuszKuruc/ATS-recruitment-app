@@ -7,12 +7,24 @@ import {
   Paper,
   Button,
   Typography,
+  TablePagination,
 } from "@mui/material";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 const AllCandidates = ({ candidates }) => {
-  console.log(candidates);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   const getColorForAssessment = (assessment) => {
     switch (assessment) {
@@ -57,7 +69,14 @@ const AllCandidates = ({ candidates }) => {
               <Typography variant="h4">Assessment</Typography>
             </TableCell>
           </TableRow>
-          {candidates.map((candidate) => (
+
+          {(rowsPerPage > 0
+            ? candidates.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )
+            : candidates
+          ).map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
                 <Link to={`/candidates/${candidate.id}`}>
@@ -87,6 +106,15 @@ const AllCandidates = ({ candidates }) => {
           ))}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
+        component="div"
+        count={candidates.length}
+        page={page}
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </TableContainer>
   );
 };
