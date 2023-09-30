@@ -56,6 +56,9 @@ const AllCandidates = ({ candidates }) => {
               <TableCell>
                 <Typography variant="body1">{candidate.seniority}</Typography>
               </TableCell>
+              <TableCell>
+                <Typography variant="body1">{candidate.assessment}</Typography>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
