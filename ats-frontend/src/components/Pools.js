@@ -11,6 +11,11 @@ const StyledButton = styled(Button)`
     height: 100%;
     border-radius: 0.5rem;
     border: 0.3rem solid #084c61;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #084c61;
+      color: #ffffff;
+    }
   }
 `;
 
