@@ -14,6 +14,25 @@ import { Link } from "react-router-dom";
 const AllCandidates = ({ candidates }) => {
   console.log(candidates);
 
+  const getColorForAssessment = (assessment) => {
+    switch (assessment) {
+      case "6 - Rockstar":
+        return "#0074e4";
+      case "5 - Great candidate":
+        return "#388e3c";
+      case "4 - Good candidate":
+        return "#8bc34a";
+      case "3 - Maybe":
+        return "#ffd966";
+      case "2 - No hire":
+        return "#cc0000";
+      case "1 - Disqualified":
+        return "#ff0000";
+      default:
+        return null;
+    }
+  };
+
   return (
     <TableContainer
       component={Paper}
@@ -57,7 +76,12 @@ const AllCandidates = ({ candidates }) => {
                 <Typography variant="body1">{candidate.seniority}</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="body1">{candidate.assessment}</Typography>
+                <Typography
+                  variant="h6"
+                  style={{ color: getColorForAssessment(candidate.assessment) }}
+                >
+                  {candidate.assessment}
+                </Typography>
               </TableCell>
             </TableRow>
           ))}
