@@ -6,8 +6,6 @@ import linkedinIcon from "../icons/linkedin.svg";
 const StyledPaper = styled(Paper)`
   padding: 2rem;
   margin-top: auto;
-  //   padding: 2rem;
-  //   text-align: center;
 `;
 
 const StyledImg = styled.img`

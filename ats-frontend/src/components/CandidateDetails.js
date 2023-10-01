@@ -11,6 +11,7 @@ const StyledPaper = styled(Paper)`
   align-items: center;
   // border: 0.25rem solid #990033;
   padding: 1rem;
+  // margin-bottom: 0
 `;
 
 const StyledTextField = styled(TextField)`
@@ -145,6 +146,42 @@ const CandidateDetails = ({ candidates }) => {
               <Typography variant="italic">Assessment</Typography>
               <StyledTextField
                 value={candidate.assessment}
+                disabled={!editMode}
+              ></StyledTextField>
+            </StyledPaper>
+          </Grid>
+        ) : null}
+
+        {candidate.assessment ? (
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="italic">Notice period</Typography>
+              <StyledTextField
+                value={candidate.notice}
+                disabled={!editMode}
+              ></StyledTextField>
+            </StyledPaper>
+          </Grid>
+        ) : null}
+
+        {candidate.assessment ? (
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="italic">English level</Typography>
+              <StyledTextField
+                value={candidate.notice}
+                disabled={!editMode}
+              ></StyledTextField>
+            </StyledPaper>
+          </Grid>
+        ) : null}
+
+{candidate.assessment ? (
+          <Grid item xs={12} md={6}>
+            <StyledPaper>
+              <Typography variant="italic">Contract type</Typography>
+              <StyledTextField
+                value={candidate.contract}
                 disabled={!editMode}
               ></StyledTextField>
             </StyledPaper>
