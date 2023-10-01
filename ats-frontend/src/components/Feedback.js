@@ -25,7 +25,7 @@ const StyledContainer = styled.div`
 
 export const StyledTextField = styled(TextField)`
   && {
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
   }
@@ -128,7 +128,7 @@ const Feedback = ({ candidates }) => {
         <StyledTextField
           label="Add notes here..."
           multiline
-          rows={10}
+          rows={8}
           fullWidth
         />
       </StyledLine>
