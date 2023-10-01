@@ -5,11 +5,20 @@ import {
   InputLabel,
   MenuItem,
   Typography,
+  TextField,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledContainer = styled.div``;
+
+export const StyledTextField = styled(TextField)`
+  && {
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+  }
+`;
 
 const Feedback = ({ candidates }) => {
   const id = Number(useParams().id);
@@ -17,25 +26,91 @@ const Feedback = ({ candidates }) => {
   console.log("id", candidate.assessment);
 
   const [assessment, setAssessment] = useState("");
+  const [notice, setNotice] = useState("");
+  const [contract, setContract] = useState("");
+  const [notes, setNotes] = useState("");
+  const [language, setLanguage] = useState("");
 
   return (
     <StyledContainer>
       <Typography variant="h3">Meeting feedback</Typography>
-      <FormControl fullWidth>
-        <InputLabel id="assessment">Assessment</InputLabel>
-        <Select
-          labelId="assessment"
-          label="assessment"
-          value={candidate.assessment}
-        >
-          <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
-          <MenuItem value="2 - No hire">2 - No hire</MenuItem>
-          <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
-          <MenuItem value="4 - Good candidate">4 - Good candidate</MenuItem>
-          <MenuItem value="5 - Great candidate">5 - Great candidate</MenuItem>
-          <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
-        </Select>
-      </FormControl>
+      <div>
+        <Typography variant="body1">Final assessment</Typography>
+        <FormControl fullWidth>
+          <InputLabel id="assessment">Assessment</InputLabel>
+          <Select
+            labelId="assessment"
+            label="assessment"
+            value={candidate.assessment ? candidate.assessment : "6 - Rockstar"}
+          >
+            <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
+            <MenuItem value="2 - No hire">2 - No hire</MenuItem>
+            <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
+            <MenuItem value="4 - Good candidate">4 - Good candidate</MenuItem>
+            <MenuItem value="5 - Great candidate">5 - Great candidate</MenuItem>
+            <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <Typography variant="body1">Notice period</Typography>
+        <FormControl fullWidth>
+          <InputLabel id="notice">Notice period</InputLabel>
+          <Select
+            labelId="notice"
+            label="notice"
+            value={candidate.notice ? candidate.notice : "Available now"}
+          >
+            <MenuItem value="Available now">Available now</MenuItem>
+            <MenuItem value="2 weeks">2 weeks</MenuItem>
+            <MenuItem value="1 month">1 month</MenuItem>
+            <MenuItem value="2 months">2 months</MenuItem>
+            <MenuItem value="3 months">3 months</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <Typography variant="body1">English level</Typography>
+        <FormControl fullWidth>
+          <InputLabel id="language">English</InputLabel>
+          <Select
+            labelId="language"
+            label="language"
+            value={candidate.language ? candidate.language : "A1"}
+          >
+            <MenuItem value="A1">A1</MenuItem>
+            <MenuItem value="A2">A2</MenuItem>
+            <MenuItem value="B1">B1</MenuItem>
+            <MenuItem value="B2">B2</MenuItem>
+            <MenuItem value="C1">C1</MenuItem>
+            <MenuItem value="C2">C2</MenuItem>
+            <MenuItem value="Native">Native</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <Typography variant="body1">Contract type</Typography>
+        <FormControl fullWidth>
+          <InputLabel id="contract">Contract type</InputLabel>
+          <Select
+            labelId="contract"
+            label="contract"
+            value={candidate.contract ? candidate.contract : "UoP"}
+          >
+            <MenuItem value="UoP">UoP - contract of employment</MenuItem>
+            <MenuItem value="B2B">B2B</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+      <div>
+        <Typography variant="body1">Notes</Typography>
+        <StyledTextField
+          label="Add notes here..."
+          multiline
+          rows={20}
+          fullWidth
+        />
+      </div>
     </StyledContainer>
   );
 };
