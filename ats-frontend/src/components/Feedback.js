@@ -6,11 +6,22 @@ import {
   MenuItem,
   Typography,
   TextField,
+  Button,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const StyledContainer = styled.div``;
+const StyledContainer = styled.div`
+//   border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #c0d9e7;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+`;
 
 export const StyledTextField = styled(TextField)`
   && {
@@ -18,6 +29,16 @@ export const StyledTextField = styled(TextField)`
     background-color: #ffffff;
     border-radius: 0.5rem;
   }
+`;
+
+const StyledLine = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+//   margin-top: 1rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
 `;
 
 const Feedback = ({ candidates }) => {
@@ -34,8 +55,8 @@ const Feedback = ({ candidates }) => {
   return (
     <StyledContainer>
       <Typography variant="h3">Meeting feedback</Typography>
-      <div>
-        <Typography variant="body1">Final assessment</Typography>
+      <StyledLine>
+        <Typography variant="h6">Final assessment</Typography>
         <FormControl fullWidth>
           <InputLabel id="assessment">Assessment</InputLabel>
           <Select
@@ -51,9 +72,9 @@ const Feedback = ({ candidates }) => {
             <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
           </Select>
         </FormControl>
-      </div>
-      <div>
-        <Typography variant="body1">Notice period</Typography>
+      </StyledLine>
+      <StyledLine>
+        <Typography variant="h6">Notice period</Typography>
         <FormControl fullWidth>
           <InputLabel id="notice">Notice period</InputLabel>
           <Select
@@ -68,9 +89,9 @@ const Feedback = ({ candidates }) => {
             <MenuItem value="3 months">3 months</MenuItem>
           </Select>
         </FormControl>
-      </div>
-      <div>
-        <Typography variant="body1">English level</Typography>
+      </StyledLine>
+      <StyledLine>
+        <Typography variant="h6">English level</Typography>
         <FormControl fullWidth>
           <InputLabel id="language">English</InputLabel>
           <Select
@@ -87,9 +108,9 @@ const Feedback = ({ candidates }) => {
             <MenuItem value="Native">Native</MenuItem>
           </Select>
         </FormControl>
-      </div>
-      <div>
-        <Typography variant="body1">Contract type</Typography>
+      </StyledLine>
+      <StyledLine>
+        <Typography variant="h6">Contract type</Typography>
         <FormControl fullWidth>
           <InputLabel id="contract">Contract type</InputLabel>
           <Select
@@ -101,16 +122,19 @@ const Feedback = ({ candidates }) => {
             <MenuItem value="B2B">B2B</MenuItem>
           </Select>
         </FormControl>
-      </div>
-      <div>
-        <Typography variant="body1">Notes</Typography>
+      </StyledLine>
+      <StyledLine>
+        <Typography variant="h6">Notes</Typography>
         <StyledTextField
           label="Add notes here..."
           multiline
-          rows={20}
+          rows={10}
           fullWidth
         />
-      </div>
+      </StyledLine>
+      <Button variant="contained" style={{ height: "3rem" }}>
+        Submit
+      </Button>
     </StyledContainer>
   );
 };
