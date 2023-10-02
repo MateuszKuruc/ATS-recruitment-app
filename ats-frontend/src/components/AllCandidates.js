@@ -9,6 +9,8 @@ import {
   Typography,
   TablePagination,
 } from "@mui/material";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -102,7 +104,16 @@ const AllCandidates = ({ candidates }) => {
                   variant="h6"
                   style={{ color: getColorForAssessment(candidate.assessment) }}
                 >
-                  {candidate.assessment}
+                  {/* {candidate.assessment} */}
+                  {candidate.assessment === "6 - Rockstar" ||
+                  candidate.assessment === "5 - Great candidate" ? (
+                    <>
+                      {candidate.assessment}
+                      <WhatshotIcon srtyle={{ color: "red", backgroundColor: "red" }} />
+                    </>
+                  ) : (
+                    <>{candidate.assessment}</>
+                  )}
                 </Typography>
               </TableCell>
             </TableRow>

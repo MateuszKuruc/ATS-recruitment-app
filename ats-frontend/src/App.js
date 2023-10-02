@@ -10,6 +10,7 @@ import CandidateDetails from "./components/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
+import HotProfiles from "./components/HotProfiles";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -25,6 +26,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const candidates = [
   {
@@ -369,6 +371,30 @@ export const primaryColor = websiteTheme.palette.primary.main;
 export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
+  const [hotCandidates, setHotCandidates] = useState([]);
+
+  useEffect(() => {
+    const hot = candidates.filter(
+      (candidate) =>
+        candidate.assessment === "6 - Rockstar" ||
+        candidate.assessment === "5 - Great candidate"
+    );
+
+    const assessmentValue = {
+      "6 - Rockstar": 6,
+      "5 - Great candidate": 5,
+    };
+
+    hot.sort((a, b) => {
+      const assessmentValueA = assessmentValue[a.assessment];
+      const assessmentValueB = assessmentValue[b.assessment];
+
+      return assessmentValueB - assessmentValueA;
+    });
+
+    setHotCandidates(hot);
+  }, []);
+
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login);
 
@@ -431,7 +457,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <div>Hot profiles tab</div>
+                <AllCandidates candidates={hotCandidates} />
               </>
             }
           />
