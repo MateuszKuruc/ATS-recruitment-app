@@ -336,7 +336,8 @@ const websiteTheme = createTheme({
       fontSize: "1.3rem",
       fontStyle: "italic",
       lineHeight: 1.5,
-      paddingLeft: "3rem",
+      // paddingLeft: "3rem",
+      // minWidth: "2rem"
     },
   },
 });
