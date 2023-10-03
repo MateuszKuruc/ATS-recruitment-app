@@ -73,7 +73,9 @@ const AllCandidates = ({ candidates }) => {
       minWidth: 300,
       renderCell: (params) => (
         <Link to={`/candidates/${params.row.id}`}>
-          <Button variant="text">{params.row.col1}</Button>
+          <Button variant="text">
+            <Typography variant="body1">{params.row.col1}</Typography>
+          </Button>
         </Link>
       ),
     },

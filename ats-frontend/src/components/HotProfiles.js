@@ -43,7 +43,9 @@ const HotProfiles = ({ candidates }) => {
         <TableBody>
           <TableRow>
             <TableCell>
-              <Typography variant="h4">Name</Typography>
+              <Typography variant="h4" style={{ textAlign: "center" }}>
+                Name
+              </Typography>
             </TableCell>
             <TableCell>
               <Typography variant="h4">Location</Typography>
@@ -87,8 +89,7 @@ const HotProfiles = ({ candidates }) => {
                     style={{ width: "auto", minWidth: "200px", flex: "1" }}
                   >
                     <Typography variant="h6">
-
-                    {candidate.firstName} {candidate.lastName}
+                      {candidate.firstName} {candidate.lastName}
                     </Typography>
                   </Button>
                 </Link>
