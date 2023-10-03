@@ -54,15 +54,55 @@ const AllCandidates = ({ candidates, hotCandidates }) => {
 
   const rows = candidates.map((candidate) => ({
     id: candidate.id,
-    col1: candidate.firstName + candidate.lastName,
+    col1: candidate.firstName + " " + candidate.lastName,
     col2: candidate.location,
     col3: candidate.skill,
+    col4: candidate.seniority,
+    col5: candidate.assessment,
   }));
 
   const columns = [
-    { field: "col1", headerName: "Name", width: 150 },
-    { field: "col2", headerName: "Location", width: 150 },
-    { field: "col3", headerName: "Skill", width: 150 },
+    {
+      field: "col1",
+      renderHeader: () => <Typography variant="h4">Name</Typography>,
+      width: 150,
+    },
+    {
+      field: "col2",
+      renderHeader: () => <Typography variant="h4">Location</Typography>,
+      width: 150,
+    },
+    {
+      field: "col3",
+      renderHeader: () => <Typography variant="h4">Skill</Typography>,
+      width: 150,
+    },
+    {
+      field: "col4",
+      renderHeader: () => <Typography variant="h4">Seniority</Typography>,
+
+      width: 150,
+    },
+    {
+      field: "col5",
+      renderHeader: () => <Typography variant="h4">Assessment</Typography>,
+      width: 150,
+      renderCell: (params) => (
+        <Typography
+          variant="h6"
+          style={{ color: getColorForAssessment(params.value) }}
+        >
+          {params.value === "6 - Rockstar" ||
+          params.value === "5 - Great candidate" ? (
+            <>
+              {params.value} <WhatshotIcon style={{ color: "red" }} />
+            </>
+          ) : (
+            params.value
+          )}
+        </Typography>
+      ),
+    },
   ];
 
   return (
