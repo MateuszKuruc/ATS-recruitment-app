@@ -80,6 +80,9 @@ const AllCandidates = ({ candidates }) => {
     {
       field: "col2",
       renderHeader: () => <Typography variant="h4">Location</Typography>,
+      renderCell: (params) => (
+        <Typography variant="body1">{params.row.col2}</Typography>
+      ),
       width: 200,
     },
     {
@@ -117,10 +120,9 @@ const AllCandidates = ({ candidates }) => {
 
   return (
     <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
-      <Paper variant="outlined" style={{}}>
+      <Paper  style={{}}>
         <DataGrid
           rows={rows}
-          autoHeight
           columns={columns}
           disableRowSelectionOnClick
           initialState={{

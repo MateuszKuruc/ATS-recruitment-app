@@ -10,6 +10,7 @@ import CandidateDetails from "./components/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
+import HotProfiles from "./components/HotProfiles";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -39,6 +40,9 @@ const candidates = [
     seniority: "Junior",
     id: 1,
     assessment: "6 - Rockstar",
+    notice: "1 month",
+    language: "C2",
+    contract: "B2B",
   },
   {
     firstName: "Puszek",
@@ -74,6 +78,9 @@ const candidates = [
     seniority: "Lead",
     id: 4,
     assessment: "5 - Great candidate",
+    notice: "2 months",
+    language: "C2",
+    contract: "B2B",
   },
   {
     firstName: "Franck",
@@ -110,6 +117,9 @@ const candidates = [
     seniority: "Manager",
     id: 7,
     assessment: "5 - Great candidate",
+    notice: "3 months",
+    language: "B2",
+    contract: "UoP",
   },
   {
     firstName: "Dayot",
@@ -134,6 +144,9 @@ const candidates = [
     seniority: "Regular",
     id: 9,
     assessment: "6 - Rockstar",
+    notice: "3 months",
+    language: "B1",
+    contract: "UoP",
   },
   {
     firstName: "Joshua",
@@ -170,6 +183,9 @@ const candidates = [
     seniority: "Lead",
     id: 12,
     assessment: "6 - Rockstar",
+    notice: "3 months",
+    language: "C1",
+    contract: "UoP",
   },
   {
     firstName: "Julian",
@@ -194,6 +210,9 @@ const candidates = [
     seniority: "Regular",
     id: 14,
     assessment: "5 - Great candidate",
+    notice: "2 weeks",
+    language: "B2",
+    contract: "UoP",
   },
   {
     firstName: "Konrad",
@@ -254,6 +273,9 @@ const candidates = [
     seniority: "Senior",
     id: 19,
     assessment: "5 - Great candidate",
+    notice: "1 month",
+    language: "B1",
+    contract: "UoP",
   },
   {
     firstName: "Raphael",
@@ -456,7 +478,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                {/* <AllCandidates candidates={hotCandidates} /> */}
+                <HotProfiles candidates={hotCandidates} />
               </>
             }
           />
