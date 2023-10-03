@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 
-import { useState } from "react";
+
 
 import { Link } from "react-router-dom";
 
@@ -36,7 +36,7 @@ export const getColorForAssessment = (assessment) => {
   }
 };
 
-const AllCandidates = ({ candidates, hotCandidates }) => {
+const AllCandidates = ({ candidates }) => {
   // const [page, setPage] = useState(0);
   // const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -107,9 +107,10 @@ const AllCandidates = ({ candidates, hotCandidates }) => {
 
   return (
     <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
-      <Paper variant="outlined">
+      <Paper variant="outlined" style={{ height: "100%", width: "100%" }}>
         <DataGrid
           rows={rows}
+          autoHeight
           columns={columns}
           initialState={{
             pagination: {
