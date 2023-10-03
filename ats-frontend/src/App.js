@@ -456,7 +456,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <AllCandidates candidates={hotCandidates} />
+                {/* <AllCandidates candidates={hotCandidates} /> */}
               </>
             }
           />

@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 
+import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -50,95 +52,112 @@ const AllCandidates = ({ candidates, hotCandidates }) => {
     }
   };
 
+  const rows = candidates.map((candidate) => ({
+    id: candidate.id,
+    col1: candidate.firstName + candidate.lastName,
+    col2: candidate.location,
+    col3: candidate.skill,
+  }));
+
+  const columns = [
+    { field: "col1", headerName: "Name", width: 150 },
+    { field: "col2", headerName: "Location", width: 150 },
+    { field: "col3", headerName: "Skill", width: 150 },
+  ];
+
   return (
-    <TableContainer
-      component={Paper}
-      style={{ marginTop: "1rem", borderRadius: "0.5rem" }}
-    >
-      <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              <Typography variant="h4">Name</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Location</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Skill</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Seniority</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Assessment</Typography>
-            </TableCell>
-          </TableRow>
-
-          {(rowsPerPage > 0
-            ? candidates.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
-              )
-            : candidates
-          ).map((candidate) => (
-            <TableRow key={candidate.id}>
-              <TableCell>
-                <Link to={`/candidates/${candidate.id}`}>
-                  <Button variant="text">
-                    {candidate.firstName} {candidate.lastName}
-                  </Button>
-                </Link>
-              </TableCell>
-              <TableCell>
-                <Typography variant="body1">{candidate.location}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="body1">{candidate.skill}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="body1">{candidate.seniority}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography
-                  variant="h6"
-                  style={{ color: getColorForAssessment(candidate.assessment) }}
-                >
-                  {/* {candidate.assessment} */}
-                  {candidate.assessment === "6 - Rockstar" ||
-                  candidate.assessment === "5 - Great candidate" ? (
-                    <>
-                      {candidate.assessment}
-                      <WhatshotIcon
-                        style={{ color: "red" }}
-                      />
-                    </>
-                  ) : (
-                    <>{candidate.assessment}</>
-                  )}
-                </Typography>
-              </TableCell>
-            </TableRow>
-          ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 69.5 * emptyRows }}>
-              <TableCell colSpan={5} />
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
-        component="div"
-        count={candidates.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </TableContainer>
+    <div>
+      <DataGrid rows={rows} columns={columns} />
+    </div>
   );
+
+  // return (
+  //   <TableContainer
+  //     component={Paper}
+  //     style={{ marginTop: "1rem", borderRadius: "0.5rem" }}
+  //   >
+  //     <Table>
+  //       <TableBody>
+  //         <TableRow>
+  //           <TableCell>
+  //             <Typography variant="h4">Name</Typography>
+  //           </TableCell>
+  //           <TableCell>
+  //             <Typography variant="h4">Location</Typography>
+  //           </TableCell>
+  //           <TableCell>
+  //             <Typography variant="h4">Skill</Typography>
+  //           </TableCell>
+  //           <TableCell>
+  //             <Typography variant="h4">Seniority</Typography>
+  //           </TableCell>
+  //           <TableCell>
+  //             <Typography variant="h4">Assessment</Typography>
+  //           </TableCell>
+  //         </TableRow>
+
+  //         {(rowsPerPage > 0
+  //           ? candidates.slice(
+  //               page * rowsPerPage,
+  //               page * rowsPerPage + rowsPerPage
+  //             )
+  //           : candidates
+  //         ).map((candidate) => (
+  //           <TableRow key={candidate.id}>
+  //             <TableCell>
+  //               <Link to={`/candidates/${candidate.id}`}>
+  //                 <Button variant="text">
+  //                   {candidate.firstName} {candidate.lastName}
+  //                 </Button>
+  //               </Link>
+  //             </TableCell>
+  //             <TableCell>
+  //               <Typography variant="body1">{candidate.location}</Typography>
+  //             </TableCell>
+  //             <TableCell>
+  //               <Typography variant="body1">{candidate.skill}</Typography>
+  //             </TableCell>
+  //             <TableCell>
+  //               <Typography variant="body1">{candidate.seniority}</Typography>
+  //             </TableCell>
+  //             <TableCell>
+  //               <Typography
+  //                 variant="h6"
+  //                 style={{ color: getColorForAssessment(candidate.assessment) }}
+  //               >
+  //                 {/* {candidate.assessment} */}
+  //                 {candidate.assessment === "6 - Rockstar" ||
+  //                 candidate.assessment === "5 - Great candidate" ? (
+  //                   <>
+  //                     {candidate.assessment}
+  //                     <WhatshotIcon style={{ color: "red" }} />
+  //                   </>
+  //                 ) : (
+  //                   <>{candidate.assessment}</>
+  //                 )}
+  //               </Typography>
+  //             </TableCell>
+  //           </TableRow>
+  //         ))}
+  //         {emptyRows > 0 && (
+  //           <TableRow style={{ height: 69.5 * emptyRows }}>
+  //             <TableCell colSpan={5} />
+  //           </TableRow>
+  //         )}
+  //       </TableBody>
+  //     </Table>
+
+  //     <TablePagination
+  //       rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
+  //       component="div"
+  //       count={candidates.length}
+  //       page={page}
+  //       onPageChange={handleChangePage}
+  //       rowsPerPage={rowsPerPage}
+  //       onRowsPerPageChange={handleChangeRowsPerPage}
+  //     />
+  //   </TableContainer>
+  // );
 };
 
 export default AllCandidates;
