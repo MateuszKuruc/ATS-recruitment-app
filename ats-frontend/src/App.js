@@ -10,7 +10,6 @@ import CandidateDetails from "./components/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
-import HotProfiles from "./components/HotProfiles";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";

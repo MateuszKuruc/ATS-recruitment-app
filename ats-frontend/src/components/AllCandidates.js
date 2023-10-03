@@ -15,7 +15,7 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const AllCandidates = ({ candidates }) => {
+const AllCandidates = ({ candidates, hotCandidates }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -109,7 +109,9 @@ const AllCandidates = ({ candidates }) => {
                   candidate.assessment === "5 - Great candidate" ? (
                     <>
                       {candidate.assessment}
-                      <WhatshotIcon srtyle={{ color: "red", backgroundColor: "red" }} />
+                      <WhatshotIcon
+                        style={{ color: "red" }}
+                      />
                     </>
                   ) : (
                     <>{candidate.assessment}</>
@@ -125,6 +127,7 @@ const AllCandidates = ({ candidates }) => {
           )}
         </TableBody>
       </Table>
+
       <TablePagination
         rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
         component="div"
