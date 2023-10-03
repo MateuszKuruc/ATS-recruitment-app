@@ -13,8 +13,6 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-
-
 import { Link } from "react-router-dom";
 
 export const getColorForAssessment = (assessment) => {
@@ -64,29 +62,41 @@ const AllCandidates = ({ candidates }) => {
   const columns = [
     {
       field: "col1",
-      renderHeader: () => <Typography variant="h4">Name</Typography>,
-      width: 150,
+      renderHeader: () => (
+        <Typography
+          variant="h4"
+          style={{ textAlign: "center", padding: "10px" }}
+        >
+          Name
+        </Typography>
+      ),
+      width: 300,
+      renderCell: (params) => (
+        <Link to={`/candidates/${params.row.id}`}>
+          <Button variant="text">{params.row.col1}</Button>
+        </Link>
+      ),
     },
     {
       field: "col2",
       renderHeader: () => <Typography variant="h4">Location</Typography>,
-      width: 150,
+      width: 200,
     },
     {
       field: "col3",
       renderHeader: () => <Typography variant="h4">Skill</Typography>,
-      width: 150,
+      width: 200,
     },
     {
       field: "col4",
       renderHeader: () => <Typography variant="h4">Seniority</Typography>,
 
-      width: 150,
+      width: 200,
     },
     {
       field: "col5",
       renderHeader: () => <Typography variant="h4">Assessment</Typography>,
-      width: 150,
+      width: 200,
       renderCell: (params) => (
         <Typography
           variant="h6"
@@ -107,11 +117,12 @@ const AllCandidates = ({ candidates }) => {
 
   return (
     <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
-      <Paper variant="outlined" style={{ height: "100%", width: "100%" }}>
+      <Paper variant="outlined" style={{}}>
         <DataGrid
           rows={rows}
           autoHeight
           columns={columns}
+          disableRowSelectionOnClick
           initialState={{
             pagination: {
               paginationModel: {
