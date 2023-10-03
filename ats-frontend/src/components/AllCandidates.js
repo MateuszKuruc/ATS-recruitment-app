@@ -67,7 +67,9 @@ const AllCandidates = ({ candidates, hotCandidates }) => {
 
   return (
     <div>
-      <DataGrid rows={rows} columns={columns} />
+      <Paper variant="outlined">
+        <DataGrid rows={rows} columns={columns} />
+      </Paper>
     </div>
   );
 
