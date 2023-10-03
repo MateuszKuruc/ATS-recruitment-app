@@ -70,7 +70,7 @@ const AllCandidates = ({ candidates }) => {
           Name
         </Typography>
       ),
-      width: 300,
+      minWidth: 300,
       renderCell: (params) => (
         <Link to={`/candidates/${params.row.id}`}>
           <Button variant="text">{params.row.col1}</Button>
@@ -88,12 +88,17 @@ const AllCandidates = ({ candidates }) => {
     {
       field: "col3",
       renderHeader: () => <Typography variant="h4">Skill</Typography>,
+      renderCell: (params) => (
+        <Typography variant="body1">{params.row.col3}</Typography>
+      ),
       width: 200,
     },
     {
       field: "col4",
       renderHeader: () => <Typography variant="h4">Seniority</Typography>,
-
+      renderCell: (params) => (
+        <Typography variant="body1">{params.row.col4}</Typography>
+      ),
       width: 200,
     },
     {
@@ -120,7 +125,7 @@ const AllCandidates = ({ candidates }) => {
 
   return (
     <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
-      <Paper  style={{}}>
+      <Paper style={{}}>
         <DataGrid
           rows={rows}
           columns={columns}

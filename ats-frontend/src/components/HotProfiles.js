@@ -36,7 +36,7 @@ const HotProfiles = ({ candidates }) => {
       style={{
         marginTop: "1rem",
         borderRadius: "0.5rem",
-        backgroundColor: "#c0d9e7",
+        // backgroundColor: "#c0d9e7",
       }}
     >
       <Table>
@@ -86,7 +86,10 @@ const HotProfiles = ({ candidates }) => {
                     color="secondary"
                     style={{ width: "auto", minWidth: "200px", flex: "1" }}
                   >
+                    <Typography variant="h6">
+
                     {candidate.firstName} {candidate.lastName}
+                    </Typography>
                   </Button>
                 </Link>
               </TableCell>
