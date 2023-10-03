@@ -17,40 +17,40 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
+export const getColorForAssessment = (assessment) => {
+  switch (assessment) {
+    case "6 - Rockstar":
+      return "#0074e4";
+    case "5 - Great candidate":
+      return "#388e3c";
+    case "4 - Good candidate":
+      return "#8bc34a";
+    case "3 - Maybe":
+      return "#ffd966";
+    case "2 - No hire":
+      return "#cc0000";
+    case "1 - Disqualified":
+      return "#ff0000";
+    default:
+      return null;
+  }
+};
+
 const AllCandidates = ({ candidates, hotCandidates }) => {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  // const [page, setPage] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - candidates.length) : 0;
+  // const emptyRows =
+  //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - candidates.length) : 0;
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const getColorForAssessment = (assessment) => {
-    switch (assessment) {
-      case "6 - Rockstar":
-        return "#0074e4";
-      case "5 - Great candidate":
-        return "#388e3c";
-      case "4 - Good candidate":
-        return "#8bc34a";
-      case "3 - Maybe":
-        return "#ffd966";
-      case "2 - No hire":
-        return "#cc0000";
-      case "1 - Disqualified":
-        return "#ff0000";
-      default:
-        return null;
-    }
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setRowsPerPage(parseInt(event.target.value, 10));
+  //   setPage(0);
+  // };
 
   const rows = candidates.map((candidate) => ({
     id: candidate.id,
@@ -106,9 +106,20 @@ const AllCandidates = ({ candidates, hotCandidates }) => {
   ];
 
   return (
-    <div>
+    <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
       <Paper variant="outlined">
-        <DataGrid rows={rows} columns={columns} />
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 5,
+              },
+            },
+          }}
+          pageSizeOptions={[5, 10, 15, 25, 50]}
+        />
       </Paper>
     </div>
   );
