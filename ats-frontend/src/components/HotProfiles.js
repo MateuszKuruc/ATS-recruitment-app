@@ -33,7 +33,11 @@ const HotProfiles = ({ candidates }) => {
   return (
     <TableContainer
       component={Paper}
-      style={{ marginTop: "1rem", borderRadius: "0.5rem", backgroundColor: "#c0d9e7" }}
+      style={{
+        marginTop: "1rem",
+        borderRadius: "0.5rem",
+        backgroundColor: "#c0d9e7",
+      }}
     >
       <Table>
         <TableBody>
@@ -62,7 +66,6 @@ const HotProfiles = ({ candidates }) => {
             <TableCell>
               <Typography variant="h4">Assessment</Typography>
             </TableCell>
-            
           </TableRow>
 
           {(rowsPerPage > 0
@@ -74,8 +77,15 @@ const HotProfiles = ({ candidates }) => {
           ).map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
-                <Link to={`/candidates/${candidate.id}`}>
-                  <Button variant="text">
+                <Link
+                  to={`/candidates/${candidate.id}`}
+                  style={{ border: "1px solid orange", display: "flex" }}
+                >
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ width: "auto", minWidth: "200px", flex: "1" }}
+                  >
                     {candidate.firstName} {candidate.lastName}
                   </Button>
                 </Link>
