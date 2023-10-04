@@ -81,7 +81,7 @@ const HotProfiles = ({ candidates }) => {
               <TableCell>
                 <Link
                   to={`/candidates/${candidate.id}`}
-                  style={{ display: "flex" }}
+                  style={{ display: "flex", textDecoration: "none" }}
                 >
                   <Button
                     variant="outlined"
