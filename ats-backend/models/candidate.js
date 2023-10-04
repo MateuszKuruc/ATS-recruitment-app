@@ -39,4 +39,6 @@ candidateSchema.set("toJSON", {
   },
 });
 
-module.exports = mongoose.model("Candidate", candidateSchema);
+const Candidate = mongoose.model("Candidate", candidateSchema);
+
+module.exports = Candidate;
