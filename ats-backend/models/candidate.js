@@ -29,6 +29,10 @@ const candidateSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  notes: {
+    type: String,
+    required: false,
+  },
 });
 
 candidateSchema.set("toJSON", {
