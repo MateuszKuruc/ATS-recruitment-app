@@ -11,7 +11,12 @@ candidatesRouter.get("/", async (request, response) => {
 candidatesRouter.post("/", async (request, response) => {
   const { body } = request;
 
-  // const decodedToken = jwt.verify(request.token)
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  if (!decodedToken) {
+    response.status(401).json({ error: "token invalid" })
+  }
+
+  const user = await User.findById(decodedToken.id);
 
   const candidate = new Candidate({
     firstName: body.firstName,
@@ -27,15 +32,18 @@ candidatesRouter.post("/", async (request, response) => {
     language: null,
     contract: null,
     notes: null,
+    user: user.id
   });
 
   const savedCandidate = await candidate.save();
   savedCandidate.populate("user");
-  // User.candidates = user.candidates.concat(savedCandidate);
-  // await user.save();
+  user.candidates = user.candidates.concat(savedCandidate);
+  await user.save();
 
   response.json(savedCandidate);
 });
+
+
 
 candidatesRouter.put("/:id", async (request, response) => {
   const candidate = request.body;
