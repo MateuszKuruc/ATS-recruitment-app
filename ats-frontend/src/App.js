@@ -43,6 +43,8 @@ const candidates = [
     notice: "1 month",
     language: "C2",
     contract: "B2B",
+    notes:
+      "Candidate is looking for a new job because of severe dissatisfaction in his current workplace. He sees no suitable direction for development in the company's structures and is seeking new opportunities outside the firm. Experience with JS, React, TS and NodeJS",
   },
   {
     firstName: "Puszek",

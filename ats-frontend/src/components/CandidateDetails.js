@@ -41,6 +41,8 @@ const CandidateDetails = ({ candidates }) => {
     setEditMode(!editMode);
   };
 
+  const toggleNotes = () => {};
+
   if (!candidate) {
     return null;
   }
@@ -55,19 +57,32 @@ const CandidateDetails = ({ candidates }) => {
         marginBottom: "1rem",
       }}
     >
-      {!candidate.assessment ? (
-        <Link to={`/candidates/${candidate.id}/feedback`}>
-          <Button variant="contained" color="secondary">
-            Provide feedback
+      <div style={{ display: "flex", gap: "0.5rem" }}>
+        {candidate.assessment && (
+          <Button variant="contained" color="secondary" onChange={toggleNotes}>
+            Show feedback
           </Button>
-        </Link>
-      ) : (
-        <Link to={`/candidates/${candidate.id}/feedback`}>
-          <Button variant="contained" color="secondary">
-            Edit feedback
-          </Button>
-        </Link>
-      )}
+        )}
+
+        {!candidate.assessment ? (
+          <Link to={`/candidates/${candidate.id}/feedback`}>
+            <Button variant="contained" color="secondary">
+              Provide feedback
+            </Button>
+          </Link>
+        ) : (
+          <Link to={`/candidates/${candidate.id}/feedback`}>
+            <Button variant="contained" color="secondary">
+              Edit feedback
+            </Button>
+          </Link>
+        )}
+        <div>
+          <StyledTextField multiline rows={8} fullWidth value={candidate.notes}>
+            
+          </StyledTextField>
+        </div>
+      </div>
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={6} md={4}>
           <StyledPaper>
@@ -158,7 +173,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledPaper>
               <Typography variant="italic">English level</Typography>
               <StyledTextField
-                value={candidate.notice}
+                value={candidate.language}
                 disabled={!editMode}
               ></StyledTextField>
             </StyledPaper>

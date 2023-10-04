@@ -117,7 +117,6 @@ const HotProfiles = ({ candidates }) => {
                   variant="h6"
                   style={{ color: getColorForAssessment(candidate.assessment) }}
                 >
-                  {/* {candidate.assessment} */}
                   {candidate.assessment === "6 - Rockstar" ||
                   candidate.assessment === "5 - Great candidate" ? (
                     <>
