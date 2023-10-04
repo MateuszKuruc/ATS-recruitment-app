@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 const candidatesRouter = require("./controllers/candidates");
 const usersRouter = require("./controllers/users");
+const middleware = require("./utils/middleware");
 
 require("express-async-errors");
 
@@ -17,6 +18,8 @@ mongoose
   .catch((error) => {
     logger.error("error connecting to MongoDB:", error.message);
   });
+
+app.use(middleware.errorHandler);
 
 app.use(cors());
 app.use(express.json());
