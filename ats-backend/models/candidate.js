@@ -13,6 +13,22 @@ const candidateSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  assessment: {
+    type: String,
+    required: false,
+  },
+  notice: {
+    type: String,
+    required: false,
+  },
+  language: {
+    type: String,
+    required: false,
+  },
+  contract: {
+    type: String,
+    required: false,
+  },
 });
 
 candidateSchema.set("toJSON", {
@@ -24,4 +40,3 @@ candidateSchema.set("toJSON", {
 });
 
 module.exports = mongoose.model("Candidate", candidateSchema);
-
