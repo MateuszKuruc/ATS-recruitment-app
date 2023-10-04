@@ -89,8 +89,7 @@ const HotProfiles = ({ candidates }) => {
                     style={{ width: "auto", minWidth: "200px", flex: "1" }}
                   >
                     <Typography variant="h6">
-                      {candidate.firstName}
-                      {candidate.lastName}
+                      {candidate.firstName} {candidate.lastName}
                     </Typography>
                   </Button>
                 </Link>
