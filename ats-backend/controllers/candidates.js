@@ -37,4 +37,18 @@ candidatesRouter.post("/", async (request, response) => {
   response.json(savedCandidate);
 });
 
+candidatesRouter.put("/:id", async (request, response) => {
+  const candidate = request.body;
+
+  const updatedCandidate = await Candidate.findByIdAndUpdate(
+    request.params.id,
+    candidate,
+    {
+      new: true,
+    }
+  ).populate("user");
+
+  response.json(updatedCandidate);
+});
+
 module.exports = candidatesRouter;
