@@ -27,16 +27,16 @@ export const getColorForAssessment = (assessment) => {
 const AllCandidates = ({ candidates }) => {
   const rows = candidates.map((candidate) => ({
     id: candidate.id,
-    col1: candidate.firstName + " " + candidate.lastName,
-    col2: candidate.location,
-    col3: candidate.skill,
-    col4: candidate.seniority,
-    col5: candidate.assessment,
+    Name: candidate.firstName + " " + candidate.lastName,
+    Location: candidate.location,
+    Skill: candidate.skill,
+    Seniority: candidate.seniority,
+    Assessment: candidate.assessment,
   }));
 
   const columns = [
     {
-      field: "col1",
+      field: "Name",
       renderHeader: () => (
         <Typography
           variant="h4"
@@ -49,37 +49,37 @@ const AllCandidates = ({ candidates }) => {
       renderCell: (params) => (
         <Link to={`/candidates/${params.row.id}`}>
           <Button variant="text">
-            <Typography variant="body1">{params.row.col1}</Typography>
+            <Typography variant="body1">{params.row.Name}</Typography>
           </Button>
         </Link>
       ),
     },
     {
-      field: "col2",
+      field: "Location",
       renderHeader: () => <Typography variant="h4">Location</Typography>,
       renderCell: (params) => (
-        <Typography variant="body1">{params.row.col2}</Typography>
+        <Typography variant="body1">{params.row.Location}</Typography>
       ),
       width: 200,
     },
     {
-      field: "col3",
+      field: "Skill",
       renderHeader: () => <Typography variant="h4">Skill</Typography>,
       renderCell: (params) => (
-        <Typography variant="body1">{params.row.col3}</Typography>
+        <Typography variant="body1">{params.row.Skill}</Typography>
       ),
       width: 200,
     },
     {
-      field: "col4",
+      field: "Seniority",
       renderHeader: () => <Typography variant="h4">Seniority</Typography>,
       renderCell: (params) => (
-        <Typography variant="body1">{params.row.col4}</Typography>
+        <Typography variant="body1">{params.row.Seniority}</Typography>
       ),
       width: 200,
     },
     {
-      field: "col5",
+      field: "Assessment",
       renderHeader: () => <Typography variant="h4">Assessment</Typography>,
       width: 200,
       renderCell: (params) => (
