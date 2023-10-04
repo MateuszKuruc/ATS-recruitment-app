@@ -13,7 +13,7 @@ candidatesRouter.post("/", async (request, response) => {
 
   const decodedToken = jwt.verify(request.token, process.env.SECRET);
   if (!decodedToken) {
-    response.status(401).json({ error: "token invalid" })
+    response.status(401).json({ error: "token invalid" });
   }
 
   const user = await User.findById(decodedToken.id);
@@ -32,7 +32,7 @@ candidatesRouter.post("/", async (request, response) => {
     language: null,
     contract: null,
     notes: null,
-    user: user.id
+    user: user.id,
   });
 
   const savedCandidate = await candidate.save();
@@ -43,7 +43,30 @@ candidatesRouter.post("/", async (request, response) => {
   response.json(savedCandidate);
 });
 
+candidatesRouter.delete("/:id", async (request, response) => {
+  const { id } = request.params;
 
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  if (!decodedToken) {
+    response.status(401).json({ error: "token invalid" });
+  }
+
+  const candidate = await Candidate.findById(id);
+  const user = await User.findById(decodedToken);
+
+  if (user.id.toString() !== candidate.user.toString()) {
+    response
+      .status(401)
+      .json({ error: "No authorization to delete this candidate" });
+  }
+
+  if (!user) {
+    response.status(400).json({ error: "User does not exist" });
+  }
+
+  await Candidate.findByIdAndRemove(id);
+  response.status(204).end();
+});
 
 candidatesRouter.put("/:id", async (request, response) => {
   const candidate = request.body;
