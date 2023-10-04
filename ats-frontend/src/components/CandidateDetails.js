@@ -31,6 +31,9 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
+  const [showNotes, setShowNotes] = useState(false);
+
+  const notesShown = { display: showNotes ? "" : "none" };
 
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
@@ -41,7 +44,9 @@ const CandidateDetails = ({ candidates }) => {
     setEditMode(!editMode);
   };
 
-  const toggleNotes = () => {};
+  const toggleNotes = () => {
+    setShowNotes(!showNotes);
+  };
 
   if (!candidate) {
     return null;
@@ -59,9 +64,11 @@ const CandidateDetails = ({ candidates }) => {
     >
       <div style={{ display: "flex", gap: "0.5rem" }}>
         {candidate.assessment && (
-          <Button variant="contained" color="secondary" onChange={toggleNotes}>
-            Show feedback
-          </Button>
+          <div>
+            <Button variant="contained" color="secondary" onClick={toggleNotes}>
+              {showNotes ? "Hide feedback" : "Show feedback"}
+            </Button>
+          </div>
         )}
 
         {!candidate.assessment ? (
@@ -77,12 +84,21 @@ const CandidateDetails = ({ candidates }) => {
             </Button>
           </Link>
         )}
-        <div>
-          <StyledTextField multiline rows={8} fullWidth value={candidate.notes}>
-            
-          </StyledTextField>
-        </div>
       </div>
+
+      <div className="notesShown" style={notesShown}>
+        <StyledTextField
+          style={{ marginBottom: "0rem" }}
+          inputProps={{
+            readOnly: true,
+          }}
+          multiline
+          rows={8}
+          fullWidth
+          value={candidate.notes}
+        ></StyledTextField>
+      </div>
+
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={6} md={4}>
           <StyledPaper>
