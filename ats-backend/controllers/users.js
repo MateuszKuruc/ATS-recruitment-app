@@ -8,7 +8,7 @@ usersRouter.get("/", async (request, response) => {
 });
 
 usersRouter.post("/", async (request, response) => {
-  const { username, password } = request.body;
+  const { username, email, password } = request.body;
 
   if (password.length < 6) {
     response.status(400).json({
@@ -31,6 +31,7 @@ usersRouter.post("/", async (request, response) => {
 
   const user = new User({
     username,
+    email,
     password: passwordHash,
   });
 
