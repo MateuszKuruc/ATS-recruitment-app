@@ -22,5 +22,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/candidates", candidatesRouter);
+app.use("/api/users", usersRouter);
 
 module.exports = app;
