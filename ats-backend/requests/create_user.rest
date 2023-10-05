@@ -1,0 +1,20 @@
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+   "username": "puszek",
+   "email": "kotekpsotek@gmail.com",
+   "password": "puszek123"
+}
+
+###
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "title": "Very interesting book",
+    "author": "Matteo Kurutzzi",
+    "url": "www.google.com",
+    "likes": 666
+}
