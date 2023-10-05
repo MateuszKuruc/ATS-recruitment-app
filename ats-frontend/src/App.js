@@ -13,6 +13,10 @@ import Feedback from "./components/Feedback";
 import HotProfiles from "./components/HotProfiles";
 
 import { initializeCandidates } from "./reducers/candidateReducer";
+import { setLogin } from "./reducers/loginReducer";
+
+import candidateService from "./services/candidates";
+import loginService from "./services/login";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -118,9 +122,14 @@ export const primaryColor = websiteTheme.palette.primary.main;
 export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
+  const dispatch = useDispatch();
+
   const [hotCandidates, setHotCandidates] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const login = useSelector((state) => state.login);
+  const candidates = useSelector((state) => state.candidates);
 
   useEffect(() => {
     const hot = candidates.filter(
@@ -144,14 +153,28 @@ function App() {
     setHotCandidates(hot);
   }, []);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
-  const login = useSelector((state) => state.login);
-  const candidates = useSelector((state) => state.candidates);
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const loggedUser = await loginService.login({
+        username,
+        password,
+      });
+
+      candidateService.setToken(loggedUser.token);
+      dispatch(setLogin(loggedUser));
+
+      setUsername("");
+      setPassword("");
+    } catch (exception) {
+      console.log("error logging", exception);
+    }
+  };
 
   return (
     <ThemeProvider theme={websiteTheme}>
