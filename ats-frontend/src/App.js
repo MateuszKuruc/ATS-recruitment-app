@@ -11,13 +11,17 @@ import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
 import HotProfiles from "./components/HotProfiles";
-import candidateService from "./services/candidates"
+
+import {
+  initializeCandidates,
+  setCandidates,
+} from "./reducers/candidateReducer";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import styled from "styled-components";
-
 import {
   Container,
   AppBar,
@@ -27,7 +31,6 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 
 const websiteTheme = createTheme({
   palette: {
@@ -118,12 +121,7 @@ export const primaryColor = websiteTheme.palette.primary.main;
 export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
- 
   const [hotCandidates, setHotCandidates] = useState([]);
-
-  useEffect(() => {
-    const candidates = candidateService.getAll()
-  })
 
   useEffect(() => {
     const hot = candidates.filter(
@@ -148,7 +146,13 @@ function App() {
   }, []);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeCandidates());
+  }, [dispatch]);
+
   const login = useSelector((state) => state.login);
+  const candidates = useSelector((state) => state.candidates);
 
   return (
     <ThemeProvider theme={websiteTheme}>

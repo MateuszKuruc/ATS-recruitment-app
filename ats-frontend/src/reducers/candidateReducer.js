@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import candidateService from "../services/candidates";
 
 const candidateSlice = createSlice({
   name: "candidate",
@@ -10,6 +11,12 @@ const candidateSlice = createSlice({
   },
 });
 
+export default candidateSlice.reducer;
 export const { setCandidates } = candidateSlice.actions;
 
-export default candidateSlice.reducer;
+export const initializeCandidates = () => {
+  return async (dispatch) => {
+    const candidates = await candidateService.getAll();
+    dispatch(setCandidates(candidates));
+  };
+};
