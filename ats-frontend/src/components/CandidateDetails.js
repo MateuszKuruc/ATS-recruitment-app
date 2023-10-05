@@ -27,7 +27,7 @@ const StyledTextField = styled(TextField)`
 `;
 
 const CandidateDetails = ({ candidates }) => {
-  const id = Number(useParams().id);
+  const id = useParams().id;
 
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
