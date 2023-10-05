@@ -13,7 +13,13 @@ const getAll = async () => {
   return response.data;
 };
 
+const create = async (newCandidate) => {
+  const response = await axios.post(baseUrl, newCandidate);
+  return response.data;
+};
+
 export default {
   getAll,
   setToken,
+  create,
 };
