@@ -12,10 +12,7 @@ import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
 import HotProfiles from "./components/HotProfiles";
 
-import {
-  initializeCandidates,
-  setCandidates,
-} from "./reducers/candidateReducer";
+import { initializeCandidates } from "./reducers/candidateReducer";
 
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
@@ -122,6 +119,8 @@ export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
   const [hotCandidates, setHotCandidates] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     const hot = candidates.filter(
@@ -169,15 +168,23 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              login !== null ? (
+              login === null ? (
                 <div>
                   <p>
                     <i>Please log in to access your dashboard</i>
                   </p>
-                  <LoginForm />
+                  <LoginForm
+                    handleSubmit={handleLogin}
+                    handleUsernameChange={({ target }) =>
+                      setUsername(target.value)
+                    }
+                    handlePasswordChange={({ target }) =>
+                      setPassword(target.value)
+                    }
+                  />
                 </div>
               ) : (
-                login === null && <Dashboard />
+                login !== null && <Dashboard />
               )
             }
           />
