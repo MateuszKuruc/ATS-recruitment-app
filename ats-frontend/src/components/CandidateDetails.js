@@ -34,6 +34,11 @@ const CandidateDetails = ({ candidates }) => {
   const [showNotes, setShowNotes] = useState(false);
 
   const notesShown = { display: showNotes ? "" : "none" };
+  // const labelStyles = {
+  //   backgroundColor: "white",
+  //   padding: "0.2rem",
+  //   borderRadius: "0.5rem",
+  // };
 
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
@@ -92,7 +97,11 @@ const CandidateDetails = ({ candidates }) => {
           inputProps={{
             readOnly: true,
           }}
+          // InputLabelProps={{
+          //   style: labelStyles,
+          // }}
           multiline
+          // label="Notes"
           rows={8}
           fullWidth
           value={candidate.notes}

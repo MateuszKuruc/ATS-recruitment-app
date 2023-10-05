@@ -84,7 +84,7 @@ const HotProfiles = ({ candidates }) => {
                   style={{ display: "flex", textDecoration: "none" }}
                 >
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     color="secondary"
                     style={{ width: "auto", minWidth: "200px", flex: "1" }}
                   >
