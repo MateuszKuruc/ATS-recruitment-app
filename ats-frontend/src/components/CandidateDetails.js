@@ -201,13 +201,15 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={6} md={4}>
           <StyledPaper>
-            <Typography variant="italic">Assessment</Typography>
+            <Typography variant="italic">First contact</Typography>
             <StyledTextField
-              value={candidate.assessment}
+              value={candidate.firstContact}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
+
+      
 
         <Grid item xs={6} md={4}>
           <StyledPaper>
@@ -218,11 +220,12 @@ const CandidateDetails = ({ candidates }) => {
             ></StyledTextField>
           </StyledPaper>
         </Grid>
+        
         <Grid item xs={6} md={4}>
           <StyledPaper>
-            <Typography variant="italic">First contact</Typography>
+            <Typography variant="italic">Assessment</Typography>
             <StyledTextField
-              value={candidate.firstContact}
+              value={candidate.assessment}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
