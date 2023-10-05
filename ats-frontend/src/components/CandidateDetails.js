@@ -129,17 +129,15 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        {candidate.assessment ? (
-          <Grid item xs={6} md={4}>
-            <StyledPaper>
-              <Typography variant="italic">Contract type</Typography>
-              <StyledTextField
-                value={candidate.contract}
-                disabled={!editMode}
-              ></StyledTextField>
-            </StyledPaper>
-          </Grid>
-        ) : null}
+        <Grid item xs={6} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">Contract type</Typography>
+            <StyledTextField
+              value={candidate.contract}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
 
         <Grid item xs={6} md={4}>
           <StyledPaper>
@@ -161,17 +159,15 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        {candidate.assessment ? (
-          <Grid item xs={6} md={4}>
-            <StyledPaper>
-              <Typography variant="italic">Notice period</Typography>
-              <StyledTextField
-                value={candidate.notice}
-                disabled={!editMode}
-              ></StyledTextField>
-            </StyledPaper>
-          </Grid>
-        ) : null}
+        <Grid item xs={6} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">Notice period</Typography>
+            <StyledTextField
+              value={candidate.notice}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
 
         <Grid item xs={6} md={4}>
           <StyledPaper>
@@ -193,29 +189,25 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        {candidate.assessment ? (
-          <Grid item xs={6} md={4}>
-            <StyledPaper>
-              <Typography variant="italic">English level</Typography>
-              <StyledTextField
-                value={candidate.language}
-                disabled={!editMode}
-              ></StyledTextField>
-            </StyledPaper>
-          </Grid>
-        ) : null}
+        <Grid item xs={6} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">English level</Typography>
+            <StyledTextField
+              value={candidate.language}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
 
-        {candidate.assessment ? (
-          <Grid item xs={6} md={4}>
-            <StyledPaper>
-              <Typography variant="italic">Assessment</Typography>
-              <StyledTextField
-                value={candidate.assessment}
-                disabled={!editMode}
-              ></StyledTextField>
-            </StyledPaper>
-          </Grid>
-        ) : null}
+        <Grid item xs={6} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">Assessment</Typography>
+            <StyledTextField
+              value={candidate.assessment}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
 
         <Grid item xs={6} md={4}>
           <StyledPaper>
