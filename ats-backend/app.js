@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 const candidatesRouter = require("./controllers/candidates");
 const usersRouter = require("./controllers/users");
+const loginRouter = require("./controllers/login");
 const middleware = require("./utils/middleware");
 
 require("express-async-errors");
@@ -26,5 +27,6 @@ app.use(express.json());
 
 app.use("/api/candidates", candidatesRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/login", loginRouter);
 
 module.exports = app;
