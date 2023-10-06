@@ -1,8 +1,8 @@
 import { StyledAppBar, StyledToolBar, StyledButton } from "../App";
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
-import { Store } from "@mui/icons-material";
+import { Typography, Tooltip } from "@mui/material";
 import { useSelector } from "react-redux";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const MainAppBar = () => {
   const login = useSelector((state) => state.login);
@@ -30,16 +30,21 @@ const MainAppBar = () => {
           <Typography variant="h4">Tips</Typography>
         </StyledButton>
         {login === null ? (
-          <StyledButton color="inherit" component={Link} to="/login">
+          <StyledButton
+            color="secondary"
+            variant="contained"
+            component={Link}
+            to="/login"
+          >
             <Typography variant="h4">Login</Typography>
           </StyledButton>
         ) : (
-          <div style={{ display: "flex", gap: "1rem"}}>
-            <Typography variant="h4">
-              {login.username}
-        
-            </Typography>
-            
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <div style={{ display: "flex", alignSelf: "center" }}>
+              <Tooltip title={`${login.username} logged in`}>
+                <AccountBoxIcon style={{ fontSize: "2rem" }} />
+              </Tooltip>
+            </div>
 
             <StyledButton color="secondary" variant="contained">
               <Typography variant="h4">Logout</Typography>
