@@ -166,7 +166,7 @@ function App() {
 
       dispatch(setLogin(loggedUser));
     }
-  });
+  }, []);
 
   const handleLogin = async (event) => {
     event.preventDefault();
