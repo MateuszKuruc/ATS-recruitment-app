@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { secondaryColor, primaryColor } from "../App";
+import { format } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
   FormControl,
@@ -10,6 +11,8 @@ import {
   Button,
   TextField,
 } from "@mui/material";
+
+import { createCandidate } from "../reducers/candidateReducer";
 
 const FieldContainer = styled.div`
   display: flex;
@@ -45,6 +48,23 @@ const AddProfile = () => {
   const [firstContact, setFirstContact] = useState("");
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
+
+  console.log(seniority, skill, firstContact);
+
+  const handleNewCandidate = (event) => {
+    event.preventDefault();
+
+    const newCandidate = {
+      firstName,
+      lastName,
+      phone,
+      email,
+      location,
+      firstContact,
+      skill,
+      seniority,
+    };
+  };
 
   return (
     <div
@@ -109,7 +129,10 @@ const AddProfile = () => {
               >
                 <DatePicker
                   label="First contact"
-                  onChange={(newValue) => setFirstContact(newValue)}
+                  onChange={(newValue) => {
+                    const formattedDate = format(newValue.$d, "yyyy-MM-dd");
+                    setFirstContact(formattedDate);
+                  }}
                 />
               </div>
             </div>
@@ -178,7 +201,12 @@ const AddProfile = () => {
             </div>
           </FieldContainer>
 
-          <Button id="addButton" variant="contained">
+          <Button
+            type="submit"
+            id="addButton"
+            variant="contained"
+            onClick={handleNewCandidate}
+          >
             Add profile
           </Button>
         </FormContainer>
