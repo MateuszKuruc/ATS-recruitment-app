@@ -125,6 +125,7 @@ export const secondaryColor = websiteTheme.palette.secondary.main;
 function App() {
   const dispatch = useDispatch();
 
+
   const [hotCandidates, setHotCandidates] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -132,27 +133,27 @@ function App() {
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
 
-  useEffect(() => {
-    const hot = candidates.filter(
-      (candidate) =>
-        candidate.assessment === "6 - Rockstar" ||
-        candidate.assessment === "5 - Great candidate"
-    );
+  // useEffect(() => {
+  //   const hot = candidates.filter(
+  //     (candidate) =>
+  //       candidate.assessment === "6 - Rockstar" ||
+  //       candidate.assessment === "5 - Great candidate"
+  //   );
 
-    const assessmentValue = {
-      "6 - Rockstar": 6,
-      "5 - Great candidate": 5,
-    };
+  //   const assessmentValue = {
+  //     "6 - Rockstar": 6,
+  //     "5 - Great candidate": 5,
+  //   };
 
-    hot.sort((a, b) => {
-      const assessmentValueA = assessmentValue[a.assessment];
-      const assessmentValueB = assessmentValue[b.assessment];
+  //   hot.sort((a, b) => {
+  //     const assessmentValueA = assessmentValue[a.assessment];
+  //     const assessmentValueB = assessmentValue[b.assessment];
 
-      return assessmentValueB - assessmentValueA;
-    });
+  //     return assessmentValueB - assessmentValueA;
+  //   });
 
-    setHotCandidates(hot);
-  }, []);
+  //   setHotCandidates(hot);
+  // }, []);
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -202,7 +203,16 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/faq" element={<InfoTab />} />
           <Route path="/tips" element={<TipsTab />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route
+            path="/login"
+            element={
+              <LoginForm
+                handleSubmit={handleLogin}
+                handleUsernameChange={({ target }) => setUsername(target.value)}
+                handlePasswordChange={({ target }) => setPassword(target.value)}
+              />
+            }
+          />
           <Route path="/logout" element={<LogoutPage />} />
           <Route
             path="/dashboard"
