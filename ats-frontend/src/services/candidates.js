@@ -14,8 +14,18 @@ const getAll = async () => {
 };
 
 const create = async (newCandidate) => {
-  const response = await axios.post(baseUrl, newCandidate);
-  return response.data;
+  const config = {
+    headers: { Authorization: token },
+  };
+
+  console.log("config", config, "new candidate:", newCandidate);
+  try {
+    const response = await axios.post(baseUrl, newCandidate, config);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.error("error while making POST request:", error);
+  }
 };
 
 export default {

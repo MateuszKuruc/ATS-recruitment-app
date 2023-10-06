@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 
 import { createCandidate } from "../reducers/candidateReducer";
+import { useDispatch } from "react-redux";
 
 const FieldContainer = styled.div`
   display: flex;
@@ -40,6 +41,8 @@ export const StyledTextField = styled(TextField)`
 `;
 
 const AddProfile = () => {
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -48,8 +51,6 @@ const AddProfile = () => {
   const [firstContact, setFirstContact] = useState("");
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
-
-  console.log(seniority, skill, firstContact);
 
   const handleNewCandidate = (event) => {
     event.preventDefault();
@@ -64,6 +65,10 @@ const AddProfile = () => {
       skill,
       seniority,
     };
+
+    console.log(newCandidate);
+
+    dispatch(createCandidate(newCandidate));
   };
 
   return (

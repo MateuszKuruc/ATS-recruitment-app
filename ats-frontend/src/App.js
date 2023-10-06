@@ -157,6 +157,17 @@ function App() {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
+
+    if (loggedUserJSON) {
+      const loggedUser = JSON.parse(loggedUserJSON);
+      candidateService.setToken(loggedUser.token);
+
+      dispatch(setLogin(loggedUser));
+    }
+  });
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -166,8 +177,11 @@ function App() {
         password,
       });
 
+      window.localStorage.setItem("loggedAppUser", JSON.stringify(loggedUser));
+
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
+      console.log(loggedUser.token);
 
       setUsername("");
       setPassword("");

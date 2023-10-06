@@ -26,7 +26,9 @@ export const initializeCandidates = () => {
 
 export const createCandidate = (content) => {
   return async (dispatch) => {
+    console.log("content in createCandidate:", content);
     const newCandidate = await candidateService.create(content);
+    console.log("new candidate in reducer createCandidate", newCandidate);
     dispatch(addCandidate(newCandidate));
   };
 };
