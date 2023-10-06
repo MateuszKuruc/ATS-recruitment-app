@@ -46,7 +46,12 @@ const MainAppBar = () => {
               </Tooltip>
             </div>
 
-            <StyledButton color="secondary" variant="contained">
+            <StyledButton
+              color="secondary"
+              variant="contained"
+              component={Link}
+              to="/logout"
+            >
               <Typography variant="h4">Logout</Typography>
             </StyledButton>
           </div>

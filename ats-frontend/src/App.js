@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
 import HotProfiles from "./components/HotProfiles";
+import LogoutPage from "./components/LogoutPage";
 
 import { initializeCandidates } from "./reducers/candidateReducer";
 import { setLogin } from "./reducers/loginReducer";
@@ -202,13 +203,16 @@ function App() {
           <Route path="/faq" element={<InfoTab />} />
           <Route path="/tips" element={<TipsTab />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/logout" element={<LogoutPage />} />
           <Route
             path="/dashboard"
             element={
               login === null ? (
                 <div>
                   <p>
-                    <i>Please log in to access your dashboard</i>
+                    <Typography variant="italic">
+                      Please log in to access your dashboard
+                    </Typography>
                   </p>
                   <LoginForm
                     handleSubmit={handleLogin}
