@@ -66,7 +66,7 @@ const AddProfile = () => {
       seniority,
     };
 
-    console.log(newCandidate);
+    console.log("new candidate in addProfile:", newCandidate);
 
     dispatch(createCandidate(newCandidate));
   };
