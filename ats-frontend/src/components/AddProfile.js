@@ -43,13 +43,14 @@ export const StyledTextField = styled(TextField)`
 
 const AddProfile = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
-  const [firstContact, setFirstContact] = useState("");
+  const [firstContact, setFirstContact] = useState(null);
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
@@ -100,9 +101,11 @@ const AddProfile = () => {
     setPhone("");
     setEmail("");
     setLocation("");
-    setFirstContact("");
+    setFirstContact(null);
     setSkill("");
     setSeniority("");
+
+    // navigate(`/candidates`)
   };
 
   return (
@@ -141,18 +144,21 @@ const AddProfile = () => {
             <div className="firstColumn">
               <div>
                 <StyledTextField
+                  value={firstName}
                   label="First name"
                   onChange={({ target }) => setFirstName(target.value)}
                 ></StyledTextField>
               </div>
               <div>
                 <StyledTextField
+                  value={lastName}
                   label="Last name"
                   onChange={({ target }) => setLastName(target.value)}
                 ></StyledTextField>
               </div>
               <div>
                 <StyledTextField
+                  value={location}
                   label="Location"
                   onChange={({ target }) => setLocation(target.value)}
                 ></StyledTextField>
@@ -167,9 +173,13 @@ const AddProfile = () => {
                 }}
               >
                 <DatePicker
+                  value={firstContact}
                   label="First contact"
                   onChange={(newValue) => {
-                    const formattedDate = format(newValue.$d, "yyyy-MM-dd");
+                    const formattedDate = format(
+                      newValue.$d,
+                      "yyyy-MM-dd"
+                    ).toString();
                     setFirstContact(formattedDate);
                   }}
                 />
@@ -179,12 +189,14 @@ const AddProfile = () => {
             <div className="secondColumn">
               <div>
                 <StyledTextField
+                  value={email}
                   label="Email address"
                   onChange={({ target }) => setEmail(target.value)}
                 ></StyledTextField>
               </div>
               <div>
                 <StyledTextField
+                  value={phone}
                   label="Phone number"
                   onChange={({ target }) => setPhone(target.value)}
                 ></StyledTextField>
