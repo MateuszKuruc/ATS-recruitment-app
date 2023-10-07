@@ -19,7 +19,7 @@ candidatesRouter.post("/", async (request, response) => {
   }
 
   const user = await User.findById(decodedToken.id);
-
+  console.log("user", user);
   const candidate = new Candidate({
     firstName: body.firstName,
     lastName: body.lastName,
@@ -34,7 +34,7 @@ candidatesRouter.post("/", async (request, response) => {
     language: null,
     contract: null,
     notes: null,
-    user: user.id,
+    user: user._id,
   });
 
   const savedCandidate = await candidate.save();
