@@ -13,8 +13,18 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "title": "Very interesting book",
-    "author": "Matteo Kurutzzi",
-    "url": "www.google.com",
-    "likes": 666
+   "username": "mati",
+   "email": "mati@gmail.com",
+   "password": "mati123"
+}
+
+###
+
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+   "username": "test",
+   "email": "test@test.com",
+   "password": "test123"
 }

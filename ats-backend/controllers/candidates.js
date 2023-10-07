@@ -9,7 +9,9 @@ candidatesRouter.get("/", async (request, response) => {
 });
 
 candidatesRouter.post("/", async (request, response) => {
-  const { body } = request;
+  const body = await request.body;
+
+  console.log("body:", body, "request token:", request.token);
 
   const decodedToken = jwt.verify(request.token, process.env.SECRET);
   if (!decodedToken) {
@@ -80,6 +82,13 @@ candidatesRouter.put("/:id", async (request, response) => {
   ).populate("user");
 
   response.json(updatedCandidate);
+});
+
+candidatesRouter.get("/:id", async (request, response) => {
+  const { id } = request.params;
+
+  const candidate = await Candidate.findById(id);
+  response.json(candidate);
 });
 
 module.exports = candidatesRouter;

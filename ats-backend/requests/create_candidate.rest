@@ -1,0 +1,15 @@
+POST http://localhost:3001/api/candidates
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1c3playIsImlkIjoiNjUxZWM5NDhkOGMyODMzMGYyNmJkMDllIiwiaWF0IjoxNjk2NTkwMTk1fQ.A9iq2uNXilRolRhMl2svaZYXeFy3RS2lCid5BF42vss
+
+
+{
+      "firstName": "matislav",
+      "lastName": "bambati",
+      "phone": "423232123",
+      "email": "check@gmail.com",
+      "location": "Przeworsk",
+      "firstContact": "2023-05-12",
+      "skill": "JavaScript",
+      "seniority": "Junior"
+}

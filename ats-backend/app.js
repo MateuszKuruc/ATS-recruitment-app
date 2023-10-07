@@ -20,6 +20,7 @@ mongoose
     logger.error("error connecting to MongoDB:", error.message);
   });
 
+app.use(middleware.tokenExtractor);
 app.use(middleware.errorHandler);
 
 app.use(cors());
