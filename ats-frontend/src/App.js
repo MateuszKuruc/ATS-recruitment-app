@@ -20,7 +20,7 @@ import candidateService from "./services/candidates";
 import loginService from "./services/login";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import styled from "styled-components";
@@ -112,19 +112,12 @@ export const StyledButton = styled(Button)`
   font-weight: 900;
 `;
 
-const StyledTypography = styled(Typography)`
-  && {
-    font-size: 1.3rem;
-    font-weight: 900;
-  }
-`;
-
 export const primaryColor = websiteTheme.palette.primary.main;
 export const secondaryColor = websiteTheme.palette.secondary.main;
 
 function App() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   const [hotCandidates, setHotCandidates] = useState([]);
   const [username, setUsername] = useState("");
@@ -132,6 +125,10 @@ function App() {
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
+
+  useEffect(() => {
+    
+  })
 
   // useEffect(() => {
   //   const hot = candidates.filter(
@@ -183,10 +180,12 @@ function App() {
 
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
-      console.log(loggedUser.token);
+      console.log("logged user token:", loggedUser.token);
+      console.log("logged user:", loggedUser);
 
       setUsername("");
       setPassword("");
+      navigate("/candidates");
     } catch (exception) {
       console.log("error logging", exception);
     }

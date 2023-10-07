@@ -18,14 +18,7 @@ const create = async (newCandidate) => {
     headers: { Authorization: token },
   };
 
-  console.log(
-    "config",
-    config,
-    "new candidate:",
-    newCandidate,
-    "token id",
-    token.id
-  );
+  console.log("config", config, "new candidate:", newCandidate);
   try {
     const response = await axios.post(baseUrl, newCandidate, config);
     console.log(response);

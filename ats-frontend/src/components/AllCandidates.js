@@ -1,6 +1,5 @@
 import { Paper, Button, Typography } from "@mui/material";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-
 import { DataGrid } from "@mui/x-data-grid";
 
 import { Link } from "react-router-dom";
