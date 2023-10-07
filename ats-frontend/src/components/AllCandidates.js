@@ -3,9 +3,6 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import { DataGrid } from "@mui/x-data-grid";
 
 import { Link } from "react-router-dom";
-import { store } from "../store";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
 export const getColorForAssessment = (assessment) => {
   switch (assessment) {
@@ -27,15 +24,6 @@ export const getColorForAssessment = (assessment) => {
 };
 
 const AllCandidates = ({ candidates }) => {
-  // const [filteredCandidates, setFilteredCandidates] = useState([]);
-
-  // const login = useSelector((state) => state.login);
-
-  // const filtered = candidates.filter(
-  //   (candidate) => candidate.user.id === login.id
-  // );
-  // console.log('filtered', filtered)
-
   const rows = candidates.map((candidate) => ({
     id: candidate.id,
     Name: candidate.firstName + " " + candidate.lastName,

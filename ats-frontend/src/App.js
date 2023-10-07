@@ -16,7 +16,6 @@ import LogoutPage from "./components/LogoutPage";
 import { initializeCandidates } from "./reducers/candidateReducer";
 import { setLogin } from "./reducers/loginReducer";
 
-
 import candidateService from "./services/candidates";
 import loginService from "./services/login";
 
@@ -91,8 +90,6 @@ const websiteTheme = createTheme({
       fontSize: "1.3rem",
       fontStyle: "italic",
       lineHeight: 1.5,
-      // paddingLeft: "3rem",
-      // minWidth: "2rem"
     },
   },
 });
@@ -129,8 +126,6 @@ function App() {
   const candidates = useSelector((state) => state.candidates);
   console.log("candidates", candidates);
 
-  // const user = useSelector((state) => state.user);
-
   // console.log('login id', login.id)
 
   // useEffect(() => {
@@ -159,17 +154,6 @@ function App() {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (login && login.id && candidates) {
-  //     console.log('login.id', login.id, candidates);
-  //     const filtered = candidates.filter(
-  //       (candidate) => candidate.user.id === login.id
-  //     );
-  //     console.log("filtered", filtered);
-  //     setFilteredCandidates(filtered);
-  //   }
-  // }, [candidates, login]);
-
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
 
@@ -194,7 +178,7 @@ function App() {
 
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
-      // dispatch(setUser(loggedUser));
+
       console.log("logged user:", loggedUser);
 
       setUsername("");
@@ -257,7 +241,10 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <AllCandidates candidates={filteredCandidates} user={login.id}/>
+                <AllCandidates
+                  candidates={filteredCandidates}
+                  user={login.id}
+                />
               </>
             }
           />
