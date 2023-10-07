@@ -14,6 +14,8 @@ import {
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
 const FieldContainer = styled.div`
   display: flex;
   background-color: #ffffff;
@@ -51,8 +53,35 @@ const AddProfile = () => {
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
+  const isEmailValid = (testedEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(testedEmail);
+  };
+
+  const isPhoneNumberValid = (testedNumber) => {
+    const phoneRegex = /^\d{9,11}$/;
+    return phoneRegex.test(testedNumber);
+  };
+
   const handleNewCandidate = (event) => {
     event.preventDefault();
+
+    if (!isEmailValid(email)) {
+      console.log("email invalid");
+      return;
+    }
+    if (!isPhoneNumberValid(phone)) {
+      console.log("phone invalid");
+      return;
+    }
+    if (firstName.length < 3 || lastName.length < 3 || location.length < 3) {
+      console.log("name or location invalid");
+      return;
+    }
+    if (firstContact === "" || skill === "" || seniority === "") {
+      console.log("date, skill or seniority invalid");
+      return;
+    }
 
     const newCandidate = {
       firstName,
@@ -74,8 +103,6 @@ const AddProfile = () => {
     setFirstContact("");
     setSkill("");
     setSeniority("");
-
-    console.log("new candidate in addProfile:", newCandidate);
   };
 
   return (
