@@ -16,6 +16,7 @@ import LogoutPage from "./components/LogoutPage";
 import { initializeCandidates } from "./reducers/candidateReducer";
 import { setLogin } from "./reducers/loginReducer";
 
+
 import candidateService from "./services/candidates";
 import loginService from "./services/login";
 
@@ -122,13 +123,15 @@ function App() {
   const [hotCandidates, setHotCandidates] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [filteredCandidates, setFilteredCandidates] = useState([]);
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
+  console.log("candidates", candidates);
 
-  useEffect(() => {
-    
-  })
+  // const user = useSelector((state) => state.user);
+
+  // console.log('login id', login.id)
 
   // useEffect(() => {
   //   const hot = candidates.filter(
@@ -156,6 +159,17 @@ function App() {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   if (login && login.id && candidates) {
+  //     console.log('login.id', login.id, candidates);
+  //     const filtered = candidates.filter(
+  //       (candidate) => candidate.user.id === login.id
+  //     );
+  //     console.log("filtered", filtered);
+  //     setFilteredCandidates(filtered);
+  //   }
+  // }, [candidates, login]);
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
 
@@ -180,7 +194,7 @@ function App() {
 
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
-      console.log("logged user token:", loggedUser.token);
+      // dispatch(setUser(loggedUser));
       console.log("logged user:", loggedUser);
 
       setUsername("");
@@ -243,7 +257,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <AllCandidates candidates={candidates} />
+                <AllCandidates candidates={filteredCandidates} user={login.id}/>
               </>
             }
           />
