@@ -10,12 +10,11 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import IconButton from "@mui/material/IconButton";
-import FeedbackIcon from "@mui/icons-material/Feedback";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import HelpIcon from '@mui/icons-material/Help';
+import HelpIcon from "@mui/icons-material/Help";
+import { useState } from "react";
 
 const MainAppBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -64,8 +63,6 @@ const MainAppBar = () => {
           </StyledButton>
         ) : (
           <div>
-            {/* <div > */}
-            {/* style={{ display: "flex", alignSelf: "center" }} */}
             <Tooltip title={`${login.username} logged in`}>
               <IconButton>
                 <AccountBoxIcon
