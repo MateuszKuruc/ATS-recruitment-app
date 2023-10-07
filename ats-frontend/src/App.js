@@ -126,29 +126,29 @@ function App() {
   const candidates = useSelector((state) => state.candidates);
   console.log("candidates", candidates);
 
-  // console.log('login id', login.id)
 
-  // useEffect(() => {
-  //   const hot = candidates.filter(
-  //     (candidate) =>
-  //       candidate.assessment === "6 - Rockstar" ||
-  //       candidate.assessment === "5 - Great candidate"
-  //   );
 
-  //   const assessmentValue = {
-  //     "6 - Rockstar": 6,
-  //     "5 - Great candidate": 5,
-  //   };
+  useEffect(() => {
+    const hot = candidates.filter(
+      (candidate) =>
+        candidate.assessment === "6 - Rockstar" ||
+        candidate.assessment === "5 - Great candidate"
+    );
 
-  //   hot.sort((a, b) => {
-  //     const assessmentValueA = assessmentValue[a.assessment];
-  //     const assessmentValueB = assessmentValue[b.assessment];
+    const assessmentValue = {
+      "6 - Rockstar": 6,
+      "5 - Great candidate": 5,
+    };
 
-  //     return assessmentValueB - assessmentValueA;
-  //   });
+    hot.sort((a, b) => {
+      const assessmentValueA = assessmentValue[a.assessment];
+      const assessmentValueB = assessmentValue[b.assessment];
 
-  //   setHotCandidates(hot);
-  // }, []);
+      return assessmentValueB - assessmentValueA;
+    });
+
+    setHotCandidates(hot);
+  }, []);
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -241,10 +241,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <AllCandidates
-                  candidates={candidates}
-                  userId={login?.id}
-                />
+                <AllCandidates candidates={candidates} userId={login?.id} />
               </>
             }
           />
@@ -271,7 +268,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <HotProfiles candidates={hotCandidates} />
+                <HotProfiles candidates={hotCandidates} userId={login?.id} />
               </>
             }
           />

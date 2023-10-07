@@ -10,13 +10,39 @@ import {
   Typography,
   TablePagination,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 
-const HotProfiles = ({ candidates }) => {
+const HotProfiles = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [hotCandidates, setHotCandidates] = useState([]);
+
+  useEffect(() => {
+    const filtered = candidates.filter(
+      (candidate) => candidate.user.id === userId
+    );
+    const hot = filtered.filter(
+      (candidate) =>
+        candidate.assessment === "6 - Rockstar" ||
+        candidate.assessment === "5 - Great candidate"
+    );
+
+    const assessmentValue = {
+      "6 - Rockstar": 6,
+      "5 - Great candidate": 5,
+    };
+
+    hot.sort((a, b) => {
+      const assessmentValueA = assessmentValue[a.assessment];
+      const assessmentValueB = assessmentValue[b.assessment];
+
+      return assessmentValueB - assessmentValueA;
+    });
+
+    setHotCandidates(hot);
+  }, [candidates, userId]);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - candidates.length) : 0;
@@ -71,11 +97,11 @@ const HotProfiles = ({ candidates }) => {
           </TableRow>
 
           {(rowsPerPage > 0
-            ? candidates.slice(
+            ? hotCandidates.slice(
                 page * rowsPerPage,
                 page * rowsPerPage + rowsPerPage
               )
-            : candidates
+            : hotCandidates
           ).map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
