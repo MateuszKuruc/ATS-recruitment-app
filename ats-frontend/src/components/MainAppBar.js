@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  ListItemButton,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -64,10 +65,10 @@ const MainAppBar = () => {
         ) : (
           <div>
             <Tooltip title={`${login.username} logged in`}>
-              <IconButton>
+              <IconButton onClick={handleOpenMenu}>
                 <AccountBoxIcon
                   style={{ fontSize: "2rem" }}
-                  onClick={handleOpenMenu}
+                  
                 />
               </IconButton>
             </Tooltip>
@@ -81,30 +82,28 @@ const MainAppBar = () => {
               }}
               transformOrigin={{
                 vertical: "top",
-                // horizontal: "right",
+                horizontal: "left",
               }}
             >
               <List>
-                <ListItem
-                  button
+                <ListItemButton
                   component={Link}
                   to="/feedback"
                   onClick={handleCloseMenu}
                 >
                   <ChatBubbleIcon />
                   <ListItemText primary="Feedback" />
-                </ListItem>
-                <ListItem
-                  button
+                </ListItemButton>
+                <ListItemButton
+                  
                   component={Link}
                   to="/help"
                   onClick={handleCloseMenu}
                 >
                   <HelpIcon />
                   <ListItemText primary="Help" />
-                </ListItem>
-                <ListItem
-                  button
+                </ListItemButton>
+                <ListItemButton
                   component={Link}
                   to="/logout"
                   onClick={handleCloseMenu}
@@ -112,7 +111,7 @@ const MainAppBar = () => {
                 >
                   <ExitToAppIcon />
                   <ListItemText primary="Logout" />
-                </ListItem>
+                </ListItemButton>
               </List>
             </Popover>
             {/* </div> */}

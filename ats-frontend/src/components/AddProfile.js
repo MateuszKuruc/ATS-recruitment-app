@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { secondaryColor, primaryColor } from "../App";
 import { format } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
@@ -65,10 +64,18 @@ const AddProfile = () => {
       skill,
       seniority,
     };
+    dispatch(createCandidate(newCandidate));
+
+    setFirstName("");
+    setLastName("");
+    setPhone("");
+    setEmail("");
+    setLocation("");
+    setFirstContact("");
+    setSkill("");
+    setSeniority("");
 
     console.log("new candidate in addProfile:", newCandidate);
-
-    dispatch(createCandidate(newCandidate));
   };
 
   return (
