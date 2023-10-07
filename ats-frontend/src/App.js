@@ -117,38 +117,12 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [hotCandidates, setHotCandidates] = useState([]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [filteredCandidates, setFilteredCandidates] = useState([]);
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
   console.log("candidates", candidates);
-
-
-
-  useEffect(() => {
-    const hot = candidates.filter(
-      (candidate) =>
-        candidate.assessment === "6 - Rockstar" ||
-        candidate.assessment === "5 - Great candidate"
-    );
-
-    const assessmentValue = {
-      "6 - Rockstar": 6,
-      "5 - Great candidate": 5,
-    };
-
-    hot.sort((a, b) => {
-      const assessmentValueA = assessmentValue[a.assessment];
-      const assessmentValueB = assessmentValue[b.assessment];
-
-      return assessmentValueB - assessmentValueA;
-    });
-
-    setHotCandidates(hot);
-  }, []);
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -268,7 +242,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <HotProfiles candidates={hotCandidates} userId={login?.id} />
+                <HotProfiles candidates={candidates} userId={login?.id} />
               </>
             }
           />
