@@ -3,6 +3,7 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import { DataGrid } from "@mui/x-data-grid";
 
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const getColorForAssessment = (assessment) => {
   switch (assessment) {
@@ -23,8 +24,21 @@ export const getColorForAssessment = (assessment) => {
   }
 };
 
-const AllCandidates = ({ candidates }) => {
-  const rows = candidates.map((candidate) => ({
+const AllCandidates = ({ candidates, userId }) => {
+  const [filteredCandidates, setFilteredCandidates] = useState([]);
+  console.log("userId in all candidates", userId);
+  console.log("candidates in all candidates", candidates);
+
+  useEffect(() => {
+    const filtered = candidates.filter(
+      (candidate) => candidate.user.id === userId
+    );
+    setFilteredCandidates(filtered);
+  }, [candidates, userId]);
+
+  console.log("filtered in all candidates", filteredCandidates);
+
+  const rows = filteredCandidates.map((candidate) => ({
     id: candidate.id,
     Name: candidate.firstName + " " + candidate.lastName,
     Location: candidate.location,

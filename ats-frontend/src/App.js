@@ -242,8 +242,8 @@ function App() {
               <>
                 <Dashboard />
                 <AllCandidates
-                  candidates={filteredCandidates}
-                  user={login.id}
+                  candidates={candidates}
+                  userId={login?.id}
                 />
               </>
             }
