@@ -59,6 +59,13 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
+const StyledDataPickerContainer = styled.div`
+  width: 100%;
+  border: ${(props) =>
+    props.error ? "2px solid #f44336" : "1px solid #ced4da"};
+  border-radius: 0.5rem;
+`;
+
 const AddProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -74,12 +81,12 @@ const AddProfile = () => {
 
   const [firstNameError, setFirstNameError] = useState(true);
   const [lastNameError, setLastNameError] = useState(true);
-  const [phoneError, setPhoneError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [locationError, setLocationError] = useState(false);
-  const [firstContactError, setFirstContactError] = useState(false);
-  const [skillError, setSkillError] = useState(false);
-  const [seniorityError, setSeniorityError] = useState(false);
+  const [phoneError, setPhoneError] = useState(true);
+  const [emailError, setEmailError] = useState(true);
+  const [locationError, setLocationError] = useState(true);
+  const [firstContactError, setFirstContactError] = useState(true);
+  const [skillError, setSkillError] = useState(true);
+  const [seniorityError, setSeniorityError] = useState(true);
 
   const isEmailValid = (testedEmail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -106,7 +113,7 @@ const AddProfile = () => {
       console.log("name or location invalid");
       return;
     }
-    if (firstContact === "" || skill === "" || seniority === "") {
+    if (firstContact === null || skill === "" || seniority === "") {
       console.log("date, skill or seniority invalid");
       return;
     }
@@ -159,7 +166,7 @@ const AddProfile = () => {
         }}
       >
         <FormContainer>
-          <Typography variant="h4">New candidate form</Typography>
+          <Typography variant="h4">NEW CANDIDATE FORM</Typography>
           <FieldContainer>
             <StyledTextField
               error={firstNameError}
@@ -182,24 +189,32 @@ const AddProfile = () => {
             ></StyledTextField>
 
             <StyledTextField
+              error={locationError}
+              helperText={locationError ? "Enter location" : ""}
               value={location}
               label="Location"
               onChange={({ target }) => setLocation(target.value)}
             ></StyledTextField>
 
             <StyledTextField
+              error={emailError}
+              helperText={emailError ? "Enter email in correct format" : ""}
               value={email}
               label="Email address"
               onChange={({ target }) => setEmail(target.value)}
             ></StyledTextField>
 
             <StyledTextField
+              error={phoneError}
+              helperText={
+                phoneError ? "Enter phone number (min. 9 characters)" : ""
+              }
               value={phone}
               label="Phone number"
               onChange={({ target }) => setPhone(target.value)}
             ></StyledTextField>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth error={skillError}>
               <InputLabel id="skill">Skill</InputLabel>
               <Select
                 labelId="skill"
@@ -219,7 +234,7 @@ const AddProfile = () => {
               </Select>
             </FormControl>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth error={seniorityError}>
               <InputLabel id="seniority">Seniority</InputLabel>
               <Select
                 labelId="seniority"
@@ -237,7 +252,8 @@ const AddProfile = () => {
             </FormControl>
 
             <StyledDatePicker
-              className="datePicker"
+              
+              
               value={firstContact}
               label="First contact"
               onChange={(newValue) => {
