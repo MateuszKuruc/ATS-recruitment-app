@@ -260,7 +260,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <Feedback candidates={candidates} />
+                <Feedback />
               </>
             }
           />

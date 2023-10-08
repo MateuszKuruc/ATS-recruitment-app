@@ -13,7 +13,6 @@ import styled from "styled-components";
 import candidateService from "../services/candidates";
 
 const StyledContainer = styled.div`
-  //   border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -26,7 +25,6 @@ const StyledContainer = styled.div`
 
 export const StyledTextField = styled(TextField)`
   && {
-    // margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
   }
@@ -36,13 +34,12 @@ const StyledLine = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  //   margin-top: 1rem;
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
 `;
 
-const Feedback = ({ candidates }) => {
+const Feedback = () => {
   const id = useParams().id;
 
   const [candidate, setCandidate] = useState(null);
@@ -66,8 +63,6 @@ const Feedback = ({ candidates }) => {
   const [contract, setContract] = useState("");
   const [notes, setNotes] = useState("");
   const [language, setLanguage] = useState("");
-
-  // return <div>fuck this shit</div>;
 
   return (
     <StyledContainer>
