@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FormControl,
   Select,
@@ -10,9 +10,10 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import candidateService from "../services/candidates";
 
 const StyledContainer = styled.div`
-//   border: 1px solid red;
+  //   border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -35,22 +36,38 @@ const StyledLine = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-//   margin-top: 1rem;
+  //   margin-top: 1rem;
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
 `;
 
 const Feedback = ({ candidates }) => {
-  const id = Number(useParams().id);
-  // const candidate = candidates.find((candidate) => candidate.id === id);
- const candidate = 
+  const id = useParams().id;
+
+  const [candidate, setCandidate] = useState(null);
+
+  useEffect(() => {
+    const fetchById = async () => {
+      try {
+        const candidate = await candidateService.getById(id);
+        console.log("fucking candidate", candidate);
+        setCandidate(candidate);
+      } catch (error) {
+        console.error("error", error);
+      }
+    };
+
+    fetchById();
+  }, [id]);
 
   const [assessment, setAssessment] = useState("");
   const [notice, setNotice] = useState("");
   const [contract, setContract] = useState("");
   const [notes, setNotes] = useState("");
   const [language, setLanguage] = useState("");
+
+  // return <div>fuck this shit</div>;
 
   return (
     <StyledContainer>
@@ -62,7 +79,9 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="assessment"
             label="assessment"
-            value={candidate.assessment ? candidate.assessment : "6 - Rockstar"}
+            value={
+              candidate?.assessment ? candidate.assessment : "6 - Rockstar"
+            }
           >
             <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
             <MenuItem value="2 - No hire">2 - No hire</MenuItem>
@@ -80,7 +99,7 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="notice"
             label="notice"
-            value={candidate.notice ? candidate.notice : "Available now"}
+            value={candidate?.notice ? candidate.notice : "Available now"}
           >
             <MenuItem value="Available now">Available now</MenuItem>
             <MenuItem value="2 weeks">2 weeks</MenuItem>
@@ -97,7 +116,7 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="language"
             label="language"
-            value={candidate.language ? candidate.language : "A1"}
+            value={candidate?.language ? candidate.language : "A1"}
           >
             <MenuItem value="A1">A1</MenuItem>
             <MenuItem value="A2">A2</MenuItem>
@@ -116,7 +135,7 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="contract"
             label="contract"
-            value={candidate.contract ? candidate.contract : "UoP"}
+            value={candidate?.contract ? candidate.contract : "UoP"}
           >
             <MenuItem value="UoP">UoP - contract of employment</MenuItem>
             <MenuItem value="B2B">B2B</MenuItem>
