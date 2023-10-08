@@ -101,6 +101,15 @@ const AddProfile = () => {
   const handleNewCandidate = (event) => {
     event.preventDefault();
 
+    setFirstNameError(false);
+    setLastNameError(false);
+    setPhoneError(false);
+    setEmailError(false);
+    setLocationError(false);
+    setFirstContactError(false);
+    setSkillError(false);
+    setSeniorityError(false);
+
     if (!isEmailValid(email)) {
       console.log("email invalid");
       return;
@@ -252,8 +261,6 @@ const AddProfile = () => {
             </FormControl>
 
             <StyledDatePicker
-              
-              
               value={firstContact}
               label="First contact"
               onChange={(newValue) => {
