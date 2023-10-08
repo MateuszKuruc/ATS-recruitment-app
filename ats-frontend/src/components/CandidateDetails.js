@@ -109,7 +109,7 @@ const CandidateDetails = ({ candidates }) => {
       </div>
 
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
@@ -119,7 +119,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
@@ -129,7 +129,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
             <StyledTextField
@@ -139,7 +139,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
@@ -149,7 +149,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
@@ -159,7 +159,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
             <StyledTextField
@@ -169,7 +169,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
@@ -179,7 +179,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
             <StyledTextField
@@ -189,7 +189,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">English level</Typography>
             <StyledTextField
@@ -199,7 +199,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
             <StyledTextField
@@ -211,7 +211,7 @@ const CandidateDetails = ({ candidates }) => {
 
       
 
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
             <StyledTextField
@@ -221,7 +221,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
         
-        <Grid item xs={6} md={4}>
+        <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
             <StyledTextField
@@ -231,7 +231,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <Button variant="contained" color="secondary" onClick={toggleEdit}>
             {editMode ? "Save" : "Edit"}
           </Button>

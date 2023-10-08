@@ -43,8 +43,8 @@ const StyledLine = styled.div`
 
 const Feedback = ({ candidates }) => {
   const id = Number(useParams().id);
-  const candidate = candidates.find((candidate) => candidate.id === id);
-  console.log("id", candidate.assessment);
+  // const candidate = candidates.find((candidate) => candidate.id === id);
+ const candidate = 
 
   const [assessment, setAssessment] = useState("");
   const [notice, setNotice] = useState("");

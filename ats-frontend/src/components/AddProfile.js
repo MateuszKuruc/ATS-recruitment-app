@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
   FormControl,
@@ -11,6 +11,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import dayjs from "dayjs";
 
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
@@ -59,13 +60,6 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
-const StyledDataPickerContainer = styled.div`
-  width: 100%;
-  border: ${(props) =>
-    props.error ? "2px solid #f44336" : "1px solid #ced4da"};
-  border-radius: 0.5rem;
-`;
-
 const AddProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,6 +69,9 @@ const AddProfile = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
+  // const [firstContact, setFirstContact] = useState(
+  //   format(new Date(), "yyyy-MM-dd").toString()
+  // );
   const [firstContact, setFirstContact] = useState(null);
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
@@ -84,7 +81,7 @@ const AddProfile = () => {
   const [phoneError, setPhoneError] = useState(true);
   const [emailError, setEmailError] = useState(true);
   const [locationError, setLocationError] = useState(true);
-  const [firstContactError, setFirstContactError] = useState(true);
+  // const [firstContactError, setFirstContactError] = useState(true);
   const [skillError, setSkillError] = useState(true);
   const [seniorityError, setSeniorityError] = useState(true);
 
@@ -98,7 +95,7 @@ const AddProfile = () => {
     return phoneRegex.test(testedNumber);
   };
 
-  const handleNewCandidate = (event) => {
+  const handleNewCandidate = async (event) => {
     event.preventDefault();
 
     setFirstNameError(false);
@@ -106,7 +103,7 @@ const AddProfile = () => {
     setPhoneError(false);
     setEmailError(false);
     setLocationError(false);
-    setFirstContactError(false);
+    // setFirstContactError(false);
     setSkillError(false);
     setSeniorityError(false);
 
@@ -127,28 +124,36 @@ const AddProfile = () => {
       return;
     }
 
-    const newCandidate = {
+    // const formattedDate = format(
+    //   parseISO(firstContact),
+    //   "yyyy-MM-dd"
+    // ).toString();
+
+    const newCandidateData = {
       firstName,
       lastName,
       phone,
       email,
       location,
       firstContact,
+      // formattedDate,
       skill,
       seniority,
     };
-    dispatch(createCandidate(newCandidate));
+
+    console.log("new in addprofile", newCandidateData);
+    const newCandidate = await dispatch(createCandidate(newCandidateData));
 
     setFirstName("");
     setLastName("");
     setPhone("");
     setEmail("");
     setLocation("");
-    setFirstContact(null);
+    setFirstContact(dayjs(new Date()));
     setSkill("");
     setSeniority("");
 
-    // navigate(`/candidates`)
+    navigate(`/candidates/${newCandidate.id}`);
   };
 
   return (
@@ -261,7 +266,7 @@ const AddProfile = () => {
             </FormControl>
 
             <StyledDatePicker
-              value={firstContact}
+              defaultValue={dayjs(new Date())}
               label="First contact"
               onChange={(newValue) => {
                 const formattedDate = format(

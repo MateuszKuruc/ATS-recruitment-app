@@ -29,5 +29,6 @@ export const createCandidate = (content) => {
     const newCandidate = await candidateService.create(content);
 
     dispatch(addCandidate(newCandidate));
+    return newCandidate;
   };
 };
