@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
   FormControl,
@@ -69,21 +69,17 @@ const AddProfile = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
-  // const [firstContact, setFirstContact] = useState(
-  //   format(new Date(), "yyyy-MM-dd").toString()
-  // );
-  const [firstContact, setFirstContact] = useState(null);
+  const [firstContact, setFirstContact] = useState("");
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
-  const [firstNameError, setFirstNameError] = useState(true);
-  const [lastNameError, setLastNameError] = useState(true);
-  const [phoneError, setPhoneError] = useState(true);
-  const [emailError, setEmailError] = useState(true);
-  const [locationError, setLocationError] = useState(true);
-  // const [firstContactError, setFirstContactError] = useState(true);
-  const [skillError, setSkillError] = useState(true);
-  const [seniorityError, setSeniorityError] = useState(true);
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [locationError, setLocationError] = useState(false);
+  const [skillError, setSkillError] = useState(false);
+  const [seniorityError, setSeniorityError] = useState(false);
 
   const isEmailValid = (testedEmail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -95,39 +91,72 @@ const AddProfile = () => {
     return phoneRegex.test(testedNumber);
   };
 
+  const validateForm = () => {
+    const errors = {
+      firstName: firstName.length < 2 || firstName === "",
+      lastName: lastName.length < 2 || lastName === "",
+      location: location.length < 3 || location === "",
+      email: !isEmailValid(email),
+      phone: !isPhoneNumberValid(phone),
+      skill: skill === "",
+      seniority: seniority === "",
+    };
+
+    setFirstNameError(errors.firstName);
+    setLastNameError(errors.lastName);
+    setLocationError(errors.location);
+    setEmailError(errors.email);
+    setPhoneError(errors.phone);
+    setSkillError(errors.skill);
+    setSeniorityError(errors.seniority);
+
+    return !Object.values(errors).some((error) => error);
+
+    // if (firstName.length < 2 || firstName === "") {
+    //   setFirstNameError(true);
+    //   return false;
+    // }
+    // if (lastName.length < 2 || lastName === "") {
+    //   setLastNameError(true);
+    //   return false;
+    // }
+    // if (location.length < 3 || location === "") {
+    //   setLocationError(true);
+    //   return false;
+    // }
+    // if (!isEmailValid(email)) {
+    //   setEmailError(true);
+    //   return false;
+    // }
+    // if (!isPhoneNumberValid(phone)) {
+    //   setPhoneError(true);
+    //   return false;
+    // }
+    // if (skill === "") {
+    //   setSkillError(true);
+    //   return false;
+    // }
+    // if (seniority === "") {
+    //   setSeniorityError(true);
+    //   return false;
+    // }
+    // return true;
+  };
+
   const handleNewCandidate = async (event) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     setFirstNameError(false);
     setLastNameError(false);
     setPhoneError(false);
     setEmailError(false);
     setLocationError(false);
-    // setFirstContactError(false);
     setSkillError(false);
     setSeniorityError(false);
-
-    if (!isEmailValid(email)) {
-      console.log("email invalid");
-      return;
-    }
-    if (!isPhoneNumberValid(phone)) {
-      console.log("phone invalid");
-      return;
-    }
-    if (firstName.length < 3 || lastName.length < 3 || location.length < 3) {
-      console.log("name or location invalid");
-      return;
-    }
-    if (firstContact === null || skill === "" || seniority === "") {
-      console.log("date, skill or seniority invalid");
-      return;
-    }
-
-    // const formattedDate = format(
-    //   parseISO(firstContact),
-    //   "yyyy-MM-dd"
-    // ).toString();
 
     const newCandidateData = {
       firstName,
@@ -136,12 +165,10 @@ const AddProfile = () => {
       email,
       location,
       firstContact,
-      // formattedDate,
       skill,
       seniority,
     };
 
-    console.log("new in addprofile", newCandidateData);
     const newCandidate = await dispatch(createCandidate(newCandidateData));
 
     setFirstName("");
@@ -149,7 +176,7 @@ const AddProfile = () => {
     setPhone("");
     setEmail("");
     setLocation("");
-    setFirstContact(dayjs(new Date()));
+    setFirstContact("");
     setSkill("");
     setSeniority("");
 
@@ -185,7 +212,7 @@ const AddProfile = () => {
             <StyledTextField
               error={firstNameError}
               helperText={
-                firstNameError ? "Enter first name (min. 4 characters)" : ""
+                firstNameError ? "Enter first name (min. 2 characters)" : ""
               }
               value={firstName}
               label="First name"
@@ -195,7 +222,7 @@ const AddProfile = () => {
             <StyledTextField
               error={lastNameError}
               helperText={
-                lastNameError ? "Enter last name (min. 4 characters)" : ""
+                lastNameError ? "Enter last name (min. 2 characters)" : ""
               }
               value={lastName}
               label="Last name"
