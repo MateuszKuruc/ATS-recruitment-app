@@ -133,25 +133,20 @@ const AddProfile = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        // justifyContent: "center",
         marginTop: "1rem",
-        // border: "1px solid blue",
         flex: "1",
-        // height: "100%"
         marginBottom: "1rem",
       }}
     >
       <form
         style={{
-          // border: "0.25rem solid",
           display: "flex",
-          // justifyContent: "center",
+
           flexDirection: "column",
           alignItems: "center",
           padding: "2rem",
           paddingRight: "1rem",
           paddingLeft: "1rem",
-          // margin: "2rem",
           borderRadius: "0.5rem",
           // backgroundColor: secondaryColor,
           backgroundColor: "#c0d9e7",
@@ -161,8 +156,6 @@ const AddProfile = () => {
         <FormContainer>
           <h1>Create new profile</h1>
           <FieldContainer>
-            {/* <div className="firstColumn" style={{border: "1px solid green"}}> */}
-            {/* <div> */}
             <StyledTextField
               error={firstNameError}
               helperText={
@@ -172,8 +165,7 @@ const AddProfile = () => {
               label="First name"
               onChange={({ target }) => setFirstName(target.value)}
             ></StyledTextField>
-            {/* </div> */}
-            {/* <div> */}
+
             <StyledTextField
               error={lastNameError}
               helperText={
@@ -183,24 +175,12 @@ const AddProfile = () => {
               label="Last name"
               onChange={({ target }) => setLastName(target.value)}
             ></StyledTextField>
-            {/* </div> */}
-            {/* <div> */}
+
             <StyledTextField
               value={location}
               label="Location"
               onChange={({ target }) => setLocation(target.value)}
             ></StyledTextField>
-            {/* </div> */}
-
-            {/* <div
-              style={{
-                // marginBottom: "2rem",
-                // width: "85%",
-                backgroundColor: "#FFFFFF",
-                borderRadius: "0.5rem",
-              }}
-            > */}
-            {/* <div style={{ width: "100%", border: "1px solid blue"}}> */}
 
             <StyledDatePicker
               className="datePicker"
@@ -214,32 +194,19 @@ const AddProfile = () => {
                 setFirstContact(formattedDate);
               }}
             />
-            {/* </div> */}
-            {/* </div> */}
-            {/* </div> */}
 
-            {/* <div className="secondColumn" style={{border: "1px solid blue"}}> */}
-            {/* <div> */}
             <StyledTextField
               value={email}
               label="Email address"
               onChange={({ target }) => setEmail(target.value)}
             ></StyledTextField>
-            {/* </div> */}
-            {/* <div> */}
+
             <StyledTextField
               value={phone}
               label="Phone number"
               onChange={({ target }) => setPhone(target.value)}
             ></StyledTextField>
-            {/* </div> */}
-            {/* <div
-              style={{
-                backgroundColor: "#FFFFFF",
-                borderRadius: "0.5rem",
-                // marginBottom: "2rem",
-              }}
-            > */}
+
             <FormControl fullWidth>
               <InputLabel id="skill">Skill</InputLabel>
               <Select
@@ -259,9 +226,7 @@ const AddProfile = () => {
                 <MenuItem value="Golang">Golang</MenuItem>
               </Select>
             </FormControl>
-            {/* </div> */}
 
-            {/* <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}> */}
             <FormControl fullWidth>
               <InputLabel id="seniority">Seniority</InputLabel>
               <Select
@@ -278,8 +243,6 @@ const AddProfile = () => {
                 <MenuItem value="Manager">Manager</MenuItem>
               </Select>
             </FormControl>
-            {/* </div> */}
-            {/* </div> */}
           </FieldContainer>
 
           <Button
