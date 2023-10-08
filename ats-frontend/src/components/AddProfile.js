@@ -54,6 +54,15 @@ const AddProfile = () => {
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [locationError, setLocationError] = useState(false);
+  const [firstContactError, setFirstContactError] = useState(false);
+  const [skillError, setSkillError] = useState(false);
+  const [seniorityError, setSeniorityError] = useState(false);
+
   const isEmailValid = (testedEmail) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(testedEmail);
@@ -144,6 +153,8 @@ const AddProfile = () => {
             <div className="firstColumn">
               <div>
                 <StyledTextField
+                  error={firstNameError}
+                  helperText={firstNameError ? "Incorrect name" : ""}
                   value={firstName}
                   label="First name"
                   onChange={({ target }) => setFirstName(target.value)}
