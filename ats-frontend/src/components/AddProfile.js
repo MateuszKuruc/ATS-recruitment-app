@@ -111,36 +111,6 @@ const AddProfile = () => {
     setSeniorityError(errors.seniority);
 
     return !Object.values(errors).some((error) => error);
-
-    // if (firstName.length < 2 || firstName === "") {
-    //   setFirstNameError(true);
-    //   return false;
-    // }
-    // if (lastName.length < 2 || lastName === "") {
-    //   setLastNameError(true);
-    //   return false;
-    // }
-    // if (location.length < 3 || location === "") {
-    //   setLocationError(true);
-    //   return false;
-    // }
-    // if (!isEmailValid(email)) {
-    //   setEmailError(true);
-    //   return false;
-    // }
-    // if (!isPhoneNumberValid(phone)) {
-    //   setPhoneError(true);
-    //   return false;
-    // }
-    // if (skill === "") {
-    //   setSkillError(true);
-    //   return false;
-    // }
-    // if (seniority === "") {
-    //   setSeniorityError(true);
-    //   return false;
-    // }
-    // return true;
   };
 
   const handleNewCandidate = async (event) => {
