@@ -60,6 +60,21 @@ const CandidateDetails = ({ candidates }) => {
         marginBottom: "1rem",
       }}
     >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          marginBottom: "1rem",
+          backgroundColor: "#084c61",
+          padding: "1rem",
+          borderRadius: "0.5rem",
+        }}
+      >
+        <Typography variant="h3" style={{ color: "#ffffff" }}>
+          {candidate.firstName} {candidate.lastName}
+        </Typography>
+      </div>
       <div style={{ display: "flex", gap: "0.5rem" }}>
         {candidate.assessment && (
           <div>

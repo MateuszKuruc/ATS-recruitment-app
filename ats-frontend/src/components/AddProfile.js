@@ -15,7 +15,6 @@ import dayjs from "dayjs";
 
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
 
 const FormContainer = styled.div`
