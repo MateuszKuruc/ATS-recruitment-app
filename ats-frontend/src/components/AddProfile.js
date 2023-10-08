@@ -9,12 +9,28 @@ import {
   MenuItem,
   Button,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  width: 90%;
+
+  @media (min-width: 768px) {
+    width: 40rem;
+  }
+`;
 
 const FieldContainer = styled.div`
   display: flex;
@@ -24,24 +40,15 @@ const FieldContainer = styled.div`
   border-radius: 0.5rem;
   gap: 1rem;
   align-items: flex-start;
-  border: 1px solid red;
-  // justify-content: center;
-  width: 30rem;
-`;
+  width: 90%;
 
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  margin-top: 3rem;
-  border-radius: 0.5rem;
-  align-items: center;
-  padding: 2rem;
+  @media (min-width: 768px) {
+    width: 30rem;
+  }
 `;
 
 export const StyledTextField = styled(TextField)`
   && {
-    // margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
     width: 100%;
@@ -141,20 +148,18 @@ const AddProfile = () => {
       <form
         style={{
           display: "flex",
-
           flexDirection: "column",
           alignItems: "center",
           padding: "2rem",
           paddingRight: "1rem",
           paddingLeft: "1rem",
           borderRadius: "0.5rem",
-          // backgroundColor: secondaryColor,
           backgroundColor: "#c0d9e7",
           flex: "1",
         }}
       >
         <FormContainer>
-          <h1>Create new profile</h1>
+          <Typography variant="h4">New candidate form</Typography>
           <FieldContainer>
             <StyledTextField
               error={firstNameError}
@@ -181,19 +186,6 @@ const AddProfile = () => {
               label="Location"
               onChange={({ target }) => setLocation(target.value)}
             ></StyledTextField>
-
-            <StyledDatePicker
-              className="datePicker"
-              value={firstContact}
-              label="First contact"
-              onChange={(newValue) => {
-                const formattedDate = format(
-                  newValue.$d,
-                  "yyyy-MM-dd"
-                ).toString();
-                setFirstContact(formattedDate);
-              }}
-            />
 
             <StyledTextField
               value={email}
@@ -243,15 +235,29 @@ const AddProfile = () => {
                 <MenuItem value="Manager">Manager</MenuItem>
               </Select>
             </FormControl>
+
+            <StyledDatePicker
+              className="datePicker"
+              value={firstContact}
+              label="First contact"
+              onChange={(newValue) => {
+                const formattedDate = format(
+                  newValue.$d,
+                  "yyyy-MM-dd"
+                ).toString();
+                setFirstContact(formattedDate);
+              }}
+            />
           </FieldContainer>
 
           <Button
+            style={{ width: "100%", padding: "1rem" }}
             type="submit"
             id="addButton"
             variant="contained"
             onClick={handleNewCandidate}
           >
-            Add profile
+            <Typography variant="h5">Add profile</Typography>
           </Button>
         </FormContainer>
       </form>
