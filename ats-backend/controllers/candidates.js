@@ -33,7 +33,7 @@ candidatesRouter.post("/", async (request, response) => {
     notice: null,
     language: null,
     contract: null,
-    notes: null,
+    notes: "",
     user: user._id,
   });
 
