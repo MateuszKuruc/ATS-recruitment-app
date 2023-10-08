@@ -18,9 +18,15 @@ import { useNavigate } from "react-router-dom";
 
 const FieldContainer = styled.div`
   display: flex;
+  flex-direction: column;
   background-color: #ffffff;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 0.5rem;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 1px solid red;
+  // justify-content: center;
+  width: 30rem;
 `;
 
 const FormContainer = styled.div`
@@ -35,10 +41,15 @@ const FormContainer = styled.div`
 
 export const StyledTextField = styled(TextField)`
   && {
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
+    width: 100%;
   }
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  width: 100%;
 `;
 
 const AddProfile = () => {
@@ -54,8 +65,8 @@ const AddProfile = () => {
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
+  const [firstNameError, setFirstNameError] = useState(true);
+  const [lastNameError, setLastNameError] = useState(true);
   const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [locationError, setLocationError] = useState(false);
@@ -150,117 +161,125 @@ const AddProfile = () => {
         <FormContainer>
           <h1>Create new profile</h1>
           <FieldContainer>
-            <div className="firstColumn">
-              <div>
-                <StyledTextField
-                  error={firstNameError}
-                  helperText={firstNameError ? "Incorrect name" : ""}
-                  value={firstName}
-                  label="First name"
-                  onChange={({ target }) => setFirstName(target.value)}
-                ></StyledTextField>
-              </div>
-              <div>
-                <StyledTextField
-                  value={lastName}
-                  label="Last name"
-                  onChange={({ target }) => setLastName(target.value)}
-                ></StyledTextField>
-              </div>
-              <div>
-                <StyledTextField
-                  value={location}
-                  label="Location"
-                  onChange={({ target }) => setLocation(target.value)}
-                ></StyledTextField>
-              </div>
+            {/* <div className="firstColumn" style={{border: "1px solid green"}}> */}
+            {/* <div> */}
+            <StyledTextField
+              error={firstNameError}
+              helperText={
+                firstNameError ? "Enter first name (min. 4 characters)" : ""
+              }
+              value={firstName}
+              label="First name"
+              onChange={({ target }) => setFirstName(target.value)}
+            ></StyledTextField>
+            {/* </div> */}
+            {/* <div> */}
+            <StyledTextField
+              error={lastNameError}
+              helperText={
+                lastNameError ? "Enter last name (min. 4 characters)" : ""
+              }
+              value={lastName}
+              label="Last name"
+              onChange={({ target }) => setLastName(target.value)}
+            ></StyledTextField>
+            {/* </div> */}
+            {/* <div> */}
+            <StyledTextField
+              value={location}
+              label="Location"
+              onChange={({ target }) => setLocation(target.value)}
+            ></StyledTextField>
+            {/* </div> */}
 
-              <div
-                style={{
-                  marginBottom: "2rem",
-                  width: "85%",
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "0.5rem",
-                }}
-              >
-                <DatePicker
-                  value={firstContact}
-                  label="First contact"
-                  onChange={(newValue) => {
-                    const formattedDate = format(
-                      newValue.$d,
-                      "yyyy-MM-dd"
-                    ).toString();
-                    setFirstContact(formattedDate);
-                  }}
-                />
-              </div>
-            </div>
+            {/* <div
+              style={{
+                // marginBottom: "2rem",
+                // width: "85%",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+              }}
+            > */}
+            {/* <div style={{ width: "100%", border: "1px solid blue"}}> */}
 
-            <div className="secondColumn">
-              <div>
-                <StyledTextField
-                  value={email}
-                  label="Email address"
-                  onChange={({ target }) => setEmail(target.value)}
-                ></StyledTextField>
-              </div>
-              <div>
-                <StyledTextField
-                  value={phone}
-                  label="Phone number"
-                  onChange={({ target }) => setPhone(target.value)}
-                ></StyledTextField>
-              </div>
-              <div
-                style={{
-                  backgroundColor: "#FFFFFF",
-                  borderRadius: "0.5rem",
-                  marginBottom: "2rem",
-                }}
-              >
-                <FormControl fullWidth>
-                  <InputLabel id="skill">Skill</InputLabel>
-                  <Select
-                    labelId="skill"
-                    label="Skill"
-                    value={skill}
-                    onChange={({ target }) => setSkill(target.value)}
-                  >
-                    <MenuItem value="Java">Java</MenuItem>
-                    <MenuItem value="Python">Python</MenuItem>
-                    <MenuItem value="JavaScript">JavaScript</MenuItem>
-                    <MenuItem value="C">C/C#/C++</MenuItem>
-                    <MenuItem value="Scala">Scala</MenuItem>
-                    <MenuItem value="BigData">Big Data</MenuItem>
-                    <MenuItem value="DevOps">DevOps</MenuItem>
-                    <MenuItem value="Mobile">Mobile</MenuItem>
-                    <MenuItem value="Golang">Golang</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
+            <StyledDatePicker
+              className="datePicker"
+              value={firstContact}
+              label="First contact"
+              onChange={(newValue) => {
+                const formattedDate = format(
+                  newValue.$d,
+                  "yyyy-MM-dd"
+                ).toString();
+                setFirstContact(formattedDate);
+              }}
+            />
+            {/* </div> */}
+            {/* </div> */}
+            {/* </div> */}
 
-              <div
-                style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}
+            {/* <div className="secondColumn" style={{border: "1px solid blue"}}> */}
+            {/* <div> */}
+            <StyledTextField
+              value={email}
+              label="Email address"
+              onChange={({ target }) => setEmail(target.value)}
+            ></StyledTextField>
+            {/* </div> */}
+            {/* <div> */}
+            <StyledTextField
+              value={phone}
+              label="Phone number"
+              onChange={({ target }) => setPhone(target.value)}
+            ></StyledTextField>
+            {/* </div> */}
+            {/* <div
+              style={{
+                backgroundColor: "#FFFFFF",
+                borderRadius: "0.5rem",
+                // marginBottom: "2rem",
+              }}
+            > */}
+            <FormControl fullWidth>
+              <InputLabel id="skill">Skill</InputLabel>
+              <Select
+                labelId="skill"
+                label="Skill"
+                value={skill}
+                onChange={({ target }) => setSkill(target.value)}
               >
-                <FormControl fullWidth>
-                  <InputLabel id="seniority">Seniority</InputLabel>
-                  <Select
-                    labelId="seniority"
-                    label="Seniority"
-                    value={seniority}
-                    onChange={({ target }) => setSeniority(target.value)}
-                  >
-                    <MenuItem value="Intern">Intern</MenuItem>
-                    <MenuItem value="Junior">Junior</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Senior">Senior</MenuItem>
-                    <MenuItem value="Lead">Lead</MenuItem>
-                    <MenuItem value="Manager">Manager</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-            </div>
+                <MenuItem value="Java">Java</MenuItem>
+                <MenuItem value="Python">Python</MenuItem>
+                <MenuItem value="JavaScript">JavaScript</MenuItem>
+                <MenuItem value="C">C/C#/C++</MenuItem>
+                <MenuItem value="Scala">Scala</MenuItem>
+                <MenuItem value="BigData">Big Data</MenuItem>
+                <MenuItem value="DevOps">DevOps</MenuItem>
+                <MenuItem value="Mobile">Mobile</MenuItem>
+                <MenuItem value="Golang">Golang</MenuItem>
+              </Select>
+            </FormControl>
+            {/* </div> */}
+
+            {/* <div style={{ backgroundColor: "#FFFFFF", borderRadius: "0.5rem" }}> */}
+            <FormControl fullWidth>
+              <InputLabel id="seniority">Seniority</InputLabel>
+              <Select
+                labelId="seniority"
+                label="Seniority"
+                value={seniority}
+                onChange={({ target }) => setSeniority(target.value)}
+              >
+                <MenuItem value="Intern">Intern</MenuItem>
+                <MenuItem value="Junior">Junior</MenuItem>
+                <MenuItem value="Regular">Regular</MenuItem>
+                <MenuItem value="Senior">Senior</MenuItem>
+                <MenuItem value="Lead">Lead</MenuItem>
+                <MenuItem value="Manager">Manager</MenuItem>
+              </Select>
+            </FormControl>
+            {/* </div> */}
+            {/* </div> */}
           </FieldContainer>
 
           <Button
