@@ -2,8 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
 import styled from "styled-components";
-import { secondaryColor, primaryColor } from "../App";
-import { FormControl, Select, InputLabel, MenuItem } from "@mui/material";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -34,11 +32,6 @@ const CandidateDetails = ({ candidates }) => {
   const [showNotes, setShowNotes] = useState(false);
 
   const notesShown = { display: showNotes ? "" : "none" };
-  // const labelStyles = {
-  //   backgroundColor: "white",
-  //   padding: "0.2rem",
-  //   borderRadius: "0.5rem",
-  // };
 
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
@@ -97,11 +90,7 @@ const CandidateDetails = ({ candidates }) => {
           inputProps={{
             readOnly: true,
           }}
-          // InputLabelProps={{
-          //   style: labelStyles,
-          // }}
           multiline
-          // label="Notes"
           rows={8}
           fullWidth
           value={candidate.notes}
@@ -209,8 +198,6 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-      
-
         <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
@@ -220,7 +207,7 @@ const CandidateDetails = ({ candidates }) => {
             ></StyledTextField>
           </StyledPaper>
         </Grid>
-        
+
         <Grid item xs={12} md={4}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
