@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import candidateService from "../services/candidates";
 import { useDispatch } from "react-redux";
+import { updateCandidate } from "../reducers/candidateReducer";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -75,6 +76,8 @@ const Feedback = () => {
       contract,
       notes,
     };
+
+    dispatch(updateCandidate(updatedCandidate));
   };
 
   return (
