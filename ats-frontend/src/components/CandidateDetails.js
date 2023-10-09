@@ -9,6 +9,8 @@ const StyledPaper = styled(Paper)`
   align-items: center;
   // border: 0.25rem solid #990033;
   padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
   // margin-bottom: 0;
   gap: 0.25rem;
 `;
@@ -21,6 +23,7 @@ const StyledTextField = styled(TextField)`
     border-radius: 0.5rem;
     // padding-right: 3rem;
     // width: auto
+    width: 15rem;
 
     ${(props) =>
       props.disabled &&
@@ -35,19 +38,40 @@ const StyledButton = styled(Button)`
   width: 15rem;
 `;
 
+const StyledHeader = styled.div`
+  && {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 1rem;
+    background-color: #084c61;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+  }
+`;
+
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
 
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
+  const [extendedFeedback, setExtendedFeedback] = useState(false);
 
   const notesShown = { display: showNotes ? "" : "none" };
 
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
     setCandidate(foundCandidate);
+    console.log("candidate details", foundCandidate);
   }, [candidates, id]);
+
+  useEffect(() => {
+    candidate?.assessment !== ""
+      ? setExtendedFeedback(true)
+      : setExtendedFeedback(false);
+  }, [candidate]);
 
   const toggleEdit = () => {
     setEditMode(!editMode);
@@ -71,7 +95,7 @@ const CandidateDetails = ({ candidates }) => {
         marginBottom: "1rem",
       }}
     >
-      <div
+      {/* <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -81,11 +105,13 @@ const CandidateDetails = ({ candidates }) => {
           padding: "1rem",
           borderRadius: "0.5rem",
         }}
-      >
+      > */}
+      <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
           {candidate.firstName} {candidate.lastName}
         </Typography>
-      </div>
+      </StyledHeader>
+
       <div style={{ display: "flex", gap: "0.5rem" }}>
         {candidate.assessment && (
           <div>
@@ -131,23 +157,39 @@ const CandidateDetails = ({ candidates }) => {
             </StyledButton>
           ) : null}
         </Grid>
+
+        <div className="notesShown" style={notesShown}>
+          <StyledTextField
+            style={{ marginBottom: "0rem" }}
+            inputProps={{
+              readOnly: true,
+            }}
+            multiline
+            rows={8}
+            fullWidth
+            value={candidate.notes}
+          ></StyledTextField>
+        </div>
       </div>
 
-      <div className="notesShown" style={notesShown}>
-        <StyledTextField
-          style={{ marginBottom: "0rem" }}
-          inputProps={{
-            readOnly: true,
-          }}
-          multiline
-          rows={8}
-          fullWidth
-          value={candidate.notes}
-        ></StyledTextField>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          marginBottom: "1rem",
+          backgroundColor: "#084c61",
+          padding: "1rem",
+          borderRadius: "0.5rem",
+        }}
+      >
+        <Typography variant="h3" style={{ color: "#ffffff" }}>
+          Basic details
+        </Typography>
       </div>
 
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
@@ -157,7 +199,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
@@ -167,7 +209,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
@@ -177,18 +219,17 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
               value={candidate.phone}
               disabled={!editMode}
-              // readOnly={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
@@ -198,7 +239,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
             <StyledTextField
@@ -208,7 +249,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
             <StyledTextField
@@ -218,7 +259,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
             <StyledTextField
@@ -227,8 +268,26 @@ const CandidateDetails = ({ candidates }) => {
             ></StyledTextField>
           </StyledPaper>
         </Grid>
+      </Grid>
 
-        <Grid item xs={12} md={4}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignContent: "center",
+          marginBottom: "1rem",
+          backgroundColor: "#084c61",
+          padding: "1rem",
+          borderRadius: "0.5rem",
+        }}
+      >
+        <Typography variant="h3" style={{ color: "#ffffff" }}>
+          Extended feedback
+        </Typography>
+      </div>
+
+      <Grid container spacing={3} style={{ marginTop: "1rem" }}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
             <StyledTextField
@@ -238,7 +297,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
             <StyledTextField
@@ -248,7 +307,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">English level</Typography>
             <StyledTextField
@@ -258,7 +317,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
             <StyledTextField
