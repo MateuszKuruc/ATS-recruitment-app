@@ -11,6 +11,11 @@ const candidateSlice = createSlice({
     addCandidate(state, action) {
       state.push(action.payload);
     },
+    updateCandidate(state, action) {
+      return state.map((candidate) =>
+        candidate.id === action.payload.id ? action.payload : candidate
+      );
+    },
   },
 });
 
@@ -42,4 +47,11 @@ export const removeCandidate = (id) => {
   };
 };
 
-
+export const updateCandidate = (updatedCandidate) => {
+  return async (dispatch) => {
+    const updatedCandidateResponse = await candidateService.updateCandidateById(
+      updatedCandidate
+    );
+    dispatch(updateCandidate(updatedCandidateResponse));
+  };
+};
