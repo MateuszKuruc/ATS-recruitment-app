@@ -54,9 +54,9 @@ candidatesRouter.delete("/:id", async (request, response) => {
   }
 
   const candidate = await Candidate.findById(id);
-  const user = await User.findById(decodedToken);
+  const user = await User.findById(decodedToken.id);
 
-  if (user.id.toString() !== candidate.user.toString()) {
+  if (user._id.toString() !== candidate.user.toString()) {
     response
       .status(401)
       .json({ error: "No authorization to delete this candidate" });
