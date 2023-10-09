@@ -41,3 +41,5 @@ export const removeCandidate = (id) => {
     dispatch(setCandidates(candidates));
   };
 };
+
+

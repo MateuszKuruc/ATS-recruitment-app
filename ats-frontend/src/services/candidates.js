@@ -47,10 +47,29 @@ const deleteCandidateById = async (id) => {
   }
 };
 
+const updateCandidateById = async (updatedCandidate) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+
+  try {
+    const response = await axios.put(
+      `${baseUrl}/${updatedCandidate.id}`,
+      updatedCandidate,
+      config
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("error while making PUT request", error);
+  }
+};
+
 export default {
   getAll,
   setToken,
   create,
   getById,
   deleteCandidateById,
+  updateCandidateById,
 };

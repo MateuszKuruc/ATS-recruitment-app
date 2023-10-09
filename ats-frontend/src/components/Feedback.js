@@ -11,6 +11,7 @@ import {
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import candidateService from "../services/candidates";
+import { useDispatch } from "react-redux";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ const StyledLine = styled.div`
 
 const Feedback = () => {
   const id = useParams().id;
+  const dispatch = useDispatch();
 
   const [candidate, setCandidate] = useState(null);
   const [assessment, setAssessment] = useState("6 - Rockstar");
@@ -66,8 +68,14 @@ const Feedback = () => {
   }, [id]);
 
   const handleFeedback = () => {
-    
-  }
+    const updatedCandidate = {
+      assessment,
+      notice,
+      language,
+      contract,
+      notes,
+    };
+  };
 
   return (
     <StyledContainer>
