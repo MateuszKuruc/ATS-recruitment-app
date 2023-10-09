@@ -96,11 +96,6 @@ const Feedback = () => {
 
     dispatch(updateCandidate(updatedCandidate));
 
-    // setAssessment("6 - Rockstar");
-    // setNotice("Available now");
-    // setLanguage("A1");
-    // setNotes("");
-
     navigate(`/candidates/${candidate.id}`);
   };
 
@@ -124,7 +119,6 @@ const Feedback = () => {
             labelId="assessment"
             label="assessment"
             value={assessment}
-            // value={candidate.assessment ? candidate.assessment : assessment}
             onChange={({ target }) => setAssessment(target.value)}
           >
             <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
@@ -144,7 +138,6 @@ const Feedback = () => {
             labelId="noticeperiod"
             label="notice-period"
             value={notice}
-            // value={candidate?.notice ? candidate.notice : notice}
             onChange={({ target }) => setNotice(target.value)}
           >
             <MenuItem value="Available now">Available now</MenuItem>
@@ -163,7 +156,6 @@ const Feedback = () => {
             labelId="language"
             label="english"
             value={language}
-            // value={candidate?.language ? candidate.language : language}
             onChange={({ target }) => setLanguage(target.value)}
           >
             <MenuItem value="A1">A1</MenuItem>
@@ -184,7 +176,6 @@ const Feedback = () => {
             labelId="contract"
             label="contract-type"
             value={contract}
-            // value={candidate?.contract ? candidate.contract : contract}
             onChange={({ target }) => setContract(target.value)}
           >
             <MenuItem value="UoP">UoP - contract of employment</MenuItem>
