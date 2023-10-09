@@ -5,7 +5,6 @@ import {
   Tooltip,
   Popover,
   List,
-  ListItem,
   ListItemText,
   ListItemButton,
 } from "@mui/material";
@@ -20,7 +19,6 @@ import { useState } from "react";
 const MainAppBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const login = useSelector((state) => state.login);
-  console.log("login", login);
 
   const open = Boolean(anchorEl);
 
@@ -66,10 +64,7 @@ const MainAppBar = () => {
           <div>
             <Tooltip title={`${login.username} logged in`}>
               <IconButton onClick={handleOpenMenu}>
-                <AccountBoxIcon
-                  style={{ fontSize: "2rem" }}
-                  
-                />
+                <AccountBoxIcon style={{ fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
             <Popover
@@ -95,7 +90,6 @@ const MainAppBar = () => {
                   <ListItemText primary="Feedback" />
                 </ListItemButton>
                 <ListItemButton
-                  
                   component={Link}
                   to="/help"
                   onClick={handleCloseMenu}

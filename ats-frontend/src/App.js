@@ -122,7 +122,6 @@ function App() {
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
-  console.log("candidates", candidates);
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -152,8 +151,6 @@ function App() {
 
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
-
-      console.log("logged user:", loggedUser);
 
       setUsername("");
       setPassword("");

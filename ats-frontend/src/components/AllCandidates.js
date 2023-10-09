@@ -26,8 +26,6 @@ export const getColorForAssessment = (assessment) => {
 
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
-  console.log("userId in all candidates", userId);
-  console.log("candidates in all candidates", candidates);
 
   useEffect(() => {
     const filtered = candidates.filter(
@@ -35,8 +33,6 @@ const AllCandidates = ({ candidates, userId }) => {
     );
     setFilteredCandidates(filtered);
   }, [candidates, userId]);
-
-  console.log("filtered in all candidates", filteredCandidates);
 
   const rows = filteredCandidates.map((candidate) => ({
     id: candidate.id,
