@@ -35,7 +35,8 @@ const StyledTextField = styled(TextField)`
 `;
 
 const StyledButton = styled(Button)`
-  width: 15rem;
+  // width: 15rem;
+  flex: 1;
 `;
 
 const StyledHeader = styled.div`
@@ -47,7 +48,7 @@ const StyledHeader = styled.div`
     background-color: #084c61;
     padding: 1rem;
     border-radius: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -95,20 +96,12 @@ const CandidateDetails = ({ candidates }) => {
         marginBottom: "1rem",
       }}
     >
-      {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-          marginBottom: "1rem",
-          backgroundColor: "#084c61",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      > */}
+    
       <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
-          {candidate.firstName} {candidate.lastName}
+          <i>
+            {candidate.firstName} {candidate.lastName}
+          </i>
         </Typography>
       </StyledHeader>
 
@@ -172,21 +165,11 @@ const CandidateDetails = ({ candidates }) => {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-          marginBottom: "1rem",
-          backgroundColor: "#084c61",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
+      <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
           Basic details
         </Typography>
-      </div>
+      </StyledHeader>
 
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
@@ -270,21 +253,11 @@ const CandidateDetails = ({ candidates }) => {
         </Grid>
       </Grid>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-          marginBottom: "1rem",
-          backgroundColor: "#084c61",
-          padding: "1rem",
-          borderRadius: "0.5rem",
-        }}
-      >
+      <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
           Extended feedback
         </Typography>
-      </div>
+      </StyledHeader>
 
       <Grid container spacing={3} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
