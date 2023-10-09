@@ -89,7 +89,9 @@ const CandidateDetails = ({ candidates }) => {
     <div
       style={{
         backgroundColor: "#c0d9e7",
-        padding: "2rem",
+        paddingRight: "2rem",
+        paddingLeft: "2rem",
+        paddingBottom: "2rem",
         marginTop: "1rem",
         borderRadius: "0.5rem",
         marginBottom: "1rem",
