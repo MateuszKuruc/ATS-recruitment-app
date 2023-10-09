@@ -26,8 +26,13 @@ const StyledTextField = styled(TextField)`
       props.disabled &&
       `
     background-color: #c0d9e7;
-    border: 0.15rem solid #084c61
+    border: 0.15rem solid #084c61;
+    color: #ffffff
     `}
+`;
+
+const StyledButton = styled(Button)`
+  width: 15rem;
 `;
 
 const CandidateDetails = ({ candidates }) => {
@@ -84,25 +89,48 @@ const CandidateDetails = ({ candidates }) => {
       <div style={{ display: "flex", gap: "0.5rem" }}>
         {candidate.assessment && (
           <div>
-            <Button variant="contained" color="secondary" onClick={toggleNotes}>
+            <StyledButton
+              variant="contained"
+              color="secondary"
+              onClick={toggleNotes}
+            >
               {showNotes ? "Hide feedback" : "Show feedback"}
-            </Button>
+            </StyledButton>
           </div>
         )}
 
         {!candidate.assessment ? (
           <Link to={`/candidates/${candidate.id}/feedback`}>
-            <Button variant="contained" color="secondary">
+            <StyledButton variant="contained" color="secondary">
               Provide feedback
-            </Button>
+            </StyledButton>
           </Link>
         ) : (
           <Link to={`/candidates/${candidate.id}/feedback`}>
-            <Button variant="contained" color="secondary">
+            <StyledButton variant="contained" color="secondary">
               Edit feedback
-            </Button>
+            </StyledButton>
           </Link>
         )}
+
+        <Grid item xs={12} style={{ display: "flex", gap: "0.5rem" }}>
+          <StyledButton
+            variant="contained"
+            color={!editMode ? "secondary" : "primary"}
+            onClick={toggleEdit}
+          >
+            {editMode ? "Save" : "Edit"}
+          </StyledButton>
+          {editMode ? (
+            <StyledButton
+              variant="contained"
+              color="inherit"
+              onClick={toggleEdit}
+            >
+              Cancel
+            </StyledButton>
+          ) : null}
+        </Grid>
       </div>
 
       <div className="notesShown" style={notesShown}>
@@ -238,17 +266,6 @@ const CandidateDetails = ({ candidates }) => {
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Button variant="contained" color="secondary" onClick={toggleEdit}>
-            {editMode ? "Save" : "Edit"}
-          </Button>
-          {editMode ? (
-            <Button variant="contained" color="inherit" onClick={toggleEdit}>
-              Cancel
-            </Button>
-          ) : null}
         </Grid>
       </Grid>
     </div>
