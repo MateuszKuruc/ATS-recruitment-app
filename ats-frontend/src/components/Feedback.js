@@ -63,7 +63,11 @@ const Feedback = () => {
         const candidate = await candidateService.getById(id);
         console.log("fucking candidate", candidate);
         setCandidate(candidate);
+        setNotice(candidate.notice);
+        setLanguage(candidate.language);
+        setContract(candidate.contract);
         setNotes(candidate.notes);
+        setAssessment(candidate.assessment);
       } catch (error) {
         console.error("error", error);
       }
@@ -119,7 +123,8 @@ const Feedback = () => {
           <Select
             labelId="assessment"
             label="assessment"
-            value={candidate?.assessment ? candidate.assessment : assessment}
+            value={assessment}
+            // value={candidate.assessment ? candidate.assessment : assessment}
             onChange={({ target }) => setAssessment(target.value)}
           >
             <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
@@ -138,7 +143,8 @@ const Feedback = () => {
           <Select
             labelId="noticeperiod"
             label="notice-period"
-            value={candidate?.notice ? candidate.notice : notice}
+            value={notice}
+            // value={candidate?.notice ? candidate.notice : notice}
             onChange={({ target }) => setNotice(target.value)}
           >
             <MenuItem value="Available now">Available now</MenuItem>
@@ -156,7 +162,8 @@ const Feedback = () => {
           <Select
             labelId="language"
             label="english"
-            value={candidate?.language ? candidate.language : language}
+            value={language}
+            // value={candidate?.language ? candidate.language : language}
             onChange={({ target }) => setLanguage(target.value)}
           >
             <MenuItem value="A1">A1</MenuItem>
@@ -176,7 +183,8 @@ const Feedback = () => {
           <Select
             labelId="contract"
             label="contract-type"
-            value={candidate?.contract ? candidate.contract : contract}
+            value={contract}
+            // value={candidate?.contract ? candidate.contract : contract}
             onChange={({ target }) => setContract(target.value)}
           >
             <MenuItem value="UoP">UoP - contract of employment</MenuItem>
