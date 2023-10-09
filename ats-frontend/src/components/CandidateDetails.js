@@ -85,7 +85,9 @@ const CandidateDetails = ({ candidates }) => {
     setOpenDialog(false);
   };
 
-  const notesShown = { display: showNotes ? "" : "none" };
+  const notesShown = {
+    display: showNotes ? "flex" : "none",
+  };
 
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
@@ -201,9 +203,9 @@ const CandidateDetails = ({ candidates }) => {
             readOnly: true,
           }}
           multiline
-          rows={8}
-          fullWidth
+          rows={10}
           value={candidate.notes}
+          style={{ flex: "1" }}
         ></StyledTextField>
       </div>
 
