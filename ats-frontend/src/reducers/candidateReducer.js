@@ -11,7 +11,7 @@ const candidateSlice = createSlice({
     addCandidate(state, action) {
       state.push(action.payload);
     },
-    updateCandidate(state, action) {
+    updateCandidateInStore(state, action) {
       return state.map((candidate) =>
         candidate.id === action.payload.id ? action.payload : candidate
       );
@@ -20,7 +20,8 @@ const candidateSlice = createSlice({
 });
 
 export default candidateSlice.reducer;
-export const { setCandidates, addCandidate } = candidateSlice.actions;
+export const { setCandidates, addCandidate, updateCandidateInStore } =
+  candidateSlice.actions;
 
 export const initializeCandidates = () => {
   return async (dispatch) => {
@@ -54,6 +55,6 @@ export const updateCandidate = (updatedCandidate) => {
     );
 
     console.log("updated candidate in reducer", updatedCandidateResponse);
-    dispatch(updateCandidate(updatedCandidateResponse));
+    dispatch(updateCandidateInStore(updatedCandidateResponse));
   };
 };

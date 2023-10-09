@@ -92,10 +92,10 @@ const Feedback = () => {
 
     dispatch(updateCandidate(updatedCandidate));
 
-    setAssessment("6 - Rockstar");
-    setNotice("Available now");
-    setLanguage("A1");
-    setNotes("");
+    // setAssessment("6 - Rockstar");
+    // setNotice("Available now");
+    // setLanguage("A1");
+    // setNotes("");
 
     navigate(`/candidates/${candidate.id}`);
   };
@@ -203,7 +203,7 @@ const Feedback = () => {
         <Button
           variant="contained"
           style={{ height: "3rem", flex: "1" }}
-          onClick={handleFeedback}
+          onClick={() => handleFeedback()}
         >
           <Typography variant="h6">Submit</Typography>
         </Button>
