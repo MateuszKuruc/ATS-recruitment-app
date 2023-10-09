@@ -195,13 +195,22 @@ const Feedback = () => {
           onChange={({ target }) => setNotes(target.value)}
         />
       </StyledLine>
-      <Button
-        variant="contained"
-        style={{ height: "3rem" }}
-        onClick={handleFeedback}
-      >
-        Submit
-      </Button>
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <Button
+          variant="contained"
+          style={{ height: "3rem", flex: "1" }}
+          onClick={handleFeedback}
+        >
+          Submit
+        </Button>
+        <Button
+          variant="outlined"
+          style={{ height: "3rem", flex: "1" }}
+          onClick={handleFeedback}
+        >
+          Cancel
+        </Button>
+      </div>
     </StyledContainer>
   );
 };
