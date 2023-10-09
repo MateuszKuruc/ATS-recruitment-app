@@ -43,6 +43,13 @@ const Feedback = () => {
   const id = useParams().id;
 
   const [candidate, setCandidate] = useState(null);
+  const [assessment, setAssessment] = useState("6 - Rockstar");
+  const [notice, setNotice] = useState("Available now");
+  const [language, setLanguage] = useState("A1");
+  const [contract, setContract] = useState("UoP");
+  const [notes, setNotes] = useState("");
+
+  console.log(assessment, notice, language, contract, notes);
 
   useEffect(() => {
     const fetchById = async () => {
@@ -58,11 +65,9 @@ const Feedback = () => {
     fetchById();
   }, [id]);
 
-  const [assessment, setAssessment] = useState("");
-  const [notice, setNotice] = useState("");
-  const [contract, setContract] = useState("");
-  const [notes, setNotes] = useState("");
-  const [language, setLanguage] = useState("");
+  const handleFeedback = () => {
+    
+  }
 
   return (
     <StyledContainer>
@@ -74,9 +79,8 @@ const Feedback = () => {
           <Select
             labelId="assessment"
             label="assessment"
-            value={
-              candidate?.assessment ? candidate.assessment : "6 - Rockstar"
-            }
+            value={candidate?.assessment ? candidate.assessment : assessment}
+            onChange={({ target }) => setAssessment(target.value)}
           >
             <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
             <MenuItem value="2 - No hire">2 - No hire</MenuItem>
@@ -94,7 +98,8 @@ const Feedback = () => {
           <Select
             labelId="notice"
             label="notice"
-            value={candidate?.notice ? candidate.notice : "Available now"}
+            value={candidate?.notice ? candidate.notice : notice}
+            onChange={({ target }) => setNotice(target.value)}
           >
             <MenuItem value="Available now">Available now</MenuItem>
             <MenuItem value="2 weeks">2 weeks</MenuItem>
@@ -111,7 +116,8 @@ const Feedback = () => {
           <Select
             labelId="language"
             label="language"
-            value={candidate?.language ? candidate.language : "A1"}
+            value={candidate?.language ? candidate.language : language}
+            onChange={({ target }) => setLanguage(target.value)}
           >
             <MenuItem value="A1">A1</MenuItem>
             <MenuItem value="A2">A2</MenuItem>
@@ -130,7 +136,8 @@ const Feedback = () => {
           <Select
             labelId="contract"
             label="contract"
-            value={candidate?.contract ? candidate.contract : "UoP"}
+            value={candidate?.contract ? candidate.contract : contract}
+            onChange={({ target }) => setContract(target.value)}
           >
             <MenuItem value="UoP">UoP - contract of employment</MenuItem>
             <MenuItem value="B2B">B2B</MenuItem>
@@ -144,9 +151,14 @@ const Feedback = () => {
           multiline
           rows={8}
           fullWidth
+          onChange={({ target }) => setNotes(target.value)}
         />
       </StyledLine>
-      <Button variant="contained" style={{ height: "3rem" }}>
+      <Button
+        variant="contained"
+        style={{ height: "3rem" }}
+        onClick={handleFeedback}
+      >
         Submit
       </Button>
     </StyledContainer>
