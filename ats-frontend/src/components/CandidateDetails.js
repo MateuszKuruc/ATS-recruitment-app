@@ -35,7 +35,6 @@ const StyledTextField = styled(TextField)`
 `;
 
 const StyledButton = styled(Button)`
-  // width: 15rem;
   flex: 1;
 `;
 
@@ -104,17 +103,14 @@ const CandidateDetails = ({ candidates }) => {
         </Typography>
       </StyledHeader>
 
-      {/* <div style={{ display: "flex", border: "1px solid red" }}> */}
       <div
         style={{
           display: "flex",
           gap: "0.5rem",
-          border: "1px solid blue",
           flex: "1",
         }}
       >
         {candidate.assessment && (
-          // <div>
           <StyledButton
             variant="contained"
             color="secondary"
@@ -122,7 +118,6 @@ const CandidateDetails = ({ candidates }) => {
           >
             {showNotes ? "Hide feedback" : "Show feedback"}
           </StyledButton>
-          // </div>
         )}
 
         {!candidate.assessment ? (
@@ -135,7 +130,6 @@ const CandidateDetails = ({ candidates }) => {
             Provide feedback
           </StyledButton>
         ) : (
-          // <Link to={`/candidates/${candidate.id}/feedback`}>
           <StyledButton
             variant="contained"
             color="secondary"
@@ -144,7 +138,6 @@ const CandidateDetails = ({ candidates }) => {
           >
             Edit feedback
           </StyledButton>
-          // </Link>
         )}
 
         <StyledButton
@@ -177,7 +170,6 @@ const CandidateDetails = ({ candidates }) => {
           value={candidate.notes}
         ></StyledTextField>
       </div>
-      {/* </div> */}
 
       <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
