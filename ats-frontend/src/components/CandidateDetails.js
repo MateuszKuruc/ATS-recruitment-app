@@ -190,7 +190,7 @@ const CandidateDetails = ({ candidates }) => {
             color="inherit"
             onClick={toggleEdit}
           >
-            Cancel
+            <Typography variant="h6">Cancel</Typography>
           </StyledButton>
         ) : null}
       </div>
@@ -373,10 +373,10 @@ const CandidateDetails = ({ candidates }) => {
               color="secondary"
               onClick={() => deleteCandidate(candidate.id)}
             >
-              Confirm
+              <Typography variant="h6">Confirm</Typography>
             </Button>
             <Button variant="outlined" onClick={closeDialogWindow} autoFocus>
-              Cancel
+              <Typography variant="h6">Cancel</Typography>
             </Button>
           </DialogActions>
         </Dialog>
