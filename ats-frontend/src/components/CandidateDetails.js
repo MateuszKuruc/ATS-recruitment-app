@@ -1,6 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Grid, Paper, Typography, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Typography,
+  TextField,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 import styled from "styled-components";
 
 const StyledPaper = styled(Paper)`
@@ -58,6 +69,19 @@ const CandidateDetails = ({ candidates }) => {
   const [candidate, setCandidate] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
   const [editModeExtended, setEditModeExtended] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const openDialogWindow = () => {
+    setOpenDialog(true);
+  };
+
+  const closeDialogWindow = () => {
+    setOpenDialog(false);
+  };
+
+  const deleteCandidate = () => {
+
+  }
 
   const notesShown = { display: showNotes ? "" : "none" };
 
@@ -304,6 +328,41 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
       </Grid>
+      <div
+        style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}
+      >
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={openDialogWindow}
+        >
+          <Typography>Delete profile</Typography>
+        </StyledButton>
+        <Dialog
+          open={openDialog}
+          onClose={closeDialogWindow}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Delete candidate's profile?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              This action will delete all data connected with candidate from the
+              database. Deleting a profile is irreversible.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button variant="contained" color="secondary" onClick={closeDialogWindow}>
+              Confirm
+            </Button>
+            <Button variant="outlined" onClick={closeDialogWindow} autoFocus>
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     </div>
   );
 };
