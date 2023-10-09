@@ -52,6 +52,8 @@ export const updateCandidate = (updatedCandidate) => {
     const updatedCandidateResponse = await candidateService.updateCandidateById(
       updatedCandidate
     );
+
+    console.log("updated candidate in reducer", updatedCandidateResponse);
     dispatch(updateCandidate(updatedCandidateResponse));
   };
 };

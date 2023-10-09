@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import candidateService from "../services/candidates";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
 
 const StyledContainer = styled.div`
@@ -44,6 +45,7 @@ const StyledLine = styled.div`
 const Feedback = () => {
   const id = useParams().id;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [candidate, setCandidate] = useState(null);
   const [assessment, setAssessment] = useState("6 - Rockstar");
@@ -61,6 +63,7 @@ const Feedback = () => {
         const candidate = await candidateService.getById(id);
         console.log("fucking candidate", candidate);
         setCandidate(candidate);
+        setNotes(candidate.notes);
       } catch (error) {
         console.error("error", error);
       }
@@ -72,10 +75,12 @@ const Feedback = () => {
   const handleFeedback = () => {
     setNotesError(false);
 
-    if (notes.length < 5) {
+    if (notes.length < 6) {
       setNotesError(true);
+      return;
     }
     const updatedCandidate = {
+      ...candidate,
       assessment,
       notice,
       language,
@@ -83,7 +88,16 @@ const Feedback = () => {
       notes,
     };
 
+    console.log("updated candidate in feedback", updatedCandidate);
+
     dispatch(updateCandidate(updatedCandidate));
+
+    setAssessment("6 - Rockstar");
+    setNotice("Available now");
+    setLanguage("A1");
+    setNotes("");
+
+    navigate(`/candidates/${candidate.id}`);
   };
 
   return (
@@ -169,8 +183,12 @@ const Feedback = () => {
       <StyledLine>
         <Typography variant="h6">Notes</Typography>
         <StyledTextField
-          label="Add notes here..."
+          label={notes === "" ? "Add notes here..." : ""}
           error={notesError}
+          helperText={
+            notesError ? "Notes need to be min. 6 characters long" : ""
+          }
+          value={notes}
           multiline
           rows={8}
           fullWidth

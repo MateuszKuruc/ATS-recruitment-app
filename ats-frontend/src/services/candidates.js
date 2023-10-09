@@ -58,7 +58,7 @@ const updateCandidateById = async (updatedCandidate) => {
       updatedCandidate,
       config
     );
-
+    console.log("response in candidate service", response);
     return response.data;
   } catch (error) {
     console.error("error while making PUT request", error);
