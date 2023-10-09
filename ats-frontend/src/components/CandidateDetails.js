@@ -96,7 +96,6 @@ const CandidateDetails = ({ candidates }) => {
         marginBottom: "1rem",
       }}
     >
-    
       <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
           <i>
@@ -105,65 +104,80 @@ const CandidateDetails = ({ candidates }) => {
         </Typography>
       </StyledHeader>
 
-      <div style={{ display: "flex", gap: "0.5rem" }}>
+      {/* <div style={{ display: "flex", border: "1px solid red" }}> */}
+      <div
+        style={{
+          display: "flex",
+          gap: "0.5rem",
+          border: "1px solid blue",
+          flex: "1",
+        }}
+      >
         {candidate.assessment && (
-          <div>
-            <StyledButton
-              variant="contained"
-              color="secondary"
-              onClick={toggleNotes}
-            >
-              {showNotes ? "Hide feedback" : "Show feedback"}
-            </StyledButton>
-          </div>
+          // <div>
+          <StyledButton
+            variant="contained"
+            color="secondary"
+            onClick={toggleNotes}
+          >
+            {showNotes ? "Hide feedback" : "Show feedback"}
+          </StyledButton>
+          // </div>
         )}
 
         {!candidate.assessment ? (
-          <Link to={`/candidates/${candidate.id}/feedback`}>
-            <StyledButton variant="contained" color="secondary">
-              Provide feedback
-            </StyledButton>
-          </Link>
-        ) : (
-          <Link to={`/candidates/${candidate.id}/feedback`}>
-            <StyledButton variant="contained" color="secondary">
-              Edit feedback
-            </StyledButton>
-          </Link>
-        )}
-
-        <Grid item xs={12} style={{ display: "flex", gap: "0.5rem" }}>
           <StyledButton
             variant="contained"
-            color={!editMode ? "secondary" : "primary"}
+            color="secondary"
+            component={Link}
+            to={`/candidates/${candidate.id}/feedback`}
+          >
+            Provide feedback
+          </StyledButton>
+        ) : (
+          // <Link to={`/candidates/${candidate.id}/feedback`}>
+          <StyledButton
+            variant="contained"
+            color="secondary"
+            component={Link}
+            to={`/candidates/${candidate.id}/feedback`}
+          >
+            Edit feedback
+          </StyledButton>
+          // </Link>
+        )}
+
+        <StyledButton
+          variant="contained"
+          color={!editMode ? "secondary" : "primary"}
+          onClick={toggleEdit}
+        >
+          {editMode ? "Save" : "Edit"}
+        </StyledButton>
+        {editMode ? (
+          <StyledButton
+            variant="contained"
+            color="inherit"
             onClick={toggleEdit}
           >
-            {editMode ? "Save" : "Edit"}
+            Cancel
           </StyledButton>
-          {editMode ? (
-            <StyledButton
-              variant="contained"
-              color="inherit"
-              onClick={toggleEdit}
-            >
-              Cancel
-            </StyledButton>
-          ) : null}
-        </Grid>
-
-        <div className="notesShown" style={notesShown}>
-          <StyledTextField
-            style={{ marginBottom: "0rem" }}
-            inputProps={{
-              readOnly: true,
-            }}
-            multiline
-            rows={8}
-            fullWidth
-            value={candidate.notes}
-          ></StyledTextField>
-        </div>
+        ) : null}
       </div>
+
+      <div className="notesShown" style={notesShown}>
+        <StyledTextField
+          style={{ marginBottom: "0rem" }}
+          inputProps={{
+            readOnly: true,
+          }}
+          multiline
+          rows={8}
+          fullWidth
+          value={candidate.notes}
+        ></StyledTextField>
+      </div>
+      {/* </div> */}
 
       <StyledHeader>
         <Typography variant="h3" style={{ color: "#ffffff" }}>
