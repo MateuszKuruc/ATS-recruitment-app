@@ -16,6 +16,7 @@ import styled from "styled-components";
 
 import { removeCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -68,6 +69,7 @@ const StyledHeader = styled.div`
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
@@ -88,7 +90,6 @@ const CandidateDetails = ({ candidates }) => {
   useEffect(() => {
     const foundCandidate = candidates.find((candidate) => candidate.id === id);
     setCandidate(foundCandidate);
-    console.log("candidate details", foundCandidate);
   }, [candidates, id]);
 
   const toggleEdit = () => {
@@ -104,6 +105,7 @@ const CandidateDetails = ({ candidates }) => {
 
   const deleteCandidate = (id) => {
     dispatch(removeCandidate(id));
+    navigate("/candidates");
   };
 
   if (!candidate) {

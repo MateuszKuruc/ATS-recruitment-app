@@ -36,9 +36,11 @@ const deleteCandidateById = async (id) => {
   const config = {
     headers: { Authorization: token },
   };
+  console.log("config in candidate service", config);
 
   try {
     const response = await axios.delete(`${baseUrl}/${id}`, config);
+
     return response.data;
   } catch (error) {
     console.error("error while making DELETE request", error);

@@ -37,6 +37,7 @@ export const removeCandidate = (id) => {
   return async (dispatch) => {
     await candidateService.deleteCandidateById(id);
     const candidates = await candidateService.getAll();
+
     dispatch(setCandidates(candidates));
   };
 };
