@@ -57,7 +57,7 @@ const CandidateDetails = ({ candidates }) => {
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
   const [showNotes, setShowNotes] = useState(false);
-  const [extendedFeedback, setExtendedFeedback] = useState(false);
+  const [editModeExtended, setEditModeExtended] = useState(false);
 
   const notesShown = { display: showNotes ? "" : "none" };
 
@@ -67,14 +67,11 @@ const CandidateDetails = ({ candidates }) => {
     console.log("candidate details", foundCandidate);
   }, [candidates, id]);
 
-  useEffect(() => {
-    candidate?.assessment !== ""
-      ? setExtendedFeedback(true)
-      : setExtendedFeedback(false);
-  }, [candidate]);
-
   const toggleEdit = () => {
     setEditMode(!editMode);
+    if (candidate.assessment !== "") {
+      setEditModeExtended(!editModeExtended);
+    }
   };
 
   const toggleNotes = () => {
@@ -162,7 +159,6 @@ const CandidateDetails = ({ candidates }) => {
 
       <div className="notesShown" style={notesShown}>
         <StyledTextField
-          style={{ marginBottom: "0rem" }}
           inputProps={{
             readOnly: true,
           }}
@@ -273,7 +269,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Notice period</Typography>
             <StyledTextField
               value={candidate.notice}
-              disabled={!editMode}
+              disabled={!editModeExtended}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -283,7 +279,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Contract type</Typography>
             <StyledTextField
               value={candidate.contract}
-              disabled={!editMode}
+              disabled={!editModeExtended}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -293,7 +289,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">English level</Typography>
             <StyledTextField
               value={candidate.language}
-              disabled={!editMode}
+              disabled={!editModeExtended}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -303,7 +299,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Assessment</Typography>
             <StyledTextField
               value={candidate.assessment}
-              disabled={!editMode}
+              disabled={!editModeExtended}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
