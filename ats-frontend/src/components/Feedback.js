@@ -51,6 +51,7 @@ const Feedback = () => {
   const [language, setLanguage] = useState("A1");
   const [contract, setContract] = useState("UoP");
   const [notes, setNotes] = useState("");
+  const [notesError, setNotesError] = useState(false);
 
   console.log(assessment, notice, language, contract, notes);
 
@@ -69,6 +70,11 @@ const Feedback = () => {
   }, [id]);
 
   const handleFeedback = () => {
+    setNotesError(false);
+
+    if (notes.length < 5) {
+      setNotesError(true);
+    }
     const updatedCandidate = {
       assessment,
       notice,
@@ -82,7 +88,12 @@ const Feedback = () => {
 
   return (
     <StyledContainer>
-      <Typography variant="h3">Meeting feedback</Typography>
+      <Typography
+        variant="h3"
+        style={{ alignSelf: "center", marginBottom: "1rem" }}
+      >
+        Meeting feedback
+      </Typography>
       <StyledLine>
         <Typography variant="h6">Final assessment</Typography>
         <FormControl fullWidth>
@@ -107,8 +118,8 @@ const Feedback = () => {
         <FormControl fullWidth>
           <InputLabel id="notice">Notice period</InputLabel>
           <Select
-            labelId="notice"
-            label="notice"
+            labelId="noticeperiod"
+            label="notice-period"
             value={candidate?.notice ? candidate.notice : notice}
             onChange={({ target }) => setNotice(target.value)}
           >
@@ -126,7 +137,7 @@ const Feedback = () => {
           <InputLabel id="language">English</InputLabel>
           <Select
             labelId="language"
-            label="language"
+            label="english"
             value={candidate?.language ? candidate.language : language}
             onChange={({ target }) => setLanguage(target.value)}
           >
@@ -146,7 +157,7 @@ const Feedback = () => {
           <InputLabel id="contract">Contract type</InputLabel>
           <Select
             labelId="contract"
-            label="contract"
+            label="contract-type"
             value={candidate?.contract ? candidate.contract : contract}
             onChange={({ target }) => setContract(target.value)}
           >
@@ -159,6 +170,7 @@ const Feedback = () => {
         <Typography variant="h6">Notes</Typography>
         <StyledTextField
           label="Add notes here..."
+          error={notesError}
           multiline
           rows={8}
           fullWidth
