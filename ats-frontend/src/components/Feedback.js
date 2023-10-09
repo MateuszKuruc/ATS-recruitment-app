@@ -100,6 +100,10 @@ const Feedback = () => {
     navigate(`/candidates/${candidate.id}`);
   };
 
+  const handleGoingBack = () => {
+    window.history.back();
+  };
+
   return (
     <StyledContainer>
       <Typography
@@ -206,7 +210,7 @@ const Feedback = () => {
         <Button
           variant="outlined"
           style={{ height: "3rem", flex: "1" }}
-          onClick={handleFeedback}
+          onClick={handleGoingBack}
         >
           Cancel
         </Button>
