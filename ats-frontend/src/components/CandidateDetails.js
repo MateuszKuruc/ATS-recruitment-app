@@ -125,26 +125,6 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <Typography variant="italic">Email address</Typography>
-            <StyledTextField
-              value={candidate.email}
-              disabled={!editMode}
-            ></StyledTextField>
-          </StyledPaper>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <StyledPaper>
-            <Typography variant="italic">Contract type</Typography>
-            <StyledTextField
-              value={candidate.contract}
-              disabled={!editMode}
-            ></StyledTextField>
-          </StyledPaper>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
               value={candidate.lastName}
@@ -155,9 +135,9 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <Typography variant="italic">Phone number</Typography>
+            <Typography variant="italic">Email address</Typography>
             <StyledTextField
-              value={candidate.phone}
+              value={candidate.email}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -165,9 +145,9 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <Typography variant="italic">Notice period</Typography>
+            <Typography variant="italic">Phone number</Typography>
             <StyledTextField
-              value={candidate.notice}
+              value={candidate.phone}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -195,9 +175,9 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <Typography variant="italic">English level</Typography>
+            <Typography variant="italic">Seniority</Typography>
             <StyledTextField
-              value={candidate.language}
+              value={candidate.seniority}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
@@ -215,9 +195,29 @@ const CandidateDetails = ({ candidates }) => {
 
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <Typography variant="italic">Seniority</Typography>
+            <Typography variant="italic">Notice period</Typography>
             <StyledTextField
-              value={candidate.seniority}
+              value={candidate.notice}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">Contract type</Typography>
+            <StyledTextField
+              value={candidate.contract}
+              disabled={!editMode}
+            ></StyledTextField>
+          </StyledPaper>
+        </Grid>
+
+        <Grid item xs={12} md={4}>
+          <StyledPaper>
+            <Typography variant="italic">English level</Typography>
+            <StyledTextField
+              value={candidate.language}
               disabled={!editMode}
             ></StyledTextField>
           </StyledPaper>
