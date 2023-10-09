@@ -205,14 +205,14 @@ const Feedback = () => {
           style={{ height: "3rem", flex: "1" }}
           onClick={handleFeedback}
         >
-          Submit
+          <Typography variant="h6">Submit</Typography>
         </Button>
         <Button
           variant="outlined"
           style={{ height: "3rem", flex: "1" }}
           onClick={handleGoingBack}
         >
-          Cancel
+          <Typography variant="h6">Cancel</Typography>
         </Button>
       </div>
     </StyledContainer>

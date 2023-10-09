@@ -145,7 +145,11 @@ const CandidateDetails = ({ candidates }) => {
             color="secondary"
             onClick={toggleNotes}
           >
-            {showNotes ? "Hide feedback" : "Show feedback"}
+            {showNotes ? (
+              <Typography variant="h6">Hide feedback</Typography>
+            ) : (
+              <Typography variant="h6">Show feedback</Typography>
+            )}
           </StyledButton>
         )}
 
@@ -156,7 +160,7 @@ const CandidateDetails = ({ candidates }) => {
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            Provide feedback
+            <Typography variant="h6">Provide feedback</Typography>
           </StyledButton>
         ) : (
           <StyledButton
@@ -165,7 +169,7 @@ const CandidateDetails = ({ candidates }) => {
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            Edit feedback
+            <Typography variant="h6">Edit feedback</Typography>
           </StyledButton>
         )}
 
@@ -174,7 +178,11 @@ const CandidateDetails = ({ candidates }) => {
           color={!editMode ? "secondary" : "primary"}
           onClick={toggleEdit}
         >
-          {editMode ? "Save" : "Edit"}
+          {editMode ? (
+            <Typography variant="h6">Save</Typography>
+          ) : (
+            <Typography variant="h6">Edit</Typography>
+          )}
         </StyledButton>
         {editMode ? (
           <StyledButton
@@ -342,7 +350,7 @@ const CandidateDetails = ({ candidates }) => {
           color="secondary"
           onClick={openDialogWindow}
         >
-          <Typography>Delete profile</Typography>
+          <Typography variant="h6">Delete profile</Typography>
         </StyledButton>
         <Dialog
           open={openDialog}
