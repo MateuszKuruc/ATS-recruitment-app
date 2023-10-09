@@ -21,7 +21,13 @@ const StyledTextField = styled(TextField)`
     border-radius: 0.5rem;
     // padding-right: 3rem;
     // width: auto
-  }
+
+    ${(props) =>
+      props.disabled &&
+      `
+    background-color: #c0d9e7;
+    border: 0.15rem solid #084c61
+    `}
 `;
 
 const CandidateDetails = ({ candidates }) => {
@@ -149,6 +155,7 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={candidate.phone}
               disabled={!editMode}
+              // readOnly={!editMode}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
