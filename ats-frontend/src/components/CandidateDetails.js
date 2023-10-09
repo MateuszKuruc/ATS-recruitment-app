@@ -14,6 +14,9 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 
+import { removeCandidate } from "../reducers/candidateReducer";
+import { useDispatch } from "react-redux";
+
 const StyledPaper = styled(Paper)`
   display: flex;
   justify-content: space-between;
@@ -64,6 +67,7 @@ const StyledHeader = styled.div`
 
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
+  const dispatch = useDispatch();
 
   const [editMode, setEditMode] = useState(false);
   const [candidate, setCandidate] = useState(null);
@@ -78,10 +82,6 @@ const CandidateDetails = ({ candidates }) => {
   const closeDialogWindow = () => {
     setOpenDialog(false);
   };
-
-  const deleteCandidate = () => {
-
-  }
 
   const notesShown = { display: showNotes ? "" : "none" };
 
@@ -100,6 +100,10 @@ const CandidateDetails = ({ candidates }) => {
 
   const toggleNotes = () => {
     setShowNotes(!showNotes);
+  };
+
+  const deleteCandidate = (id) => {
+    dispatch(removeCandidate(id));
   };
 
   if (!candidate) {
@@ -354,7 +358,11 @@ const CandidateDetails = ({ candidates }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="contained" color="secondary" onClick={closeDialogWindow}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => deleteCandidate(candidate.id)}
+            >
               Confirm
             </Button>
             <Button variant="outlined" onClick={closeDialogWindow} autoFocus>

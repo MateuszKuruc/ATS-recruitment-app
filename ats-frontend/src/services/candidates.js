@@ -18,7 +18,6 @@ const create = async (newCandidate) => {
     headers: { Authorization: token },
   };
 
-  console.log("config", config, "new candidate:", newCandidate);
   try {
     const response = await axios.post(baseUrl, newCandidate, config);
     console.log(response);
@@ -33,9 +32,23 @@ const getById = async (id) => {
   return response.data;
 };
 
+const deleteCandidateById = async (id) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+
+  try {
+    const response = await axios.delete(`${baseUrl}/${id}`, config);
+    return response.data;
+  } catch (error) {
+    console.error("error while making DELETE request", error);
+  }
+};
+
 export default {
   getAll,
   setToken,
   create,
   getById,
+  deleteCandidateById,
 };
