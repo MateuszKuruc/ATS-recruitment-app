@@ -48,14 +48,14 @@ const StyledTextField = styled(TextField)`
     // padding-right: 3rem;
     // width: auto
     width: 15rem;
-    border: 0.15rem solid  #990033;
+    // border: 0.15rem solid  #990033;
 
     ${(props) =>
       props.disabled &&
       `
     // background-color: #c0d9e7;
     // border: 0.15rem solid #084c61;
-    border: 0.15rem solid  #990033;
+    // border: 0.15rem solid  #990033;
     color: #ffffff
     `}
 `;
@@ -67,7 +67,7 @@ const StyledFormControl = styled(FormControl)`
   background-color: #ffffff;
   border-radius: 0.5rem;
   width: 15rem;
-  border: 0.15rem solid  #990033;
+  // border: 0.15rem solid  #990033;
 `;
 
 const StyledButton = styled(Button)`
@@ -337,7 +337,16 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select value={candidate.skill} disabled={!editMode}>
+              <Select
+                value={editMode ? editedCandidate.skill : candidate.skill}
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    skill: target.value,
+                  })
+                }
+              >
                 <MenuItem value="Java">Java</MenuItem>
                 <MenuItem value="Python">Python</MenuItem>
                 <MenuItem value="JavaScript">JavaScript</MenuItem>
@@ -360,7 +369,18 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select value={candidate.seniority} disabled={!editMode}>
+              <Select
+                value={
+                  editMode ? editedCandidate.seniority : candidate.seniority
+                }
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    seniority: target.value,
+                  })
+                }
+              >
                 <MenuItem value="Intern">Intern</MenuItem>
                 <MenuItem value="Junior">Junior</MenuItem>
                 <MenuItem value="Regular">Regular</MenuItem>
