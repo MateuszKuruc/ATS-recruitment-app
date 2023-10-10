@@ -17,6 +17,8 @@ import styled from "styled-components";
 import { removeCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import candidateService from "../services/candidates";
+import { updateCandidate } from "../reducers/candidateReducer";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -77,6 +79,11 @@ const CandidateDetails = ({ candidates }) => {
   const [editModeExtended, setEditModeExtended] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
+  const [firstName, setFirstName] = useState("initialValue");
+  const [lastName, setLastName] = useState("");
+
+  console.log("first name", firstName);
+
   const openDialogWindow = () => {
     setOpenDialog(true);
   };
@@ -99,6 +106,11 @@ const CandidateDetails = ({ candidates }) => {
     if (candidate.assessment !== "") {
       setEditModeExtended(!editModeExtended);
     }
+  };
+
+  const cancelEdit = () => {
+    setFirstName("initialValue");
+    toggleEdit();
   };
 
   const toggleNotes = () => {
@@ -190,7 +202,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledButton
             variant="contained"
             color="inherit"
-            onClick={toggleEdit}
+            onClick={cancelEdit}
           >
             <Typography variant="h6">Cancel</Typography>
           </StyledButton>
@@ -220,8 +232,11 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
-              value={candidate.firstName}
+              value={
+                firstName !== "initialValue" ? firstName : candidate.firstName
+              }
               disabled={!editMode}
+              onChange={({ target }) => setFirstName(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
