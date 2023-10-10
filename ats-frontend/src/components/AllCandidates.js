@@ -29,7 +29,7 @@ const AllCandidates = ({ candidates, userId }) => {
 
   useEffect(() => {
     const filtered = candidates.filter(
-      (candidate) => candidate.user.id === userId
+      (candidate) => candidate.user === userId
     );
     setFilteredCandidates(filtered);
   }, [candidates, userId]);

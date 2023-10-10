@@ -136,7 +136,12 @@ const CandidateDetails = ({ candidates }) => {
   }, [candidates, id]);
 
   useEffect(() => {
-    console.log("editec candidate use effect", editedCandidate);
+    console.log(
+      "editec candidate use effect",
+      editedCandidate,
+      "original candidate",
+      candidate
+    );
   }, [editedCandidate]);
 
   const enterEditMode = () => {
@@ -149,7 +154,7 @@ const CandidateDetails = ({ candidates }) => {
 
   const saveEdit = () => {
     console.log("edited candidate in saving", editedCandidate);
-    // dispatch(updateCandidate(editedCandidate));
+    dispatch(updateCandidate(editedCandidate));
 
     setEditMode(false);
   };

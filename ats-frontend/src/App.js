@@ -127,6 +127,8 @@ function App() {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
+  console.log('candidates app', candidates)
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
 

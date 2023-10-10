@@ -50,11 +50,12 @@ export const removeCandidate = (id) => {
 
 export const updateCandidate = (updatedCandidate) => {
   return async (dispatch) => {
+    console.log("updated candidate in reducer 1", updatedCandidate);
     const updatedCandidateResponse = await candidateService.updateCandidateById(
       updatedCandidate
     );
 
-    console.log("updated candidate in reducer", updatedCandidateResponse);
+    console.log("updated candidate in reducer 2", updatedCandidateResponse);
     dispatch(updateCandidateInStore(updatedCandidateResponse));
   };
 };
