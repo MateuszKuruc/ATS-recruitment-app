@@ -14,6 +14,7 @@ import candidateService from "../services/candidates";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
+import format from "date-fns/format";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -54,6 +55,7 @@ const Feedback = () => {
   const [contract, setContract] = useState("UoP");
   const [notes, setNotes] = useState("");
   const [notesError, setNotesError] = useState(false);
+  // const [edit, setEdit] = useState("");
 
   useEffect(() => {
     const fetchById = async () => {
@@ -88,6 +90,7 @@ const Feedback = () => {
       language,
       contract,
       notes,
+      edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
     };
 
     dispatch(updateCandidate(updatedCandidate));

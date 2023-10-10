@@ -80,7 +80,7 @@ const StyledButton = styled(Button)`
 const StyledHeader = styled.div`
   && {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
     margin-bottom: 1rem;
     background-color: #084c61;
@@ -103,6 +103,10 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
+  useEffect(() => {
+    console.log("editedCandidate has changed:", editedCandidate);
+  }, [editedCandidate]);
+
   const openDialogWindow = () => {
     setOpenDialog(true);
   };
@@ -123,14 +127,19 @@ const CandidateDetails = ({ candidates }) => {
   const enterEditMode = () => {
     setEditMode(true);
     setEditedCandidate({ ...candidate });
+    console.log("edited in edit", editedCandidate);
     if (candidate.assessment !== "") {
       setEditModeExtended(!editModeExtended);
     }
   };
 
   const saveEdit = () => {
-    dispatch(updateCandidate(editedCandidate));
-
+    const updatedCandidate = {
+      ...editedCandidate,
+      edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
+    };
+    // dispatch(updateCandidate(editedCandidate));
+    dispatch(updateCandidate(updatedCandidate));
     setEditMode(false);
   };
 
@@ -170,6 +179,9 @@ const CandidateDetails = ({ candidates }) => {
           <i>
             {candidate.firstName} {candidate.lastName}
           </i>
+        </Typography>
+        <Typography variant="italic" style={{ color: "#fefefe" }}>
+          Last edited: {candidate.edit}
         </Typography>
       </StyledHeader>
 
