@@ -11,6 +11,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import styled from "styled-components";
 
@@ -19,6 +23,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import candidateService from "../services/candidates";
 import { updateCandidate } from "../reducers/candidateReducer";
+
+import { format } from "date-fns";
+import { DatePicker } from "@mui/x-date-pickers";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -41,14 +48,26 @@ const StyledTextField = styled(TextField)`
     // padding-right: 3rem;
     // width: auto
     width: 15rem;
+    border: 0.15rem solid  #990033;
 
     ${(props) =>
       props.disabled &&
       `
-    background-color: #c0d9e7;
-    border: 0.15rem solid #084c61;
+    // background-color: #c0d9e7;
+    // border: 0.15rem solid #084c61;
+    border: 0.15rem solid  #990033;
     color: #ffffff
     `}
+`;
+
+const StyledFormControl = styled(FormControl)`
+&& {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  width: 15rem;
+  border: 0.15rem solid  #990033;
 `;
 
 const StyledButton = styled(Button)`
@@ -80,9 +99,15 @@ const CandidateDetails = ({ candidates }) => {
   const [openDialog, setOpenDialog] = useState(false);
 
   const [firstName, setFirstName] = useState("initialValue");
-  const [lastName, setLastName] = useState("");
-
-  console.log("first name", firstName);
+  const [lastName, setLastName] = useState("initialValue");
+  const [email, setEmail] = useState("initialValue");
+  const [phone, setPhone] = useState("initialValue");
+  const [location, setLocation] = useState("initialValue");
+  const [skill, setSkill] = useState("initialValue");
+  const [seniority, setSeniority] = useState("initialValue");
+  const [firstContact, setFirstContact] = useState("initialValue");
+  // const [email, setEmail] = useState("initialValue");
+  // const [email, setEmail] = useState("initialValue");
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -245,8 +270,11 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
-              value={candidate.lastName}
+              value={
+                lastName !== "initialValue" ? lastName : candidate.lastName
+              }
               disabled={!editMode}
+              onChange={({ target }) => setLastName(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -255,8 +283,9 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
-              value={candidate.email}
+              value={email !== "initialValue" ? email : candidate.email}
               disabled={!editMode}
+              onChange={({ target }) => setEmail(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -265,8 +294,9 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
-              value={candidate.phone}
+              value={phone !== "initialValue" ? phone : candidate.phone}
               disabled={!editMode}
+              onChange={({ target }) => setPhone(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -275,8 +305,11 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
-              value={candidate.location}
+              value={
+                location !== "initialValue" ? location : candidate.location
+              }
               disabled={!editMode}
+              onChange={({ target }) => setLocation(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -284,12 +317,61 @@ const CandidateDetails = ({ candidates }) => {
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
-            <StyledTextField
-              value={candidate.skill}
-              disabled={!editMode}
-            ></StyledTextField>
+            {/* <StyledTextField
+               value={skill !== "initialValue" ? skill : candidate.skill}
+               disabled={!editMode}
+               onChange={({ target }) => setSkill(target.value)}
+            ></StyledTextField> */}
+
+            <StyledFormControl
+            // fullWidth
+            // error={skillError}
+            >
+              {/* <InputLabel id="skill">Skill</InputLabel> */}
+              <Select
+                // labelId="skill"
+                // label="Skill"
+                value={skill !== "initialValue" ? skill : candidate.skill}
+                disabled={!editMode}
+                onChange={({ target }) => setSkill(target.value)}
+                sx={{ input: { color: "white" } }}
+              >
+                <MenuItem value="Java">Java</MenuItem>
+                <MenuItem value="Python">Python</MenuItem>
+                <MenuItem value="JavaScript">JavaScript</MenuItem>
+                <MenuItem value="C">C/C#/C++</MenuItem>
+                <MenuItem value="Scala">Scala</MenuItem>
+                <MenuItem value="BigData">Big Data</MenuItem>
+                <MenuItem value="DevOps">DevOps</MenuItem>
+                <MenuItem value="Mobile">Mobile</MenuItem>
+                <MenuItem value="Golang">Golang</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
+
+        {/* <FormControl 
+        fullWidth 
+        // error={skillError}
+        >
+              <InputLabel id="skill">Skill</InputLabel>
+              <Select
+                labelId="skill"
+                label="Skill"
+                value={skill}
+                onChange={({ target }) => setSkill(target.value)}
+              >
+                <MenuItem value="Java">Java</MenuItem>
+                <MenuItem value="Python">Python</MenuItem>
+                <MenuItem value="JavaScript">JavaScript</MenuItem>
+                <MenuItem value="C">C/C#/C++</MenuItem>
+                <MenuItem value="Scala">Scala</MenuItem>
+                <MenuItem value="BigData">Big Data</MenuItem>
+                <MenuItem value="DevOps">DevOps</MenuItem>
+                <MenuItem value="Mobile">Mobile</MenuItem>
+                <MenuItem value="Golang">Golang</MenuItem>
+              </Select>
+            </FormControl> */}
 
         <Grid item xs={12} md={6}>
           <StyledPaper>
