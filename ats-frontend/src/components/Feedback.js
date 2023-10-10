@@ -103,6 +103,10 @@ const Feedback = () => {
     window.history.back();
   };
 
+  if (candidate === null) {
+    return null;
+  }
+
   return (
     <StyledContainer>
       <Typography

@@ -101,18 +101,22 @@ const CandidateDetails = ({ candidates }) => {
   const [editModeExtended, setEditModeExtended] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
-  const [firstName, setFirstName] = useState("initialValue");
-  const [lastName, setLastName] = useState("initialValue");
-  const [email, setEmail] = useState("initialValue");
-  const [phone, setPhone] = useState("initialValue");
-  const [location, setLocation] = useState("initialValue");
-  const [skill, setSkill] = useState("initialValue");
-  const [seniority, setSeniority] = useState("initialValue");
-  const [firstContact, setFirstContact] = useState("initialValue");
-  const [notice, setNotice] = useState("initialValue");
-  const [language, setLanguage] = useState("initialValue");
-  const [contract, setContract] = useState("initialValue");
-  const [assessment, setAssessment] = useState("initialValue");
+  const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
+
+  // const [firstName, setFirstName] = useState("initialValue");
+  // const [lastName, setLastName] = useState("initialValue");
+  // const [email, setEmail] = useState("initialValue");
+  // const [phone, setPhone] = useState("initialValue");
+  // const [location, setLocation] = useState("initialValue");
+  // const [skill, setSkill] = useState("initialValue");
+  // const [seniority, setSeniority] = useState("initialValue");
+  // const [firstContact, setFirstContact] = useState("initialValue");
+  // const [notice, setNotice] = useState("initialValue");
+  // const [language, setLanguage] = useState("initialValue");
+  // const [contract, setContract] = useState("initialValue");
+  // const [assessment, setAssessment] = useState("initialValue");
+
+  // const [updatedCandidate, setUpdatedCandidate] = useState(null);
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -135,27 +139,21 @@ const CandidateDetails = ({ candidates }) => {
     setEditMode(!editMode);
     if (candidate.assessment !== "") {
       setEditModeExtended(!editModeExtended);
+      setEditedCandidate({ ...candidate });
     }
   };
 
-  const resetFields = () => {
-    setFirstName("initialValue");
-    setLastName("initialValue");
-    setEmail("initialValue");
-    setPhone("initialValue");
-    setLocation("initialValue");
-    setSkill("initialValue");
-    setSeniority("initialValue");
-    setFirstContact("initialValue");
-    setNotice("initialValue");
-    setContract("initialValue");
-    setLanguage("initialValue");
-    setAssessment("initialValue");
+  const saveEdit = () => {
+    console.log("edited candidate in saving", editedCandidate);
+    // dispatch(updateCandidate(editedCandidate));
+
+    setEditMode(false);
   };
 
   const cancelEdit = () => {
-    resetFields();
-    toggleEdit();
+    setEditedCandidate({ ...candidate });
+
+    setEditMode(false);
   };
 
   const toggleNotes = () => {
@@ -235,7 +233,7 @@ const CandidateDetails = ({ candidates }) => {
         <StyledButton
           variant="contained"
           color={!editMode ? "secondary" : "primary"}
-          onClick={toggleEdit}
+          onClick={!editMode ? () => toggleEdit() : () => saveEdit()}
         >
           {editMode ? (
             <Typography variant="h6">Save</Typography>
@@ -272,16 +270,19 @@ const CandidateDetails = ({ candidates }) => {
         </Typography>
       </StyledHeader>
 
-      <Grid container spacing={3} style={{ marginTop: "1rem" }}>
+      <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
-              value={
-                firstName !== "initialValue" ? firstName : candidate.firstName
-              }
+              value={editMode ? editedCandidate.firstName : candidate.firstName}
               disabled={!editMode}
-              onChange={({ target }) => setFirstName(target.value)}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  firstName: target.value,
+                })
+              }
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -290,11 +291,8 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
-              value={
-                lastName !== "initialValue" ? lastName : candidate.lastName
-              }
+              value={candidate.lastName}
               disabled={!editMode}
-              onChange={({ target }) => setLastName(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -303,9 +301,8 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
-              value={email !== "initialValue" ? email : candidate.email}
+              value={candidate.email}
               disabled={!editMode}
-              onChange={({ target }) => setEmail(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -314,9 +311,8 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
-              value={phone !== "initialValue" ? phone : candidate.phone}
+              value={candidate.phone}
               disabled={!editMode}
-              onChange={({ target }) => setPhone(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -325,11 +321,8 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
-              value={
-                location !== "initialValue" ? location : candidate.location
-              }
+              value={candidate.location}
               disabled={!editMode}
-              onChange={({ target }) => setLocation(target.value)}
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -342,11 +335,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={skill !== "initialValue" ? skill : candidate.skill}
-                disabled={!editMode}
-                onChange={({ target }) => setSkill(target.value)}
-              >
+              <Select value={candidate.skill} disabled={!editMode}>
                 <MenuItem value="Java">Java</MenuItem>
                 <MenuItem value="Python">Python</MenuItem>
                 <MenuItem value="JavaScript">JavaScript</MenuItem>
@@ -369,13 +358,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={
-                  seniority !== "initialValue" ? seniority : candidate.seniority
-                }
-                disabled={!editMode}
-                onChange={({ target }) => setSeniority(target.value)}
-              >
+              <Select value={candidate.seniority} disabled={!editMode}>
                 <MenuItem value="Intern">Intern</MenuItem>
                 <MenuItem value="Junior">Junior</MenuItem>
                 <MenuItem value="Regular">Regular</MenuItem>
@@ -404,7 +387,7 @@ const CandidateDetails = ({ candidates }) => {
         </Typography>
       </StyledHeader>
 
-      <Grid container spacing={3} style={{ marginTop: "1rem" }}>
+      <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
@@ -412,11 +395,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={notice !== "initialValue" ? notice : candidate.notice}
-                disabled={!editMode}
-                onChange={({ target }) => setNotice(target.value)}
-              >
+              <Select value={candidate.notice} disabled={!editMode}>
                 <MenuItem value="Available now">Available now</MenuItem>
                 <MenuItem value="2 weeks">2 weeks</MenuItem>
                 <MenuItem value="1 month">1 month</MenuItem>
@@ -435,13 +414,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={
-                  contract !== "initialValue" ? contract : candidate.contract
-                }
-                disabled={!editMode}
-                onChange={({ target }) => setContract(target.value)}
-              >
+              <Select value={candidate.contract} disabled={!editMode}>
                 <MenuItem value="UoP">UoP - contract of employment</MenuItem>
                 <MenuItem value="B2B">B2B</MenuItem>
               </Select>
@@ -457,13 +430,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={
-                  language !== "initialValue" ? language : candidate.language
-                }
-                disabled={!editMode}
-                onChange={({ target }) => setLanguage(target.value)}
-              >
+              <Select value={candidate.language} disabled={!editMode}>
                 <MenuItem value="A1">A1</MenuItem>
                 <MenuItem value="A2">A2</MenuItem>
                 <MenuItem value="B1">B1</MenuItem>
@@ -484,15 +451,7 @@ const CandidateDetails = ({ candidates }) => {
 
             // error={skillError}
             >
-              <Select
-                value={
-                  assessment !== "initialValue"
-                    ? assessment
-                    : candidate.assessment
-                }
-                disabled={!editMode}
-                onChange={({ target }) => setAssessment(target.value)}
-              >
+              <Select value={candidate.assessment} disabled={!editMode}>
                 <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
                 <MenuItem value="2 - No hire">2 - No hire</MenuItem>
                 <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
