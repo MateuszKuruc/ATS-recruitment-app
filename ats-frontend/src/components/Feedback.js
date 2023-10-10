@@ -55,13 +55,11 @@ const Feedback = () => {
   const [notes, setNotes] = useState("");
   const [notesError, setNotesError] = useState(false);
 
-  console.log(assessment, notice, language, contract, notes);
-
   useEffect(() => {
     const fetchById = async () => {
       try {
         const candidate = await candidateService.getById(id);
-        console.log("fucking candidate", candidate);
+
         setCandidate(candidate);
         setNotice(candidate.notice);
         setLanguage(candidate.language);
@@ -91,8 +89,6 @@ const Feedback = () => {
       contract,
       notes,
     };
-
-    console.log("updated candidate in feedback", updatedCandidate);
 
     dispatch(updateCandidate(updatedCandidate));
 
