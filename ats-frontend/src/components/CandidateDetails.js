@@ -103,21 +103,6 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  // const [firstName, setFirstName] = useState("initialValue");
-  // const [lastName, setLastName] = useState("initialValue");
-  // const [email, setEmail] = useState("initialValue");
-  // const [phone, setPhone] = useState("initialValue");
-  // const [location, setLocation] = useState("initialValue");
-  // const [skill, setSkill] = useState("initialValue");
-  // const [seniority, setSeniority] = useState("initialValue");
-  // const [firstContact, setFirstContact] = useState("initialValue");
-  // const [notice, setNotice] = useState("initialValue");
-  // const [language, setLanguage] = useState("initialValue");
-  // const [contract, setContract] = useState("initialValue");
-  // const [assessment, setAssessment] = useState("initialValue");
-
-  // const [updatedCandidate, setUpdatedCandidate] = useState(null);
-
   const openDialogWindow = () => {
     setOpenDialog(true);
   };
@@ -135,15 +120,6 @@ const CandidateDetails = ({ candidates }) => {
     setCandidate(foundCandidate);
   }, [candidates, id]);
 
-  useEffect(() => {
-    console.log(
-      "editec candidate use effect",
-      editedCandidate,
-      "original candidate",
-      candidate
-    );
-  }, [editedCandidate]);
-
   const enterEditMode = () => {
     setEditMode(true);
     setEditedCandidate({ ...candidate });
@@ -153,7 +129,6 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const saveEdit = () => {
-    console.log("edited candidate in saving", editedCandidate);
     dispatch(updateCandidate(editedCandidate));
 
     setEditMode(false);
