@@ -71,7 +71,10 @@ const StyledFormControl = styled(FormControl)`
 `;
 
 const StyledButton = styled(Button)`
-  flex: 1;
+  && {
+    flex: 1;
+    padding: 1rem;
+  }
 `;
 
 const StyledHeader = styled.div`
@@ -106,8 +109,10 @@ const CandidateDetails = ({ candidates }) => {
   const [skill, setSkill] = useState("initialValue");
   const [seniority, setSeniority] = useState("initialValue");
   const [firstContact, setFirstContact] = useState("initialValue");
-  // const [email, setEmail] = useState("initialValue");
-  // const [email, setEmail] = useState("initialValue");
+  const [notice, setNotice] = useState("initialValue");
+  const [language, setLanguage] = useState("initialValue");
+  const [contract, setContract] = useState("initialValue");
+  const [assessment, setAssessment] = useState("initialValue");
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -317,24 +322,15 @@ const CandidateDetails = ({ candidates }) => {
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
-            {/* <StyledTextField
-               value={skill !== "initialValue" ? skill : candidate.skill}
-               disabled={!editMode}
-               onChange={({ target }) => setSkill(target.value)}
-            ></StyledTextField> */}
 
             <StyledFormControl
-            // fullWidth
+
             // error={skillError}
             >
-              {/* <InputLabel id="skill">Skill</InputLabel> */}
               <Select
-                // labelId="skill"
-                // label="Skill"
                 value={skill !== "initialValue" ? skill : candidate.skill}
                 disabled={!editMode}
                 onChange={({ target }) => setSkill(target.value)}
-                sx={{ input: { color: "white" } }}
               >
                 <MenuItem value="Java">Java</MenuItem>
                 <MenuItem value="Python">Python</MenuItem>
@@ -350,36 +346,29 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        {/* <FormControl 
-        fullWidth 
-        // error={skillError}
-        >
-              <InputLabel id="skill">Skill</InputLabel>
-              <Select
-                labelId="skill"
-                label="Skill"
-                value={skill}
-                onChange={({ target }) => setSkill(target.value)}
-              >
-                <MenuItem value="Java">Java</MenuItem>
-                <MenuItem value="Python">Python</MenuItem>
-                <MenuItem value="JavaScript">JavaScript</MenuItem>
-                <MenuItem value="C">C/C#/C++</MenuItem>
-                <MenuItem value="Scala">Scala</MenuItem>
-                <MenuItem value="BigData">Big Data</MenuItem>
-                <MenuItem value="DevOps">DevOps</MenuItem>
-                <MenuItem value="Mobile">Mobile</MenuItem>
-                <MenuItem value="Golang">Golang</MenuItem>
-              </Select>
-            </FormControl> */}
-
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
-            <StyledTextField
-              value={candidate.seniority}
-              disabled={!editMode}
-            ></StyledTextField>
+
+            <StyledFormControl
+
+            // error={skillError}
+            >
+              <Select
+                value={
+                  seniority !== "initialValue" ? seniority : candidate.seniority
+                }
+                disabled={!editMode}
+                onChange={({ target }) => setSeniority(target.value)}
+              >
+                <MenuItem value="Intern">Intern</MenuItem>
+                <MenuItem value="Junior">Junior</MenuItem>
+                <MenuItem value="Regular">Regular</MenuItem>
+                <MenuItem value="Senior">Senior</MenuItem>
+                <MenuItem value="Lead">Lead</MenuItem>
+                <MenuItem value="Manager">Manager</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
 
@@ -404,40 +393,103 @@ const CandidateDetails = ({ candidates }) => {
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
-            <StyledTextField
-              value={candidate.notice}
-              disabled={!editModeExtended}
-            ></StyledTextField>
+            <StyledFormControl
+
+            // error={skillError}
+            >
+              <Select
+                value={notice !== "initialValue" ? notice : candidate.notice}
+                disabled={!editMode}
+                onChange={({ target }) => setNotice(target.value)}
+              >
+                <MenuItem value="Available now">Available now</MenuItem>
+                <MenuItem value="2 weeks">2 weeks</MenuItem>
+                <MenuItem value="1 month">1 month</MenuItem>
+                <MenuItem value="2 months">2 months</MenuItem>
+                <MenuItem value="3 months">3 months</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
-            <StyledTextField
-              value={candidate.contract}
-              disabled={!editModeExtended}
-            ></StyledTextField>
+
+            <StyledFormControl
+
+            // error={skillError}
+            >
+              <Select
+                value={
+                  contract !== "initialValue" ? contract : candidate.contract
+                }
+                disabled={!editMode}
+                onChange={({ target }) => setContract(target.value)}
+              >
+                <MenuItem value="UoP">UoP - contract of employment</MenuItem>
+                <MenuItem value="B2B">B2B</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={6}>
           <StyledPaper>
-            <Typography variant="italic">English level</Typography>
-            <StyledTextField
-              value={candidate.language}
-              disabled={!editModeExtended}
-            ></StyledTextField>
+            <Typography variant="italic">English</Typography>
+
+            <StyledFormControl
+
+            // error={skillError}
+            >
+              <Select
+                value={
+                  language !== "initialValue" ? language : candidate.language
+                }
+                disabled={!editMode}
+                onChange={({ target }) => setLanguage(target.value)}
+              >
+                <MenuItem value="A1">A1</MenuItem>
+                <MenuItem value="A2">A2</MenuItem>
+                <MenuItem value="B1">B1</MenuItem>
+                <MenuItem value="B2">B2</MenuItem>
+                <MenuItem value="C1">C1</MenuItem>
+                <MenuItem value="C2">C2</MenuItem>
+                <MenuItem value="Native">Native</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
 
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
-            <StyledTextField
-              value={candidate.assessment}
-              disabled={!editModeExtended}
-            ></StyledTextField>
+
+            <StyledFormControl
+
+            // error={skillError}
+            >
+              <Select
+                value={
+                  assessment !== "initialValue"
+                    ? assessment
+                    : candidate.assessment
+                }
+                disabled={!editMode}
+                onChange={({ target }) => setAssessment(target.value)}
+              >
+                <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
+                <MenuItem value="2 - No hire">2 - No hire</MenuItem>
+                <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
+                <MenuItem value="4 - Good candidate">
+                  4 - Good candidate
+                </MenuItem>
+                <MenuItem value="5 - Great candidate">
+                  5 - Great candidate
+                </MenuItem>
+                <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
+              </Select>
+            </StyledFormControl>
           </StyledPaper>
         </Grid>
       </Grid>
