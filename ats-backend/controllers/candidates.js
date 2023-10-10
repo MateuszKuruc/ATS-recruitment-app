@@ -4,7 +4,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 candidatesRouter.get("/", async (request, response) => {
-  const candidates = await Candidate.find({}).populate("user");
+  const candidates = await Candidate.find({});
   response.json(candidates);
 });
 
@@ -38,7 +38,7 @@ candidatesRouter.post("/", async (request, response) => {
   });
 
   const savedCandidate = await candidate.save();
-  savedCandidate.populate("user");
+
   user.candidates = user.candidates.concat(savedCandidate);
   await user.save();
 
@@ -79,7 +79,7 @@ candidatesRouter.put("/:id", async (request, response) => {
     {
       new: true,
     }
-  ).populate("user");
+  );
 
   response.json(updatedCandidate);
 });
