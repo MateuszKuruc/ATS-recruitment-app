@@ -291,8 +291,11 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
-              value={candidate.email}
+              value={editMode ? editedCandidate.email : candidate.email}
               disabled={!editMode}
+              onChange={({ target }) =>
+                setEditedCandidate({ ...editedCandidate, email: target.value })
+              }
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -301,8 +304,11 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
-              value={candidate.phone}
+              value={editMode ? editedCandidate.phone : candidate.phone}
               disabled={!editMode}
+              onChange={({ target }) =>
+                setEditedCandidate({ ...editedCandidate, phone: target.value })
+              }
             ></StyledTextField>
           </StyledPaper>
         </Grid>
@@ -311,8 +317,14 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
-              value={candidate.location}
+              value={editMode ? editedCandidate.location : candidate.location}
               disabled={!editMode}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  location: target.value,
+                })
+              }
             ></StyledTextField>
           </StyledPaper>
         </Grid>
