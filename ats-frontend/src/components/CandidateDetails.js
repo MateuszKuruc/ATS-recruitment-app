@@ -138,8 +138,23 @@ const CandidateDetails = ({ candidates }) => {
     }
   };
 
-  const cancelEdit = () => {
+  const resetFields = () => {
     setFirstName("initialValue");
+    setLastName("initialValue");
+    setEmail("initialValue");
+    setPhone("initialValue");
+    setLocation("initialValue");
+    setSkill("initialValue");
+    setSeniority("initialValue");
+    setFirstContact("initialValue");
+    setNotice("initialValue");
+    setContract("initialValue");
+    setLanguage("initialValue");
+    setAssessment("initialValue");
+  };
+
+  const cancelEdit = () => {
+    resetFields();
     toggleEdit();
   };
 
