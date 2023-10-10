@@ -33,6 +33,10 @@ const candidateSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  edit: {
+    type: String,
+    required: false,
+  },
 });
 
 candidateSchema.set("toJSON", {

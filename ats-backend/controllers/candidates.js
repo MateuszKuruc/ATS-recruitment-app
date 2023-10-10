@@ -35,6 +35,7 @@ candidatesRouter.post("/", async (request, response) => {
     contract: "",
     notes: "",
     user: user._id,
+    edit: "",
   });
 
   const savedCandidate = await candidate.save();
