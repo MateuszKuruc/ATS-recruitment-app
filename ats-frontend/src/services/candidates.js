@@ -48,17 +48,12 @@ const deleteCandidateById = async (id) => {
 };
 
 const updateCandidateById = async (updatedCandidate) => {
-  const config = {
-    headers: { Authorization: token },
-  };
-  console.log("updated candidate in service", updatedCandidate);
   try {
     const response = await axios.put(
       `${baseUrl}/${updatedCandidate.id}`,
-      updatedCandidate,
-      // config
+      updatedCandidate
     );
-    console.log("response candidate in candidate service", response);
+
     return response.data;
   } catch (error) {
     console.error("error while making PUT request", error);
