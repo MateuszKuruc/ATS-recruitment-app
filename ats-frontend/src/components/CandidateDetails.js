@@ -135,11 +135,15 @@ const CandidateDetails = ({ candidates }) => {
     setCandidate(foundCandidate);
   }, [candidates, id]);
 
-  const toggleEdit = () => {
-    setEditMode(!editMode);
+  useEffect(() => {
+    console.log("editec candidate use effect", editedCandidate);
+  }, [editedCandidate]);
+
+  const enterEditMode = () => {
+    setEditMode(true);
+    setEditedCandidate({ ...candidate });
     if (candidate.assessment !== "") {
       setEditModeExtended(!editModeExtended);
-      setEditedCandidate({ ...candidate });
     }
   };
 
@@ -233,7 +237,7 @@ const CandidateDetails = ({ candidates }) => {
         <StyledButton
           variant="contained"
           color={!editMode ? "secondary" : "primary"}
-          onClick={!editMode ? () => toggleEdit() : () => saveEdit()}
+          onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
         >
           {editMode ? (
             <Typography variant="h6">Save</Typography>
@@ -291,8 +295,14 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
-              value={candidate.lastName}
+              value={editMode ? editedCandidate.lastName : candidate.lastName}
               disabled={!editMode}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  lastName: target.value,
+                })
+              }
             ></StyledTextField>
           </StyledPaper>
         </Grid>
