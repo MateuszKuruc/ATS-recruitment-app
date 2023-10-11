@@ -59,6 +59,16 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
+export const isEmailValid = (testedEmail) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(testedEmail);
+};
+
+export const isPhoneNumberValid = (testedNumber) => {
+  const phoneRegex = /^\d{9,11}$/;
+  return phoneRegex.test(testedNumber);
+};
+
 const AddProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,16 +89,6 @@ const AddProfile = () => {
   const [locationError, setLocationError] = useState(false);
   const [skillError, setSkillError] = useState(false);
   const [seniorityError, setSeniorityError] = useState(false);
-
-  const isEmailValid = (testedEmail) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(testedEmail);
-  };
-
-  const isPhoneNumberValid = (testedNumber) => {
-    const phoneRegex = /^\d{9,11}$/;
-    return phoneRegex.test(testedNumber);
-  };
 
   const validateForm = () => {
     const errors = {

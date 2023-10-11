@@ -25,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
 
 import { format } from "date-fns";
+import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -91,6 +92,11 @@ const StyledHeader = styled.div`
   }
 `;
 
+const isDateValid = (testedDate) => {
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  return dateRegex.test(testedDate);
+};
+
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
   const dispatch = useDispatch();
@@ -102,7 +108,7 @@ const CandidateDetails = ({ candidates }) => {
   const [editModeExtended, setEditModeExtended] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
-  const [firstNameError, setFirstNameError] = useState(true);
+  const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
@@ -111,9 +117,33 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  useEffect(() => {
-    console.log("editedCandidate has changed:", editedCandidate);
-  }, [editedCandidate]);
+  // useEffect(() => {
+  //   console.log("editedCandidate has changed:", editedCandidate);
+  // }, [editedCandidate]);
+
+  const validateEdit = () => {
+    const errors = {
+      firstName:
+        editedCandidate.firstName.length < 2 ||
+        editedCandidate.firstName === "",
+      lastName:
+        editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
+      email: isEmailValid(editedCandidate.email),
+      phone: isPhoneNumberValid(editedCandidate.phone),
+      location:
+        editedCandidate.location.length < 3 || editedCandidate.location === "",
+      firstContact: isDateValid(editedCandidate.firstContact),
+    };
+
+    setFirstNameError(errors.firstName);
+    setLastNameError(errors.lastName);
+    setEmailError(errors.email);
+    setPhoneError(errors.phone);
+    setLocationError(errors.location);
+    setFirstContactError(errors.firstContact);
+
+    return !Object.values(errors).some((error) => error);
+  };
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -142,11 +172,22 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const saveEdit = () => {
+    if (!validateEdit()) {
+      return;
+    }
+
+    setFirstNameError(false);
+    setLastNameError(false);
+    setEmailError(false);
+    setPhoneError(false);
+    setLocationError(false);
+    setFirstContactError(false);
+
     const updatedCandidate = {
       ...editedCandidate,
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
     };
-    // dispatch(updateCandidate(editedCandidate));
+
     dispatch(updateCandidate(updatedCandidate));
     setEditMode(false);
   };
