@@ -122,10 +122,6 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  // useEffect(() => {
-  //   console.log("editedCandidate has changed:", editedCandidate);
-  // }, [editedCandidate]);
-
   const validateEdit = () => {
     console.log("edited cand in validation", editedCandidate);
     const errors = {
