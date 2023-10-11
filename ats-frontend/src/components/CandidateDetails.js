@@ -12,7 +12,6 @@ import {
   DialogContentText,
   DialogTitle,
   FormControl,
-  InputLabel,
   Select,
   MenuItem,
 } from "@mui/material";
@@ -21,11 +20,10 @@ import styled from "styled-components";
 import { removeCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import candidateService from "../services/candidates";
+
 import { updateCandidate } from "../reducers/candidateReducer";
 
-import { format, parse } from "date-fns";
-import { DatePicker } from "@mui/x-date-pickers";
+import { format } from "date-fns";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -419,22 +417,6 @@ const CandidateDetails = ({ candidates }) => {
               }
               disabled={!editMode}
             ></StyledTextField>
-
-            {/* <DatePicker
-              // defaultValue={dayjs(new Date())}
-              // defaultValue={
-              //   editMode ? editedCandidate.firstContact : candidate.firstContact
-              // }
-              defaultValue={new Date(candidate.firstContact)}
-              label="First contact"
-              // onChange={(newValue) => {
-              //   const formattedDate = format(
-              //     newValue.$d,
-              //     "yyyy-MM-dd"
-              //   ).toString();
-              //   setFirstContact(formattedDate);
-              // }}
-            /> */}
           </StyledPaper>
         </Grid>
       </Grid>
