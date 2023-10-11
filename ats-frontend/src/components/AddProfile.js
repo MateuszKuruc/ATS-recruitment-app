@@ -78,7 +78,7 @@ const AddProfile = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
-  const [firstContact, setFirstContact] = useState("");
+  const [firstContact, setFirstContact] = useState(dayjs(new Date()));
   const [skill, setSkill] = useState("");
   const [seniority, setSeniority] = useState("");
 
@@ -127,13 +127,15 @@ const AddProfile = () => {
     setSkillError(false);
     setSeniorityError(false);
 
+    const formattedDate = format(firstContact.$d, "yyyy-MM-dd").toString();
+
     const newCandidateData = {
       firstName,
       lastName,
       phone,
       email,
       location,
-      firstContact,
+      firstContact: formattedDate,
       skill,
       seniority,
     };
@@ -262,15 +264,17 @@ const AddProfile = () => {
             </FormControl>
 
             <StyledDatePicker
-              defaultValue={dayjs(new Date())}
+              // defaultValue={dayjs(new Date())}
+              defaultValue={firstContact}
               label="First contact"
-              onChange={(newValue) => {
-                const formattedDate = format(
-                  newValue.$d,
-                  "yyyy-MM-dd"
-                ).toString();
-                setFirstContact(formattedDate);
-              }}
+              // onChange={(newValue) => {
+              //   const formattedDate = format(
+              //     newValue.$d,
+              //     "yyyy-MM-dd"
+              //   ).toString();
+              //   setFirstContact(formattedDate);
+              // }}
+              onChange={(newValue) => setFirstContact(newValue)}
             />
           </FieldContainer>
 
