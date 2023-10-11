@@ -29,5 +29,6 @@ app.use(express.json());
 app.use("/api/candidates", candidatesRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
+app.use("/uploads", express.static("uploads"));
 
 module.exports = app;
