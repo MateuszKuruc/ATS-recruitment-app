@@ -136,12 +136,6 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  // const [file, setFile] = useState();
-
-  useEffect(() => {
-    console.log("file state", file);
-  }, [file]);
-
   const validateEdit = () => {
     console.log("edited cand in validation", editedCandidate);
     const errors = {
@@ -228,16 +222,12 @@ const CandidateDetails = ({ candidates }) => {
 
   const onFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      console.log(e.target.files[0]);
-      // setFile(file);
 
-      const formData = new FormData();
-      formData.append("file", file);
-    }
+    console.log(e.target.files[0]);
+
+    const formData = new FormData();
+    formData.append("file", file);
   };
-
-  // const submitFileData ()
 
   if (!candidate) {
     return null;

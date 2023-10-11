@@ -60,6 +60,26 @@ const updateCandidateById = async (updatedCandidate) => {
   }
 };
 
+const uploadFile = async (id, file) => {
+  const config = {
+    headers: { Authorization: token },
+  };
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const response = await axios.post(
+      `${baseUrl}/${id}/upload`,
+      formData,
+      config
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error while uploading file:", error);
+  }
+};
+
 export default {
   getAll,
   setToken,
@@ -67,4 +87,5 @@ export default {
   getById,
   deleteCandidateById,
   updateCandidateById,
+  uploadFile,
 };
