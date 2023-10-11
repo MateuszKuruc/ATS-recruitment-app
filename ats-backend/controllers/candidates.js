@@ -2,6 +2,7 @@ const candidatesRouter = require("express").Router();
 const Candidate = require("../models/candidate");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const upload = require("./utils/multerConfig");
 
 candidatesRouter.get("/", async (request, response) => {
   const candidates = await Candidate.find({});
@@ -90,6 +91,14 @@ candidatesRouter.get("/:id", async (request, response) => {
 
   const candidate = await Candidate.findById(id);
   response.json(candidate);
+});
+
+candidatesRouter.post("/upload", upload.single("file"), (request, response) => {
+  if (!request.file) {
+    return response.status(400).json({ error: "No file uploaded" });
+  }
+
+  const fileName = request.file.
 });
 
 module.exports = candidatesRouter;

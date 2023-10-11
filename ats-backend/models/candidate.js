@@ -37,6 +37,13 @@ const candidateSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  uploadedFiles: [
+    {
+      fileName: String,
+      path: String,
+      uploadDate: String,
+    },
+  ],
 });
 
 candidateSchema.set("toJSON", {
