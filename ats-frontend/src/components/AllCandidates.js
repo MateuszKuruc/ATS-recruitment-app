@@ -54,11 +54,11 @@ const AllCandidates = ({ candidates, userId }) => {
           Name
         </Typography>
       ),
-      minWidth: 300,
+      minWidth: 350,
       renderCell: (params) => (
         <Link to={`/candidates/${params.row.id}`}>
-          <Button variant="text">
-            <Typography variant="body1">{params.row.Name}</Typography>
+          <Button variant="contained" style={{ minWidth: "300px" }}>
+            <Typography variant="h6">{params.row.Name}</Typography>
           </Button>
         </Link>
       ),
@@ -110,8 +110,8 @@ const AllCandidates = ({ candidates, userId }) => {
   ];
 
   return (
-    <div style={{ marginTop: "1rem", borderRadius: "0.5rem" }}>
-      <Paper style={{}}>
+    <div style={{ marginTop: "1rem", borderRadius: "0.5rem", display: "flex" }}>
+      <Paper>
         <DataGrid
           rows={rows}
           columns={columns}

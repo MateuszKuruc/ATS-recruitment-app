@@ -30,6 +30,8 @@ import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+
 const StyledPaper = styled(Paper)`
   display: flex;
   flex-direction: column;
@@ -102,6 +104,18 @@ const StyledHeader = styled.div`
     // width: 80%;
   }
 `;
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
@@ -309,6 +323,30 @@ const CandidateDetails = ({ candidates }) => {
           value={candidate.notes}
           style={{ flex: "1" }}
         />
+      </div>
+
+      <StyledHeader>
+        <Typography variant="h5" style={{ color: "#ffffff" }}>
+          Files
+        </Typography>
+      </StyledHeader>
+
+      <div
+        style={{
+          // border: "1px solid red",
+          display: "flex",
+          justifyContent: "flex-start",
+        }}
+      >
+        <Button
+          component="label"
+          variant="contained"
+          color="secondary"
+          startIcon={<CloudUploadIcon />}
+        >
+          Upload file
+          <VisuallyHiddenInput type="file" />
+        </Button>
       </div>
 
       <StyledHeader>
