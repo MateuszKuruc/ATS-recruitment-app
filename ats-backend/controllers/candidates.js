@@ -107,6 +107,16 @@ candidatesRouter.post(
       const filePath = request.file.path;
       const uploadDate = new Date().toISOString();
 
+      console.log(
+        "backend details",
+        "FILENAME:",
+        fileName,
+        "FILEPATH:",
+        filePath,
+        "UPLOADDATE:",
+        uploadDate
+      );
+
       const candidate = await Candidate.findById(candidateId);
 
       if (!candidate) {
@@ -118,6 +128,8 @@ candidatesRouter.post(
         filePath,
         uploadDate,
       });
+
+      console.log("candidate backend", candidate);
 
       await candidate.save();
 

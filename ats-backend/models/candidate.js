@@ -40,7 +40,7 @@ const candidateSchema = new mongoose.Schema({
   uploadedFiles: [
     {
       fileName: String,
-      path: String,
+      filePath: String,
       uploadDate: String,
     },
   ],
