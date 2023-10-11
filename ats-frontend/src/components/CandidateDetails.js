@@ -122,17 +122,18 @@ const CandidateDetails = ({ candidates }) => {
   // }, [editedCandidate]);
 
   const validateEdit = () => {
+    console.log("edited cand in validation", editedCandidate);
     const errors = {
       firstName:
         editedCandidate.firstName.length < 2 ||
         editedCandidate.firstName === "",
       lastName:
         editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
-      email: isEmailValid(editedCandidate.email),
-      phone: isPhoneNumberValid(editedCandidate.phone),
+      email: !isEmailValid(editedCandidate.email),
+      phone: !isPhoneNumberValid(editedCandidate.phone),
       location:
         editedCandidate.location.length < 3 || editedCandidate.location === "",
-      firstContact: isDateValid(editedCandidate.firstContact),
+      firstContact: !isDateValid(editedCandidate.firstContact),
     };
 
     setFirstNameError(errors.firstName);
@@ -481,13 +482,19 @@ const CandidateDetails = ({ candidates }) => {
               error={firstContactError}
               helperText={
                 firstContactError
-                  ? "Please use correct format: yyyy/MM/dd"
+                  ? "Please use correct format: yyyy-MM-dd"
                   : " "
               }
               value={
                 editMode ? editedCandidate.firstContact : candidate.firstContact
               }
               disabled={!editMode}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  firstContact: target.value,
+                })
+              }
             />
           </StyledPaper>
         </Grid>

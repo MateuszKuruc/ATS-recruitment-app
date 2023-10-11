@@ -264,16 +264,8 @@ const AddProfile = () => {
             </FormControl>
 
             <StyledDatePicker
-              // defaultValue={dayjs(new Date())}
               defaultValue={firstContact}
               label="First contact"
-              // onChange={(newValue) => {
-              //   const formattedDate = format(
-              //     newValue.$d,
-              //     "yyyy-MM-dd"
-              //   ).toString();
-              //   setFirstContact(formattedDate);
-              // }}
               onChange={(newValue) => setFirstContact(newValue)}
             />
           </FieldContainer>
