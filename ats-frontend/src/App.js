@@ -87,7 +87,7 @@ const websiteTheme = createTheme({
       lineHeight: 1.5,
     },
     italic: {
-      fontSize: "1.3rem",
+      fontSize: "1.1rem",
       fontStyle: "italic",
       lineHeight: 1.5,
     },

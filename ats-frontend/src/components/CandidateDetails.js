@@ -14,6 +14,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  FormHelperText,
 } from "@mui/material";
 import styled from "styled-components";
 
@@ -27,6 +28,7 @@ import { format } from "date-fns";
 
 const StyledPaper = styled(Paper)`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   // border: 0.25rem solid #990033;
@@ -332,6 +334,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Location</Typography>
             <StyledTextField
               value={editMode ? editedCandidate.location : candidate.location}
+              helperText=" "
               disabled={!editMode}
               onChange={({ target }) =>
                 setEditedCandidate({
@@ -371,6 +374,7 @@ const CandidateDetails = ({ candidates }) => {
                 <MenuItem value="Mobile">Mobile</MenuItem>
                 <MenuItem value="Golang">Golang</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
@@ -402,6 +406,7 @@ const CandidateDetails = ({ candidates }) => {
                 <MenuItem value="Lead">Lead</MenuItem>
                 <MenuItem value="Manager">Manager</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
@@ -443,6 +448,7 @@ const CandidateDetails = ({ candidates }) => {
                 <MenuItem value="2 months">2 months</MenuItem>
                 <MenuItem value="3 months">3 months</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
@@ -459,6 +465,7 @@ const CandidateDetails = ({ candidates }) => {
                 <MenuItem value="UoP">UoP - contract of employment</MenuItem>
                 <MenuItem value="B2B">B2B</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
@@ -480,6 +487,7 @@ const CandidateDetails = ({ candidates }) => {
                 <MenuItem value="C2">C2</MenuItem>
                 <MenuItem value="Native">Native</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
@@ -504,6 +512,7 @@ const CandidateDetails = ({ candidates }) => {
                 </MenuItem>
                 <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
               </Select>
+              <FormHelperText> </FormHelperText>
             </StyledFormControl>
           </StyledPaper>
         </Grid>
