@@ -85,6 +85,29 @@ const uploadFile = async (id, file) => {
   }
 };
 
+export const downloadFile = async (fileName) => {
+  try {
+    const response = await axios.get(`${baseUrl}/download/${fileName}`, {
+      responseType: "blob",
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.setAttribute("download", fileName);
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error("Error while downloading file:", error);
+  }
+};
+
 export default {
   getAll,
   setToken,
@@ -93,4 +116,5 @@ export default {
   deleteCandidateById,
   updateCandidateById,
   uploadFile,
+  // downloadFile,
 };

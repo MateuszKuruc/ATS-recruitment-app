@@ -34,6 +34,9 @@ import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+
+import { downloadFile } from "../services/candidates";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -233,6 +236,11 @@ const CandidateDetails = ({ candidates }) => {
     dispatch(uploadCandidateFile(candidate.id, file));
   };
 
+  const handleDownload = (fileName) => {
+    console.log("file name in handledownload", fileName);
+    downloadFile(fileName);
+  };
+
   if (!candidate) {
     return null;
   }
@@ -365,6 +373,11 @@ const CandidateDetails = ({ candidates }) => {
             onChange={onFileChange}
           />
         </Button>
+        {candidate.uploadedFiles.map((file) => (
+          <div key={file.fileName}>
+            <CloudDownloadIcon onClick={() => handleDownload(file.fileName)} />
+          </div>
+        ))}
       </div>
 
       <StyledHeader>

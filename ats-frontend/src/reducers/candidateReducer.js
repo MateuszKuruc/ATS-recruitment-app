@@ -81,6 +81,7 @@ export const uploadCandidateFile = (id, file) => {
       file
     );
     console.log("response in reducer", uploadedCandidateResponse);
+   
 
     dispatch(
       updateCandidateFileInStore({
