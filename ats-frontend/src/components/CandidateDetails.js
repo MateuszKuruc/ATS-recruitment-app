@@ -103,11 +103,6 @@ const StyledHeader = styled.div`
   }
 `;
 
-const isDateValid = (testedDate) => {
-  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-  return dateRegex.test(testedDate);
-};
-
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
   const dispatch = useDispatch();
@@ -124,7 +119,6 @@ const CandidateDetails = ({ candidates }) => {
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
   const [locationError, setLocationError] = useState(false);
-  const [firstContactError, setFirstContactError] = useState(false);
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
@@ -144,7 +138,6 @@ const CandidateDetails = ({ candidates }) => {
       phone: !isPhoneNumberValid(editedCandidate.phone),
       location:
         editedCandidate.location.length < 3 || editedCandidate.location === "",
-      // firstContact: !isDateValid(editedCandidate.firstContact),
     };
 
     setFirstNameError(errors.firstName);
@@ -152,7 +145,6 @@ const CandidateDetails = ({ candidates }) => {
     setEmailError(errors.email);
     setPhoneError(errors.phone);
     setLocationError(errors.location);
-    // setFirstContactError(errors.firstContact);
 
     return !Object.values(errors).some((error) => error);
   };
@@ -193,7 +185,6 @@ const CandidateDetails = ({ candidates }) => {
     setEmailError(false);
     setPhoneError(false);
     setLocationError(false);
-    // setFirstContactError(false);
 
     const updatedCandidate = {
       ...editedCandidate,
@@ -423,10 +414,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
 
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select
                 value={editMode ? editedCandidate.skill : candidate.skill}
                 disabled={!editMode}
@@ -456,10 +444,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
 
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select
                 value={
                   editMode ? editedCandidate.seniority : candidate.seniority
@@ -488,26 +473,6 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
 
-            {/* <StyledTextField
-              label={"year-month-day"}
-              error={firstContactError}
-              helperText={
-                firstContactError
-                  ? "Please use correct format: yyyy-MM-dd"
-                  : " "
-              }
-              value={
-                editMode ? editedCandidate.firstContact : candidate.firstContact
-              }
-              disabled={!editMode}
-              onChange={({ target }) =>
-                setEditedCandidate({
-                  ...editedCandidate,
-                  firstContact: target.value,
-                })
-              }
-            /> */}
-
             <StyledDatePicker
               slotProps={{
                 textField: {
@@ -519,7 +484,6 @@ const CandidateDetails = ({ candidates }) => {
                   ? dayjs(editedCandidate.firstContact)
                   : dayjs(candidate.firstContact)
               }
-              // label="First contact"
               disabled={!editMode}
               onChange={(target) =>
                 setEditedCandidate({
@@ -542,10 +506,7 @@ const CandidateDetails = ({ candidates }) => {
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select value={candidate.notice} disabled={!editMode}>
                 <MenuItem value="Available now">Available now</MenuItem>
                 <MenuItem value="2 weeks">2 weeks</MenuItem>
@@ -562,10 +523,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
 
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select value={candidate.contract} disabled={!editMode}>
                 <MenuItem value="UoP">UoP - contract of employment</MenuItem>
                 <MenuItem value="B2B">B2B</MenuItem>
@@ -579,10 +537,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">English</Typography>
 
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select value={candidate.language} disabled={!editMode}>
                 <MenuItem value="A1">A1</MenuItem>
                 <MenuItem value="A2">A2</MenuItem>
@@ -601,10 +556,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
 
-            <StyledFormControl
-
-            // error={skillError}
-            >
+            <StyledFormControl>
               <Select value={candidate.assessment} disabled={!editMode}>
                 <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
                 <MenuItem value="2 - No hire">2 - No hire</MenuItem>
