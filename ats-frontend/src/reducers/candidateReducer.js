@@ -16,12 +16,27 @@ const candidateSlice = createSlice({
         candidate.id === action.payload.id ? action.payload : candidate
       );
     },
+    updateCandidateFileInStore(state, action) {
+      const { candidateId, uploadedFile } = action.payload;
+      return state.map((candidate) =>
+        candidate.id === candidateId
+          ? {
+              ...candidate,
+              uploadedFiles: [...candidate.uploadedFiles, uploadedFile],
+            }
+          : candidate
+      );
+    },
   },
 });
 
 export default candidateSlice.reducer;
-export const { setCandidates, addCandidate, updateCandidateInStore } =
-  candidateSlice.actions;
+export const {
+  setCandidates,
+  addCandidate,
+  updateCandidateInStore,
+  updateCandidateFileInStore,
+} = candidateSlice.actions;
 
 export const initializeCandidates = () => {
   return async (dispatch) => {
@@ -55,5 +70,21 @@ export const updateCandidate = (updatedCandidate) => {
     );
 
     dispatch(updateCandidateInStore(updatedCandidateResponse));
+  };
+};
+
+export const uploadCandidateFile = (id, file) => {
+  return async (dispatch) => {
+    const uploadedCandidateResponse = await candidateService.uploadFile(
+      id,
+      file
+    );
+
+    dispatch(
+      updateCandidateFileInStore({
+        candidateId: id,
+        uploadedFile: uploadedCandidateResponse,
+      })
+    );
   };
 };

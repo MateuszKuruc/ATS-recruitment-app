@@ -22,7 +22,10 @@ import { removeCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { updateCandidate } from "../reducers/candidateReducer";
+import {
+  updateCandidate,
+  uploadCandidateFile,
+} from "../reducers/candidateReducer";
 
 import { format } from "date-fns";
 import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
@@ -49,7 +52,7 @@ const StyledTextField = styled(TextField)`
   && {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    // background-color: #ffffff;
+    background-color: #ffffff;
     border-radius: 0.5rem;
     // padding-right: 3rem;
     // width: auto
@@ -221,12 +224,7 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const onFileChange = (e) => {
-    const file = e.target.files[0];
-
-    console.log(e.target.files[0]);
-
-    const formData = new FormData();
-    formData.append("file", file);
+   
   };
 
   if (!candidate) {
@@ -370,7 +368,7 @@ const CandidateDetails = ({ candidates }) => {
       </StyledHeader>
 
       <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
@@ -390,7 +388,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
@@ -410,7 +408,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
@@ -425,7 +423,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
@@ -440,7 +438,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
@@ -458,7 +456,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
 
@@ -488,7 +486,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
 
@@ -517,7 +515,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
 
@@ -551,7 +549,7 @@ const CandidateDetails = ({ candidates }) => {
       </StyledHeader>
 
       <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
             <StyledFormControl>
@@ -567,7 +565,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
 
@@ -581,7 +579,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">English</Typography>
 
@@ -600,7 +598,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={3}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
 

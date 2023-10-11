@@ -61,16 +61,19 @@ const updateCandidateById = async (updatedCandidate) => {
 };
 
 const uploadFile = async (id, file) => {
-  const config = {
-    headers: { Authorization: token },
-  };
-
   const formData = new FormData();
   formData.append("file", file);
 
+  const config = {
+    headers: {
+      Authorization: token,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
   try {
     const response = await axios.post(
-      `${baseUrl}/${id}/upload`,
+      `${baseUrl}/upload/${id}`,
       formData,
       config
     );
