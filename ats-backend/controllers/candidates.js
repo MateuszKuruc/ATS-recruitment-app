@@ -3,6 +3,7 @@ const Candidate = require("../models/candidate");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const upload = require("../utils/multerConfig");
+const path = require("path");
 
 candidatesRouter.get("/", async (request, response) => {
   const candidates = await Candidate.find({});
@@ -141,6 +142,16 @@ candidatesRouter.post(
   }
 );
 
+candidatesRouter.get("/download/:filename", (request, response) => {
+  const fileName = request.params.filename;
+  const filePath = path.join(__dirname, "../uploads", fileName);
 
+  response.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("File does not exist:", err);
+      response.status(404).send("File not found");
+    }
+  });
+});
 
 module.exports = candidatesRouter;
