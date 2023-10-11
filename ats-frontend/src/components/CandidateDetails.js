@@ -259,7 +259,7 @@ const CandidateDetails = ({ candidates }) => {
           rows={10}
           value={candidate.notes}
           style={{ flex: "1" }}
-        ></StyledTextField>
+        />
       </div>
 
       <StyledHeader>
@@ -281,7 +281,7 @@ const CandidateDetails = ({ candidates }) => {
                   firstName: target.value,
                 })
               }
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
 
@@ -297,7 +297,7 @@ const CandidateDetails = ({ candidates }) => {
                   lastName: target.value,
                 })
               }
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
 
@@ -310,7 +310,7 @@ const CandidateDetails = ({ candidates }) => {
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, email: target.value })
               }
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
 
@@ -323,7 +323,7 @@ const CandidateDetails = ({ candidates }) => {
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, phone: target.value })
               }
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
 
@@ -339,7 +339,7 @@ const CandidateDetails = ({ candidates }) => {
                   location: target.value,
                 })
               }
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
 
@@ -409,6 +409,7 @@ const CandidateDetails = ({ candidates }) => {
         <Grid item xs={12} md={6}>
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
+
             <StyledTextField
               label={"year-month-day"}
               helperText="Please use correct format: yyyy/MM/dd"
@@ -416,7 +417,7 @@ const CandidateDetails = ({ candidates }) => {
                 editMode ? editedCandidate.firstContact : candidate.firstContact
               }
               disabled={!editMode}
-            ></StyledTextField>
+            />
           </StyledPaper>
         </Grid>
       </Grid>
