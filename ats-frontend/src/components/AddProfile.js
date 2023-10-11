@@ -90,6 +90,8 @@ const AddProfile = () => {
   const [skillError, setSkillError] = useState(false);
   const [seniorityError, setSeniorityError] = useState(false);
 
+  console.log("date general", firstContact);
+
   const validateForm = () => {
     const errors = {
       firstName: firstName.length < 2 || firstName === "",
@@ -127,7 +129,9 @@ const AddProfile = () => {
     setSkillError(false);
     setSeniorityError(false);
 
-    const formattedDate = format(firstContact.$d, "yyyy-MM-dd").toString();
+    // const formattedDate = format(firstContact.$d, "yyyy-MM-dd").toString();
+
+    console.log("contact date on save", firstContact);
 
     const newCandidateData = {
       firstName,
@@ -135,7 +139,8 @@ const AddProfile = () => {
       phone,
       email,
       location,
-      firstContact: formattedDate,
+      // firstContact: formattedDate,
+      firstContact,
       skill,
       seniority,
     };
@@ -266,7 +271,7 @@ const AddProfile = () => {
             <StyledDatePicker
               defaultValue={firstContact}
               label="First contact"
-              onChange={(newValue) => setFirstContact(newValue)}
+              onChange={(newValue) => setFirstContact(dayjs(newValue))}
             />
           </FieldContainer>
 

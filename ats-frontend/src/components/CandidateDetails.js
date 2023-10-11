@@ -27,6 +27,9 @@ import { updateCandidate } from "../reducers/candidateReducer";
 import { format } from "date-fns";
 import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
 
+import { DatePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
+
 const StyledPaper = styled(Paper)`
   display: flex;
   flex-direction: column;
@@ -44,7 +47,7 @@ const StyledTextField = styled(TextField)`
   && {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background-color: #ffffff;
+    // background-color: #ffffff;
     border-radius: 0.5rem;
     // padding-right: 3rem;
     // width: auto
@@ -59,6 +62,14 @@ const StyledTextField = styled(TextField)`
     // border: 0.15rem solid  #990033;
     color: #ffffff
     `}
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  && {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+  }
 `;
 
 const StyledFormControl = styled(FormControl)`
@@ -133,7 +144,7 @@ const CandidateDetails = ({ candidates }) => {
       phone: !isPhoneNumberValid(editedCandidate.phone),
       location:
         editedCandidate.location.length < 3 || editedCandidate.location === "",
-      firstContact: !isDateValid(editedCandidate.firstContact),
+      // firstContact: !isDateValid(editedCandidate.firstContact),
     };
 
     setFirstNameError(errors.firstName);
@@ -141,7 +152,7 @@ const CandidateDetails = ({ candidates }) => {
     setEmailError(errors.email);
     setPhoneError(errors.phone);
     setLocationError(errors.location);
-    setFirstContactError(errors.firstContact);
+    // setFirstContactError(errors.firstContact);
 
     return !Object.values(errors).some((error) => error);
   };
@@ -182,7 +193,7 @@ const CandidateDetails = ({ candidates }) => {
     setEmailError(false);
     setPhoneError(false);
     setLocationError(false);
-    setFirstContactError(false);
+    // setFirstContactError(false);
 
     const updatedCandidate = {
       ...editedCandidate,
@@ -477,7 +488,7 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
 
-            <StyledTextField
+            {/* <StyledTextField
               label={"year-month-day"}
               error={firstContactError}
               helperText={
@@ -493,6 +504,27 @@ const CandidateDetails = ({ candidates }) => {
                 setEditedCandidate({
                   ...editedCandidate,
                   firstContact: target.value,
+                })
+              }
+            /> */}
+
+            <StyledDatePicker
+              slotProps={{
+                textField: {
+                  helperText: " ",
+                },
+              }}
+              defaultValue={
+                editMode
+                  ? dayjs(editedCandidate.firstContact)
+                  : dayjs(candidate.firstContact)
+              }
+              // label="First contact"
+              disabled={!editMode}
+              onChange={(target) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  firstContact: dayjs(target),
                 })
               }
             />
