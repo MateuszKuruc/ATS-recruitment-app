@@ -102,6 +102,13 @@ const CandidateDetails = ({ candidates }) => {
   const [editModeExtended, setEditModeExtended] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
+  const [firstNameError, setFirstNameError] = useState(true);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [locationError, setLocationError] = useState(false);
+  const [firstContactError, setFirstContactError] = useState(false);
+
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
   useEffect(() => {
@@ -277,6 +284,10 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={editMode ? editedCandidate.firstName : candidate.firstName}
               disabled={!editMode}
+              error={firstNameError}
+              helperText={
+                firstNameError ? "Enter valid name, min. 2 characters" : " "
+              }
               onChange={({ target }) =>
                 setEditedCandidate({
                   ...editedCandidate,
@@ -293,6 +304,10 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={editMode ? editedCandidate.lastName : candidate.lastName}
               disabled={!editMode}
+              error={lastNameError}
+              helperText={
+                lastNameError ? "Enter valid name, min. 2 characters" : " "
+              }
               onChange={({ target }) =>
                 setEditedCandidate({
                   ...editedCandidate,
@@ -309,6 +324,8 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={editMode ? editedCandidate.email : candidate.email}
               disabled={!editMode}
+              error={emailError}
+              helperText={emailError ? "Enter email in valid format" : " "}
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, email: target.value })
               }
@@ -322,6 +339,8 @@ const CandidateDetails = ({ candidates }) => {
             <StyledTextField
               value={editMode ? editedCandidate.phone : candidate.phone}
               disabled={!editMode}
+              error={phoneError}
+              helperText={phoneError ? "Enter number in valid format" : " "}
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, phone: target.value })
               }
@@ -334,7 +353,8 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="italic">Location</Typography>
             <StyledTextField
               value={editMode ? editedCandidate.location : candidate.location}
-              helperText=" "
+              error={locationError}
+              helperText={locationError ? "Enter location" : " "}
               disabled={!editMode}
               onChange={({ target }) =>
                 setEditedCandidate({
@@ -417,7 +437,12 @@ const CandidateDetails = ({ candidates }) => {
 
             <StyledTextField
               label={"year-month-day"}
-              helperText="Please use correct format: yyyy/MM/dd"
+              error={firstContactError}
+              helperText={
+                firstContactError
+                  ? "Please use correct format: yyyy/MM/dd"
+                  : " "
+              }
               value={
                 editMode ? editedCandidate.firstContact : candidate.firstContact
               }
