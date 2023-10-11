@@ -63,18 +63,20 @@ const Feedback = () => {
         const candidate = await candidateService.getById(id);
 
         setCandidate(candidate);
-        setNotice(candidate.notice);
-        setLanguage(candidate.language);
-        setContract(candidate.contract);
+        setNotice(candidate.notice !== "" ? candidate.notice : notice);
+        setLanguage(candidate.language !== "" ? candidate.language : language);
+        setContract(candidate.contract !== "" ? candidate.contract : contract);
         setNotes(candidate.notes);
-        setAssessment(candidate.assessment);
+        setAssessment(
+          candidate.assessment !== "" ? candidate.assessment : assessment
+        );
       } catch (error) {
         console.error("error", error);
       }
     };
 
     fetchById();
-  }, [id]);
+  }, [id, assessment, notice, language, contract]);
 
   const handleFeedback = () => {
     setNotesError(false);
