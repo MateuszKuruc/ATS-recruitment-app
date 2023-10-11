@@ -21,7 +21,7 @@ const HotProfiles = ({ candidates, userId }) => {
 
   useEffect(() => {
     const filtered = candidates.filter(
-      (candidate) => candidate.user.id === userId
+      (candidate) => candidate.user === userId
     );
     const hot = filtered.filter(
       (candidate) =>
