@@ -24,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 import candidateService from "../services/candidates";
 import { updateCandidate } from "../reducers/candidateReducer";
 
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 
 const StyledPaper = styled(Paper)`
@@ -412,9 +412,29 @@ const CandidateDetails = ({ candidates }) => {
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
             <StyledTextField
-              value={candidate.firstContact}
+              label={"year-month-day"}
+              helperText="Please use correct format: yyyy/MM/dd"
+              value={
+                editMode ? editedCandidate.firstContact : candidate.firstContact
+              }
               disabled={!editMode}
             ></StyledTextField>
+
+            {/* <DatePicker
+              // defaultValue={dayjs(new Date())}
+              // defaultValue={
+              //   editMode ? editedCandidate.firstContact : candidate.firstContact
+              // }
+              defaultValue={new Date(candidate.firstContact)}
+              label="First contact"
+              // onChange={(newValue) => {
+              //   const formattedDate = format(
+              //     newValue.$d,
+              //     "yyyy-MM-dd"
+              //   ).toString();
+              //   setFirstContact(formattedDate);
+              // }}
+            /> */}
           </StyledPaper>
         </Grid>
       </Grid>
