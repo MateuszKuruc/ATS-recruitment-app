@@ -224,7 +224,13 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const onFileChange = (e) => {
-   
+    const file = e.target.files[0];
+
+    if (!file) {
+      return;
+    }
+    console.log("file in onFileChange", file);
+    dispatch(uploadCandidateFile(candidate.id, file));
   };
 
   if (!candidate) {

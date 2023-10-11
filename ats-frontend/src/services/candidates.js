@@ -71,6 +71,8 @@ const uploadFile = async (id, file) => {
     },
   };
 
+  console.log("formData in candidateService", formData);
+
   try {
     const response = await axios.post(
       `${baseUrl}/upload/${id}`,

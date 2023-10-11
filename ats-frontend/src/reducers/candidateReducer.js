@@ -75,10 +75,12 @@ export const updateCandidate = (updatedCandidate) => {
 
 export const uploadCandidateFile = (id, file) => {
   return async (dispatch) => {
+    console.log("id and file in reducer", id, file);
     const uploadedCandidateResponse = await candidateService.uploadFile(
       id,
       file
     );
+    console.log("response in reducer", uploadedCandidateResponse);
 
     dispatch(
       updateCandidateFileInStore({
