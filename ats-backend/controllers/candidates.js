@@ -2,7 +2,7 @@ const candidatesRouter = require("express").Router();
 const Candidate = require("../models/candidate");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const upload = require("./utils/multerConfig");
+const upload = require("../utils/multerConfig");
 
 candidatesRouter.get("/", async (request, response) => {
   const candidates = await Candidate.find({});
@@ -37,6 +37,7 @@ candidatesRouter.post("/", async (request, response) => {
     notes: "",
     user: user._id,
     edit: "",
+    uploadedFiles: [],
   });
 
   const savedCandidate = await candidate.save();
@@ -93,12 +94,39 @@ candidatesRouter.get("/:id", async (request, response) => {
   response.json(candidate);
 });
 
-candidatesRouter.post("/upload", upload.single("file"), (request, response) => {
-  if (!request.file) {
-    return response.status(400).json({ error: "No file uploaded" });
-  }
+candidatesRouter.post(
+  "/upload/:id",
+  upload.single("file"),
+  async (request, response) => {
+    try {
+      const candidateId = request.params.id;
+      if (!request.file) {
+        return response.status(400).json({ error: "No file uploaded" });
+      }
+      const fileName = request.file.originalname;
+      const filePath = request.file.path;
+      const uploadDate = new Date().toISOString();
 
-  const fileName = request.file.
-});
+      const candidate = await Candidate.findById(candidateId);
+
+      if (!candidate) {
+        return response.status(404).json({ error: "Candidate not found" });
+      }
+
+      candidate.uploadedFiles = candidate.uploadedFiles.concat({
+        fileName,
+        filePath,
+        uploadDate,
+      });
+
+      await candidate.save();
+
+      response.status(200).json({ message: "File uploaded successfully" });
+    } catch (error) {
+      console.error(error);
+      response.status(500).json({ error: "Internal server error" });
+    }
+  }
+);
 
 module.exports = candidatesRouter;
