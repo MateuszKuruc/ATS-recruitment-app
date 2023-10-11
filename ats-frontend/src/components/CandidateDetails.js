@@ -84,9 +84,10 @@ const StyledHeader = styled.div`
     align-content: center;
     margin-bottom: 1rem;
     background-color: #084c61;
-    padding: 1rem;
+    padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+    // width: 80%;
   }
 `;
 
@@ -180,7 +181,10 @@ const CandidateDetails = ({ candidates }) => {
             {candidate.firstName} {candidate.lastName}
           </i>
         </Typography>
-        <Typography variant="italic" style={{ color: "#fefefe" }}>
+        <Typography
+          variant="italic2"
+          style={{ color: "#fefefe", alignSelf: "center" }}
+        >
           Last edited: {candidate.edit}
         </Typography>
       </StyledHeader>
@@ -261,7 +265,7 @@ const CandidateDetails = ({ candidates }) => {
       </div>
 
       <StyledHeader>
-        <Typography variant="h3" style={{ color: "#ffffff" }}>
+        <Typography variant="h5" style={{ color: "#ffffff" }}>
           Basic details
         </Typography>
       </StyledHeader>
@@ -416,7 +420,7 @@ const CandidateDetails = ({ candidates }) => {
       </Grid>
 
       <StyledHeader>
-        <Typography variant="h3" style={{ color: "#ffffff" }}>
+        <Typography variant="h5" style={{ color: "#ffffff" }}>
           Extended feedback
         </Typography>
       </StyledHeader>

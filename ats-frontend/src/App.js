@@ -91,6 +91,11 @@ const websiteTheme = createTheme({
       fontStyle: "italic",
       lineHeight: 1.5,
     },
+    italic2: {
+      fontSize: "1rem",
+      fontStyle: "italic",
+      lineHeight: 1.5
+    }
   },
 });
 
