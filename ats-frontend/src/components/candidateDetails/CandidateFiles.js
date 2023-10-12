@@ -45,7 +45,7 @@ const CandidateFiles = ({ candidate }) => {
 
       return;
     }
-    
+
     dispatch(uploadCandidateFile(candidate.id, file));
   };
 
@@ -82,7 +82,7 @@ const CandidateFiles = ({ candidate }) => {
         />
       </Button>
       {candidate.uploadedFiles.map((file) => (
-        <div key={file.fileName}>
+        <div style={{ border: "1px solid green" }} key={file.fileName}>
           <CloudDownloadIcon onClick={() => handleDownload(file.fileName)} />
 
           <StyledTypography

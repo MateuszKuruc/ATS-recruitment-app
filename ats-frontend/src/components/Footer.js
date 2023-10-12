@@ -1,21 +1,19 @@
 import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
-import githubIcon from "../icons/github.svg";
-import linkedinIcon from "../icons/linkedin.svg";
+
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const StyledPaper = styled(Paper)`
   padding: 2rem;
   margin-top: auto;
 `;
 
-const StyledImg = styled.img`
-  width: 1rem;
-`;
-
 const StyledContainer = styled.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
+  align-items: center;
 `;
 
 const Footer = () => {
@@ -31,7 +29,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <StyledImg src={githubIcon} alt="GitHub Icon" />
+          <GitHubIcon fontSize="large" color="action" />
         </a>
 
         <a
@@ -39,7 +37,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <StyledImg src={linkedinIcon} alt="LinkedIn Icon" />
+          <LinkedInIcon fontSize="large" color="action" />
         </a>
       </StyledContainer>
     </StyledPaper>

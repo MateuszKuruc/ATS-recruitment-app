@@ -34,18 +34,11 @@ const StyledTextField = styled(TextField)`
     margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
-    // padding-right: 3rem;
-    // width: auto;
-    // width: 15rem;
-    // border: 0.15rem solid  #990033;
 
     ${(props) =>
       props.disabled &&
       `
-    // background-color: #c0d9e7;
     border: 0.15rem solid #084c61;
-    // border: 0.15rem solid  #990033;
-    // color: #ffffff
     `}
 `;
 
@@ -66,7 +59,6 @@ const StyledHeader = styled.div`
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
-    // width: 80%;
   }
 `;
 

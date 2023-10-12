@@ -18,7 +18,7 @@ const Notification = ({ severity, message }) => {
     if (notification.message) {
       const notificationTimer = setTimeout(() => {
         dispatch(removeNotification());
-      }, 5000);
+      }, 50000);
 
       return () => clearTimeout(notificationTimer);
     }
