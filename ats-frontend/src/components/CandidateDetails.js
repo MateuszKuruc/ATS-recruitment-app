@@ -39,6 +39,7 @@ import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { downloadFile } from "../services/candidates";
 
 import CandidateBasicDetails from "./CandidateBasicDetails";
+import CandidateExtendedFeedback from "./CandidateExtendedFeedback";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -394,6 +395,13 @@ const CandidateDetails = ({ candidates }) => {
         locationError={locationError}
       />
 
+      <CandidateExtendedFeedback
+      candidate={candidate}
+      setEditedCandidate={setEditedCandidate}
+      editedCandidate={editedCandidate}
+      editMode={editMode}
+      />
+
       {/* <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
           Basic details
@@ -575,7 +583,7 @@ const CandidateDetails = ({ candidates }) => {
         </Grid>
       </Grid> */}
 
-      <StyledHeader>
+      {/* <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
           Extended feedback
         </Typography>
@@ -652,7 +660,7 @@ const CandidateDetails = ({ candidates }) => {
             </StyledFormControl>
           </StyledPaper>
         </Grid>
-      </Grid>
+      </Grid> */}
       <div
         style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}
       >

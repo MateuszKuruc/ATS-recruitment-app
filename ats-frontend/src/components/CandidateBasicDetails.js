@@ -100,7 +100,6 @@ const CandidateBasicDetails = ({
   return (
     // <div>
     <>
-    
       <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
           Basic details
@@ -108,7 +107,7 @@ const CandidateBasicDetails = ({
       </StyledHeader>
 
       <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
             <StyledTextField
@@ -128,7 +127,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Last name</Typography>
             <StyledTextField
@@ -148,7 +147,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Email address</Typography>
             <StyledTextField
@@ -163,7 +162,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Phone number</Typography>
             <StyledTextField
@@ -178,7 +177,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Location</Typography>
             <StyledTextField
@@ -196,7 +195,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Skill</Typography>
 
@@ -226,7 +225,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Seniority</Typography>
 
@@ -255,7 +254,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">First contact</Typography>
 
@@ -281,7 +280,7 @@ const CandidateBasicDetails = ({
           </StyledPaper>
         </Grid>
       </Grid>
-      </>
+    </>
     // </div>
   );
 };
