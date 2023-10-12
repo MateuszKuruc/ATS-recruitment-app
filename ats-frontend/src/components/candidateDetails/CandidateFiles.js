@@ -91,9 +91,21 @@ const CandidateFiles = ({ candidate }) => {
             (file) => file.fileName !== fileName
           );
           setUploadedFiles(updatedFiles);
+          dispatch(
+            setNotification({
+              severity: "success",
+              message: "File successfuly deleted",
+            })
+          );
         })
         .catch((error) => {
           console.error(error);
+          dispatch(
+            setNotification({
+              severity: "error",
+              message: "Error deleting the file. Please try again",
+            })
+          );
         });
     }
   };
