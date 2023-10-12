@@ -2,9 +2,10 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { Button, Typography } from "@mui/material";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
 import { downloadFile } from "../../services/candidates";
+import Notification from "../Notification";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -19,15 +20,14 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const StyledTypography = styled(Typography)`
-&& {
-    
-}
+  && {
+  }
 `;
-
-
 
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
+  const notification = useSelector((state) => state.notification);
+  console.log("notification", notification);
 
   const onFileChange = (e) => {
     const file = e.target.files[0];
@@ -53,9 +53,14 @@ const CandidateFiles = ({ candidate }) => {
       style={{
         // border: "1px solid red",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "flex-start",
       }}
     >
+      <Notification
+        severity={notification.severity}
+        message={notification.message}
+      />
       <Button
         component="label"
         variant="contained"
