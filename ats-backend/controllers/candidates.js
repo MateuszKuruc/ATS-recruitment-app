@@ -108,16 +108,6 @@ candidatesRouter.post(
       const filePath = request.file.path;
       const uploadDate = new Date().toISOString();
 
-      console.log(
-        "backend details",
-        "FILENAME:",
-        fileName,
-        "FILEPATH:",
-        filePath,
-        "UPLOADDATE:",
-        uploadDate
-      );
-
       const candidate = await Candidate.findById(candidateId);
 
       if (!candidate) {
@@ -152,6 +142,37 @@ candidatesRouter.get("/download/:filename", (request, response) => {
       response.status(404).send("File not found");
     }
   });
+});
+
+candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
+  const { id, fileName } = request.params;
+
+  console.log("filename to delete backend", fileName);
+
+  try {
+    const candidate = await Candidate.findById(id);
+
+    console.log("candidate backend", candidate);
+
+    if (!candidate) {
+      return response.status(404).json({ error: "Candidate not found" });
+    }
+
+    const updatedFiles = candidate.uploadedFiles.filter(
+      (file) => file.fileName !== fileName
+    );
+
+    console.log("updatedFiles", updatedFiles);
+    candidate.uploadedFiles = updatedFiles;
+
+    await candidate.save();
+    console.log("candidate after all backend", candidate);
+
+    response.status(204).end();
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ error: "Internal server error" });
+  }
 });
 
 module.exports = candidatesRouter;
