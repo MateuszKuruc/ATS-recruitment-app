@@ -45,7 +45,7 @@ const CandidateFiles = ({ candidate }) => {
 
       return;
     }
-
+    
     dispatch(uploadCandidateFile(candidate.id, file));
   };
 

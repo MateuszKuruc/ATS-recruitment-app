@@ -26,6 +26,8 @@ import CandidateFiles from "./CandidateFiles";
 
 import { validateEditForCandidate } from "../../utils/validationService";
 
+import { setNotification } from "../../reducers/notificationReducer";
+
 const StyledTextField = styled(TextField)`
   && {
     margin-top: 2rem;
@@ -127,6 +129,13 @@ const CandidateDetails = ({ candidates }) => {
 
   const saveEdit = () => {
     if (!handleCandidateValidation()) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message:
+            "Something went wrong. Please correct the mistakes before saving.",
+        })
+      );
       return;
     }
 
@@ -141,6 +150,12 @@ const CandidateDetails = ({ candidates }) => {
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
     };
 
+    dispatch(
+      setNotification({
+        severity: "success",
+        message: "Candidate profile updated successfully!",
+      })
+    );
     dispatch(updateCandidate(updatedCandidate));
     setEditMode(false);
   };

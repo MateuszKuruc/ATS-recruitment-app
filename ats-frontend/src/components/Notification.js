@@ -1,4 +1,4 @@
-import { Alert, AlertTitle } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeNotification } from "../reducers/notificationReducer";
@@ -26,8 +26,7 @@ const Notification = ({ severity, message }) => {
 
   return (
     <StyledAlert severity={severity}>
-      <AlertTitle>{severity}</AlertTitle>
-      {message}
+      <Typography variant="body1">{message}</Typography>
     </StyledAlert>
   );
 };
