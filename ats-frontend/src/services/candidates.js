@@ -84,8 +84,6 @@ const uploadFile = async (id, file) => {
   console.log("unique file", uniqueFile);
 
   formData.append("file", uniqueFile);
-  // formData.append("file", file);
-  // formData.append("uniqueFilename", uniqueFilename);
 
   const config = {
     headers: {

@@ -1,12 +1,18 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
 import { downloadFile } from "../../services/candidates";
 
 import { setNotification } from "../../reducers/notificationReducer";
+
+import {
+  PictureAsPdf,
+  Delete as DeleteIcon,
+  Description,
+} from "@mui/icons-material";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -45,8 +51,22 @@ const CandidateFiles = ({ candidate }) => {
 
       return;
     }
-
-    dispatch(uploadCandidateFile(candidate.id, file));
+    try {
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "File uploaded successfuly!",
+        })
+      );
+      dispatch(uploadCandidateFile(candidate.id, file));
+    } catch (error) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Error uploading the file. Please try again",
+        })
+      );
+    }
   };
 
   const handleDownload = (fileName) => {
@@ -65,6 +85,8 @@ const CandidateFiles = ({ candidate }) => {
         display: "flex",
         // flexDirection: "column",
         justifyContent: "flex-start",
+        alignItems: "center",
+        gap: "1rem",
       }}
     >
       <Button
@@ -72,6 +94,7 @@ const CandidateFiles = ({ candidate }) => {
         variant="contained"
         color="secondary"
         startIcon={<CloudUploadIcon />}
+        style={{ padding: "1rem" }}
       >
         Upload file
         <VisuallyHiddenInput
@@ -82,15 +105,34 @@ const CandidateFiles = ({ candidate }) => {
         />
       </Button>
       {candidate.uploadedFiles.map((file) => (
-        <div style={{ border: "1px solid green" }} key={file.fileName}>
-          <CloudDownloadIcon onClick={() => handleDownload(file.fileName)} />
-
+        <div
+          style={{
+            gap: "0rem",
+            display: "flex",
+            // border: "1px solid red",
+            flexDirection: "column",
+          }}
+          key={file.fileName}
+        >
+          <div style={{ borderRadius: 0, gap: "1.5rem" }}>
+            <IconButton>
+              {file.fileName.includes(".pdf") ? (
+                <PictureAsPdf color="secondary" fontSize="large" />
+              ) : (
+                <Description fontSize="large" color="info" />
+              )}
+            </IconButton>
+            <IconButton>
+              <DeleteIcon fontSize="large" color="primary" />
+            </IconButton>
+          </div>
           <StyledTypography
+            variant="body1"
             style={{
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
-              maxWidth: "100px",
+              maxWidth: "7rem",
             }}
           >
             {file.fileName}
