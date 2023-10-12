@@ -60,16 +60,6 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
-// export const isEmailValid = (testedEmail) => {
-//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   return emailRegex.test(testedEmail);
-// };
-
-// export const isPhoneNumberValid = (testedNumber) => {
-//   const phoneRegex = /^\d{9,11}$/;
-//   return phoneRegex.test(testedNumber);
-// };
-
 const AddProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,30 +80,6 @@ const AddProfile = () => {
   const [locationError, setLocationError] = useState(false);
   const [skillError, setSkillError] = useState(false);
   const [seniorityError, setSeniorityError] = useState(false);
-
-  console.log("date general", firstContact);
-
-  // const validateForm = () => {
-  //   const errors = {
-  //     firstName: firstName.length < 2 || firstName === "",
-  //     lastName: lastName.length < 2 || lastName === "",
-  //     location: location.length < 3 || location === "",
-  //     // email: !isEmailValid(email),
-  //     // phone: !isPhoneNumberValid(phone),
-  //     skill: skill === "",
-  //     seniority: seniority === "",
-  //   };
-
-  //   setFirstNameError(errors.firstName);
-  //   setLastNameError(errors.lastName);
-  //   setLocationError(errors.location);
-  //   setEmailError(errors.email);
-  //   setPhoneError(errors.phone);
-  //   setSkillError(errors.skill);
-  //   setSeniorityError(errors.seniority);
-
-  //   return !Object.values(errors).some((error) => error);
-  // };
 
   const handleCandidateValidation = () => {
     const checkedCandidate = {
@@ -153,17 +119,12 @@ const AddProfile = () => {
     setSkillError(false);
     setSeniorityError(false);
 
-    // const formattedDate = format(firstContact.$d, "yyyy-MM-dd").toString();
-
-    console.log("contact date on save", firstContact);
-
     const newCandidateData = {
       firstName,
       lastName,
       phone,
       email,
       location,
-      // firstContact: formattedDate,
       firstContact,
       skill,
       seniority,

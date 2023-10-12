@@ -106,30 +106,6 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  // const validateEditForCandidate = (editedCandidate) => {
-  //   console.log("edited cand in validation", editedCandidate);
-  //   const errors = {
-  //     firstName:
-  //       editedCandidate.firstName.length < 2 ||
-  //       editedCandidate.firstName === "",
-  //     lastName:
-  //       editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
-  //     email: !isEmailValid(editedCandidate.email),
-  //     phone: !isPhoneNumberValid(editedCandidate.phone),
-  //     location:
-  //       editedCandidate.location.length < 3 || editedCandidate.location === "",
-  //   };
-
-  //   setFirstNameError(errors.firstName);
-  //   setLastNameError(errors.lastName);
-  //   setEmailError(errors.email);
-  //   setPhoneError(errors.phone);
-  //   setLocationError(errors.location);
-
-  //   return !Object.values(errors).some((error) => error);
-  // };
-
-  // const errors = validateEditForCandidate(editedCandidate, validationFunctions);
   const handleCandidateValidation = () => {
     const errors = validateEditForCandidate(editedCandidate);
 
@@ -373,7 +349,6 @@ const CandidateDetails = ({ candidates }) => {
         candidate={candidate}
         setEditedCandidate={setEditedCandidate}
         editedCandidate={editedCandidate}
-        editMode={editMode}
         editModeExtended={editModeExtended}
       />
 

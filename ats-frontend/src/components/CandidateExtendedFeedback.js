@@ -51,7 +51,6 @@ const CandidateExtendedFeedback = ({
   candidate,
   editedCandidate,
   setEditedCandidate,
-  editMode,
   editModeExtended,
 }) => {
   return (
