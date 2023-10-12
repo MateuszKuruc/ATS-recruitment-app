@@ -127,6 +127,19 @@ export const downloadFile = async (fileName) => {
   }
 };
 
+const deleteFile = async (id, fileName) => {
+  try {
+    const response = await axios.delete(`${baseUrl}/delete/${id}/${fileName}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error while deleting file", error);
+  }
+};
+
 export default {
   getAll,
   setToken,
@@ -136,4 +149,5 @@ export default {
   updateCandidateById,
   uploadFile,
   // downloadFile,
+  deleteFile,
 };

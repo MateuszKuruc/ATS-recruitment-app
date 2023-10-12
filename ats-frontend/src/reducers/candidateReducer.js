@@ -27,6 +27,14 @@ const candidateSlice = createSlice({
           : candidate
       );
     },
+    updateCandidateAllFiles(state, action) {
+      const { candidateId, changedUploadedFiles } = action.payload;
+      return state.map((candidate) =>
+        candidate.id === candidateId
+          ? { ...candidate, uploadedFiles: changedUploadedFiles }
+          : candidate
+      );
+    },
   },
 });
 
@@ -36,6 +44,7 @@ export const {
   addCandidate,
   updateCandidateInStore,
   updateCandidateFileInStore,
+  updateCandidateAllFiles,
 } = candidateSlice.actions;
 
 export const initializeCandidates = () => {
@@ -81,7 +90,6 @@ export const uploadCandidateFile = (id, file) => {
       file
     );
     console.log("response in reducer", uploadedCandidateResponse);
-   
 
     dispatch(
       updateCandidateFileInStore({
@@ -89,5 +97,15 @@ export const uploadCandidateFile = (id, file) => {
         uploadedFile: uploadedCandidateResponse,
       })
     );
+  };
+};
+
+export const deleteCandidateFile = (id, fileName) => {
+  return async (dispatch) => {
+    const deletedCandidateFileResponse = await candidateService.deleteFile(
+      id,
+      fileName
+    );
+    dispatch(updateCandidateAllFiles(id, deletedCandidateFileResponse));
   };
 };

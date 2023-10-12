@@ -1,5 +1,4 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -13,6 +12,8 @@ import {
   Delete as DeleteIcon,
   Description,
 } from "@mui/icons-material";
+
+import { deleteCandidateFile } from "../../reducers/candidateReducer";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -70,8 +71,19 @@ const CandidateFiles = ({ candidate }) => {
   };
 
   const handleDownload = (fileName) => {
-    console.log("file name in handledownload", fileName);
+    dispatch(
+      setNotification({
+        severity: "success",
+        message: "File downloading started",
+      })
+    );
     downloadFile(fileName);
+  };
+
+  const handleDelete = (fileName) => {
+    if (window.confirm("Are you sure you want to delete this file?")) {
+      dispatch(deleteCandidateFile(candidate.id, fileName));
+    }
   };
 
   if (!candidate) {
@@ -115,14 +127,14 @@ const CandidateFiles = ({ candidate }) => {
           key={file.fileName}
         >
           <div style={{ borderRadius: 0, gap: "1.5rem" }}>
-            <IconButton>
+            <IconButton onClick={() => handleDownload(file.fileName)}>
               {file.fileName.includes(".pdf") ? (
                 <PictureAsPdf color="secondary" fontSize="large" />
               ) : (
                 <Description fontSize="large" color="info" />
               )}
             </IconButton>
-            <IconButton>
+            <IconButton onClick={() => handleDelete(file.fileName)}>
               <DeleteIcon fontSize="large" color="primary" />
             </IconButton>
           </div>
