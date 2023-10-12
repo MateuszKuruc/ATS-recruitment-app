@@ -105,7 +105,16 @@ const CandidateExtendedFeedback = ({
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
             <StyledFormControl>
-              <Select value={candidate.notice} disabled={!editMode}>
+              <Select
+                value={editMode ? editedCandidate.notice : candidate.notice}
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    notice: target.value,
+                  })
+                }
+              >
                 <MenuItem value="Available now">Available now</MenuItem>
                 <MenuItem value="2 weeks">2 weeks</MenuItem>
                 <MenuItem value="1 month">1 month</MenuItem>
@@ -122,7 +131,16 @@ const CandidateExtendedFeedback = ({
             <Typography variant="italic">Contract type</Typography>
 
             <StyledFormControl>
-              <Select value={candidate.contract} disabled={!editMode}>
+              <Select
+                value={editMode ? editedCandidate.contract : candidate.contract}
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    contract: target.value,
+                  })
+                }
+              >
                 <MenuItem value="UoP">UoP - contract of employment</MenuItem>
                 <MenuItem value="B2B">B2B</MenuItem>
               </Select>
@@ -136,7 +154,16 @@ const CandidateExtendedFeedback = ({
             <Typography variant="italic">English</Typography>
 
             <StyledFormControl>
-              <Select value={candidate.language} disabled={!editMode}>
+              <Select
+                value={editMode ? editedCandidate.language : candidate.language}
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    language: target.value,
+                  })
+                }
+              >
                 <MenuItem value="A1">A1</MenuItem>
                 <MenuItem value="A2">A2</MenuItem>
                 <MenuItem value="B1">B1</MenuItem>
@@ -155,7 +182,18 @@ const CandidateExtendedFeedback = ({
             <Typography variant="italic">Assessment</Typography>
 
             <StyledFormControl>
-              <Select value={candidate.assessment} disabled={!editMode}>
+              <Select
+                value={
+                  editMode ? editedCandidate.assessment : candidate.assessment
+                }
+                disabled={!editMode}
+                onChange={({ target }) =>
+                  setEditedCandidate({
+                    ...editedCandidate,
+                    assessment: target.value,
+                  })
+                }
+              >
                 <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
                 <MenuItem value="2 - No hire">2 - No hire</MenuItem>
                 <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
