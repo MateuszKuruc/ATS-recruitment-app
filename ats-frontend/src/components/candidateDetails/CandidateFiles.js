@@ -8,6 +8,7 @@ import { downloadFile } from "../../services/candidates";
 import { setNotification } from "../../reducers/notificationReducer";
 
 import { useState } from "react";
+import { getById } from "../../services/candidates";
 
 import {
   PictureAsPdf,
@@ -59,10 +60,15 @@ const CandidateFiles = ({ candidate }) => {
       dispatch(
         setNotification({
           severity: "success",
-          message: "File uploaded successfuly!",
+          message: "File uploaded successfully!",
         })
       );
-      dispatch(uploadCandidateFile(candidate.id, file));
+      dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
+        getById(candidate.id).then((response) => {
+          console.log("response.data upload");
+          setUploadedFiles(response.uploadedFiles);
+        });
+      });
     } catch (error) {
       dispatch(
         setNotification({
@@ -94,7 +100,7 @@ const CandidateFiles = ({ candidate }) => {
           dispatch(
             setNotification({
               severity: "success",
-              message: "File successfuly deleted",
+              message: "File successfully deleted",
             })
           );
         })

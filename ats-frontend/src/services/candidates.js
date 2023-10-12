@@ -39,7 +39,7 @@ const create = async (newCandidate) => {
   }
 };
 
-const getById = async (id) => {
+export const getById = async (id) => {
   const response = await axios.get(`${baseUrl}/${id}`);
   return response.data;
 };
