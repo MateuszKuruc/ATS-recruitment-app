@@ -2,6 +2,18 @@ import axios from "axios";
 
 const baseUrl = "/api/candidates";
 
+const generateUniqueFilename = (originalFilename) => {
+  const timestamp = new Date().getTime();
+
+  const filenameSplit = originalFilename.split(".");
+  const fileExtension = filenameSplit.pop();
+  const baseFilename = filenameSplit.join(".");
+
+  const uniqueFilename = `${baseFilename}-${timestamp}.${fileExtension}`;
+
+  return uniqueFilename;
+};
+
 let token = null;
 
 const setToken = (newToken) => {
@@ -62,7 +74,18 @@ const updateCandidateById = async (updatedCandidate) => {
 
 const uploadFile = async (id, file) => {
   const formData = new FormData();
-  formData.append("file", file);
+
+  const uniqueFilename = generateUniqueFilename(file.name);
+
+  const fileBlob = new Blob([file], { type: file.type });
+
+  const uniqueFile = new File([fileBlob], uniqueFilename, { type: file.type });
+
+  console.log("unique file", uniqueFile);
+
+  formData.append("file", uniqueFile);
+  // formData.append("file", file);
+  // formData.append("uniqueFilename", uniqueFilename);
 
   const config = {
     headers: {
@@ -70,8 +93,6 @@ const uploadFile = async (id, file) => {
       "Content-Type": "multipart/form-data",
     },
   };
-
-  console.log("formData in candidateService", formData);
 
   try {
     const response = await axios.post(

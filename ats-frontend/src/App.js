@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard";
 import AddProfile from "./components/AddProfile";
 import AllCandidates from "./components/AllCandidates";
 import MainAppBar from "./components/MainAppBar";
-import CandidateDetails from "./components/CandidateDetails";
+import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
@@ -20,7 +20,7 @@ import candidateService from "./services/candidates";
 import loginService from "./services/login";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import styled from "styled-components";
@@ -94,8 +94,8 @@ const websiteTheme = createTheme({
     italic2: {
       fontSize: "1rem",
       fontStyle: "italic",
-      lineHeight: 1.5
-    }
+      lineHeight: 1.5,
+    },
   },
 });
 
@@ -132,7 +132,7 @@ function App() {
     dispatch(initializeCandidates());
   }, [dispatch]);
 
-  console.log('candidates app', candidates)
+  console.log("candidates app", candidates);
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedAppUser");

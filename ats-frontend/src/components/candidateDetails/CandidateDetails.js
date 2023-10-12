@@ -12,26 +12,27 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 
-import { removeCandidate } from "../reducers/candidateReducer";
+import { removeCandidate } from "../../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import {
   updateCandidate,
   uploadCandidateFile,
-} from "../reducers/candidateReducer";
+} from "../../reducers/candidateReducer";
 
 import { format } from "date-fns";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 
-import { downloadFile } from "../services/candidates";
+import { downloadFile } from "../../services/candidates";
 
 import CandidateBasicDetails from "./CandidateBasicDetails";
 import CandidateExtendedFeedback from "./CandidateExtendedFeedback";
+import CandidateFiles from "./CandidateFiles";
 
-import { validateEditForCandidate } from "../utils/validationService";
+import { validateEditForCandidate } from "../../utils/validationService";
 
 const StyledTextField = styled(TextField)`
   && {
@@ -75,17 +76,17 @@ const StyledHeader = styled.div`
   }
 `;
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+// const VisuallyHiddenInput = styled("input")({
+//   clip: "rect(0 0 0 0)",
+//   clipPath: "inset(50%)",
+//   height: 1,
+//   overflow: "hidden",
+//   position: "absolute",
+//   bottom: 0,
+//   left: 0,
+//   whiteSpace: "nowrap",
+//   width: 1,
+// });
 
 const CandidateDetails = ({ candidates }) => {
   const id = useParams().id;
@@ -179,20 +180,20 @@ const CandidateDetails = ({ candidates }) => {
     navigate("/candidates");
   };
 
-  const onFileChange = (e) => {
-    const file = e.target.files[0];
+  // const onFileChange = (e) => {
+  //   const file = e.target.files[0];
 
-    if (!file) {
-      return;
-    }
-    console.log("file in onFileChange", file);
-    dispatch(uploadCandidateFile(candidate.id, file));
-  };
+  //   if (!file) {
+  //     return;
+  //   }
+  //   console.log("file in onFileChange", file);
+  //   dispatch(uploadCandidateFile(candidate.id, file));
+  // };
 
-  const handleDownload = (fileName) => {
-    console.log("file name in handledownload", fileName);
-    downloadFile(fileName);
-  };
+  // const handleDownload = (fileName) => {
+  //   console.log("file name in handledownload", fileName);
+  //   downloadFile(fileName);
+  // };
 
   if (!candidate) {
     return null;
@@ -305,7 +306,7 @@ const CandidateDetails = ({ candidates }) => {
         </Typography>
       </StyledHeader>
 
-      <div
+      {/* <div
         style={{
           // border: "1px solid red",
           display: "flex",
@@ -331,7 +332,9 @@ const CandidateDetails = ({ candidates }) => {
             <CloudDownloadIcon onClick={() => handleDownload(file.fileName)} />
           </div>
         ))}
-      </div>
+      </div> */}
+
+      <CandidateFiles candidate={candidate} />
 
       <CandidateBasicDetails
         candidate={candidate}
