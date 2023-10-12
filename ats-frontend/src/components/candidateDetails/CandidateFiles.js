@@ -57,10 +57,12 @@ const CandidateFiles = ({ candidate }) => {
         justifyContent: "flex-start",
       }}
     >
-      <Notification
-        severity={notification.severity}
-        message={notification.message}
-      />
+      {notification.message && (
+        <Notification
+          severity={notification.severity}
+          message={notification.message}
+        />
+      )}
       <Button
         component="label"
         variant="contained"
