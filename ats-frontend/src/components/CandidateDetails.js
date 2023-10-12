@@ -38,6 +38,8 @@ import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 
 import { downloadFile } from "../services/candidates";
 
+import CandidateBasicDetails from "./CandidateBasicDetails";
+
 const StyledPaper = styled(Paper)`
   display: flex;
   flex-direction: column;
@@ -58,17 +60,17 @@ const StyledTextField = styled(TextField)`
     background-color: #ffffff;
     border-radius: 0.5rem;
     // padding-right: 3rem;
-    // width: auto
-    width: 15rem;
+    // width: auto;
+    // width: 15rem;
     // border: 0.15rem solid  #990033;
 
     ${(props) =>
       props.disabled &&
       `
     // background-color: #c0d9e7;
-    // border: 0.15rem solid #084c61;
+    border: 0.15rem solid #084c61;
     // border: 0.15rem solid  #990033;
-    color: #ffffff
+    // color: #ffffff
     `}
 `;
 
@@ -380,7 +382,19 @@ const CandidateDetails = ({ candidates }) => {
         ))}
       </div>
 
-      <StyledHeader>
+      <CandidateBasicDetails
+        candidate={candidate}
+        setEditedCandidate={setEditedCandidate}
+        editedCandidate={editedCandidate}
+        editMode={editMode}
+        firstNameError={firstNameError}
+        lastNameError={lastNameError}
+        emailError={emailError}
+        phoneError={phoneError}
+        locationError={locationError}
+      />
+
+      {/* <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
           Basic details
         </Typography>
@@ -559,7 +573,7 @@ const CandidateDetails = ({ candidates }) => {
             />
           </StyledPaper>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
@@ -568,7 +582,7 @@ const CandidateDetails = ({ candidates }) => {
       </StyledHeader>
 
       <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
             <StyledFormControl>
@@ -584,7 +598,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Contract type</Typography>
 
@@ -598,7 +612,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">English</Typography>
 
@@ -617,7 +631,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledPaper>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Assessment</Typography>
 
