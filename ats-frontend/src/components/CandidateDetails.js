@@ -31,6 +31,9 @@ import { downloadFile } from "../services/candidates";
 
 import CandidateBasicDetails from "./CandidateBasicDetails";
 import CandidateExtendedFeedback from "./CandidateExtendedFeedback";
+import { validationFunctions } from "../utils/validationService";
+
+import validateService from "../utils";
 
 const StyledTextField = styled(TextField)`
   && {
@@ -105,28 +108,41 @@ const CandidateDetails = ({ candidates }) => {
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
 
-  const validateEdit = () => {
-    console.log("edited cand in validation", editedCandidate);
-    const errors = {
-      firstName:
-        editedCandidate.firstName.length < 2 ||
-        editedCandidate.firstName === "",
-      lastName:
-        editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
-      email: !isEmailValid(editedCandidate.email),
-      phone: !isPhoneNumberValid(editedCandidate.phone),
-      location:
-        editedCandidate.location.length < 3 || editedCandidate.location === "",
-    };
+  // const validateEditForCandidate = (editedCandidate) => {
+  //   console.log("edited cand in validation", editedCandidate);
+  //   const errors = {
+  //     firstName:
+  //       editedCandidate.firstName.length < 2 ||
+  //       editedCandidate.firstName === "",
+  //     lastName:
+  //       editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
+  //     email: !isEmailValid(editedCandidate.email),
+  //     phone: !isPhoneNumberValid(editedCandidate.phone),
+  //     location:
+  //       editedCandidate.location.length < 3 || editedCandidate.location === "",
+  //   };
 
-    setFirstNameError(errors.firstName);
-    setLastNameError(errors.lastName);
-    setEmailError(errors.email);
-    setPhoneError(errors.phone);
-    setLocationError(errors.location);
+  //   setFirstNameError(errors.firstName);
+  //   setLastNameError(errors.lastName);
+  //   setEmailError(errors.email);
+  //   setPhoneError(errors.phone);
+  //   setLocationError(errors.location);
 
-    return !Object.values(errors).some((error) => error);
-  };
+  //   return !Object.values(errors).some((error) => error);
+  // };
+
+  // const errors = validateEditForCandidate(editedCandidate, validationFunctions);
+
+  const errors = validateService.validateEditForCandidate(
+    editedCandidate,
+    validateService.validationFunctions
+  );
+
+  setFirstNameError(errors.firstName);
+  setLastNameError(errors.lastName);
+  setEmailError(errors.email);
+  setPhoneError(errors.phone);
+  setLocationError(errors.location);
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -155,7 +171,7 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const saveEdit = () => {
-    if (!validateEdit()) {
+    if (!validateEditForCandidate()) {
       return;
     }
 
