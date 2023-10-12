@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
-  Grid,
   Paper,
   Typography,
   TextField,
@@ -12,9 +11,6 @@ import {
   DialogContentText,
   DialogTitle,
   FormControl,
-  Select,
-  MenuItem,
-  FormHelperText,
 } from "@mui/material";
 import styled from "styled-components";
 
@@ -31,7 +27,6 @@ import { format } from "date-fns";
 import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
 
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
@@ -396,10 +391,10 @@ const CandidateDetails = ({ candidates }) => {
       />
 
       <CandidateExtendedFeedback
-      candidate={candidate}
-      setEditedCandidate={setEditedCandidate}
-      editedCandidate={editedCandidate}
-      editMode={editMode}
+        candidate={candidate}
+        setEditedCandidate={setEditedCandidate}
+        editedCandidate={editedCandidate}
+        editMode={editMode}
       />
 
       {/* <StyledHeader>

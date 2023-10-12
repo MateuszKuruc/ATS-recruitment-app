@@ -8,12 +8,6 @@ import {
   Paper,
   Typography,
   TextField,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControl,
   Select,
   MenuItem,
@@ -98,7 +92,6 @@ const CandidateBasicDetails = ({
   locationError,
 }) => {
   return (
-    // <div>
     <>
       <StyledHeader>
         <Typography variant="h5" style={{ color: "#ffffff" }}>
@@ -281,7 +274,6 @@ const CandidateBasicDetails = ({
         </Grid>
       </Grid>
     </>
-    // </div>
   );
 };
 

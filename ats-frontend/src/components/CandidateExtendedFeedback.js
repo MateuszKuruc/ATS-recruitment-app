@@ -1,19 +1,9 @@
-import dayjs from "dayjs";
 import styled from "styled-components";
-
-import { DatePicker } from "@mui/x-date-pickers";
 
 import {
   Grid,
   Paper,
   Typography,
-  TextField,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControl,
   Select,
   MenuItem,
@@ -45,35 +35,6 @@ const StyledPaper = styled(Paper)`
   padding-left: 2rem;
   // margin-bottom: 0;
   gap: 0.25rem;
-`;
-
-const StyledTextField = styled(TextField)`
-  && {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    // padding-right: 3rem;
-    // width: auto
-    width: 15rem;
-    // border: 0.15rem solid  #990033;
-
-    ${(props) =>
-      props.disabled &&
-      `
-    // background-color: #c0d9e7;
-    // border: 0.15rem solid #084c61;
-    // border: 0.15rem solid  #990033;
-    color: #ffffff
-    `}
-`;
-
-const StyledDatePicker = styled(DatePicker)`
-  && {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 0.5rem;
-  }
 `;
 
 const StyledFormControl = styled(FormControl)`
