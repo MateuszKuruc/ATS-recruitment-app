@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
 import { downloadFile } from "../../services/candidates";
 
+import { setNotification } from "../../reducers/notificationReducer";
+
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -32,7 +34,18 @@ const CandidateFiles = ({ candidate }) => {
     if (!file) {
       return;
     }
-    console.log("file in onFileChange", file);
+    if (candidate.uploadedFiles.length > 2) {
+      dispatch(
+        setNotification({
+          severity: "warning",
+          message:
+            "Maximum of 3 files per candidate. Please remove one of the existing files before uploading a new file",
+        })
+      );
+
+      return;
+    }
+
     dispatch(uploadCandidateFile(candidate.id, file));
   };
 
@@ -50,7 +63,7 @@ const CandidateFiles = ({ candidate }) => {
       style={{
         // border: "1px solid red",
         display: "flex",
-        flexDirection: "column",
+        // flexDirection: "column",
         justifyContent: "flex-start",
       }}
     >
