@@ -22,7 +22,6 @@ import {
 } from "../reducers/candidateReducer";
 
 import { format } from "date-fns";
-import { isEmailValid, isPhoneNumberValid } from "./AddProfile";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
@@ -31,9 +30,8 @@ import { downloadFile } from "../services/candidates";
 
 import CandidateBasicDetails from "./CandidateBasicDetails";
 import CandidateExtendedFeedback from "./CandidateExtendedFeedback";
-import { validationFunctions } from "../utils/validationService";
 
-import validateService from "../utils";
+import { validateEditForCandidate } from "../utils/validationService";
 
 const StyledTextField = styled(TextField)`
   && {
@@ -132,17 +130,17 @@ const CandidateDetails = ({ candidates }) => {
   // };
 
   // const errors = validateEditForCandidate(editedCandidate, validationFunctions);
+  const handleCandidateValidation = () => {
+    const errors = validateEditForCandidate(editedCandidate);
 
-  const errors = validateService.validateEditForCandidate(
-    editedCandidate,
-    validateService.validationFunctions
-  );
+    setFirstNameError(errors.firstName);
+    setLastNameError(errors.lastName);
+    setEmailError(errors.email);
+    setPhoneError(errors.phone);
+    setLocationError(errors.location);
 
-  setFirstNameError(errors.firstName);
-  setLastNameError(errors.lastName);
-  setEmailError(errors.email);
-  setPhoneError(errors.phone);
-  setLocationError(errors.location);
+    return !Object.values(errors).some((error) => error);
+  };
 
   const openDialogWindow = () => {
     setOpenDialog(true);
@@ -171,7 +169,7 @@ const CandidateDetails = ({ candidates }) => {
   };
 
   const saveEdit = () => {
-    if (!validateEditForCandidate()) {
+    if (!handleCandidateValidation()) {
       return;
     }
 

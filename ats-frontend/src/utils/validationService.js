@@ -1,7 +1,6 @@
 export const validateEditForCandidate = (editedCandidate) => {
   const { isEmailValid, isPhoneNumberValid } = validationFunctions;
 
-  console.log("edited cand in validation", editedCandidate);
   const errors = {
     firstName:
       editedCandidate.firstName.length < 2 || editedCandidate.firstName === "",
@@ -13,22 +12,20 @@ export const validateEditForCandidate = (editedCandidate) => {
       editedCandidate.location.length < 3 || editedCandidate.location === "",
   };
 
-  return !Object.values(errors).some((error) => error);
+  return errors;
 };
 
-export const isEmailValid = (testedEmail) => {
+const isEmailValid = (testedEmail) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(testedEmail);
 };
 
-export const isPhoneNumberValid = (testedNumber) => {
+const isPhoneNumberValid = (testedNumber) => {
   const phoneRegex = /^\d{9,11}$/;
   return phoneRegex.test(testedNumber);
 };
 
-export const validationFunctions = {
+const validationFunctions = {
   isEmailValid,
   isPhoneNumberValid,
 };
-
-export default { validationService };
