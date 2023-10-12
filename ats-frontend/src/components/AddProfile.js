@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { format } from "date-fns";
 import { DatePicker } from "@mui/x-date-pickers";
 import {
   FormControl,
@@ -16,6 +15,8 @@ import dayjs from "dayjs";
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import { validateEditForCandidate } from "../utils/validationService";
 
 const FormContainer = styled.div`
   display: flex;
@@ -59,15 +60,15 @@ const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
-export const isEmailValid = (testedEmail) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(testedEmail);
-};
+// export const isEmailValid = (testedEmail) => {
+//   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   return emailRegex.test(testedEmail);
+// };
 
-export const isPhoneNumberValid = (testedNumber) => {
-  const phoneRegex = /^\d{9,11}$/;
-  return phoneRegex.test(testedNumber);
-};
+// export const isPhoneNumberValid = (testedNumber) => {
+//   const phoneRegex = /^\d{9,11}$/;
+//   return phoneRegex.test(testedNumber);
+// };
 
 const AddProfile = () => {
   const dispatch = useDispatch();
@@ -92,16 +93,39 @@ const AddProfile = () => {
 
   console.log("date general", firstContact);
 
-  const validateForm = () => {
-    const errors = {
-      firstName: firstName.length < 2 || firstName === "",
-      lastName: lastName.length < 2 || lastName === "",
-      location: location.length < 3 || location === "",
-      email: !isEmailValid(email),
-      phone: !isPhoneNumberValid(phone),
-      skill: skill === "",
-      seniority: seniority === "",
+  // const validateForm = () => {
+  //   const errors = {
+  //     firstName: firstName.length < 2 || firstName === "",
+  //     lastName: lastName.length < 2 || lastName === "",
+  //     location: location.length < 3 || location === "",
+  //     // email: !isEmailValid(email),
+  //     // phone: !isPhoneNumberValid(phone),
+  //     skill: skill === "",
+  //     seniority: seniority === "",
+  //   };
+
+  //   setFirstNameError(errors.firstName);
+  //   setLastNameError(errors.lastName);
+  //   setLocationError(errors.location);
+  //   setEmailError(errors.email);
+  //   setPhoneError(errors.phone);
+  //   setSkillError(errors.skill);
+  //   setSeniorityError(errors.seniority);
+
+  //   return !Object.values(errors).some((error) => error);
+  // };
+
+  const handleCandidateValidation = () => {
+    const checkedCandidate = {
+      firstName,
+      lastName,
+      location,
+      email,
+      phone,
+      skill,
+      seniority,
     };
+    const errors = validateEditForCandidate(checkedCandidate);
 
     setFirstNameError(errors.firstName);
     setLastNameError(errors.lastName);
@@ -110,14 +134,12 @@ const AddProfile = () => {
     setPhoneError(errors.phone);
     setSkillError(errors.skill);
     setSeniorityError(errors.seniority);
-
-    return !Object.values(errors).some((error) => error);
   };
 
   const handleNewCandidate = async (event) => {
     event.preventDefault();
 
-    if (!validateForm()) {
+    if (!handleCandidateValidation()) {
       return;
     }
 

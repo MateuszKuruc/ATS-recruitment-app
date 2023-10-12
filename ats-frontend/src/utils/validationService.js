@@ -1,15 +1,18 @@
-export const validateEditForCandidate = (editedCandidate) => {
+export const validateEditForCandidate = (checkedCandidate) => {
   const { isEmailValid, isPhoneNumberValid } = validationFunctions;
 
   const errors = {
     firstName:
-      editedCandidate.firstName.length < 2 || editedCandidate.firstName === "",
+      checkedCandidate.firstName.length < 2 ||
+      checkedCandidate.firstName === "",
     lastName:
-      editedCandidate.lastName.length < 2 || editedCandidate.lastName === "",
-    email: !isEmailValid(editedCandidate.email),
-    phone: !isPhoneNumberValid(editedCandidate.phone),
+      checkedCandidate.lastName.length < 2 || checkedCandidate.lastName === "",
+    email: !isEmailValid(checkedCandidate.email),
+    phone: !isPhoneNumberValid(checkedCandidate.phone),
     location:
-      editedCandidate.location.length < 3 || editedCandidate.location === "",
+      checkedCandidate.location.length < 3 || checkedCandidate.location === "",
+    skill: checkedCandidate.skill === "",
+    seniority: checkedCandidate.seniority === "",
   };
 
   return errors;
