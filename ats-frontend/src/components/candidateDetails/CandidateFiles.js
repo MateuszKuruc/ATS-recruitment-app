@@ -57,16 +57,16 @@ const CandidateFiles = ({ candidate }) => {
       return;
     }
     try {
-      dispatch(
-        setNotification({
-          severity: "success",
-          message: "File uploaded successfully!",
-        })
-      );
       dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
         getById(candidate.id).then((response) => {
           console.log("response.data upload");
           setUploadedFiles(response.uploadedFiles);
+          dispatch(
+            setNotification({
+              severity: "success",
+              message: "File uploaded successfully!",
+            })
+          );
         });
       });
     } catch (error) {
@@ -93,14 +93,14 @@ const CandidateFiles = ({ candidate }) => {
     if (window.confirm("Are you sure you want to delete this file?")) {
       dispatch(deleteCandidateFile(candidate.id, fileName))
         .then(() => {
-          const updatedFiles = candidate.uploadedFiles.filter(
-            (file) => file.fileName !== fileName
-          );
-          setUploadedFiles(updatedFiles);
+          getById(candidate.id).then((response) => {
+            setUploadedFiles(response.uploadedFiles);
+          });
+
           dispatch(
             setNotification({
               severity: "success",
-              message: "File successfully deleted",
+              message: "File deleted successfully!",
             })
           );
         })
