@@ -26,8 +26,8 @@ const StyledTypography = styled(Typography)`
 
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
-  const notification = useSelector((state) => state.notification);
-  console.log("notification", notification);
+//   const notification = useSelector((state) => state.notification);
+//   console.log("notification", notification);
 
   const onFileChange = (e) => {
     const file = e.target.files[0];
@@ -57,12 +57,12 @@ const CandidateFiles = ({ candidate }) => {
         justifyContent: "flex-start",
       }}
     >
-      {notification.message && (
+      {/* {notification.message && (
         <Notification
           severity={notification.severity}
           message={notification.message}
         />
-      )}
+      )} */}
       <Button
         component="label"
         variant="contained"

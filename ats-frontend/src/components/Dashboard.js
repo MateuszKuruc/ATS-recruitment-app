@@ -4,8 +4,10 @@ import { Button, InputBase, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 import { secondaryColor } from "../App";
+import Notification from "./Notification";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Search = styled.div`
   display: flex;
@@ -19,6 +21,7 @@ const Search = styled.div`
 `;
 
 const Dashboard = () => {
+  const notification = useSelector((state) => state.notification);
   return (
     <div>
       <StyledAppBar
@@ -49,6 +52,12 @@ const Dashboard = () => {
           </Search>
         </StyledToolBar>
       </StyledAppBar>
+      {notification.message && (
+        <Notification
+          severity={notification.severity}
+          message={notification.message}
+        />
+      )}
     </div>
   );
 };

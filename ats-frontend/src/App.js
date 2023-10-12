@@ -214,6 +214,7 @@ function App() {
               )
             }
           />
+
           <Route
             path="/candidates"
             element={
@@ -269,6 +270,7 @@ function App() {
             }
           />
         </Routes>
+
         <Footer />
       </Container>
     </ThemeProvider>

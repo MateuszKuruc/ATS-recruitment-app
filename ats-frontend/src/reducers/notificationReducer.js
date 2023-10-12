@@ -5,6 +5,7 @@ const notificationSlice = createSlice({
   initialState: {
     severity: "success",
     message: "This is a test success notification message!",
+    // severity: "",
     // message: "",
   },
   reducers: {
