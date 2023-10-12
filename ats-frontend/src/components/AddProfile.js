@@ -134,6 +134,8 @@ const AddProfile = () => {
     setPhoneError(errors.phone);
     setSkillError(errors.skill);
     setSeniorityError(errors.seniority);
+
+    return !Object.values(errors).some((error) => error);
   };
 
   const handleNewCandidate = async (event) => {
