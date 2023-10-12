@@ -2,6 +2,13 @@ import { Alert, AlertTitle } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeNotification } from "../reducers/notificationReducer";
+import styled from "styled-components";
+
+const StyledAlert = styled(Alert)`
+  && {
+    margin-top: 1rem;
+  }
+`;
 
 const Notification = ({ severity, message }) => {
   const notification = useSelector((state) => state.notification);
@@ -18,10 +25,10 @@ const Notification = ({ severity, message }) => {
   }, [notification, dispatch]);
 
   return (
-    <Alert severity={severity}>
+    <StyledAlert severity={severity}>
       <AlertTitle>{severity}</AlertTitle>
       {message}
-    </Alert>
+    </StyledAlert>
   );
 };
 
