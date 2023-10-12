@@ -7,6 +7,8 @@ import { downloadFile } from "../../services/candidates";
 
 import { setNotification } from "../../reducers/notificationReducer";
 
+import { useState } from "react";
+
 import {
   PictureAsPdf,
   Delete as DeleteIcon,
@@ -34,6 +36,7 @@ const StyledTypography = styled(Typography)`
 
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
+  const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
 
   const onFileChange = (e) => {
     const file = e.target.files[0];
@@ -82,7 +85,16 @@ const CandidateFiles = ({ candidate }) => {
 
   const handleDelete = (fileName) => {
     if (window.confirm("Are you sure you want to delete this file?")) {
-      dispatch(deleteCandidateFile(candidate.id, fileName));
+      dispatch(deleteCandidateFile(candidate.id, fileName))
+        .then(() => {
+          const updatedFiles = candidate.uploadedFiles.filter(
+            (file) => file.fileName !== fileName
+          );
+          setUploadedFiles(updatedFiles);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 
@@ -116,7 +128,7 @@ const CandidateFiles = ({ candidate }) => {
           onChange={onFileChange}
         />
       </Button>
-      {candidate.uploadedFiles.map((file) => (
+      {uploadedFiles.map((file) => (
         <div
           style={{
             gap: "0rem",
