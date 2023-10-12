@@ -374,6 +374,7 @@ const CandidateDetails = ({ candidates }) => {
         setEditedCandidate={setEditedCandidate}
         editedCandidate={editedCandidate}
         editMode={editMode}
+        editModeExtended={editModeExtended}
       />
 
       <div

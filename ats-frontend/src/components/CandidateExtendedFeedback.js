@@ -52,6 +52,7 @@ const CandidateExtendedFeedback = ({
   editedCandidate,
   setEditedCandidate,
   editMode,
+  editModeExtended,
 }) => {
   return (
     <>
@@ -67,8 +68,10 @@ const CandidateExtendedFeedback = ({
             <Typography variant="italic">Notice period</Typography>
             <StyledFormControl>
               <Select
-                value={editMode ? editedCandidate.notice : candidate.notice}
-                disabled={!editMode}
+                value={
+                  editModeExtended ? editedCandidate.notice : candidate.notice
+                }
+                disabled={!editModeExtended}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -93,8 +96,12 @@ const CandidateExtendedFeedback = ({
 
             <StyledFormControl>
               <Select
-                value={editMode ? editedCandidate.contract : candidate.contract}
-                disabled={!editMode}
+                value={
+                  editModeExtended
+                    ? editedCandidate.contract
+                    : candidate.contract
+                }
+                disabled={!editModeExtended}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -116,8 +123,12 @@ const CandidateExtendedFeedback = ({
 
             <StyledFormControl>
               <Select
-                value={editMode ? editedCandidate.language : candidate.language}
-                disabled={!editMode}
+                value={
+                  editModeExtended
+                    ? editedCandidate.language
+                    : candidate.language
+                }
+                disabled={!editModeExtended}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -145,9 +156,11 @@ const CandidateExtendedFeedback = ({
             <StyledFormControl>
               <Select
                 value={
-                  editMode ? editedCandidate.assessment : candidate.assessment
+                  editModeExtended
+                    ? editedCandidate.assessment
+                    : candidate.assessment
                 }
-                disabled={!editMode}
+                disabled={!editModeExtended}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
