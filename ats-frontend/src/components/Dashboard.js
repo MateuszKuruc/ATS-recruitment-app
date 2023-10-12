@@ -29,8 +29,7 @@ const Dashboard = () => {
         style={{
           backgroundColor: secondaryColor,
           padding: 4,
-          borderBottomLeftRadius: "0.5rem",
-          borderBottomRightRadius: "0.5rem",
+          borderRadius: "0.5rem",
         }}
       >
         <StyledToolBar>
