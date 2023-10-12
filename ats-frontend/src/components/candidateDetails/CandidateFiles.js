@@ -1,6 +1,6 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
@@ -17,6 +17,14 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
+
+const StyledTypography = styled(Typography)`
+&& {
+    
+}
+`;
+
+
 
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
@@ -65,6 +73,17 @@ const CandidateFiles = ({ candidate }) => {
       {candidate.uploadedFiles.map((file) => (
         <div key={file.fileName}>
           <CloudDownloadIcon onClick={() => handleDownload(file.fileName)} />
+
+          <StyledTypography
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              maxWidth: "100px",
+            }}
+          >
+            {file.fileName}
+          </StyledTypography>
         </div>
       ))}
     </div>
