@@ -3,7 +3,8 @@ import { Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
-import { downloadFile } from "../../services/candidates";
+// import { downloadFile } from "../../services/candidates";
+import candidateService from "../../services/candidates";
 
 import { setNotification } from "../../reducers/notificationReducer";
 
@@ -86,7 +87,7 @@ const CandidateFiles = ({ candidate }) => {
         message: "File downloading started",
       })
     );
-    downloadFile(fileName);
+    candidateService.downloadFile(fileName);
   };
 
   const handleDelete = (fileName) => {

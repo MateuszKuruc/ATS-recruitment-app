@@ -104,7 +104,7 @@ const uploadFile = async (id, file) => {
   }
 };
 
-export const downloadFile = async (fileName) => {
+const downloadFile = async (fileName) => {
   try {
     const response = await axios.get(`${baseUrl}/download/${fileName}`, {
       responseType: "blob",
@@ -148,6 +148,6 @@ export default {
   deleteCandidateById,
   updateCandidateById,
   uploadFile,
-  // downloadFile,
+  downloadFile,
   deleteFile,
 };
