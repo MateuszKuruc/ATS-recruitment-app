@@ -1,12 +1,12 @@
-const PoolDetails = ({ candidatesList }) => {
-  if (!candidatesList) {
+const PoolDetails = ({ candidatesByTech }) => {
+  if (!candidatesByTech) {
     return null;
   }
   return (
     <div>
       <h2>SINGLE POOL RENDERING</h2>
       <ul>
-        {candidatesList.map((candidate) => (
+        {candidatesByTech.map((candidate) => (
           <li key={candidate.id}>
             {candidate.firstName}, {candidate.lastName}
           </li>
