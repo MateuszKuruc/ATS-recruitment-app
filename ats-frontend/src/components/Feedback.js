@@ -58,46 +58,16 @@ const Feedback = ({ candidates }) => {
   const [contract, setContract] = useState("UoP");
   const [notes, setNotes] = useState("");
   const [notesError, setNotesError] = useState(false);
-  // const [edit, setEdit] = useState("");
 
   const [editedCandidate, setEditedCandidate] = useState(null);
+
+  
 
   useEffect(() => {
     const candidate = candidates.find((candidate) => candidate.id === id);
     setCandidate(candidate);
     setEditedCandidate({ ...candidate });
   }, [candidates, id]);
-
-  // useEffect(() => {
-  //   const fetchById = async () => {
-  //     try {
-  //       const candidate = await candidateService.getById(id);
-
-  //       setCandidate(candidate);
-  //       setNotice(candidate.notice !== "" ? candidate.notice : notice);
-  //       setLanguage(candidate.language !== "" ? candidate.language : language);
-  //       setContract(candidate.contract !== "" ? candidate.contract : contract);
-  //       setNotes(candidate.notes);
-  //       setAssessment(
-  //         candidate.assessment !== "" ? candidate.assessment : assessment
-  //       );
-  //     } catch (error) {
-  //       console.error("error", error);
-  //     }
-  //   };
-
-  //   fetchById();
-  // }, [id, assessment, notice, language, contract]);
-
-  // useEffect(() => {
-  //   const fetchById = async () => {
-  //     const candidate = await candidateService.getById(id);
-
-  //     setCandidate(candidate);
-  //     setEditedCandidate({ ...candidate });
-  //   };
-  //   fetchById();
-  // }, []);
 
   const handleFeedback = () => {
     setNotesError(false);
@@ -113,16 +83,7 @@ const Feedback = ({ candidates }) => {
       );
       return;
     }
-    // const updatedCandidate = {
-    //   ...candidate,
-    //   assessment,
-    //   notice,
-    //   language,
-    //   contract,
-    //   notes,
-    //   edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
-    // };
-    console.log("edited candidate before saving", editedCandidate);
+
     const updatedCandidate = {
       ...editedCandidate,
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
