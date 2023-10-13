@@ -33,6 +33,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import { setNotification } from "./reducers/notificationReducer";
 
 const websiteTheme = createTheme({
   palette: {
@@ -158,6 +159,12 @@ function App() {
 
       candidateService.setToken(loggedUser.token);
       dispatch(setLogin(loggedUser));
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "You were logged in successfully!",
+        })
+      );
 
       setUsername("");
       setPassword("");
