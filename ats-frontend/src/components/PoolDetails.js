@@ -1,4 +1,7 @@
 const PoolDetails = ({ candidatesList }) => {
+  if (!candidatesList) {
+    return null;
+  }
   return (
     <div>
       <h2>SINGLE POOL RENDERING</h2>

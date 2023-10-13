@@ -2,7 +2,8 @@ import { Grid, Paper, Typography, Button } from "@mui/material";
 import styled from "styled-components";
 import PoolDetails from "./PoolDetails";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 const StyledPaper = styled(Paper)`
   height: 100%;
@@ -29,37 +30,34 @@ const Pools = ({ candidates, userId }) => {
   const navigate = useNavigate();
 
   const [technology, setTechnology] = useState("");
-  const [candidates, setCandidates] = useState(null);
-
-  // const handleChoice = (technology) => {
-  //   console.log(technology);
-  // };
-
-  // console.log(`${"java"}Candidates`);
-  // console.log("candidates in pools", candidates, userId);
- 
-  const 
+  const [poolCandidates, setPoolCandidates] = useState(null);
+  const [technologyCandidates, setTechnologyCandidates] = useState(null);
 
   useEffect(() => {
     const filteredCandidates = candidates.filter(
-      (candidate) => candidate.user === loginId
+      (candidate) => candidate.user === userId
     );
-    setCandidates(filteredCandidates);
-  }, [candidates]);
+    setPoolCandidates(filteredCandidates);
 
-  useEffect(() => {
-    console.log("technology chosen", technology);
+    if (technology !== "") {
+      const technologyCandidates = filteredCandidates.filter(
+        (candidate) => candidate.skill === technology
+      );
+      console.log("tech candidates", technologyCandidates);
+      setTechnologyCandidates(technologyCandidates);
+    }
+  }, [candidates, userId, technology]);
 
-    navigate(`/pools/${technology}`);
-  }, [technology, navigate]);
-
+  if (!poolCandidates) {
+    return null;
+  }
 
   return (
     <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
       <Grid container spacing={2} style={{ display: "flex", height: "75vh" }}>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("java")}>
+            <StyledButton variant="text" onClick={() => setTechnology("Java")}>
               <Typography variant="h1">Java</Typography>
             </StyledButton>
           </StyledPaper>
@@ -68,7 +66,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("python")}
+              onClick={() => setTechnology("Python")}
             >
               <Typography variant="h1">Python</Typography>
             </StyledButton>
@@ -78,7 +76,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("javascript")}
+              onClick={() => setTechnology("JavaScript")}
             >
               <Typography variant="h1">JavaScript</Typography>
             </StyledButton>
@@ -86,14 +84,14 @@ const Pools = ({ candidates, userId }) => {
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("c")}>
+            <StyledButton variant="text" onClick={() => setTechnology("C")}>
               <Typography variant="h1">C/C#/C++</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("scala")}>
+            <StyledButton variant="text" onClick={() => setTechnology("Scala")}>
               <Typography variant="h1">Scala</Typography>
             </StyledButton>
           </StyledPaper>
@@ -102,7 +100,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("bigdata")}
+              onClick={() => setTechnology("BigData")}
             >
               <Typography variant="h1">Big Data</Typography>
             </StyledButton>
@@ -112,7 +110,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("devops")}
+              onClick={() => setTechnology("DevOps")}
             >
               <Typography variant="h1">DevOps</Typography>
             </StyledButton>
@@ -122,7 +120,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("mobile")}
+              onClick={() => setTechnology("Mobile")}
             >
               <Typography variant="h1">Mobile</Typography>
             </StyledButton>
@@ -132,7 +130,7 @@ const Pools = ({ candidates, userId }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("golang")}
+              onClick={() => setTechnology("Golang")}
             >
               {" "}
               <Typography variant="h1">Golang</Typography>
@@ -140,6 +138,15 @@ const Pools = ({ candidates, userId }) => {
           </StyledPaper>
         </Grid>
       </Grid>
+      {technology !== "" && (
+        <PoolDetails candidatesList={technologyCandidates} />
+      )}
+      {/* <Routes>
+        <Route
+          path={`/${technology}`}
+          element={<PoolDetails candidateList={technologyCandidates} />}
+        />
+      </Routes> */}
     </div>
   );
 };
