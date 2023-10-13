@@ -26,9 +26,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   Container,
-  AppBar,
-  Button,
-  Toolbar,
   createTheme,
   ThemeProvider,
   Typography,
@@ -100,7 +97,6 @@ const websiteTheme = createTheme({
     },
   },
 });
-
 
 const StyledContainer = styled(Container)`
   && {
