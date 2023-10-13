@@ -245,7 +245,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <Pools />
+                <Pools candidates={candidates} userId={login?.id} />
               </>
             }
           />
