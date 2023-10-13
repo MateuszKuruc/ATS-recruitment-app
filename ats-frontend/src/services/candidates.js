@@ -60,10 +60,14 @@ const deleteCandidateById = async (id) => {
 };
 
 const updateCandidateById = async (updatedCandidate) => {
+  const config = {
+    headers: { Authorization: token },
+  };
   try {
     const response = await axios.put(
       `${baseUrl}/${updatedCandidate.id}`,
-      updatedCandidate
+      updatedCandidate,
+      config
     );
 
     return response.data;
