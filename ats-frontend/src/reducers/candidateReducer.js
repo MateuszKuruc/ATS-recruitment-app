@@ -98,12 +98,6 @@ export const uploadCandidateFile = (id, file) => {
       );
     } else {
       return;
-      // dispatch(
-      //   setNotification({
-      //     severity: "error",
-      //     message: "File upload failed",
-      //   })
-      // );
     }
   };
 };
