@@ -13,6 +13,22 @@ import {
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
+import styled from "styled-components";
+
+const StyledTableContainer = styled(TableContainer)`
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+`;
+
+const StyledButton = styled(Button)`
+  minwidth: 200px;
+  flex: 1;
+`;
+
+const StyledLink = styled(Link)`
+display: flex;
+text-decoration: none;s
+`;
 
 const HotProfiles = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
@@ -57,14 +73,7 @@ const HotProfiles = ({ candidates, userId }) => {
   };
 
   return (
-    <TableContainer
-      component={Paper}
-      style={{
-        marginTop: "1rem",
-        borderRadius: "0.5rem",
-        // backgroundColor: "#c0d9e7",
-      }}
-    >
+    <StyledTableContainer component={Paper}>
       <Table>
         <TableBody>
           <TableRow>
@@ -105,20 +114,13 @@ const HotProfiles = ({ candidates, userId }) => {
           ).map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
-                <Link
-                  to={`/candidates/${candidate.id}`}
-                  style={{ display: "flex", textDecoration: "none" }}
-                >
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    style={{ width: "auto", minWidth: "200px", flex: "1" }}
-                  >
+                <StyledLink to={`/candidates/${candidate.id}`}>
+                  <StyledButton variant="contained" color="secondary">
                     <Typography variant="h6">
                       {candidate.firstName} {candidate.lastName}
                     </Typography>
-                  </Button>
-                </Link>
+                  </StyledButton>
+                </StyledLink>
               </TableCell>
               <TableCell>
                 <Typography variant="body1">{candidate.location}</Typography>
@@ -173,7 +175,7 @@ const HotProfiles = ({ candidates, userId }) => {
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </TableContainer>
+    </StyledTableContainer>
   );
 };
 
