@@ -179,16 +179,32 @@ candidatesRouter.post(
   }
 );
 
-candidatesRouter.get("/download/:filename", (request, response) => {
-  const fileName = request.params.filename;
-  const filePath = path.join(__dirname, "../uploads", fileName);
-
-  response.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("File does not exist:", err);
-      response.status(404).send("File not found");
+candidatesRouter.get("/download/:filename", async (request, response) => {
+  try {
+    const decodedToken = jwt.verify(request.token, process.env.SECRET);
+    if (!decodedToken) {
+      response.status(401).json({ error: "token invalid" });
     }
-  });
+
+    const user = await User.findById(decodedToken.id);
+
+    if (!user) {
+      response.status(400).json({ error: "User does not exist" });
+    }
+
+    const fileName = request.params.filename;
+    const filePath = path.join(__dirname, "../uploads", fileName);
+
+    response.download(filePath, fileName, (err) => {
+      if (err) {
+        console.log("File does not exist:", err);
+        response.status(404).send("File not found");
+      }
+    });
+  } catch (error) {
+    console.error("Error during file download", error);
+    response.status(500).json({ error: "Internal server error" });
+  }
 });
 
 candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
