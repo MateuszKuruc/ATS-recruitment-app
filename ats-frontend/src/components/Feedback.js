@@ -102,7 +102,7 @@ const Feedback = ({ candidates }) => {
   const handleFeedback = () => {
     setNotesError(false);
 
-    if (notes.length < 6) {
+    if (editedCandidate.notes.length < 6) {
       setNotesError(true);
       dispatch(
         setNotification({
@@ -122,7 +122,7 @@ const Feedback = ({ candidates }) => {
     //   notes,
     //   edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
     // };
-
+    console.log("edited candidate before saving", editedCandidate);
     const updatedCandidate = {
       ...editedCandidate,
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
@@ -268,11 +268,15 @@ const Feedback = ({ candidates }) => {
           helperText={
             notesError ? "Notes need to be min. 6 characters long" : ""
           }
-          value={notes}
+          // value={notes}
           multiline
           rows={8}
           fullWidth
-          onChange={({ target }) => setNotes(target.value)}
+          // onChange={({ target }) => setNotes(target.value)}
+          value={editedCandidate.notes !== "" ? editedCandidate.notes : notes}
+          onChange={({ target }) =>
+            setEditedCandidate({ ...editedCandidate, notes: target.value })
+          }
         />
       </StyledLine>
       <div style={{ display: "flex", gap: "1rem" }}>
