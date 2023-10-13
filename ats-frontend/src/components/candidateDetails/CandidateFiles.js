@@ -3,21 +3,16 @@ import { Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
-// import { downloadFile } from "../../services/candidates";
+import { deleteCandidateFile } from "../../reducers/candidateReducer";
 import candidateService from "../../services/candidates";
-
 import { setNotification } from "../../reducers/notificationReducer";
-
 import { useState } from "react";
 import { getById } from "../../services/candidates";
-
 import {
   PictureAsPdf,
   Delete as DeleteIcon,
   Description,
 } from "@mui/icons-material";
-
-import { deleteCandidateFile } from "../../reducers/candidateReducer";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -69,22 +64,6 @@ const CandidateFiles = ({ candidate }) => {
         })
       );
     } catch (error) {
-      // try {
-      //   dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
-      //     getById(candidate.id).then((response) => {
-      //       console.log("response.data upload");
-      //       setUploadedFiles(response.uploadedFiles);
-
-      //     }).then(() => {
-      //         dispatch(
-      //             setNotification({
-      //               severity: "success",
-      //               message: "File uploaded successfully!",
-      //             })
-      //           );
-      //     })
-      //   });
-
       dispatch(
         setNotification({
           severity: "error",
@@ -147,9 +126,7 @@ const CandidateFiles = ({ candidate }) => {
   return (
     <div
       style={{
-        // border: "1px solid red",
         display: "flex",
-        // flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "center",
         gap: "1rem",
@@ -175,7 +152,6 @@ const CandidateFiles = ({ candidate }) => {
           style={{
             gap: "0rem",
             display: "flex",
-            // border: "1px solid red",
             flexDirection: "column",
           }}
           key={file.fileName}
