@@ -115,13 +115,13 @@ const uploadFile = async (id, file) => {
 };
 
 const downloadFile = async (fileName) => {
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
   try {
-    const response = await axios.get(`${baseUrl}/download/${fileName}`, {
-      responseType: "blob",
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.get(`${baseUrl}/download/${fileName}`, config);
 
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
@@ -132,8 +132,10 @@ const downloadFile = async (fileName) => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    return true;
   } catch (error) {
     console.error("Error while downloading file:", error);
+    return false;
   }
 };
 

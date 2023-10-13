@@ -58,47 +58,59 @@ const CandidateFiles = ({ candidate }) => {
       return;
     }
 
-    try { 
-        await dispatch(uploadCandidateFile(candidate.id, file));
-const response = await getById(candidate.id);
-setUploadedFiles(response.uploadedFiles);
-dispatch(setNotification({
-    severity: "success",
-    message: "File uploaded successfully!"
-}))
-    }
-    // try {
-    //   dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
-    //     getById(candidate.id).then((response) => {
-    //       console.log("response.data upload");
-    //       setUploadedFiles(response.uploadedFiles);
-         
-    //     }).then(() => {
-    //         dispatch(
-    //             setNotification({
-    //               severity: "success",
-    //               message: "File uploaded successfully!",
-    //             })
-    //           );
-    //     })
-    //   });
-    
-   catch (error) {
-dispatch(setNotification({
-    severity: "error",
-    message: "Error uploading the file. Please try again"
-}))
-  }
-}
+    try {
+      await dispatch(uploadCandidateFile(candidate.id, file));
+      const response = await getById(candidate.id);
+      setUploadedFiles(response.uploadedFiles);
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "File uploaded successfully!",
+        })
+      );
+    } catch (error) {
+      // try {
+      //   dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
+      //     getById(candidate.id).then((response) => {
+      //       console.log("response.data upload");
+      //       setUploadedFiles(response.uploadedFiles);
 
-  const handleDownload = (fileName) => {
-    dispatch(
-      setNotification({
-        severity: "success",
-        message: "File downloading started",
-      })
-    );
-    candidateService.downloadFile(fileName);
+      //     }).then(() => {
+      //         dispatch(
+      //             setNotification({
+      //               severity: "success",
+      //               message: "File uploaded successfully!",
+      //             })
+      //           );
+      //     })
+      //   });
+
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Error uploading the file. Please try again",
+        })
+      );
+    }
+  };
+  const handleDownload = async (fileName) => {
+    const success = await candidateService.downloadFile(fileName);
+
+    if (success) {
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "File downloading started",
+        })
+      );
+    } else {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Error downloading the file. Please try again",
+        })
+      );
+    }
   };
 
   const handleDelete = (fileName) => {
