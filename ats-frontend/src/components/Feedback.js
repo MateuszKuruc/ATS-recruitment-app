@@ -49,19 +49,23 @@ const Feedback = ({ candidates }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log("candidates in feedback", candidates);
-
   const [candidate, setCandidate] = useState(null);
-  const [assessment, setAssessment] = useState("6 - Rockstar");
-  const [notice, setNotice] = useState("Available now");
-  const [language, setLanguage] = useState("A1");
-  const [contract, setContract] = useState("UoP");
-  const [notes, setNotes] = useState("");
+  // const [assessment, setAssessment] = useState("6 - Rockstar");
+  // const [notice, setNotice] = useState("Available now");
+  // const [language, setLanguage] = useState("A1");
+  // const [contract, setContract] = useState("UoP");
+  // const [notes, setNotes] = useState("");
   const [notesError, setNotesError] = useState(false);
 
   const [editedCandidate, setEditedCandidate] = useState(null);
 
-  
+  const defaultValues = {
+    assessment: "6 - Rockstar",
+    notice: "Available now",
+    language: "A1",
+    contract: "UoP",
+    notes: "",
+  };
 
   useEffect(() => {
     const candidate = candidates.find((candidate) => candidate.id === id);
@@ -128,7 +132,7 @@ const Feedback = ({ candidates }) => {
             value={
               editedCandidate.assessment !== ""
                 ? editedCandidate.assessment
-                : assessment
+                : defaultValues.assessment
             }
             onChange={({ target }) =>
               setEditedCandidate({
@@ -156,7 +160,9 @@ const Feedback = ({ candidates }) => {
             // value={notice}
             // onChange={({ target }) => setNotice(target.value)}
             value={
-              editedCandidate.notice !== "" ? editedCandidate.notice : notice
+              editedCandidate.notice !== ""
+                ? editedCandidate.notice
+                : defaultValues.notice
             }
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, notice: target.value })
@@ -182,7 +188,7 @@ const Feedback = ({ candidates }) => {
             value={
               editedCandidate.language !== ""
                 ? editedCandidate.language
-                : language
+                : defaultValues.language
             }
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, language: target.value })
@@ -210,7 +216,7 @@ const Feedback = ({ candidates }) => {
             value={
               editedCandidate.contract !== ""
                 ? editedCandidate.contract
-                : contract
+                : defaultValues.contract
             }
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, contract: target.value })
@@ -224,7 +230,7 @@ const Feedback = ({ candidates }) => {
       <StyledLine>
         <Typography variant="h6">Notes</Typography>
         <StyledTextField
-          label={notes === "" ? "Add notes here..." : ""}
+          label={editedCandidate.notes === "" ? "Add notes here..." : ""}
           error={notesError}
           helperText={
             notesError ? "Notes need to be min. 6 characters long" : ""
@@ -234,7 +240,11 @@ const Feedback = ({ candidates }) => {
           rows={8}
           fullWidth
           // onChange={({ target }) => setNotes(target.value)}
-          value={editedCandidate.notes !== "" ? editedCandidate.notes : notes}
+          value={
+            editedCandidate.notes !== ""
+              ? editedCandidate.notes
+              : defaultValues.notes
+          }
           onChange={({ target }) =>
             setEditedCandidate({ ...editedCandidate, notes: target.value })
           }
