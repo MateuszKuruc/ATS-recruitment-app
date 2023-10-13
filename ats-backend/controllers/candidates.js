@@ -20,7 +20,7 @@ candidatesRouter.post("/", async (request, response) => {
     }
 
     const user = await User.findById(decodedToken.id);
-    console.log("user", user);
+
     const candidate = new Candidate({
       firstName: body.firstName,
       lastName: body.lastName,
@@ -169,8 +169,6 @@ candidatesRouter.post(
         uploadDate,
       });
 
-      console.log("candidate backend", candidate);
-
       await candidate.save();
 
       response.status(200).json({ message: "File uploaded successfully" });
@@ -199,7 +197,6 @@ candidatesRouter.get("/download/:filename", async (request, response) => {
 
     response.download(filePath, fileName, (err) => {
       if (err) {
-        console.log("File does not exist:", err);
         response.status(404).send("File not found");
       }
     });
@@ -212,12 +209,8 @@ candidatesRouter.get("/download/:filename", async (request, response) => {
 candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
   const { id, fileName } = request.params;
 
-  console.log("filename to delete backend", fileName);
-
   try {
     const candidate = await Candidate.findById(id);
-
-   
 
     if (!candidate) {
       return response.status(404).json({ error: "Candidate not found" });
@@ -227,11 +220,9 @@ candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
       (file) => file.fileName !== fileName
     );
 
-    console.log("updatedFiles", updatedFiles);
     candidate.uploadedFiles = updatedFiles;
 
     await candidate.save();
-    console.log("candidate after all backend", candidate);
 
     response.status(204).end();
   } catch (error) {
