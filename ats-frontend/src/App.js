@@ -34,6 +34,7 @@ import {
   Typography,
 } from "@mui/material";
 import { setNotification } from "./reducers/notificationReducer";
+import PoolDetails from "./components/PoolDetails";
 
 const websiteTheme = createTheme({
   palette: {
@@ -127,11 +128,12 @@ function App() {
   const [password, setPassword] = useState("");
 
   const [technology, setTechnology] = useState("");
+  const [candidatesByTech, setCandidatesByTech] = useState(null);
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
 
-  console.log('technology', technology)
+  console.log("technology", technology);
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -177,6 +179,13 @@ function App() {
       console.log("error logging", exception);
     }
   };
+
+  useEffect(() => {
+    const filteredCandidates = candidates.filter(
+      (candidate) => candidate.skill === technology
+    );
+    setCandidatesByTech(filteredCandidates);
+  }, [technology, candidates]);
 
   return (
     <ThemeProvider theme={websiteTheme}>
@@ -250,6 +259,15 @@ function App() {
               <>
                 <Dashboard />
                 <Pools setTechnology={setTechnology} />
+              </>
+            }
+          />
+          <Route
+            path="/pools/:technology"
+            element={
+              <>
+                <Dashboard />
+                <PoolDetails candidatesByTech={candidatesByTech} />
               </>
             }
           />
