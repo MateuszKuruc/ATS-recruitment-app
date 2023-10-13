@@ -32,7 +32,7 @@ const create = async (newCandidate) => {
 
   try {
     const response = await axios.post(baseUrl, newCandidate, config);
-    console.log(response);
+
     return response.data;
   } catch (error) {
     console.error("error while making POST request:", error);
@@ -54,7 +54,6 @@ const deleteCandidateById = async (id) => {
   const config = {
     headers: { Authorization: token },
   };
-  console.log("config in candidate service", config);
 
   try {
     const response = await axios.delete(`${baseUrl}/${id}`, config);
@@ -86,12 +85,8 @@ const uploadFile = async (id, file) => {
   const formData = new FormData();
 
   const uniqueFilename = generateUniqueFilename(file.name);
-
   const fileBlob = new Blob([file], { type: file.type });
-
   const uniqueFile = new File([fileBlob], uniqueFilename, { type: file.type });
-
-  console.log("unique file", uniqueFile);
 
   formData.append("file", uniqueFile);
 
