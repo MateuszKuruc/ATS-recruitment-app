@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
 import format from "date-fns/format";
+import { setNotification } from "../reducers/notificationReducer";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -83,6 +84,13 @@ const Feedback = () => {
 
     if (notes.length < 6) {
       setNotesError(true);
+      dispatch(
+        setNotification({
+          severity: "error",
+          message:
+            "Feedback update failed, please provide all necessary details",
+        })
+      );
       return;
     }
     const updatedCandidate = {
@@ -96,6 +104,12 @@ const Feedback = () => {
     };
 
     dispatch(updateCandidate(updatedCandidate));
+    dispatch(
+      setNotification({
+        severity: "success",
+        message: "Feedback successfully updated!",
+      })
+    );
 
     navigate(`/candidates/${candidate.id}`);
   };
