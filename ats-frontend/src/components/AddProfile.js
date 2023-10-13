@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { validateEditForCandidate } from "../utils/validationService";
+import { setNotification } from "../reducers/notificationReducer";
 
 const FormContainer = styled.div`
   display: flex;
@@ -108,6 +109,13 @@ const AddProfile = () => {
     event.preventDefault();
 
     if (!handleCandidateValidation()) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message:
+            "Adding new profile failed. Please correct the details and try again",
+        })
+      );
       return;
     }
 
@@ -131,6 +139,12 @@ const AddProfile = () => {
     };
 
     const newCandidate = await dispatch(createCandidate(newCandidateData));
+    dispatch(
+      setNotification({
+        severity: "success",
+        message: `New profile for ${newCandidateData.firstName} ${newCandidateData.lastName} added successfully!`,
+      })
+    );
 
     setFirstName("");
     setLastName("");
