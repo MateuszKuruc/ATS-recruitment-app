@@ -1,6 +1,4 @@
-import { StyledAppBar } from "../App";
-import { StyledToolBar } from "../App";
-import { Button, InputBase, Typography } from "@mui/material";
+import { Button, InputBase, Typography, AppBar, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 import { secondaryColor } from "../App";
@@ -18,6 +16,17 @@ const Search = styled.div`
   border-radius: 0.5rem;
   gap: 0.75rem;
   padding: 0.5rem;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  padding: 1rem;
+  margin: 0rem;
+`;
+
+const StyledToolBar = styled(Toolbar)`
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
 `;
 
 const Dashboard = () => {

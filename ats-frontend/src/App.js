@@ -101,20 +101,13 @@ const websiteTheme = createTheme({
   },
 });
 
-export const StyledAppBar = styled(AppBar)`
-  padding: 1rem;
-  margin: 0rem;
-`;
 
-export const StyledToolBar = styled(Toolbar)`
-  display: flex;
-  gap: 2rem;
-  justify-content: space-around;
-`;
-
-export const StyledButton = styled(Button)`
-  font-size: 2.3rem;
-  font-weight: 900;
+const StyledContainer = styled(Container)`
+  && {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 `;
 
 export const primaryColor = websiteTheme.palette.primary.main;
@@ -147,7 +140,7 @@ function App() {
     if (loggedUserJSON) {
       const loggedUser = JSON.parse(loggedUserJSON);
       candidateService.setToken(loggedUser.token);
-console.log('logged user', loggedUser)
+      console.log("logged user", loggedUser);
       dispatch(setLogin(loggedUser));
     }
   }, []);
@@ -189,9 +182,7 @@ console.log('logged user', loggedUser)
 
   return (
     <ThemeProvider theme={websiteTheme}>
-      <Container
-        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
-      >
+      <StyledContainer>
         <MainAppBar />
 
         <Routes>
@@ -304,7 +295,7 @@ console.log('logged user', loggedUser)
         </Routes>
 
         <Footer />
-      </Container>
+      </StyledContainer>
     </ThemeProvider>
   );
 }

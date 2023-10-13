@@ -1,4 +1,3 @@
-import { StyledAppBar, StyledToolBar, StyledButton } from "../App";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -7,6 +6,9 @@ import {
   List,
   ListItemText,
   ListItemButton,
+  Button,
+  Toolbar,
+  AppBar,
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -15,6 +17,23 @@ import IconButton from "@mui/material/IconButton";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
+import styled from "styled-components";
+
+const StyledButton = styled(Button)`
+  font-size: 2.3rem;
+  font-weight: 900;
+`;
+
+const StyledToolBar = styled(Toolbar)`
+  display: flex;
+  gap: 2rem;
+  justify-content: space-around;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  padding: 1rem;
+  margin: 0rem;
+`;
 
 const MainAppBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
