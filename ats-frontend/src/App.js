@@ -272,7 +272,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <Feedback />
+                <Feedback candidates={candidates} />
               </>
             }
           />

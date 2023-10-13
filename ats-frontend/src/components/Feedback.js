@@ -44,10 +44,12 @@ const StyledLine = styled.div`
   border-radius: 0.5rem;
 `;
 
-const Feedback = () => {
+const Feedback = ({ candidates }) => {
   const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  console.log("candidates in feedback", candidates);
 
   const [candidate, setCandidate] = useState(null);
   const [assessment, setAssessment] = useState("6 - Rockstar");
@@ -58,26 +60,44 @@ const Feedback = () => {
   const [notesError, setNotesError] = useState(false);
   // const [edit, setEdit] = useState("");
 
+  const [editedCandidate, setEditedCandidate] = useState(null);
+
   useEffect(() => {
-    const fetchById = async () => {
-      try {
-        const candidate = await candidateService.getById(id);
+    const candidate = candidates.find((candidate) => candidate.id === id);
+    setCandidate(candidate);
+    setEditedCandidate({ ...candidate });
+  }, [candidates, id]);
 
-        setCandidate(candidate);
-        setNotice(candidate.notice !== "" ? candidate.notice : notice);
-        setLanguage(candidate.language !== "" ? candidate.language : language);
-        setContract(candidate.contract !== "" ? candidate.contract : contract);
-        setNotes(candidate.notes);
-        setAssessment(
-          candidate.assessment !== "" ? candidate.assessment : assessment
-        );
-      } catch (error) {
-        console.error("error", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchById = async () => {
+  //     try {
+  //       const candidate = await candidateService.getById(id);
 
-    fetchById();
-  }, [id, assessment, notice, language, contract]);
+  //       setCandidate(candidate);
+  //       setNotice(candidate.notice !== "" ? candidate.notice : notice);
+  //       setLanguage(candidate.language !== "" ? candidate.language : language);
+  //       setContract(candidate.contract !== "" ? candidate.contract : contract);
+  //       setNotes(candidate.notes);
+  //       setAssessment(
+  //         candidate.assessment !== "" ? candidate.assessment : assessment
+  //       );
+  //     } catch (error) {
+  //       console.error("error", error);
+  //     }
+  //   };
+
+  //   fetchById();
+  // }, [id, assessment, notice, language, contract]);
+
+  // useEffect(() => {
+  //   const fetchById = async () => {
+  //     const candidate = await candidateService.getById(id);
+
+  //     setCandidate(candidate);
+  //     setEditedCandidate({ ...candidate });
+  //   };
+  //   fetchById();
+  // }, []);
 
   const handleFeedback = () => {
     setNotesError(false);
@@ -93,13 +113,18 @@ const Feedback = () => {
       );
       return;
     }
+    // const updatedCandidate = {
+    //   ...candidate,
+    //   assessment,
+    //   notice,
+    //   language,
+    //   contract,
+    //   notes,
+    //   edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
+    // };
+
     const updatedCandidate = {
-      ...candidate,
-      assessment,
-      notice,
-      language,
-      contract,
-      notes,
+      ...editedCandidate,
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
     };
 
@@ -137,8 +162,19 @@ const Feedback = () => {
           <Select
             labelId="assessment"
             label="assessment"
-            value={assessment}
-            onChange={({ target }) => setAssessment(target.value)}
+            // value={assessment}
+            // onChange={({ target }) => setAssessment(target.value)}
+            value={
+              editedCandidate.assessment !== ""
+                ? editedCandidate.assessment
+                : assessment
+            }
+            onChange={({ target }) =>
+              setEditedCandidate({
+                ...editedCandidate,
+                assessment: target.value,
+              })
+            }
           >
             <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
             <MenuItem value="2 - No hire">2 - No hire</MenuItem>
