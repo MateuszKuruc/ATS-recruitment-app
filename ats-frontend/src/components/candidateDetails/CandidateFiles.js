@@ -1,5 +1,4 @@
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { uploadCandidateFile } from "../../reducers/candidateReducer";
@@ -8,11 +7,23 @@ import candidateService from "../../services/candidates";
 import { setNotification } from "../../reducers/notificationReducer";
 import { useState } from "react";
 import { getById } from "../../services/candidates";
+
 import {
   PictureAsPdf,
   Delete as DeleteIcon,
   Description,
 } from "@mui/icons-material";
+
+import {
+  Typography,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+} from "@mui/material";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -34,6 +45,7 @@ const StyledTypography = styled(Typography)`
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
   const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -93,30 +105,37 @@ const CandidateFiles = ({ candidate }) => {
   };
 
   const handleDelete = (fileName) => {
-    if (window.confirm("Are you sure you want to delete this file?")) {
-      dispatch(deleteCandidateFile(candidate.id, fileName))
-        .then(() => {
-          getById(candidate.id).then((response) => {
-            setUploadedFiles(response.uploadedFiles);
-          });
-
-          dispatch(
-            setNotification({
-              severity: "success",
-              message: "File deleted successfully!",
-            })
-          );
-        })
-        .catch((error) => {
-          console.error(error);
-          dispatch(
-            setNotification({
-              severity: "error",
-              message: "Error deleting the file. Please try again",
-            })
-          );
+    dispatch(deleteCandidateFile(candidate.id, fileName))
+      .then(() => {
+        getById(candidate.id).then((response) => {
+          setUploadedFiles(response.uploadedFiles);
         });
-    }
+
+        dispatch(
+          setNotification({
+            severity: "success",
+            message: "File deleted successfully!",
+          })
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch(
+          setNotification({
+            severity: "error",
+            message: "Error deleting the file. Please try again",
+          })
+        );
+      });
+    setOpenDialog(false);
+  };
+
+  const openDialogWindow = () => {
+    setOpenDialog(true);
+  };
+
+  const closeDialogWindow = () => {
+    setOpenDialog(false);
   };
 
   if (!candidate) {
@@ -164,7 +183,7 @@ const CandidateFiles = ({ candidate }) => {
                 <Description fontSize="large" color="info" />
               )}
             </IconButton>
-            <IconButton onClick={() => handleDelete(file.fileName)}>
+            <IconButton onClick={() => openDialogWindow()}>
               <DeleteIcon fontSize="large" color="primary" />
             </IconButton>
           </div>
@@ -179,6 +198,32 @@ const CandidateFiles = ({ candidate }) => {
           >
             {file.fileName}
           </StyledTypography>
+          <Dialog
+            open={openDialog}
+            onClose={closeDialogWindow}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Delete file?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                This action will delete the file from database. Deleting a file
+                is irreversible.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleDelete(file.fileName)}
+              >
+                <Typography variant="h6">Confirm</Typography>
+              </Button>
+              <Button variant="outlined" onClick={closeDialogWindow} autoFocus>
+                <Typography variant="h6">Cancel</Typography>
+              </Button>
+            </DialogActions>
+          </Dialog>
         </div>
       ))}
     </div>
