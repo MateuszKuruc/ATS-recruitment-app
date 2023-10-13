@@ -1,7 +1,6 @@
 import { Button, InputBase, Typography, AppBar, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
-import { secondaryColor } from "../App";
 import Notification from "./Notification";
 
 import { Link } from "react-router-dom";
@@ -19,8 +18,13 @@ const Search = styled.div`
 `;
 
 const StyledAppBar = styled(AppBar)`
-  padding: 1rem;
-  margin: 0rem;
+  && {
+    padding: 1rem;
+    margin: 0rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: #990033;
+  }
 `;
 
 const StyledToolBar = styled(Toolbar)`
@@ -29,18 +33,17 @@ const StyledToolBar = styled(Toolbar)`
   justify-content: space-around;
 `;
 
+const StyledInputBase = styled(InputBase)`
+  && {
+    color: #ffffff;
+  }
+`;
+
 const Dashboard = () => {
   const notification = useSelector((state) => state.notification);
   return (
     <div>
-      <StyledAppBar
-        position="static"
-        style={{
-          backgroundColor: secondaryColor,
-          padding: 4,
-          borderRadius: "0.5rem",
-        }}
-      >
+      <StyledAppBar position="static">
         <StyledToolBar>
           <Button color="inherit" component={Link} to="/candidates">
             <Typography variant="h6">All candidates</Typography>
@@ -56,7 +59,7 @@ const Dashboard = () => {
           </Button>
           <Search>
             <SearchIcon />
-            <InputBase placeholder="Search..." style={{ color: "white" }} />
+            <StyledInputBase placeholder="Search..." />
           </Search>
         </StyledToolBar>
       </StyledAppBar>
