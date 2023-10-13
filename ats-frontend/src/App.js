@@ -267,7 +267,10 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <PoolDetails candidatesByTech={candidatesByTech} />
+                <PoolDetails
+                  candidatesByTech={candidatesByTech}
+                  technology={technology}
+                />
               </>
             }
           />
