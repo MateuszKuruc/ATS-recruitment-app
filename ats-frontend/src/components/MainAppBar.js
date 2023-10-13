@@ -33,6 +33,8 @@ const StyledToolBar = styled(Toolbar)`
 const StyledAppBar = styled(AppBar)`
   padding: 1rem;
   margin: 0rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.1rem;
 `;
 
 const MainAppBar = () => {
@@ -50,13 +52,7 @@ const MainAppBar = () => {
   };
 
   return (
-    <StyledAppBar
-      position="static"
-      style={{
-        borderRadius: "0.5rem",
-        marginBottom: "0.1rem",
-      }}
-    >
+    <StyledAppBar position="static">
       <StyledToolBar>
         <StyledButton color="inherit" component={Link} to="/">
           <Typography variant="h4">Home</Typography>
@@ -127,19 +123,8 @@ const MainAppBar = () => {
                 </ListItemButton>
               </List>
             </Popover>
-            {/* </div> */}
 
-            {/* <StyledButton
-              color="secondary"
-              variant="contained"
-              component={Link}
-              to="/logout"
-            >
-              <Typography variant="h4">Logout</Typography>
-            </StyledButton> */}
-            {/* <StyledButton variant="contained"> */}
             <Typography variant="italic">{login.username}</Typography>
-            {/* </StyledButton> */}
           </div>
         )}
       </StyledToolBar>
