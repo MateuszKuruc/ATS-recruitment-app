@@ -27,7 +27,7 @@ const StyledContainer = styled.div`
   border-radius: 0.5rem;
 `;
 
-export const StyledTextField = styled(TextField)`
+const StyledTextField = styled(TextField)`
   && {
     background-color: #ffffff;
     border-radius: 0.5rem;
@@ -42,6 +42,18 @@ const StyledLine = styled.div`
   padding: 1rem;
   border-radius: 0.5rem;
 `;
+
+const StyledButton = styled(Button)`
+  height: 3rem;
+  flex: 1;
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const StyledTypography = styled(Typography)``;
 
 const Feedback = ({ candidates }) => {
   const id = useParams().id;
@@ -107,12 +119,7 @@ const Feedback = ({ candidates }) => {
 
   return (
     <StyledContainer>
-      <Typography
-        variant="h3"
-        style={{ alignSelf: "center", marginBottom: "1rem" }}
-      >
-        Meeting feedback
-      </Typography>
+      <StyledTypography variant="h3">Meeting feedback</StyledTypography>
       <StyledLine>
         <Typography variant="h6">Final assessment</Typography>
         <FormControl fullWidth>
@@ -233,22 +240,14 @@ const Feedback = ({ candidates }) => {
           }
         />
       </StyledLine>
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <Button
-          variant="contained"
-          style={{ height: "3rem", flex: "1" }}
-          onClick={() => handleFeedback()}
-        >
+      <StyledButtonContainer>
+        <StyledButton variant="contained" onClick={() => handleFeedback()}>
           <Typography variant="h6">Submit</Typography>
-        </Button>
-        <Button
-          variant="outlined"
-          style={{ height: "3rem", flex: "1" }}
-          onClick={handleGoingBack}
-        >
+        </StyledButton>
+        <StyledButton variant="outlined" onClick={handleGoingBack}>
           <Typography variant="h6">Cancel</Typography>
-        </Button>
-      </div>
+        </StyledButton>
+      </StyledButtonContainer>
     </StyledContainer>
   );
 };
