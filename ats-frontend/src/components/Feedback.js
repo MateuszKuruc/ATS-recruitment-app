@@ -192,8 +192,14 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="noticeperiod"
             label="notice-period"
-            value={notice}
-            onChange={({ target }) => setNotice(target.value)}
+            // value={notice}
+            // onChange={({ target }) => setNotice(target.value)}
+            value={
+              editedCandidate.notice !== "" ? editedCandidate.notice : notice
+            }
+            onChange={({ target }) =>
+              setEditedCandidate({ ...editedCandidate, notice: target.value })
+            }
           >
             <MenuItem value="Available now">Available now</MenuItem>
             <MenuItem value="2 weeks">2 weeks</MenuItem>
