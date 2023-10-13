@@ -129,15 +129,6 @@ const Pools = ({ setTechnology }) => {
           </StyledPaper>
         </Grid>
       </Grid>
-      {/* {technology !== "" && (
-        <PoolDetails candidatesList={technologyCandidates} />
-      )} */}
-      {/* <Routes>
-        <Route
-          path={`/${technology}`}
-          element={<PoolDetails candidateList={technologyCandidates} />}
-        />
-      </Routes> */}
     </div>
   );
 };
