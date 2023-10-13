@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PoolDetails from "./PoolDetails";
 import { useEffect, useState } from "react";
 
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StyledPaper = styled(Paper)`
   height: 100%;
@@ -27,38 +27,22 @@ const StyledButton = styled(Button)`
 `;
 
 const Pools = ({ setTechnology }) => {
+  const navigate = useNavigate();
 
-// use navigate to move to a chosen page like pools/java, pools/python
-
-  // const [technology, setTechnology] = useState("");
-  // const [poolCandidates, setPoolCandidates] = useState(null);
-  // const [technologyCandidates, setTechnologyCandidates] = useState(null);
-
-  // useEffect(() => {
-  //   const filteredCandidates = candidates.filter(
-  //     (candidate) => candidate.user === userId
-  //   );
-  //   setPoolCandidates(filteredCandidates);
-
-  //   if (technology !== "") {
-  //     const technologyCandidates = filteredCandidates.filter(
-  //       (candidate) => candidate.skill === technology
-  //     );
-  //     console.log("tech candidates", technologyCandidates);
-  //     setTechnologyCandidates(technologyCandidates);
-  //   }
-  // }, [candidates, userId, technology]);
-
-  // if (!poolCandidates) {
-  //   return null;
-  // }
+  const handleTechnologyChoice = (technologyChoice) => {
+    setTechnology(technologyChoice);
+    navigate(`/pools/${technologyChoice}`);
+  };
 
   return (
     <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
       <Grid container spacing={2} style={{ display: "flex", height: "75vh" }}>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("Java")}>
+            <StyledButton
+              variant="text"
+              onClick={() => handleTechnologyChoice("Java")}
+            >
               <Typography variant="h1">Java</Typography>
             </StyledButton>
           </StyledPaper>
@@ -67,7 +51,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("Python")}
+              onClick={() => handleTechnologyChoice("Python")}
             >
               <Typography variant="h1">Python</Typography>
             </StyledButton>
@@ -77,7 +61,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("JavaScript")}
+              onClick={() => handleTechnologyChoice("JavaScript")}
             >
               <Typography variant="h1">JavaScript</Typography>
             </StyledButton>
@@ -85,14 +69,20 @@ const Pools = ({ setTechnology }) => {
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("C")}>
+            <StyledButton
+              variant="text"
+              onClick={() => handleTechnologyChoice("C")}
+            >
               <Typography variant="h1">C/C#/C++</Typography>
             </StyledButton>
           </StyledPaper>
         </Grid>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text" onClick={() => setTechnology("Scala")}>
+            <StyledButton
+              variant="text"
+              onClick={() => handleTechnologyChoice("Scala")}
+            >
               <Typography variant="h1">Scala</Typography>
             </StyledButton>
           </StyledPaper>
@@ -101,7 +91,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("BigData")}
+              onClick={() => handleTechnologyChoice("BigData")}
             >
               <Typography variant="h1">Big Data</Typography>
             </StyledButton>
@@ -111,7 +101,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("DevOps")}
+              onClick={() => handleTechnologyChoice("DevOps")}
             >
               <Typography variant="h1">DevOps</Typography>
             </StyledButton>
@@ -121,7 +111,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("Mobile")}
+              onClick={() => handleTechnologyChoice("Mobile")}
             >
               <Typography variant="h1">Mobile</Typography>
             </StyledButton>
@@ -131,7 +121,7 @@ const Pools = ({ setTechnology }) => {
           <StyledPaper>
             <StyledButton
               variant="text"
-              onClick={() => setTechnology("Golang")}
+              onClick={() => handleTechnologyChoice("Golang")}
             >
               {" "}
               <Typography variant="h1">Golang</Typography>
