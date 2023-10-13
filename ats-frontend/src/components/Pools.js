@@ -1,14 +1,10 @@
 import { Grid, Paper, Typography, Button } from "@mui/material";
 import styled from "styled-components";
-import PoolDetails from "./PoolDetails";
-import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 const StyledPaper = styled(Paper)`
   height: 100%;
-  // height: 15rem;
-  // border: 5px solid red;
 `;
 
 const StyledButton = styled(Button)`
@@ -26,6 +22,18 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const StyledGridContainer = styled(Grid)`
+  &.grid-container-class {
+    display: flex;
+    height: 75vh;
+  }
+`;
+
+const StyledComponentContainer = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
 const Pools = ({ setTechnology }) => {
   const navigate = useNavigate();
 
@@ -35,8 +43,12 @@ const Pools = ({ setTechnology }) => {
   };
 
   return (
-    <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
-      <Grid container spacing={2} style={{ display: "flex", height: "75vh" }}>
+    <StyledComponentContainer>
+      <StyledGridContainer
+        container
+        spacing={2}
+        className="grid-container-class"
+      >
         <Grid item xs={12} md={4}>
           <StyledPaper>
             <StyledButton
@@ -128,8 +140,8 @@ const Pools = ({ setTechnology }) => {
             </StyledButton>
           </StyledPaper>
         </Grid>
-      </Grid>
-    </div>
+      </StyledGridContainer>
+    </StyledComponentContainer>
   );
 };
 
