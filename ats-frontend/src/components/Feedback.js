@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import candidateService from "../services/candidates";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
@@ -50,13 +49,7 @@ const Feedback = ({ candidates }) => {
   const navigate = useNavigate();
 
   const [candidate, setCandidate] = useState(null);
-  // const [assessment, setAssessment] = useState("6 - Rockstar");
-  // const [notice, setNotice] = useState("Available now");
-  // const [language, setLanguage] = useState("A1");
-  // const [contract, setContract] = useState("UoP");
-  // const [notes, setNotes] = useState("");
   const [notesError, setNotesError] = useState(false);
-
   const [editedCandidate, setEditedCandidate] = useState(null);
 
   const defaultValues = {
@@ -127,8 +120,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="assessment"
             label="assessment"
-            // value={assessment}
-            // onChange={({ target }) => setAssessment(target.value)}
             value={
               editedCandidate.assessment !== ""
                 ? editedCandidate.assessment
@@ -157,8 +148,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="noticeperiod"
             label="notice-period"
-            // value={notice}
-            // onChange={({ target }) => setNotice(target.value)}
             value={
               editedCandidate.notice !== ""
                 ? editedCandidate.notice
@@ -183,8 +172,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="language"
             label="english"
-            // value={language}
-            // onChange={({ target }) => setLanguage(target.value)}
             value={
               editedCandidate.language !== ""
                 ? editedCandidate.language
@@ -211,8 +198,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="contract"
             label="contract-type"
-            // value={contract}
-            // onChange={({ target }) => setContract(target.value)}
             value={
               editedCandidate.contract !== ""
                 ? editedCandidate.contract
@@ -235,11 +220,9 @@ const Feedback = ({ candidates }) => {
           helperText={
             notesError ? "Notes need to be min. 6 characters long" : ""
           }
-          // value={notes}
           multiline
           rows={8}
           fullWidth
-          // onChange={({ target }) => setNotes(target.value)}
           value={
             editedCandidate.notes !== ""
               ? editedCandidate.notes
