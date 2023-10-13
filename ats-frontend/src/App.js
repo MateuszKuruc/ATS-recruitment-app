@@ -126,8 +126,12 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [technology, setTechnology] = useState("");
+
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
+
+  console.log('technology', technology)
 
   useEffect(() => {
     dispatch(initializeCandidates());
@@ -245,7 +249,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <Pools candidates={candidates} userId={login?.id} />
+                <Pools setTechnology={setTechnology} />
               </>
             }
           />

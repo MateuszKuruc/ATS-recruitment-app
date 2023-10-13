@@ -26,31 +26,32 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Pools = ({ candidates, userId }) => {
-  const navigate = useNavigate();
+const Pools = ({ setTechnology }) => {
 
-  const [technology, setTechnology] = useState("");
-  const [poolCandidates, setPoolCandidates] = useState(null);
-  const [technologyCandidates, setTechnologyCandidates] = useState(null);
+// use navigate to move to a chosen page like pools/java, pools/python
 
-  useEffect(() => {
-    const filteredCandidates = candidates.filter(
-      (candidate) => candidate.user === userId
-    );
-    setPoolCandidates(filteredCandidates);
+  // const [technology, setTechnology] = useState("");
+  // const [poolCandidates, setPoolCandidates] = useState(null);
+  // const [technologyCandidates, setTechnologyCandidates] = useState(null);
 
-    if (technology !== "") {
-      const technologyCandidates = filteredCandidates.filter(
-        (candidate) => candidate.skill === technology
-      );
-      console.log("tech candidates", technologyCandidates);
-      setTechnologyCandidates(technologyCandidates);
-    }
-  }, [candidates, userId, technology]);
+  // useEffect(() => {
+  //   const filteredCandidates = candidates.filter(
+  //     (candidate) => candidate.user === userId
+  //   );
+  //   setPoolCandidates(filteredCandidates);
 
-  if (!poolCandidates) {
-    return null;
-  }
+  //   if (technology !== "") {
+  //     const technologyCandidates = filteredCandidates.filter(
+  //       (candidate) => candidate.skill === technology
+  //     );
+  //     console.log("tech candidates", technologyCandidates);
+  //     setTechnologyCandidates(technologyCandidates);
+  //   }
+  // }, [candidates, userId, technology]);
+
+  // if (!poolCandidates) {
+  //   return null;
+  // }
 
   return (
     <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
@@ -138,9 +139,9 @@ const Pools = ({ candidates, userId }) => {
           </StyledPaper>
         </Grid>
       </Grid>
-      {technology !== "" && (
+      {/* {technology !== "" && (
         <PoolDetails candidatesList={technologyCandidates} />
-      )}
+      )} */}
       {/* <Routes>
         <Route
           path={`/${technology}`}
