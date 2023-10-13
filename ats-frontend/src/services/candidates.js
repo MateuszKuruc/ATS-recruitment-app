@@ -106,7 +106,7 @@ const uploadFile = async (id, file) => {
     const response = await axios.post(
       `${baseUrl}/upload/${id}`,
       formData,
-      // config
+      config
     );
     return response.data;
   } catch (error) {
