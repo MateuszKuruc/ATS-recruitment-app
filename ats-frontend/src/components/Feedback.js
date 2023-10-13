@@ -216,8 +216,16 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="language"
             label="english"
-            value={language}
-            onChange={({ target }) => setLanguage(target.value)}
+            // value={language}
+            // onChange={({ target }) => setLanguage(target.value)}
+            value={
+              editedCandidate.language !== ""
+                ? editedCandidate.language
+                : language
+            }
+            onChange={({ target }) =>
+              setEditedCandidate({ ...editedCandidate, language: target.value })
+            }
           >
             <MenuItem value="A1">A1</MenuItem>
             <MenuItem value="A2">A2</MenuItem>
@@ -236,8 +244,16 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="contract"
             label="contract-type"
-            value={contract}
-            onChange={({ target }) => setContract(target.value)}
+            // value={contract}
+            // onChange={({ target }) => setContract(target.value)}
+            value={
+              editedCandidate.contract !== ""
+                ? editedCandidate.contract
+                : contract
+            }
+            onChange={({ target }) =>
+              setEditedCandidate({ ...editedCandidate, contract: target.value })
+            }
           >
             <MenuItem value="UoP">UoP - contract of employment</MenuItem>
             <MenuItem value="B2B">B2B</MenuItem>
