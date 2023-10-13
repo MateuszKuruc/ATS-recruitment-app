@@ -1,10 +1,18 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-const PoolDetails = ({ candidatesByTech, technology }) => {
+const PoolDetails = ({ candidatesByTech }) => {
+  const navigate = useNavigate();
+
   const [techName, setTechName] = useState("");
+  const [mostCommonLocation, setMostCommonLocation] = useState("");
+  const { technology } = useParams();
 
   useEffect(() => {
+    if (!technology || !candidatesByTech) {
+      navigate("/pools");
+    }
     switch (technology) {
       case "Java":
         setTechName("Java");
@@ -36,7 +44,33 @@ const PoolDetails = ({ candidatesByTech, technology }) => {
       default:
         setTechName("");
     }
-  }, [technology]);
+
+    if (candidatesByTech) {
+      const locationCounts = {};
+
+      candidatesByTech.forEach((candidate) => {
+        const location = candidate.location;
+
+        if (!locationCounts[location]) {
+          locationCounts[location] = 1;
+        } else {
+          locationCounts[location]++;
+        }
+      });
+
+      let mostCommonLocation = null;
+      let maxCount = 0;
+
+      for (const location in locationCounts) {
+        if (locationCounts[location] > maxCount) {
+          mostCommonLocation = location;
+          maxCount = locationCounts[location];
+        }
+      }
+
+      setMostCommonLocation(mostCommonLocation);
+    }
+  }, [candidatesByTech, technology, navigate]);
 
   if (!candidatesByTech || !technology) {
     return null;
@@ -44,6 +78,12 @@ const PoolDetails = ({ candidatesByTech, technology }) => {
   return (
     <div>
       <Typography variant="h4">{techName} pool in numbers</Typography>
+      <Typography variant="h6">
+        Total number of {techName} candidates: {candidatesByTech.length}
+      </Typography>
+      <Typography variant="h6">
+        Most common location among {techName} candidates: {mostCommonLocation}
+      </Typography>
     </div>
   );
 };
