@@ -40,7 +40,7 @@ const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
   const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
 
-  const onFileChange = (e) => {
+  const onFileChange = async (e) => {
     const file = e.target.files[0];
 
     if (!file) {
@@ -57,28 +57,39 @@ const CandidateFiles = ({ candidate }) => {
 
       return;
     }
-    try {
-      dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
-        getById(candidate.id).then((response) => {
-          console.log("response.data upload");
-          setUploadedFiles(response.uploadedFiles);
-          dispatch(
-            setNotification({
-              severity: "success",
-              message: "File uploaded successfully!",
-            })
-          );
-        });
-      });
-    } catch (error) {
-      dispatch(
-        setNotification({
-          severity: "error",
-          message: "Error uploading the file. Please try again",
-        })
-      );
+
+    try { 
+        await dispatch(uploadCandidateFile(candidate.id, file));
+const response = await getById(candidate.id);
+setUploadedFiles(response.uploadedFiles);
+dispatch(setNotification({
+    severity: "success",
+    message: "File uploaded successfully!"
+}))
     }
-  };
+    // try {
+    //   dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
+    //     getById(candidate.id).then((response) => {
+    //       console.log("response.data upload");
+    //       setUploadedFiles(response.uploadedFiles);
+         
+    //     }).then(() => {
+    //         dispatch(
+    //             setNotification({
+    //               severity: "success",
+    //               message: "File uploaded successfully!",
+    //             })
+    //           );
+    //     })
+    //   });
+    
+   catch (error) {
+dispatch(setNotification({
+    severity: "error",
+    message: "Error uploading the file. Please try again"
+}))
+  }
+}
 
   const handleDownload = (fileName) => {
     dispatch(

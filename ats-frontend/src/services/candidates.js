@@ -40,7 +40,13 @@ const create = async (newCandidate) => {
 };
 
 export const getById = async (id) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
+  const config = {
+    header: {
+      Authorization: token,
+    },
+  };
+
+  const response = await axios.get(`${baseUrl}/${id}`, config);
   return response.data;
 };
 
@@ -100,7 +106,7 @@ const uploadFile = async (id, file) => {
     const response = await axios.post(
       `${baseUrl}/upload/${id}`,
       formData,
-      config
+      // config
     );
     return response.data;
   } catch (error) {
@@ -132,12 +138,14 @@ const downloadFile = async (fileName) => {
 };
 
 const deleteFile = async (id, fileName) => {
+  const config = {
+    headers: { Authorization: token },
+  };
   try {
-    const response = await axios.delete(`${baseUrl}/delete/${id}/${fileName}`, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.delete(
+      `${baseUrl}/delete/${id}/${fileName}`,
+      config
+    );
     return response.data;
   } catch (error) {
     console.error("Error while deleting file", error);

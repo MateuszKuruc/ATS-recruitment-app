@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import candidateService from "../services/candidates";
+import { setNotification } from "./notificationReducer";
 
 const candidateSlice = createSlice({
   name: "candidate",
@@ -84,19 +85,26 @@ export const updateCandidate = (updatedCandidate) => {
 
 export const uploadCandidateFile = (id, file) => {
   return async (dispatch) => {
-    console.log("id and file in reducer", id, file);
     const uploadedCandidateResponse = await candidateService.uploadFile(
       id,
       file
     );
-    console.log("response in reducer", uploadedCandidateResponse);
-
-    dispatch(
-      updateCandidateFileInStore({
-        candidateId: id,
-        uploadedFile: uploadedCandidateResponse,
-      })
-    );
+    if (uploadedCandidateResponse.success) {
+      dispatch(
+        updateCandidateFileInStore({
+          candidateId: id,
+          uploadedFile: uploadedCandidateResponse,
+        })
+      );
+    } else {
+      return;
+      // dispatch(
+      //   setNotification({
+      //     severity: "error",
+      //     message: "File upload failed",
+      //   })
+      // );
+    }
   };
 };
 
