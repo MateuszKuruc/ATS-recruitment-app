@@ -57,9 +57,32 @@ export const StyledTextField = styled(TextField)`
   }
 `;
 
+const ComponentContainer = styled.div`
+display: flex,
+flex-direction: column,
+margin-top: 1rem,
+flex: 1,
+margin-bottom: 1rem,
+`;
+
 const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
+
+// const StyledForm = styled.div`
+// && {
+
+//   display: flex,
+//   flex-direction: column,
+//   align-items: center,
+//   padding: 2rem,
+//   padding-right: 1rem,
+//   padding-left: 1rem,
+//   border-radius: 0.5rem,
+//   background-color: #c0d9e7,
+//   flex: 1,
+// }
+// `;
 
 const AddProfile = () => {
   const dispatch = useDispatch();
@@ -159,15 +182,8 @@ const AddProfile = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        marginTop: "1rem",
-        flex: "1",
-        marginBottom: "1rem",
-      }}
-    >
+    <ComponentContainer>
+      {/* <StyledForm> */}
       <form
         style={{
           display: "flex",
@@ -284,8 +300,9 @@ const AddProfile = () => {
             <Typography variant="h5">Add profile</Typography>
           </Button>
         </FormContainer>
+        {/* </StyledForm> */}
       </form>
-    </div>
+    </ComponentContainer>
   );
 };
 
