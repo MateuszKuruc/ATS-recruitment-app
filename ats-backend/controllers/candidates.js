@@ -77,6 +77,26 @@ candidatesRouter.delete("/:id", async (request, response) => {
 candidatesRouter.put("/:id", async (request, response) => {
   const candidate = request.body;
 
+  const { id } = request.params;
+
+  const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  if (!decodedToken) {
+    response.status(401).json({ error: "token invalid" });
+  }
+
+  const candidateToUpdate = await Candidate.findById(id);
+  const user = await User.findById(decodedToken.id);
+
+  if (user._id.toString() !== candidateToUpdate.user.toString()) {
+    response
+      .status(401)
+      .json({ error: "No authorization to edit this candidate" });
+  }
+
+  if (!user) {
+    response.status(400).json({ error: "User does not exist" });
+  }
+
   const updatedCandidate = await Candidate.findByIdAndUpdate(
     request.params.id,
     candidate,
@@ -91,6 +111,16 @@ candidatesRouter.put("/:id", async (request, response) => {
 candidatesRouter.get("/:id", async (request, response) => {
   const { id } = request.params;
 
+  // const decodedToken = jwt.verify(request.token, process.env.SECRET);
+  // if (!decodedToken) {
+  //   response.status(401).json({ error: "token invalid" });
+  // }
+
+  // const user = await User.findById(decodedToken.id);
+  // if (!user) {
+  //   response.status(400).json({ error: "User does not exist" });
+  // }
+
   const candidate = await Candidate.findById(id);
   response.json(candidate);
 });
@@ -101,14 +131,31 @@ candidatesRouter.post(
   async (request, response) => {
     try {
       const candidateId = request.params.id;
+
+      const decodedToken = jwt.verify(request.token, process.env.SECRET);
+      if (!decodedToken) {
+        response.status(401).json({ error: "token invalid" });
+      }
+
+      const candidate = await Candidate.findById(candidateId);
+      const user = await User.findById(decodedToken.id);
+
+      if (user._id.toString() !== candidate.user.toString()) {
+        response
+          .status(401)
+          .json({ error: "No authorization to edit this candidate" });
+      }
+
+      if (!user) {
+        response.status(400).json({ error: "User does not exist" });
+      }
+
       if (!request.file) {
         return response.status(400).json({ error: "No file uploaded" });
       }
       const fileName = request.file.originalname;
       const filePath = request.file.path;
       const uploadDate = new Date().toISOString();
-
-      const candidate = await Candidate.findById(candidateId);
 
       if (!candidate) {
         return response.status(404).json({ error: "Candidate not found" });
