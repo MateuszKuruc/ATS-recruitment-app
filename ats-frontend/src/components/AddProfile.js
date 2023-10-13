@@ -58,31 +58,33 @@ export const StyledTextField = styled(TextField)`
 `;
 
 const ComponentContainer = styled.div`
-display: flex,
-flex-direction: column,
-margin-top: 1rem,
-flex: 1,
-margin-bottom: 1rem,
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  flex: 1;
+  margin-bottom: 1rem;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  padding-right: 1rem;
+  background-color: #c0d9e7;
+  flex: 1;
 `;
 
 const StyledDatePicker = styled(DatePicker)`
   width: 100%;
 `;
 
-// const StyledForm = styled.div`
-// && {
-
-//   display: flex,
-//   flex-direction: column,
-//   align-items: center,
-//   padding: 2rem,
-//   padding-right: 1rem,
-//   padding-left: 1rem,
-//   border-radius: 0.5rem,
-//   background-color: #c0d9e7,
-//   flex: 1,
-// }
-// `;
+const StyledButton = styled(Button)`
+  && {
+    padding: 1rem;
+    width: 100%;
+  }
+`;
 
 const AddProfile = () => {
   const dispatch = useDispatch();
@@ -183,20 +185,7 @@ const AddProfile = () => {
 
   return (
     <ComponentContainer>
-      {/* <StyledForm> */}
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          padding: "2rem",
-          paddingRight: "1rem",
-          paddingLeft: "1rem",
-          borderRadius: "0.5rem",
-          backgroundColor: "#c0d9e7",
-          flex: "1",
-        }}
-      >
+      <StyledForm>
         <FormContainer>
           <Typography variant="h4">NEW CANDIDATE FORM</Typography>
           <FieldContainer>
@@ -290,18 +279,16 @@ const AddProfile = () => {
             />
           </FieldContainer>
 
-          <Button
-            style={{ width: "100%", padding: "1rem" }}
+          <StyledButton
             type="submit"
             id="addButton"
             variant="contained"
             onClick={handleNewCandidate}
           >
             <Typography variant="h5">Add profile</Typography>
-          </Button>
+          </StyledButton>
         </FormContainer>
-        {/* </StyledForm> */}
-      </form>
+      </StyledForm>
     </ComponentContainer>
   );
 };

@@ -23,12 +23,16 @@ const StyledButton = styled(Button)`
 `;
 
 const Pools = () => {
+  const handleClick = (event) => {
+    console.log(event.target);
+  };
+
   return (
     <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
       <Grid container spacing={2} style={{ display: "flex", height: "75vh" }}>
         <Grid item xs={12} md={4}>
           <StyledPaper>
-            <StyledButton variant="text">
+            <StyledButton variant="text" onClick={handleClick}>
               <Typography variant="h1">Java</Typography>
             </StyledButton>
           </StyledPaper>
