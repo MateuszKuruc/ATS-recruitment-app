@@ -240,23 +240,38 @@ const PoolDetails = ({ candidatesByTech }) => {
       </StyledHeaderSecondary>
       <div style={openHeader === "0" ? {} : { display: "none" }}>
         <Grid container spacing={2}>
-          {candidatesNoFeedback.map((candidate) => (
-            <Grid item xs={6} md={4}>
-              <StyledPaper>
-                <StyledCandidateButton variant="outlined" key={candidate.id}>
-                  <TypographyValue variant="h6">
-                    {candidate.firstName} {candidate.lastName}
-                  </TypographyValue>
-                  <TypographyValue variant="body1">
-                    {candidate.skill}
-                  </TypographyValue>
-                  <TypographyValue variant="body1">
-                    {candidate.seniority}
-                  </TypographyValue>
-                </StyledCandidateButton>
+          {candidatesNoFeedback.length === 0 ? (
+            <Grid item xs={12} md={12}>
+              <StyledPaper style={{ padding: "0.5rem" }}>
+                <StyledTypography
+                  variant="body1"
+                  style={{ color: "black", alignSelf: "center" }}
+                >
+                 All profiles are up to date!
+                </StyledTypography>
               </StyledPaper>
             </Grid>
-          ))}
+          ) : (
+            // }
+            // {
+            candidatesNoFeedback.map((candidate) => (
+              <Grid item xs={6} md={4}>
+                <StyledPaper>
+                  <StyledCandidateButton variant="outlined" key={candidate.id}>
+                    <TypographyValue variant="h6">
+                      {candidate.firstName} {candidate.lastName}
+                    </TypographyValue>
+                    <TypographyValue variant="body1">
+                      {candidate.skill}
+                    </TypographyValue>
+                    <TypographyValue variant="body1">
+                      {candidate.seniority}
+                    </TypographyValue>
+                  </StyledCandidateButton>
+                </StyledPaper>
+              </Grid>
+            ))
+          )}
         </Grid>
       </div>
 
