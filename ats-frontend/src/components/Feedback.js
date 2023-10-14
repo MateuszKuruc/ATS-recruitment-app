@@ -93,6 +93,19 @@ const Feedback = ({ candidates }) => {
       return;
     }
 
+    if (editedCandidate.assessment === "") {
+      editedCandidate.assessment = defaultValues.assessment;
+    }
+    if (editedCandidate.contract === "") {
+      editedCandidate.contract = defaultValues.contract;
+    }
+    if (editedCandidate.language === "") {
+      editedCandidate.language = defaultValues.language;
+    }
+    if (editedCandidate.notice === "") {
+      editedCandidate.notice = defaultValues.notice;
+    }
+
     const updatedCandidate = {
       ...editedCandidate,
       edit: format(new Date(), "yyyy-MM-dd, HH:mm:ss"),
