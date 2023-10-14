@@ -32,7 +32,7 @@ const StyledHeaderSecondary = styled.div`
   && {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     margin-bottom: 1rem;
     // background-color: #990033;
     background-color: #084c61;
@@ -49,6 +49,7 @@ const StyledCandidateButton = styled(Button)`
 const StyledButton = styled(Button)`
   && {
     background-color: #990033;
+    flex: 1;
   }
 `;
 
@@ -57,8 +58,14 @@ const StyledPaper = styled(Paper)`
   display: flex;
 `;
 
-const StyledTypography = styled(Typography)`
+const StyledTypographyValue = styled(Typography)`
   color: #ffffff;
+  flex: 3;
+`;
+
+const TypographyValue = styled(Typography)`
+  flex: 2;
+  color: goldenrod;
 `;
 
 const PoolDetails = ({ candidatesByTech }) => {
@@ -187,32 +194,28 @@ const PoolDetails = ({ candidatesByTech }) => {
   return (
     <Container>
       <StyledHeaderMain>
-        <StyledTypography variant="h4">
+        <StyledTypographyValue variant="h4">
           {techName} pool in numbers
-        </StyledTypography>
+        </StyledTypographyValue>
       </StyledHeaderMain>
       <StyledHeaderSecondary>
-        <StyledTypography variant="h6">
-          Total number of {techName} candidates: {candidatesByTech.length}
-        </StyledTypography>
+        <StyledTypographyValue variant="h6">
+          Total number of candidates:
+        </StyledTypographyValue>
+
+        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
+          {candidatesByTech.length}
+        </TypographyValue>
+
         <StyledButton variant="contained" onClick={() => handleOpenHeader("1")}>
           {openHeader === "1" ? "Hide" : "Show more"}
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "1" ? {} : { display: "none" }}>
-        <Grid container spacing={2} style={{ display: "flex" }}>
+        <Grid container spacing={2}>
           {candidatesByTech.map((candidate) =>
             candidate.location === mostCommonLocation ? (
-              // <ul key={candidate.id}>
-              //   <li>{candidate.firstName}</li>
-              // </ul>
-              <Grid
-                item
-                xs={6}
-                md={3}
-
-                // style={{ flex: "1" }}
-              >
+              <Grid item xs={6} md={3}>
                 <StyledPaper>
                   <StyledCandidateButton
                     variant="outlined"
@@ -220,16 +223,17 @@ const PoolDetails = ({ candidatesByTech }) => {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      // minWidth: "300px",
                     }}
                   >
-                    <Typography variant="h6">
+                    <TypographyValue variant="h6">
                       {candidate.firstName} {candidate.lastName}
-                    </Typography>
-                    <Typography variant="body1">{candidate.skill}</Typography>
-                    <Typography variant="body1">
+                    </TypographyValue>
+                    <TypographyValue variant="body1">
+                      {candidate.skill}
+                    </TypographyValue>
+                    <TypographyValue variant="body1">
                       {candidate.seniority}
-                    </Typography>
+                    </TypographyValue>
                   </StyledCandidateButton>
                 </StyledPaper>
               </Grid>
@@ -240,10 +244,14 @@ const PoolDetails = ({ candidatesByTech }) => {
 
       <div>
         <StyledHeaderSecondary>
-          <StyledTypography variant="h6">
-            Most common location among {techName} candidates:{" "}
+          <StyledTypographyValue variant="h6">
+            Most common location
+          </StyledTypographyValue>
+          <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
+            {" "}
             {mostCommonLocation}
-          </StyledTypography>
+          </TypographyValue>
+
           <StyledButton
             variant="contained"
             onClick={() => handleOpenHeader("2")}
@@ -271,10 +279,14 @@ const PoolDetails = ({ candidatesByTech }) => {
       </div>
 
       <StyledHeaderSecondary>
-        <StyledTypography variant="h6">
-          Most common seniority among {techName} candidates:{" "}
+        <StyledTypographyValue variant="h6">
+          Most common seniority
+        </StyledTypographyValue>
+        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
+          {" "}
           {mostCommonSeniority}
-        </StyledTypography>
+        </TypographyValue>
+
         <StyledButton variant="contained" onClick={() => handleOpenHeader("3")}>
           {openHeader === "3" ? "Hide" : "Show more"}
         </StyledButton>
@@ -286,11 +298,15 @@ const PoolDetails = ({ candidatesByTech }) => {
           )}
         />
       </div>
-
       <StyledHeaderSecondary>
-        <StyledTypography variant="h6">
-          Candidates specialized in {techName} available soon:
-        </StyledTypography>
+        <StyledTypographyValue variant="h6">
+          Candidates available soon:
+        </StyledTypographyValue>
+
+        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
+          test
+        </TypographyValue>
+
         <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
           {openHeader === "4" ? "Hide" : "Show more"}
         </StyledButton>
@@ -304,10 +320,18 @@ const PoolDetails = ({ candidatesByTech }) => {
       </div>
 
       <StyledHeaderSecondary>
-        <StyledTypography variant="h6">
-          {techName} candidates without meeting feedback
-        </StyledTypography>
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("5")}>
+        <StyledTypographyValue variant="h6" style={{ flex: "3" }}>
+          Candidates without meeting feedback
+        </StyledTypographyValue>
+
+        <TypographyValue variant="h4" style={{ color: "goldenrod", flex: "2" }}>
+          test
+        </TypographyValue>
+        <StyledButton
+          variant="contained"
+          style={{ flex: "1" }}
+          onClick={() => handleOpenHeader("5")}
+        >
           {openHeader === "5" ? "Hide" : "Show more"}
         </StyledButton>
       </StyledHeaderSecondary>
