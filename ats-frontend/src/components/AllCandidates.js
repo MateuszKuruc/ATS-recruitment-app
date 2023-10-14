@@ -5,6 +5,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import styled from "styled-components";
+
 export const getColorForAssessment = (assessment) => {
   switch (assessment) {
     case "6 - Rockstar":
@@ -23,6 +25,23 @@ export const getColorForAssessment = (assessment) => {
       return null;
   }
 };
+
+const Container = styled.div`
+  margin-too: 1rem;
+  border-rariuds: 0.5rem;
+  display: flex;
+`;
+
+const StyledTypography = styled(Typography)`
+  text-align: center;
+  padding: 1rem;
+`;
+
+const StyledButton = styled(Button)`
+  && {
+    min-width: 300px;
+  }
+`;
 
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
@@ -47,19 +66,14 @@ const AllCandidates = ({ candidates, userId }) => {
     {
       field: "Name",
       renderHeader: () => (
-        <Typography
-          variant="h4"
-          style={{ textAlign: "center", padding: "10px" }}
-        >
-          Name
-        </Typography>
+        <StyledTypography variant="h4">Name</StyledTypography>
       ),
       minWidth: 350,
       renderCell: (params) => (
         <Link to={`/candidates/${params.row.id}`}>
-          <Button variant="contained" style={{ minWidth: "300px" }}>
+          <StyledButton variant="contained">
             <Typography variant="h6">{params.row.Name}</Typography>
-          </Button>
+          </StyledButton>
         </Link>
       ),
     },
@@ -110,7 +124,7 @@ const AllCandidates = ({ candidates, userId }) => {
   ];
 
   return (
-    <div style={{ marginTop: "1rem", borderRadius: "0.5rem", display: "flex" }}>
+    <Container>
       <Paper>
         <DataGrid
           rows={rows}
@@ -126,7 +140,7 @@ const AllCandidates = ({ candidates, userId }) => {
           pageSizeOptions={[5, 10, 15, 25, 50]}
         />
       </Paper>
-    </div>
+    </Container>
   );
 };
 
