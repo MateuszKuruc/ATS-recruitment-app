@@ -43,7 +43,11 @@ const StyledHeaderSecondary = styled.div`
 `;
 
 const StyledCandidateButton = styled(Button)`
-  flex: 1;
+  && {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -221,134 +225,25 @@ const PoolDetails = ({ candidatesByTech }) => {
           {techName} pool in numbers
         </StyledTypography>
       </StyledHeaderMain>
+
       <StyledHeaderSecondary>
         <StyledTypography variant="h6">
-          Total number of candidates:
+          Awaiting meeting feedback
         </StyledTypography>
 
-        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
-          {candidatesByTech.length}
+        <TypographyValue variant="h4">
+          {candidatesNoFeedback.length}
         </TypographyValue>
-
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("1")}>
-          {openHeader === "1" ? "Hide" : "Show more"}
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("0")}>
+          {openHeader === "0" ? "Hide" : "Show more"}
         </StyledButton>
       </StyledHeaderSecondary>
-      <div style={openHeader === "1" ? {} : { display: "none" }}>
-        <HotProfiles candidates={candidatesByTech} />
-      </div>
-
-      <div>
-        <StyledHeaderSecondary>
-          <StyledTypography variant="h6">Most common location</StyledTypography>
-          <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
-            {" "}
-            {mostCommonLocation}
-          </TypographyValue>
-
-          <StyledButton
-            variant="contained"
-            onClick={() => handleOpenHeader("2")}
-          >
-            {openHeader === "2" ? "Hide" : "Show more"}
-          </StyledButton>
-        </StyledHeaderSecondary>
-        <div style={openHeader === "2" ? {} : { display: "none" }}>
-          <HotProfiles
-            // candidates={candidatesByTech.filter(
-            //   (candidate) => candidate.location === mostCommonLocation
-            // )}
-            candidates={candidatesTopLocation}
-          />
-
-          {/* {candidatesByTech.map((candidate) =>
-            candidate.location === mostCommonLocation ? (
-              <ul key={candidate.id}>
-                <li>{candidate.firstName}</li>
-                <li>{candidate.lastName}</li>
-                <li>{candidate.location}</li>
-              </ul>
-            ) : null
-          )} */}
-        </div>
-      </div>
-
-      <StyledHeaderSecondary>
-        <StyledTypography variant="h6">Most common seniority</StyledTypography>
-        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
-          {" "}
-          {mostCommonSeniority}
-        </TypographyValue>
-
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("3")}>
-          {openHeader === "3" ? "Hide" : "Show more"}
-        </StyledButton>
-      </StyledHeaderSecondary>
-      <div style={openHeader === "3" ? {} : { display: "none" }}>
-        <HotProfiles
-          // candidates={candidatesByTech.filter(
-          //   (candidate) => candidate.seniority === mostCommonSeniority
-          // )}
-          candidates={candidatesTopSeniority}
-        />
-      </div>
-      <StyledHeaderSecondary>
-        <StyledTypography variant="h6">
-          Candidates available soon:
-        </StyledTypography>
-
-        <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
-          {candidatesAvailableSoon.length}
-        </TypographyValue>
-
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
-          {openHeader === "4" ? "Hide" : "Show more"}
-        </StyledButton>
-      </StyledHeaderSecondary>
-      <div style={openHeader === "4" ? {} : { display: "none" }}>
-        <HotProfiles
-          // candidates={candidatesByTech.filter(
-          //   (candidate) => candidate.seniority === mostCommonSeniority
-          // )}
-          candidates={candidatesAvailableSoon}
-        />
-      </div>
-
-      <StyledHeaderSecondary>
-        <StyledTypography variant="h6" style={{ flex: "3" }}>
-          Candidates without meeting feedback
-        </StyledTypography>
-
-        <TypographyValue variant="h4" style={{ color: "goldenrod", flex: "2" }}>
-          test
-        </TypographyValue>
-        <StyledButton
-          variant="contained"
-          style={{ flex: "1" }}
-          onClick={() => handleOpenHeader("5")}
-        >
-          {openHeader === "5" ? "Hide" : "Show more"}
-        </StyledButton>
-      </StyledHeaderSecondary>
-      <div style={openHeader === "5" ? {} : { display: "none" }}>
-        {/* <HotProfiles
-          candidates={candidatesByTech.filter(
-            (candidate) => candidate.seniority === mostCommonSeniority
-          )}
-        /> */}
-
+      <div style={openHeader === "0" ? {} : { display: "none" }}>
         <Grid container spacing={2}>
           {candidatesNoFeedback.map((candidate) => (
             <Grid item xs={6} md={4}>
               <StyledPaper>
-                <StyledCandidateButton
-                  variant="outlined"
-                  key={candidate.id}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
+                <StyledCandidateButton variant="outlined" key={candidate.id}>
                   <TypographyValue variant="h6">
                     {candidate.firstName} {candidate.lastName}
                   </TypographyValue>
@@ -363,34 +258,68 @@ const PoolDetails = ({ candidatesByTech }) => {
             </Grid>
           ))}
         </Grid>
+      </div>
 
-        {/* <Grid container spacing={2}>
-          {candidatesByTech.map((candidate) => candidate.assessment === "" ? (
-            <Grid item xs={6} md={3}>
-              <StyledPaper>
-                <StyledCandidateButton
-                  variant="outlined"
-                  key={candidate.id}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <TypographyValue variant="h6">
-                    {candidate.firstName} {candidate.lastName}
-                  </TypographyValue>
-                  <TypographyValue variant="body1">
-                    {candidate.skill}
-                  </TypographyValue>
-                  <TypographyValue variant="body1">
-                    {candidate.seniority}
-                  </TypographyValue>
-                </StyledCandidateButton>
-              </StyledPaper>
-            </Grid>
-          ): null
-          )}
-        </Grid> */}
+      <StyledHeaderSecondary>
+        <StyledTypography variant="h6">
+          Total number of candidates:
+        </StyledTypography>
+
+        <TypographyValue variant="h4">
+          {candidatesByTech.length}
+        </TypographyValue>
+
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("1")}>
+          {openHeader === "1" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "1" ? {} : { display: "none" }}>
+        <HotProfiles candidates={candidatesByTech} />
+      </div>
+
+      <div>
+        <StyledHeaderSecondary>
+          <StyledTypography variant="h6">Most common location</StyledTypography>
+          <TypographyValue variant="h4"> {mostCommonLocation}</TypographyValue>
+
+          <StyledButton
+            variant="contained"
+            onClick={() => handleOpenHeader("2")}
+          >
+            {openHeader === "2" ? "Hide" : "Show more"}
+          </StyledButton>
+        </StyledHeaderSecondary>
+        <div style={openHeader === "2" ? {} : { display: "none" }}>
+          <HotProfiles candidates={candidatesTopLocation} />
+        </div>
+      </div>
+
+      <StyledHeaderSecondary>
+        <StyledTypography variant="h6">Most common seniority</StyledTypography>
+        <TypographyValue variant="h4"> {mostCommonSeniority}</TypographyValue>
+
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("3")}>
+          {openHeader === "3" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "3" ? {} : { display: "none" }}>
+        <HotProfiles candidates={candidatesTopSeniority} />
+      </div>
+      <StyledHeaderSecondary>
+        <StyledTypography variant="h6">
+          Candidates available soon:
+        </StyledTypography>
+
+        <TypographyValue variant="h4">
+          {candidatesAvailableSoon.length}
+        </TypographyValue>
+
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
+          {openHeader === "4" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "4" ? {} : { display: "none" }}>
+        <HotProfiles candidates={candidatesAvailableSoon} />
       </div>
     </Container>
   );
