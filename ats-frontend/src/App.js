@@ -256,7 +256,7 @@ function App() {
                 <Dashboard />
                 <PoolDetails
                   candidatesByTech={candidatesByTech}
-                  technology={technology}
+                  // technology={technology}
                 />
               </>
             }

@@ -7,6 +7,7 @@ const PoolDetails = ({ candidatesByTech }) => {
 
   const [techName, setTechName] = useState("");
   const [mostCommonLocation, setMostCommonLocation] = useState("");
+  const [mostCommonSeniority, setMostCommonSeniority] = useState("");
   const { technology } = useParams();
 
   useEffect(() => {
@@ -47,28 +48,48 @@ const PoolDetails = ({ candidatesByTech }) => {
 
     if (candidatesByTech) {
       const locationCounts = {};
+      const seniorityCounts = {};
 
       candidatesByTech.forEach((candidate) => {
         const location = candidate.location;
+
+        const seniority = candidate.seniority;
 
         if (!locationCounts[location]) {
           locationCounts[location] = 1;
         } else {
           locationCounts[location]++;
         }
+
+        if (!seniorityCounts[seniority]) {
+          seniorityCounts[seniority] = 1;
+        } else {
+          seniorityCounts[seniority]++;
+        }
       });
 
       let mostCommonLocation = null;
-      let maxCount = 0;
+      let maxCountLocation = 0;
+
+      let mostCommonSeniority = null;
+      let maxCountSeniority = 0;
 
       for (const location in locationCounts) {
-        if (locationCounts[location] > maxCount) {
+        if (locationCounts[location] > maxCountLocation) {
           mostCommonLocation = location;
-          maxCount = locationCounts[location];
+          maxCountLocation = locationCounts[location];
+        }
+      }
+
+      for (const seniority in seniorityCounts) {
+        if (seniorityCounts[seniority] > maxCountSeniority) {
+          mostCommonSeniority = seniority;
+          maxCountSeniority = seniorityCounts[seniority];
         }
       }
 
       setMostCommonLocation(mostCommonLocation);
+      setMostCommonSeniority(mostCommonSeniority);
     }
   }, [candidatesByTech, technology, navigate]);
 
@@ -83,6 +104,9 @@ const PoolDetails = ({ candidatesByTech }) => {
       </Typography>
       <Typography variant="h6">
         Most common location among {techName} candidates: {mostCommonLocation}
+      </Typography>
+      <Typography variant="h6">
+        Most common seniority among {techName} candidates: {mostCommonSeniority}
       </Typography>
     </div>
   );
