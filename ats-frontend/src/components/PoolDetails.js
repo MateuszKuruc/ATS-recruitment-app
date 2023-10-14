@@ -74,7 +74,6 @@ const PoolDetails = ({ candidatesByTech }) => {
   const [techName, setTechName] = useState("");
   const [mostCommonLocation, setMostCommonLocation] = useState("");
   const [mostCommonSeniority, setMostCommonSeniority] = useState("");
-  const [availableSoon, setAvailableSoon] = useState([]);
 
   const { technology } = useParams();
 
@@ -82,6 +81,8 @@ const PoolDetails = ({ candidatesByTech }) => {
 
   const [candidatesTopLocation, setCandidatesTopLocation] = useState([]);
   const [candidatesTopSeniority, setCandidatesTopSeniority] = useState([]);
+  const [candidatesNoFeedback, SetCandidatesNoFeedback] = useState([]);
+  const [candidatesAvailableSoon, setCandidatesAvailableSoon] = useState([]);
 
   useEffect(() => {
     if (!technology || !candidatesByTech) {
@@ -149,6 +150,18 @@ const PoolDetails = ({ candidatesByTech }) => {
             (candidate) => candidate.seniority === mostCommonSeniority
           );
           setCandidatesTopSeniority(filteredSeniority);
+
+          const filteredFeedback = candidatesByTech.filter(
+            (candidate) => candidate.assessment === ""
+          );
+          SetCandidatesNoFeedback(filteredFeedback);
+
+          const filteredAvailability = candidatesByTech.filter(
+            (candidate) =>
+              candidate.notice === "Available now" ||
+              candidate.notice === "2 weeks"
+          );
+          setCandidatesAvailableSoon(filteredAvailability);
         }
       };
       getMostCommonItems();
@@ -222,34 +235,7 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "1" ? {} : { display: "none" }}>
-        <Grid container spacing={2}>
-          {candidatesByTech.map((candidate) =>
-            candidate.location === mostCommonLocation ? (
-              <Grid item xs={6} md={3}>
-                <StyledPaper>
-                  <StyledCandidateButton
-                    variant="outlined"
-                    key={candidate.id}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <TypographyValue variant="h6">
-                      {candidate.firstName} {candidate.lastName}
-                    </TypographyValue>
-                    <TypographyValue variant="body1">
-                      {candidate.skill}
-                    </TypographyValue>
-                    <TypographyValue variant="body1">
-                      {candidate.seniority}
-                    </TypographyValue>
-                  </StyledCandidateButton>
-                </StyledPaper>
-              </Grid>
-            ) : null
-          )}
-        </Grid>
+        <HotProfiles candidates={candidatesByTech} />
       </div>
 
       <div>
@@ -312,7 +298,7 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledTypography>
 
         <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
-          test
+          {candidatesAvailableSoon.length}
         </TypographyValue>
 
         <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
@@ -321,9 +307,10 @@ const PoolDetails = ({ candidatesByTech }) => {
       </StyledHeaderSecondary>
       <div style={openHeader === "4" ? {} : { display: "none" }}>
         <HotProfiles
-          candidates={candidatesByTech.filter(
-            (candidate) => candidate.seniority === mostCommonSeniority
-          )}
+          // candidates={candidatesByTech.filter(
+          //   (candidate) => candidate.seniority === mostCommonSeniority
+          // )}
+          candidates={candidatesAvailableSoon}
         />
       </div>
 
@@ -344,11 +331,66 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "5" ? {} : { display: "none" }}>
-        <HotProfiles
+        {/* <HotProfiles
           candidates={candidatesByTech.filter(
             (candidate) => candidate.seniority === mostCommonSeniority
           )}
-        />
+        /> */}
+
+        <Grid container spacing={2}>
+          {candidatesNoFeedback.map((candidate) => (
+            <Grid item xs={6} md={4}>
+              <StyledPaper>
+                <StyledCandidateButton
+                  variant="outlined"
+                  key={candidate.id}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <TypographyValue variant="h6">
+                    {candidate.firstName} {candidate.lastName}
+                  </TypographyValue>
+                  <TypographyValue variant="body1">
+                    {candidate.skill}
+                  </TypographyValue>
+                  <TypographyValue variant="body1">
+                    {candidate.seniority}
+                  </TypographyValue>
+                </StyledCandidateButton>
+              </StyledPaper>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* <Grid container spacing={2}>
+          {candidatesByTech.map((candidate) => candidate.assessment === "" ? (
+            <Grid item xs={6} md={3}>
+              <StyledPaper>
+                <StyledCandidateButton
+                  variant="outlined"
+                  key={candidate.id}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <TypographyValue variant="h6">
+                    {candidate.firstName} {candidate.lastName}
+                  </TypographyValue>
+                  <TypographyValue variant="body1">
+                    {candidate.skill}
+                  </TypographyValue>
+                  <TypographyValue variant="body1">
+                    {candidate.seniority}
+                  </TypographyValue>
+                </StyledCandidateButton>
+              </StyledPaper>
+            </Grid>
+          ): null
+          )}
+        </Grid> */}
       </div>
     </Container>
   );
