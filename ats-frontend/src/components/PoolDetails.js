@@ -17,12 +17,12 @@ const Container = styled.div`
 const StyledHeaderMain = styled.div`
   && {
     display: flex;
-    justify-content: space-around;
-    align-content: center;
+    // justify-content: center;
+    // align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
     background-color: #990033;
-    padding: 0.25rem;
+    padding: 0.75rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
   }
@@ -58,7 +58,7 @@ const StyledPaper = styled(Paper)`
   display: flex;
 `;
 
-const StyledTypographyValue = styled(Typography)`
+const StyledTypography = styled(Typography)`
   color: #ffffff;
   flex: 3;
 `;
@@ -139,6 +139,16 @@ const PoolDetails = ({ candidatesByTech }) => {
 
           setMostCommonLocation(mostCommonLocation);
           setMostCommonSeniority(mostCommonSeniority);
+
+          const filteredLocation = candidatesByTech.filter(
+            (candidate) => candidate.location === mostCommonLocation
+          );
+          setCandidatesTopLocation(filteredLocation);
+
+          const filteredSeniority = candidatesByTech.filter(
+            (candidate) => candidate.seniority === mostCommonSeniority
+          );
+          setCandidatesTopSeniority(filteredSeniority);
         }
       };
       getMostCommonItems();
@@ -194,14 +204,14 @@ const PoolDetails = ({ candidatesByTech }) => {
   return (
     <Container>
       <StyledHeaderMain>
-        <StyledTypographyValue variant="h4">
+        <StyledTypography variant="h4">
           {techName} pool in numbers
-        </StyledTypographyValue>
+        </StyledTypography>
       </StyledHeaderMain>
       <StyledHeaderSecondary>
-        <StyledTypographyValue variant="h6">
+        <StyledTypography variant="h6">
           Total number of candidates:
-        </StyledTypographyValue>
+        </StyledTypography>
 
         <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
           {candidatesByTech.length}
@@ -244,9 +254,7 @@ const PoolDetails = ({ candidatesByTech }) => {
 
       <div>
         <StyledHeaderSecondary>
-          <StyledTypographyValue variant="h6">
-            Most common location
-          </StyledTypographyValue>
+          <StyledTypography variant="h6">Most common location</StyledTypography>
           <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
             {" "}
             {mostCommonLocation}
@@ -261,9 +269,10 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledHeaderSecondary>
         <div style={openHeader === "2" ? {} : { display: "none" }}>
           <HotProfiles
-            candidates={candidatesByTech.filter(
-              (candidate) => candidate.location === mostCommonLocation
-            )}
+            // candidates={candidatesByTech.filter(
+            //   (candidate) => candidate.location === mostCommonLocation
+            // )}
+            candidates={candidatesTopLocation}
           />
 
           {/* {candidatesByTech.map((candidate) =>
@@ -279,9 +288,7 @@ const PoolDetails = ({ candidatesByTech }) => {
       </div>
 
       <StyledHeaderSecondary>
-        <StyledTypographyValue variant="h6">
-          Most common seniority
-        </StyledTypographyValue>
+        <StyledTypography variant="h6">Most common seniority</StyledTypography>
         <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
           {" "}
           {mostCommonSeniority}
@@ -293,15 +300,16 @@ const PoolDetails = ({ candidatesByTech }) => {
       </StyledHeaderSecondary>
       <div style={openHeader === "3" ? {} : { display: "none" }}>
         <HotProfiles
-          candidates={candidatesByTech.filter(
-            (candidate) => candidate.seniority === mostCommonSeniority
-          )}
+          // candidates={candidatesByTech.filter(
+          //   (candidate) => candidate.seniority === mostCommonSeniority
+          // )}
+          candidates={candidatesTopSeniority}
         />
       </div>
       <StyledHeaderSecondary>
-        <StyledTypographyValue variant="h6">
+        <StyledTypography variant="h6">
           Candidates available soon:
-        </StyledTypographyValue>
+        </StyledTypography>
 
         <TypographyValue variant="h4" style={{ color: "goldenrod" }}>
           test
@@ -320,9 +328,9 @@ const PoolDetails = ({ candidatesByTech }) => {
       </div>
 
       <StyledHeaderSecondary>
-        <StyledTypographyValue variant="h6" style={{ flex: "3" }}>
+        <StyledTypography variant="h6" style={{ flex: "3" }}>
           Candidates without meeting feedback
-        </StyledTypographyValue>
+        </StyledTypography>
 
         <TypographyValue variant="h4" style={{ color: "goldenrod", flex: "2" }}>
           test
