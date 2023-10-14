@@ -54,9 +54,10 @@ const PoolDetails = ({ candidatesByTech }) => {
   const [availableSoon, setAvailableSoon] = useState([]);
   const { technology } = useParams();
 
-  const [showDetails, setShowDetails] = useState(false);
+  // const [showDetails, setShowDetails] = useState(false);
+  const [openHeader, setOpenHeader] = useState("");
 
-  const detailsShown = { display: showDetails ? "" : "none" };
+  // const detailsShown = { display: showDetails ? "" : "none" };
 
   useEffect(() => {
     if (!technology || !candidatesByTech) {
@@ -157,6 +158,15 @@ const PoolDetails = ({ candidatesByTech }) => {
   if (!candidatesByTech || !technology) {
     return null;
   }
+
+  const handleOpenHeader = (headerNumber) => {
+    if (openHeader === headerNumber) {
+      setOpenHeader("");
+    } else if (openHeader !== headerNumber) {
+      setOpenHeader(headerNumber);
+    }
+  };
+
   return (
     <Container>
       <StyledHeaderMain>
@@ -166,8 +176,19 @@ const PoolDetails = ({ candidatesByTech }) => {
         <Typography variant="h6">
           Total number of {techName} candidates: {candidatesByTech.length}
         </Typography>
-        <StyledButton variant="contained">Show more</StyledButton>
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("1")}>
+          {openHeader === "1" ? "Hide" : "Show more"}
+        </StyledButton>
       </StyledHeaderSecondary>
+      <div style={openHeader === "1" ? {} : { display: "none" }}>
+        {candidatesByTech.map((candidate) =>
+          candidate.location === mostCommonLocation ? (
+            <ul key={candidate.id}>
+              <li>{candidate.firstName}</li>
+            </ul>
+          ) : null
+        )}
+      </div>
 
       <div>
         <StyledHeaderSecondary>
@@ -177,12 +198,12 @@ const PoolDetails = ({ candidatesByTech }) => {
           </Typography>
           <StyledButton
             variant="contained"
-            onClick={() => setShowDetails(!showDetails)}
+            onClick={() => handleOpenHeader("2")}
           >
-            Show more
+            {openHeader === "2" ? "Hide" : "Show more"}
           </StyledButton>
         </StyledHeaderSecondary>
-        <div style={detailsShown}>
+        <div style={openHeader === "2" ? {} : { display: "none" }}>
           {candidatesByTech.map((candidate) =>
             candidate.location === mostCommonLocation ? (
               <ul key={candidate.id}>
@@ -194,9 +215,29 @@ const PoolDetails = ({ candidatesByTech }) => {
           )}
         </div>
       </div>
-      <Typography variant="h6">
+
+      <StyledHeaderSecondary>
+        <Typography variant="h6">
+          Most common seniority among {techName} candidates:{" "}
+          {mostCommonSeniority}
+        </Typography>
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("3")}>
+          {openHeader === "3" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "3" ? {} : { display: "none" }}>
+        {candidatesByTech.map((candidate) =>
+          candidate.location === mostCommonLocation ? (
+            <ul key={candidate.id}>
+              <li>{candidate.firstName}</li>
+            </ul>
+          ) : null
+        )}
+      </div>
+
+      {/* <Typography variant="h6">
         Most common seniority among {techName} candidates: {mostCommonSeniority}
-      </Typography>
+      </Typography> */}
       <Typography variant="h6">
         Candidates specialized in {techName} available soon:
       </Typography>
