@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
 
 const HotProfiles = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
   const [hotCandidates, setHotCandidates] = useState([]);
 
   useEffect(() => {
@@ -101,10 +101,10 @@ const HotProfiles = ({ candidates, userId }) => {
             </TableCell>
             {userId && (
               <TableCell>
-              <Typography variant="h4">Skill</Typography>
-            </TableCell>
+                <Typography variant="h4">Skill</Typography>
+              </TableCell>
             )}
-            
+
             <TableCell>
               <Typography variant="h4">Seniority</Typography>
             </TableCell>
@@ -115,10 +115,9 @@ const HotProfiles = ({ candidates, userId }) => {
               <Typography variant="h4">English</Typography>
             </TableCell> */}
             {userId && (
-
-            <TableCell>
-              <Typography variant="h4">Contract</Typography>
-            </TableCell>
+              <TableCell>
+                <Typography variant="h4">Contract</Typography>
+              </TableCell>
             )}
             <TableCell>
               <Typography variant="h4">Assessment</Typography>
@@ -146,11 +145,10 @@ const HotProfiles = ({ candidates, userId }) => {
                 <Typography variant="body1">{candidate.location}</Typography>
               </TableCell>
               {userId && (
-
                 <TableCell>
-                <Typography variant="body1">{candidate.skill}</Typography>
-              </TableCell>
-                )}
+                  <Typography variant="body1">{candidate.skill}</Typography>
+                </TableCell>
+              )}
               <TableCell>
                 <Typography variant="body1">{candidate.seniority}</Typography>
               </TableCell>
@@ -161,11 +159,10 @@ const HotProfiles = ({ candidates, userId }) => {
                 <Typography variant="body1">{candidate.language}</Typography>
               </TableCell> */}
               {userId && (
-
                 <TableCell>
-                <Typography variant="body1">{candidate.contract}</Typography>
-              </TableCell>
-                )}
+                  <Typography variant="body1">{candidate.contract}</Typography>
+                </TableCell>
+              )}
               <TableCell>
                 <Typography
                   variant="h6"
