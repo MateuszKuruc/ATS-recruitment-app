@@ -58,12 +58,13 @@ const PoolDetails = ({ candidatesByTech }) => {
   const [mostCommonLocation, setMostCommonLocation] = useState("");
   const [mostCommonSeniority, setMostCommonSeniority] = useState("");
   const [availableSoon, setAvailableSoon] = useState([]);
+
   const { technology } = useParams();
 
-  // const [showDetails, setShowDetails] = useState(false);
   const [openHeader, setOpenHeader] = useState("");
 
-  // const detailsShown = { display: showDetails ? "" : "none" };
+  const [candidatesTopLocation, setCandidatesTopLocation] = useState([]);
+  const [candidatesTopSeniority, setCandidatesTopSeniority] = useState([]);
 
   useEffect(() => {
     if (!technology || !candidatesByTech) {
@@ -239,9 +240,11 @@ const PoolDetails = ({ candidatesByTech }) => {
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "2" ? {} : { display: "none" }}>
-
-          
-          <HotProfiles candidates={candidatesByTech} />
+          <HotProfiles
+            candidates={candidatesByTech.filter(
+              (candidate) => candidate.location === mostCommonLocation
+            )}
+          />
 
           {/* {candidatesByTech.map((candidate) =>
             candidate.location === mostCommonLocation ? (
@@ -265,13 +268,11 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "3" ? {} : { display: "none" }}>
-        {candidatesByTech.map((candidate) =>
-          candidate.location === mostCommonLocation ? (
-            <ul key={candidate.id}>
-              <li>{candidate.firstName}</li>
-            </ul>
-          ) : null
-        )}
+        <HotProfiles
+          candidates={candidatesByTech.filter(
+            (candidate) => candidate.seniority === mostCommonSeniority
+          )}
+        />
       </div>
 
       {/* <Typography variant="h6">
