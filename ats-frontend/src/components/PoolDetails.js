@@ -1,4 +1,4 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -39,10 +39,16 @@ const StyledHeaderSecondary = styled.div`
   }
 `;
 
-const StyledButton = styled(Button)`
-  && {
-    align-self: flex-end;
-  }
+const StyledCandidateButton = styled(Button)`
+  flex: 1;
+`;
+
+const StyledButton = styled(Button)``;
+
+const StyledPaper = styled(Paper)`
+  height: 100%;
+  display: flex;
+  
 `;
 
 const PoolDetails = ({ candidatesByTech }) => {
@@ -181,13 +187,42 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "1" ? {} : { display: "none" }}>
-        {candidatesByTech.map((candidate) =>
-          candidate.location === mostCommonLocation ? (
-            <ul key={candidate.id}>
-              <li>{candidate.firstName}</li>
-            </ul>
-          ) : null
-        )}
+        <Grid container spacing={2} style={{ display: "flex" }}>
+          {candidatesByTech.map((candidate) =>
+            candidate.location === mostCommonLocation ? (
+              // <ul key={candidate.id}>
+              //   <li>{candidate.firstName}</li>
+              // </ul>
+              <Grid
+                item
+                xs={6}
+                md={3}
+
+                // style={{ flex: "1" }}
+              >
+                <StyledPaper>
+                  <StyledCandidateButton
+                    variant="outlined"
+                    key={candidate.id}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      // minWidth: "300px",
+                    }}
+                  >
+                    <Typography variant="h6">
+                      {candidate.firstName} {candidate.lastName}
+                    </Typography>
+                    <Typography variant="body1">{candidate.skill}</Typography>
+                    <Typography variant="body1">
+                      {candidate.seniority}
+                    </Typography>
+                  </StyledCandidateButton>
+                </StyledPaper>
+              </Grid>
+            ) : null
+          )}
+        </Grid>
       </div>
 
       <div>
