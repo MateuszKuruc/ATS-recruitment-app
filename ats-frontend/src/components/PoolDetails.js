@@ -275,12 +275,37 @@ const PoolDetails = ({ candidatesByTech }) => {
         />
       </div>
 
-      {/* <Typography variant="h6">
-        Most common seniority among {techName} candidates: {mostCommonSeniority}
-      </Typography> */}
-      <Typography variant="h6">
-        Candidates specialized in {techName} available soon:
-      </Typography>
+      <StyledHeaderSecondary>
+        <Typography variant="h6">
+          Candidates specialized in {techName} available soon:
+        </Typography>
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
+          {openHeader === "4" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "4" ? {} : { display: "none" }}>
+        <HotProfiles
+          candidates={candidatesByTech.filter(
+            (candidate) => candidate.seniority === mostCommonSeniority
+          )}
+        />
+      </div>
+
+      <StyledHeaderSecondary>
+        <Typography variant="h6">
+          {techName} candidates without meeting feedback
+        </Typography>
+        <StyledButton variant="contained" onClick={() => handleOpenHeader("5")}>
+          {openHeader === "5" ? "Hide" : "Show more"}
+        </StyledButton>
+      </StyledHeaderSecondary>
+      <div style={openHeader === "5" ? {} : { display: "none" }}>
+        <HotProfiles
+          candidates={candidatesByTech.filter(
+            (candidate) => candidate.seniority === mostCommonSeniority
+          )}
+        />
+      </div>
     </Container>
   );
 };
