@@ -24,7 +24,6 @@ const StyledHeader = styled.div`
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
-    // width: 80%;
   }
 `;
 
@@ -33,11 +32,9 @@ const StyledPaper = styled(Paper)`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  // border: 0.25rem solid #990033;
   padding: 1rem;
   padding-right: 2rem;
   padding-left: 2rem;
-  // margin-bottom: 0;
   gap: 0.25rem;
 `;
 
@@ -47,17 +44,13 @@ const StyledTextField = styled(TextField)`
     margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
-    // padding-right: 3rem;
-    // width: auto
+
     width: 15rem;
-    // border: 0.15rem solid  #990033;
+
 
     ${(props) =>
       props.disabled &&
       `
-    // background-color: #c0d9e7;
-    // border: 0.15rem solid #084c61;
-    // border: 0.15rem solid  #990033;
     color: #ffffff
     `}
 `;
@@ -77,7 +70,16 @@ const StyledFormControl = styled(FormControl)`
   background-color: #ffffff;
   border-radius: 0.5rem;
   width: 15rem;
-  // border: 0.15rem solid  #990033;
+`;
+
+const StyledGridContainer = styled(Grid)`
+  &.grid-container-class {
+    margin-top: 1rem;
+  }
+`;
+
+const StyledTypography = styled(Typography)`
+  color: #ffffff;
 `;
 
 const CandidateBasicDetails = ({
@@ -94,12 +96,14 @@ const CandidateBasicDetails = ({
   return (
     <>
       <StyledHeader>
-        <Typography variant="h5" style={{ color: "#ffffff" }}>
-          Basic details
-        </Typography>
+        <StyledTypography variant="h5">Basic details</StyledTypography>
       </StyledHeader>
 
-      <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
+      <StyledGridContainer
+        container
+        spacing={0.5}
+        className="grid-container-class"
+      >
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">First name</Typography>
@@ -272,7 +276,7 @@ const CandidateBasicDetails = ({
             />
           </StyledPaper>
         </Grid>
-      </Grid>
+      </StyledGridContainer>
     </>
   );
 };
