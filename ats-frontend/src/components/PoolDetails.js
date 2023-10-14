@@ -16,8 +16,10 @@ const PoolDetails = ({ candidatesByTech }) => {
       navigate("/pools");
     }
 
-    const techName = getTechName(technology);
-    setTechName(techName);
+    if (technology) {
+      const techName = getTechName(technology);
+      setTechName(techName);
+    }
 
     if (candidatesByTech) {
       const getMostCommonItems = () => {
@@ -74,34 +76,34 @@ const PoolDetails = ({ candidatesByTech }) => {
   const getTechName = (technology) => {
     switch (technology) {
       case "Java":
-        setTechName("Java");
-        break;
+        return "Java";
+
       case "Python":
-        setTechName("Python");
-        break;
+        return "Python";
+
       case "JavaScript":
-        setTechName("JavaScript");
-        break;
+        return "JavaScript";
+
       case "C":
-        setTechName("C/C#/C++");
-        break;
+        return "C/C#/C++";
+
       case "Scala":
-        setTechName("Scala");
-        break;
+        return "Scala";
+
       case "BigData":
-        setTechName("Big Data");
-        break;
+        return "Big Data";
+
       case "DevOps":
-        setTechName("DevOps");
-        break;
+        return "DevOps";
+
       case "Mobile":
-        setTechName("Mobile");
-        break;
+        return "Mobile";
+
       case "Golang":
-        setTechName("Golang");
-        break;
+        return "Golang";
+
       default:
-        setTechName("");
+        return "";
     }
   };
 
