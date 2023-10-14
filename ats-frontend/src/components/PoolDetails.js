@@ -8,12 +8,70 @@ const PoolDetails = ({ candidatesByTech }) => {
   const [techName, setTechName] = useState("");
   const [mostCommonLocation, setMostCommonLocation] = useState("");
   const [mostCommonSeniority, setMostCommonSeniority] = useState("");
+  const [availableSoon, setAvailableSoon] = useState([]);
   const { technology } = useParams();
 
   useEffect(() => {
     if (!technology || !candidatesByTech) {
       navigate("/pools");
     }
+
+    const techName = getTechName(technology);
+    setTechName(techName);
+
+    if (candidatesByTech) {
+      const getMostCommonItems = () => {
+        if (candidatesByTech) {
+          const locationCounts = {};
+          const seniorityCounts = {};
+
+          candidatesByTech.forEach((candidate) => {
+            const location = candidate.location;
+
+            const seniority = candidate.seniority;
+
+            if (!locationCounts[location]) {
+              locationCounts[location] = 1;
+            } else {
+              locationCounts[location]++;
+            }
+
+            if (!seniorityCounts[seniority]) {
+              seniorityCounts[seniority] = 1;
+            } else {
+              seniorityCounts[seniority]++;
+            }
+          });
+
+          let mostCommonLocation = null;
+          let maxCountLocation = 0;
+
+          let mostCommonSeniority = null;
+          let maxCountSeniority = 0;
+
+          for (const location in locationCounts) {
+            if (locationCounts[location] > maxCountLocation) {
+              mostCommonLocation = location;
+              maxCountLocation = locationCounts[location];
+            }
+          }
+
+          for (const seniority in seniorityCounts) {
+            if (seniorityCounts[seniority] > maxCountSeniority) {
+              mostCommonSeniority = seniority;
+              maxCountSeniority = seniorityCounts[seniority];
+            }
+          }
+
+          setMostCommonLocation(mostCommonLocation);
+          setMostCommonSeniority(mostCommonSeniority);
+        }
+      };
+      getMostCommonItems();
+    }
+  }, [candidatesByTech, navigate, technology]);
+
+  const getTechName = (technology) => {
     switch (technology) {
       case "Java":
         setTechName("Java");
@@ -45,53 +103,7 @@ const PoolDetails = ({ candidatesByTech }) => {
       default:
         setTechName("");
     }
-
-    if (candidatesByTech) {
-      const locationCounts = {};
-      const seniorityCounts = {};
-
-      candidatesByTech.forEach((candidate) => {
-        const location = candidate.location;
-
-        const seniority = candidate.seniority;
-
-        if (!locationCounts[location]) {
-          locationCounts[location] = 1;
-        } else {
-          locationCounts[location]++;
-        }
-
-        if (!seniorityCounts[seniority]) {
-          seniorityCounts[seniority] = 1;
-        } else {
-          seniorityCounts[seniority]++;
-        }
-      });
-
-      let mostCommonLocation = null;
-      let maxCountLocation = 0;
-
-      let mostCommonSeniority = null;
-      let maxCountSeniority = 0;
-
-      for (const location in locationCounts) {
-        if (locationCounts[location] > maxCountLocation) {
-          mostCommonLocation = location;
-          maxCountLocation = locationCounts[location];
-        }
-      }
-
-      for (const seniority in seniorityCounts) {
-        if (seniorityCounts[seniority] > maxCountSeniority) {
-          mostCommonSeniority = seniority;
-          maxCountSeniority = seniorityCounts[seniority];
-        }
-      }
-
-      setMostCommonLocation(mostCommonLocation);
-      setMostCommonSeniority(mostCommonSeniority);
-    }
-  }, [candidatesByTech, technology, navigate]);
+  };
 
   if (!candidatesByTech || !technology) {
     return null;
@@ -107,6 +119,9 @@ const PoolDetails = ({ candidatesByTech }) => {
       </Typography>
       <Typography variant="h6">
         Most common seniority among {techName} candidates: {mostCommonSeniority}
+      </Typography>
+      <Typography variant="h6">
+        Candidates specialized in {techName} available soon:
       </Typography>
     </div>
   );
