@@ -2,7 +2,7 @@ import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import HotProfiles from "./HotProfiles";
+import CandidateProfiles from "./CandidateProfiles";
 
 const Container = styled.div`
   background-color: #c0d9e7;
@@ -247,7 +247,7 @@ const PoolDetails = ({ candidatesByTech }) => {
                   variant="body1"
                   style={{ color: "black", alignSelf: "center" }}
                 >
-                 All profiles are up to date!
+                  All profiles are up to date!
                 </StyledTypography>
               </StyledPaper>
             </Grid>
@@ -289,7 +289,7 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "1" ? {} : { display: "none" }}>
-        <HotProfiles candidates={candidatesByTech} />
+        <CandidateProfiles candidates={candidatesByTech} />
       </div>
 
       <div>
@@ -305,7 +305,7 @@ const PoolDetails = ({ candidatesByTech }) => {
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "2" ? {} : { display: "none" }}>
-          <HotProfiles candidates={candidatesTopLocation} />
+          <CandidateProfiles candidates={candidatesTopLocation} />
         </div>
       </div>
 
@@ -318,7 +318,7 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "3" ? {} : { display: "none" }}>
-        <HotProfiles candidates={candidatesTopSeniority} />
+        <CandidateProfiles candidates={candidatesTopSeniority} />
       </div>
       <StyledHeaderSecondary>
         <StyledTypography variant="h6">
@@ -334,7 +334,7 @@ const PoolDetails = ({ candidatesByTech }) => {
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "4" ? {} : { display: "none" }}>
-        <HotProfiles candidates={candidatesAvailableSoon} />
+        <CandidateProfiles candidates={candidatesAvailableSoon} />
       </div>
     </Container>
   );

@@ -36,10 +36,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const HotProfiles = ({ candidates, userId }) => {
+const CandidateProfiles = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
-  const [hotCandidates, setHotCandidates] = useState([]);
+  const [filteredCandidates, setfilteredCandidates] = useState([]);
 
   useEffect(() => {
     if (userId) {
@@ -66,16 +66,18 @@ const HotProfiles = ({ candidates, userId }) => {
         return assessmentValueB - assessmentValueA;
       });
 
-      setHotCandidates(hot);
+      setfilteredCandidates(hot);
     }
 
     if (!userId) {
-      setHotCandidates(candidates);
+      setfilteredCandidates(candidates);
     }
   }, [candidates, userId]);
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - hotCandidates.length) : 0;
+    page > 0
+      ? Math.max(0, (1 + page) * rowsPerPage - filteredCandidates.length)
+      : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -111,9 +113,7 @@ const HotProfiles = ({ candidates, userId }) => {
             <TableCell>
               <Typography variant="h4">Notice</Typography>
             </TableCell>
-            {/* <TableCell>
-              <Typography variant="h4">English</Typography>
-            </TableCell> */}
+
             {userId && (
               <TableCell>
                 <Typography variant="h4">Contract</Typography>
@@ -125,11 +125,11 @@ const HotProfiles = ({ candidates, userId }) => {
           </TableRow>
 
           {(rowsPerPage > 0
-            ? hotCandidates.slice(
+            ? filteredCandidates.slice(
                 page * rowsPerPage,
                 page * rowsPerPage + rowsPerPage
               )
-            : hotCandidates
+            : filteredCandidates
           ).map((candidate) => (
             <TableRow key={candidate.id}>
               <TableCell>
@@ -155,9 +155,7 @@ const HotProfiles = ({ candidates, userId }) => {
               <TableCell>
                 <Typography variant="body1">{candidate.notice}</Typography>
               </TableCell>
-              {/* <TableCell>
-                <Typography variant="body1">{candidate.language}</Typography>
-              </TableCell> */}
+
               {userId && (
                 <TableCell>
                   <Typography variant="body1">{candidate.contract}</Typography>
@@ -192,7 +190,7 @@ const HotProfiles = ({ candidates, userId }) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
         component="div"
-        count={hotCandidates.length}
+        count={filteredCandidates.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
@@ -202,4 +200,4 @@ const HotProfiles = ({ candidates, userId }) => {
   );
 };
 
-export default HotProfiles;
+export default CandidateProfiles;

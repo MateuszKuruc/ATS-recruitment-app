@@ -10,7 +10,7 @@ import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
-import HotProfiles from "./components/HotProfiles";
+import CandidateProfiles from "./components/CandidateProfiles";
 import LogoutPage from "./components/LogoutPage";
 
 import { initializeCandidates } from "./reducers/candidateReducer";
@@ -266,7 +266,7 @@ function App() {
             element={
               <>
                 <Dashboard />
-                <HotProfiles candidates={candidates} userId={login?.id} />
+                <CandidateProfiles candidates={candidates} userId={login?.id} />
               </>
             }
           />
