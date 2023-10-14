@@ -42,6 +42,22 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const StyledButton = styled(Button)`
+  padding: 1rem;
+`;
+
+const IconContainer = styled.div`
+border-radius: 0,
+gap: 1.5rem
+`;
+
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
   const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
@@ -143,20 +159,12 @@ const CandidateFiles = ({ candidate }) => {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        gap: "1rem",
-      }}
-    >
-      <Button
+    <Container>
+      <StyledButton
         component="label"
         variant="contained"
         color="secondary"
         startIcon={<CloudUploadIcon />}
-        style={{ padding: "1rem" }}
       >
         Upload file
         <VisuallyHiddenInput
@@ -165,7 +173,7 @@ const CandidateFiles = ({ candidate }) => {
           accept=".pdf, .doc, .docx"
           onChange={onFileChange}
         />
-      </Button>
+      </StyledButton>
       {uploadedFiles.map((file) => (
         <div
           style={{
@@ -175,7 +183,7 @@ const CandidateFiles = ({ candidate }) => {
           }}
           key={file.fileName}
         >
-          <div style={{ borderRadius: 0, gap: "1.5rem" }}>
+          <IconContainer>
             <IconButton onClick={() => handleDownload(file.fileName)}>
               {file.fileName.includes(".pdf") ? (
                 <PictureAsPdf color="secondary" fontSize="large" />
@@ -186,7 +194,7 @@ const CandidateFiles = ({ candidate }) => {
             <IconButton onClick={() => openDialogWindow()}>
               <DeleteIcon fontSize="large" color="primary" />
             </IconButton>
-          </div>
+          </IconContainer>
           <StyledTypography
             variant="body1"
             style={{
@@ -226,7 +234,7 @@ const CandidateFiles = ({ candidate }) => {
           </Dialog>
         </div>
       ))}
-    </div>
+    </Container>
   );
 };
 

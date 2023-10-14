@@ -228,7 +228,7 @@ const AddProfile = () => {
             <StyledTextField
               error={phoneError}
               helperText={
-                phoneError ? "Enter phone number (min. 9 characters)" : ""
+                phoneError ? "Enter phone number (9 - 11 characters)" : ""
               }
               value={phone}
               label="Phone number"
