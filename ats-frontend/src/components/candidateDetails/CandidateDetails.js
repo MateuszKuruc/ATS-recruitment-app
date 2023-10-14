@@ -34,7 +34,7 @@ const StyledTextField = styled(TextField)`
     margin-bottom: 2rem;
     background-color: #ffffff;
     border-radius: 0.5rem;
-
+    flex: 1;
     ${(props) =>
       props.disabled &&
       `
@@ -60,6 +60,37 @@ const StyledHeader = styled.div`
     border-radius: 0.5rem;
     margin-top: 2rem;
   }
+`;
+
+const Container = styled.div`
+  background-color: #c0d9e7;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+`;
+
+const StyledTypography = styled(Typography)`
+  color: #ffffff;
+`;
+
+const StyledEditTypography = styled(Typography)`
+  color: #fefefe;
+  align-self: center;
+`;
+
+const UpperButtonContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+`;
+
+const BottomButtonContainer = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const CandidateDetails = ({ candidates }) => {
@@ -172,38 +203,19 @@ const CandidateDetails = ({ candidates }) => {
   }
 
   return (
-    <div
-      style={{
-        backgroundColor: "#c0d9e7",
-        paddingRight: "2rem",
-        paddingLeft: "2rem",
-        paddingBottom: "2rem",
-        marginTop: "1rem",
-        borderRadius: "0.5rem",
-        marginBottom: "1rem",
-      }}
-    >
+    <Container>
       <StyledHeader>
-        <Typography variant="h3" style={{ color: "#ffffff" }}>
+        <StyledTypography variant="h3">
           <i>
             {candidate.firstName} {candidate.lastName}
           </i>
-        </Typography>
-        <Typography
-          variant="italic2"
-          style={{ color: "#fefefe", alignSelf: "center" }}
-        >
+        </StyledTypography>
+        <StyledEditTypography variant="italic2">
           Last edited: {candidate.edit}
-        </Typography>
+        </StyledEditTypography>
       </StyledHeader>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "0.5rem",
-          flex: "1",
-        }}
-      >
+      <UpperButtonContainer>
         {candidate.assessment && (
           <StyledButton
             variant="contained"
@@ -258,7 +270,7 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="h6">Cancel</Typography>
           </StyledButton>
         ) : null}
-      </div>
+      </UpperButtonContainer>
 
       <div className="notesShown" style={notesShown}>
         <StyledTextField
@@ -268,14 +280,11 @@ const CandidateDetails = ({ candidates }) => {
           multiline
           rows={10}
           value={candidate.notes}
-          style={{ flex: "1" }}
         />
       </div>
 
       <StyledHeader>
-        <Typography variant="h5" style={{ color: "#ffffff" }}>
-          Files
-        </Typography>
+        <StyledTypography variant="h5">Files</StyledTypography>
       </StyledHeader>
 
       <CandidateFiles candidate={candidate} />
@@ -299,9 +308,7 @@ const CandidateDetails = ({ candidates }) => {
         editModeExtended={editModeExtended}
       />
 
-      <div
-        style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}
-      >
+      <BottomButtonContainer>
         <StyledButton
           variant="contained"
           color="secondary"
@@ -337,8 +344,8 @@ const CandidateDetails = ({ candidates }) => {
             </Button>
           </DialogActions>
         </Dialog>
-      </div>
-    </div>
+      </BottomButtonContainer>
+    </Container>
   );
 };
 
