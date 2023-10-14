@@ -20,7 +20,6 @@ const StyledHeader = styled.div`
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
-    // width: 80%;
   }
 `;
 
@@ -29,11 +28,9 @@ const StyledPaper = styled(Paper)`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  // border: 0.25rem solid #990033;
   padding: 1rem;
   padding-right: 2rem;
   padding-left: 2rem;
-  // margin-bottom: 0;
   gap: 0.25rem;
 `;
 
@@ -44,7 +41,16 @@ const StyledFormControl = styled(FormControl)`
   background-color: #ffffff;
   border-radius: 0.5rem;
   width: 15rem;
-  // border: 0.15rem solid  #990033;
+`;
+
+const StyledTypography = styled(Typography)`
+  color: #ffffff;
+`;
+
+const StyledGridContainer = styled(Grid)`
+  &.grid-container-class {
+    margin-top: 1rem;
+  }
 `;
 
 const CandidateExtendedFeedback = ({
@@ -56,12 +62,14 @@ const CandidateExtendedFeedback = ({
   return (
     <>
       <StyledHeader>
-        <Typography variant="h5" style={{ color: "#ffffff" }}>
-          Extended feedback
-        </Typography>
+        <StyledTypography variant="h5">Extended feedback</StyledTypography>
       </StyledHeader>
 
-      <Grid container spacing={0.5} style={{ marginTop: "1rem" }}>
+      <StyledGridContainer
+        container
+        spacing={0.5}
+        className="grid-container-class"
+      >
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
             <Typography variant="italic">Notice period</Typography>
@@ -182,7 +190,7 @@ const CandidateExtendedFeedback = ({
             </StyledFormControl>
           </StyledPaper>
         </Grid>
-      </Grid>
+      </StyledGridContainer>
     </>
   );
 };
