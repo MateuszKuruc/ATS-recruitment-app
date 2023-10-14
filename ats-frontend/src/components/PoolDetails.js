@@ -81,11 +81,11 @@ const PoolDetails = ({ candidatesByTech }) => {
 
   const { technology } = useParams();
 
-  const [openHeader, setOpenHeader] = useState("");
+  const [openHeader, setOpenHeader] = useState("0");
 
   const [candidatesTopLocation, setCandidatesTopLocation] = useState([]);
   const [candidatesTopSeniority, setCandidatesTopSeniority] = useState([]);
-  const [candidatesNoFeedback, SetCandidatesNoFeedback] = useState([]);
+  const [candidatesNoFeedback, setCandidatesNoFeedback] = useState([]);
   const [candidatesAvailableSoon, setCandidatesAvailableSoon] = useState([]);
 
   useEffect(() => {
@@ -158,7 +158,7 @@ const PoolDetails = ({ candidatesByTech }) => {
           const filteredFeedback = candidatesByTech.filter(
             (candidate) => candidate.assessment === ""
           );
-          SetCandidatesNoFeedback(filteredFeedback);
+          setCandidatesNoFeedback(filteredFeedback);
 
           const filteredAvailability = candidatesByTech.filter(
             (candidate) =>
