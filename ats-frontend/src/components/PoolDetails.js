@@ -2,6 +2,7 @@ import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import HotProfiles from "./HotProfiles";
 
 const Container = styled.div`
   background-color: #c0d9e7;
@@ -48,7 +49,6 @@ const StyledButton = styled(Button)``;
 const StyledPaper = styled(Paper)`
   height: 100%;
   display: flex;
-  
 `;
 
 const PoolDetails = ({ candidatesByTech }) => {
@@ -239,7 +239,11 @@ const PoolDetails = ({ candidatesByTech }) => {
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "2" ? {} : { display: "none" }}>
-          {candidatesByTech.map((candidate) =>
+
+          
+          <HotProfiles candidates={candidatesByTech} />
+
+          {/* {candidatesByTech.map((candidate) =>
             candidate.location === mostCommonLocation ? (
               <ul key={candidate.id}>
                 <li>{candidate.firstName}</li>
@@ -247,7 +251,7 @@ const PoolDetails = ({ candidatesByTech }) => {
                 <li>{candidate.location}</li>
               </ul>
             ) : null
-          )}
+          )} */}
         </div>
       </div>
 

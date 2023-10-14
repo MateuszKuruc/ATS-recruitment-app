@@ -16,18 +16,24 @@ import WhatshotIcon from "@mui/icons-material/Whatshot";
 import styled from "styled-components";
 
 const StyledTableContainer = styled(TableContainer)`
-  margin-top: 1rem;
-  border-radius: 0.5rem;
+  && {
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  minwidth: 200px;
-  flex: 1;
+  && {
+    minwidth: 200px;
+    flex: 1;
+  }
 `;
 
 const StyledLink = styled(Link)`
-display: flex;
-text-decoration: none;s
+  && {
+    display: flex;
+    text-decoration: none;
+  }
 `;
 
 const HotProfiles = ({ candidates, userId }) => {
@@ -36,32 +42,40 @@ const HotProfiles = ({ candidates, userId }) => {
   const [hotCandidates, setHotCandidates] = useState([]);
 
   useEffect(() => {
-    const filtered = candidates.filter(
-      (candidate) => candidate.user === userId
-    );
-    const hot = filtered.filter(
-      (candidate) =>
-        candidate.assessment === "6 - Rockstar" ||
-        candidate.assessment === "5 - Great candidate"
-    );
+    if (userId) {
+      const filtered = candidates.filter(
+        (candidate) => candidate.user === userId
+      );
+      const hot = filtered.filter(
+        (candidate) =>
+          candidate.assessment === "6 - Rockstar" ||
+          candidate.assessment === "5 - Great candidate"
+      );
 
-    const assessmentValue = {
-      "6 - Rockstar": 6,
-      "5 - Great candidate": 5,
-    };
+      console.log("filtered + hot", filtered, hot);
 
-    hot.sort((a, b) => {
-      const assessmentValueA = assessmentValue[a.assessment];
-      const assessmentValueB = assessmentValue[b.assessment];
+      const assessmentValue = {
+        "6 - Rockstar": 6,
+        "5 - Great candidate": 5,
+      };
 
-      return assessmentValueB - assessmentValueA;
-    });
+      hot.sort((a, b) => {
+        const assessmentValueA = assessmentValue[a.assessment];
+        const assessmentValueB = assessmentValue[b.assessment];
 
-    setHotCandidates(hot);
+        return assessmentValueB - assessmentValueA;
+      });
+
+      setHotCandidates(hot);
+    }
+
+    if (!userId) {
+      setHotCandidates(candidates);
+    }
   }, [candidates, userId]);
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - candidates.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - hotCandidates.length) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -85,21 +99,27 @@ const HotProfiles = ({ candidates, userId }) => {
             <TableCell>
               <Typography variant="h4">Location</Typography>
             </TableCell>
-            <TableCell>
+            {userId && (
+              <TableCell>
               <Typography variant="h4">Skill</Typography>
             </TableCell>
+            )}
+            
             <TableCell>
               <Typography variant="h4">Seniority</Typography>
             </TableCell>
             <TableCell>
               <Typography variant="h4">Notice</Typography>
             </TableCell>
-            <TableCell>
+            {/* <TableCell>
               <Typography variant="h4">English</Typography>
-            </TableCell>
+            </TableCell> */}
+            {userId && (
+
             <TableCell>
               <Typography variant="h4">Contract</Typography>
             </TableCell>
+            )}
             <TableCell>
               <Typography variant="h4">Assessment</Typography>
             </TableCell>
@@ -125,21 +145,27 @@ const HotProfiles = ({ candidates, userId }) => {
               <TableCell>
                 <Typography variant="body1">{candidate.location}</Typography>
               </TableCell>
-              <TableCell>
+              {userId && (
+
+                <TableCell>
                 <Typography variant="body1">{candidate.skill}</Typography>
               </TableCell>
+                )}
               <TableCell>
                 <Typography variant="body1">{candidate.seniority}</Typography>
               </TableCell>
               <TableCell>
                 <Typography variant="body1">{candidate.notice}</Typography>
               </TableCell>
-              <TableCell>
+              {/* <TableCell>
                 <Typography variant="body1">{candidate.language}</Typography>
-              </TableCell>
-              <TableCell>
+              </TableCell> */}
+              {userId && (
+
+                <TableCell>
                 <Typography variant="body1">{candidate.contract}</Typography>
               </TableCell>
+                )}
               <TableCell>
                 <Typography
                   variant="h6"
@@ -160,7 +186,7 @@ const HotProfiles = ({ candidates, userId }) => {
           ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 69.5 * emptyRows }}>
-              <TableCell colSpan={5} />
+              <TableCell colSpan={7} />
             </TableRow>
           )}
         </TableBody>
@@ -169,7 +195,7 @@ const HotProfiles = ({ candidates, userId }) => {
       <TablePagination
         rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
         component="div"
-        count={candidates.length}
+        count={hotCandidates.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
