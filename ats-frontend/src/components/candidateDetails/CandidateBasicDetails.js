@@ -162,25 +162,6 @@ const CandidateBasicDetails = ({
           ) : null}
         </ButtonContainer>
       </StyledHeader>
-      {/* <ButtonContainer>
-        <StyledButton
-          variant="contained"
-          color={!editMode ? "secondary" : "primary"}
-          onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
-        >
-          {editMode ? (
-            <Typography variant="h6">Save</Typography>
-          ) : (
-            <Typography variant="h6">Edit</Typography>
-          )}
-        </StyledButton>
-      
-      {editMode ? (
-        <StyledButton variant="contained" color="inherit" onClick={cancelEdit}>
-          <Typography variant="h6">Cancel</Typography>
-        </StyledButton>
-      ) : null}
-      </ButtonContainer> */}
 
       <StyledGridContainer
         container
