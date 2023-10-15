@@ -139,9 +139,7 @@ const NavigationBar = () => {
                 >
                   <ListItemText primary="Add profile" />
                 </ListItemButton>
-             
 
-             
                 <ListItemButton
                   component={Link}
                   to="/pools"
@@ -226,67 +224,33 @@ const NavigationBar = () => {
             </>
           ) : (
             <>
-            <Hidden mdDown>
-            <StyledButton color="inherit" component={Link} to="/candidates"
-                // sx={{ display: { sm: "none" } }}
-                >
-                  <Typography variant="h5">Candidates</Typography>
-                </StyledButton>
-                <StyledButton color="inherit" component={Link} to="/add"
-                // sx={{ display: { sm: "none" } }}
-                >
-                  <Typography variant="h5">Add profile</Typography>
-                </StyledButton>
-               
-            </Hidden>
-
-            
               <Hidden mdDown>
-                {/* <StyledButton color="inherit" component={Link} to="/candidates"
-                // sx={{ display: { sm: "none" } }}
-                >
+                <StyledButton color="inherit" component={Link} to="/candidates">
                   <Typography variant="h5">Candidates</Typography>
                 </StyledButton>
-                <StyledButton color="inherit" component={Link} to="/add"
-                // sx={{ display: { sm: "none" } }}
-                >
+                <StyledButton color="inherit" component={Link} to="/add">
                   <Typography variant="h5">Add profile</Typography>
-                </StyledButton> */}
-                <StyledButton
-                  // sx={{ display: { md: "block", sm: "none" } }}
-                  // sx={{ display: { sm: "none" } }}
-                  color="inherit"
-                  component={Link}
-                  to="/pools"
-                >
+                </StyledButton>
+              </Hidden>
+
+              <Hidden mdDown>
+                <StyledButton color="inherit" component={Link} to="/pools">
                   <Typography variant="h5">Pools</Typography>
                 </StyledButton>
-                <StyledButton
-                  // sx={{ display: { md: "block", sm: "none" } }}
-                  // sx={{ display: { sm: "none" } }}
-                  color="inherit"
-                  component={Link}
-                  to="/hot"
-                >
+                <StyledButton color="inherit" component={Link} to="/hot">
                   <Typography variant="h5">Hot profiles</Typography>
                 </StyledButton>
+              </Hidden>
 
-</Hidden>
+              <Search>
+                <SearchIcon style={{ color: "#ffffff" }} />
+                <StyledInputBase
+                  placeholder="Search..."
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
 
-        
-
-                <Search>
-                  <SearchIcon style={{ color: "#ffffff" }} />
-                  <StyledInputBase
-                    placeholder="Search..."
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
-
-
-
-                <Hidden mdDown>
-
+              <Hidden mdDown>
                 <div>
                   <Tooltip title={`${login.username} logged in`}>
                     <IconButton
@@ -341,14 +305,8 @@ const NavigationBar = () => {
                 </div>
               </Hidden>
             </>
-           
-           
-               
           )}
           {login && (
-           
-            
-            
             <IconButton
               onClick={handleOpenMobileMenu}
               sx={{ display: { md: "none", sm: "block", xs: "block" } }}
@@ -357,7 +315,6 @@ const NavigationBar = () => {
               <AccountBoxIcon fontSize="large" />
               <Typography variant="h6">{login.username}</Typography>
             </IconButton>
-            
           )}
         </StyledToolBar>
       </StyledAppBar>
