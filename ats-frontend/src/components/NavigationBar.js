@@ -38,10 +38,10 @@ const StyledToolBar = styled(Toolbar)`
 `;
 
 const StyledAppBar = styled(AppBar)`
-    padding: 1rem;
-    // margin: 0rem;
-    border-radius: 0.5rem;
-    // margin-bottom: 0.1rem;
+  padding: 1rem;
+  // margin: 0rem;
+  border-radius: 0.5rem;
+  // margin-bottom: 0.1rem;
 `;
 
 const StyledFlexContainer = styled.div`
@@ -64,7 +64,9 @@ const Search = styled.div`
   padding: 0.5rem;
 `;
 
-const StyledContainer = styled.div``;
+const StyledContainer = styled.div`
+  margin-bottom: 1rem;
+`;
 
 // const StyledAppBar = styled(AppBar)`
 //   && {
@@ -90,6 +92,7 @@ const StyledInputBase = styled(InputBase)`
 
 const NavigationBar = () => {
   const login = useSelector((state) => state.login);
+  const notification = useSelector((state) => state.notification);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -141,106 +144,104 @@ const NavigationBar = () => {
             <Typography variant="h5">Tips</Typography>
           </StyledButton> */}
 
-
           {login === null ? (
-<>
-<StyledButton color="inherit" component={Link} to="/">
-            <Typography variant="h5">Home</Typography>
-          </StyledButton>
+            <>
+              <StyledButton color="inherit" component={Link} to="/">
+                <Typography variant="h5">Home</Typography>
+              </StyledButton>
 
-          <StyledButton color="inherit" component={Link} to="/faq">
-            <Typography variant="h5">FAQ</Typography>
-          </StyledButton>
+              <StyledButton color="inherit" component={Link} to="/faq">
+                <Typography variant="h5">FAQ</Typography>
+              </StyledButton>
 
-          <StyledButton color="inherit" component={Link} to="/tips">
-            <Typography variant="h5">Tips</Typography>
-          </StyledButton>
+              <StyledButton color="inherit" component={Link} to="/tips">
+                <Typography variant="h5">Tips</Typography>
+              </StyledButton>
 
-
-            <StyledButton
-              color="secondary"
-              variant="contained"
-              component={Link}
-              to="/login"
+              <StyledButton
+                color="secondary"
+                variant="contained"
+                component={Link}
+                to="/login"
               >
-              <Typography variant="h5">Login</Typography>
-            </StyledButton>
-              </>
+                <Typography variant="h5">Login</Typography>
+              </StyledButton>
+            </>
           ) : (
-<>
-<StyledButton color="inherit" component={Link} to="/candidates">
-            <Typography variant="h5">All candidates</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/add">
-            <Typography variant="h5">Add profile</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/pools">
-            <Typography variant="h5">Pools</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/hot">
-            <Typography variant="h5">Hot profiles</Typography>
-          </StyledButton>
+            <>
+              <StyledButton color="inherit" component={Link} to="/candidates">
+                <Typography variant="h5">All candidates</Typography>
+              </StyledButton>
+              <StyledButton color="inherit" component={Link} to="/add">
+                <Typography variant="h5">Add profile</Typography>
+              </StyledButton>
+              <StyledButton color="inherit" component={Link} to="/pools">
+                <Typography variant="h5">Pools</Typography>
+              </StyledButton>
+              <StyledButton color="inherit" component={Link} to="/hot">
+                <Typography variant="h5">Hot profiles</Typography>
+              </StyledButton>
 
+              <div>
+                <Tooltip title={`${login.username} logged in`}>
+                  <IconButton onClick={handleOpenMenu}>
+                    <AccountBoxIcon style={{ fontSize: "2rem" }} />
+                  </IconButton>
+                </Tooltip>
+                <Popover
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleCloseMenu}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                >
+                  <List>
+                    <ListItemButton
+                      component={Link}
+                      to="/feedback"
+                      onClick={handleCloseMenu}
+                    >
+                      <ChatBubbleIcon />
+                      <ListItemText primary="Feedback" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/help"
+                      onClick={handleCloseMenu}
+                    >
+                      <HelpIcon />
+                      <ListItemText primary="Help" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/logout"
+                      onClick={handleCloseMenu}
+                      style={{ paddingRight: "1rem" }} // Adjust padding
+                    >
+                      <ExitToAppIcon />
+                      <ListItemText primary="Logout" />
+                    </ListItemButton>
+                  </List>
+                </Popover>
 
-
-
-
-
-            <div>
-              <Tooltip title={`${login.username} logged in`}>
-                <IconButton onClick={handleOpenMenu}>
-                  <AccountBoxIcon style={{ fontSize: "2rem" }} />
-                </IconButton>
-              </Tooltip>
-              <Popover
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleCloseMenu}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-              >
-                <List>
-                  <ListItemButton
-                    component={Link}
-                    to="/feedback"
-                    onClick={handleCloseMenu}
-                  >
-                    <ChatBubbleIcon />
-                    <ListItemText primary="Feedback" />
-                  </ListItemButton>
-                  <ListItemButton
-                    component={Link}
-                    to="/help"
-                    onClick={handleCloseMenu}
-                  >
-                    <HelpIcon />
-                    <ListItemText primary="Help" />
-                  </ListItemButton>
-                  <ListItemButton
-                    component={Link}
-                    to="/logout"
-                    onClick={handleCloseMenu}
-                    style={{ paddingRight: "1rem" }} // Adjust padding
-                  >
-                    <ExitToAppIcon />
-                    <ListItemText primary="Logout" />
-                  </ListItemButton>
-                </List>
-              </Popover>
-
-              <Typography variant="italic">{login.username}</Typography>
-            </div>
+                <Typography variant="italic">{login.username}</Typography>
+              </div>
             </>
           )}
-          
         </StyledToolBar>
       </StyledAppBar>
+      {notification.message && (
+        <Notification
+          severity={notification.severity}
+          message={notification.message}
+        />
+      )}
     </StyledContainer>
   );
 };
