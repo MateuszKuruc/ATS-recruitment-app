@@ -46,6 +46,7 @@ const SingleFileDiv = styled.div`
   gap: 0rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const Container = styled.div`
@@ -135,10 +136,14 @@ const StyledFileTypography = styled(Typography)`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 7rem;
+    max-width: auto;
 
     @media (max-width: 768px) {
       flex-direction: column;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 7rem;
     }
   }
 `;
