@@ -116,10 +116,59 @@ const NavigationBar = () => {
     <StyledContainer>
       <StyledAppBar position="sticky">
         <StyledToolBar>
-          <StyledButton color="inherit" component={Link} to="/">
+          {/* <StyledButton color="inherit" component={Link} to="/">
+            <Typography variant="h5">Home</Typography>
+          </StyledButton> */}
+          {/* <StyledButton color="inherit" component={Link} to="/candidates">
+            <Typography variant="h5">All candidates</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/add">
+            <Typography variant="h5">Add profile</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/pools">
+            <Typography variant="h5">Pools</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/hot">
+            <Typography variant="h5">Hot profiles</Typography>
+          </StyledButton> */}
+          {/* <StyledButton color="inherit" component={Link} to="/dashboard">
+            <Typography variant="h5">Dashboard</Typography>
+          </StyledButton> */}
+          {/* <StyledButton color="inherit" component={Link} to="/faq">
+            <Typography variant="h5">FAQ</Typography>
+          </StyledButton> */}
+          {/* <StyledButton color="inherit" component={Link} to="/tips">
+            <Typography variant="h5">Tips</Typography>
+          </StyledButton> */}
+
+
+          {login === null ? (
+<>
+<StyledButton color="inherit" component={Link} to="/">
             <Typography variant="h5">Home</Typography>
           </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/candidates">
+
+          <StyledButton color="inherit" component={Link} to="/faq">
+            <Typography variant="h5">FAQ</Typography>
+          </StyledButton>
+
+          <StyledButton color="inherit" component={Link} to="/tips">
+            <Typography variant="h5">Tips</Typography>
+          </StyledButton>
+
+
+            <StyledButton
+              color="secondary"
+              variant="contained"
+              component={Link}
+              to="/login"
+              >
+              <Typography variant="h5">Login</Typography>
+            </StyledButton>
+              </>
+          ) : (
+<>
+<StyledButton color="inherit" component={Link} to="/candidates">
             <Typography variant="h5">All candidates</Typography>
           </StyledButton>
           <StyledButton color="inherit" component={Link} to="/add">
@@ -131,25 +180,12 @@ const NavigationBar = () => {
           <StyledButton color="inherit" component={Link} to="/hot">
             <Typography variant="h5">Hot profiles</Typography>
           </StyledButton>
-          {/* <StyledButton color="inherit" component={Link} to="/dashboard">
-            <Typography variant="h5">Dashboard</Typography>
-          </StyledButton> */}
-          <StyledButton color="inherit" component={Link} to="/faq">
-            <Typography variant="h5">FAQ</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/tips">
-            <Typography variant="h5">Tips</Typography>
-          </StyledButton>
-          {login === null ? (
-            <StyledButton
-              color="secondary"
-              variant="contained"
-              component={Link}
-              to="/login"
-            >
-              <Typography variant="h5">Login</Typography>
-            </StyledButton>
-          ) : (
+
+
+
+
+
+
             <div>
               <Tooltip title={`${login.username} logged in`}>
                 <IconButton onClick={handleOpenMenu}>
@@ -200,7 +236,9 @@ const NavigationBar = () => {
 
               <Typography variant="italic">{login.username}</Typography>
             </div>
+            </>
           )}
+          
         </StyledToolBar>
       </StyledAppBar>
     </StyledContainer>
