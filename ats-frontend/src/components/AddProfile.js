@@ -27,10 +27,10 @@ const FormContainer = styled.div`
   align-items: center;
   padding: 2rem;
   gap: 1rem;
-  width: 90%;
+  // width: 90%;
 
   @media (min-width: 768px) {
-    width: 40rem;
+    // width: 40rem;
   }
 `;
 
@@ -184,9 +184,9 @@ const AddProfile = () => {
   };
 
   return (
-    <ComponentContainer>
+    // <ComponentContainer>
       <StyledForm>
-        <FormContainer>
+        {/* <FormContainer> */}
           <Typography variant="h4">NEW CANDIDATE FORM</Typography>
           <FieldContainer>
             <StyledTextField
@@ -287,9 +287,9 @@ const AddProfile = () => {
           >
             <Typography variant="h5">Add profile</Typography>
           </StyledButton>
-        </FormContainer>
+        {/* </FormContainer> */}
       </StyledForm>
-    </ComponentContainer>
+    // </ComponentContainer>
   );
 };
 

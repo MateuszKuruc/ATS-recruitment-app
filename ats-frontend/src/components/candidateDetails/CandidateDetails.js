@@ -108,17 +108,17 @@ const StyledButton = styled(Button)`
     flex: 1;
     padding: 1rem;
     // background: goldenrod;
-// max-width: 200px;
+    // max-width: 200px;
 
     @media (max-width: 768px) {
-max-width: 100%;
+      max-width: 100%;
     }
   }
 `;
 
 const UpperButtonContainer = styled.div`
   display: flex;
-justify-content: center;
+  justify-content: center;
   gap: 0.5rem;
   // flex: 1;
 
@@ -228,6 +228,7 @@ const CandidateDetails = ({ candidates }) => {
     setEditedCandidate({ ...candidate });
 
     setEditMode(false);
+    setEditModeExtended(false);
   };
 
   const toggleNotes = () => {
