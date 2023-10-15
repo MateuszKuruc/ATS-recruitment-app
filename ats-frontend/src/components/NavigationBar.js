@@ -119,31 +119,6 @@ const NavigationBar = () => {
     <StyledContainer>
       <StyledAppBar position="sticky">
         <StyledToolBar>
-          {/* <StyledButton color="inherit" component={Link} to="/">
-            <Typography variant="h5">Home</Typography>
-          </StyledButton> */}
-          {/* <StyledButton color="inherit" component={Link} to="/candidates">
-            <Typography variant="h5">All candidates</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/add">
-            <Typography variant="h5">Add profile</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/pools">
-            <Typography variant="h5">Pools</Typography>
-          </StyledButton>
-          <StyledButton color="inherit" component={Link} to="/hot">
-            <Typography variant="h5">Hot profiles</Typography>
-          </StyledButton> */}
-          {/* <StyledButton color="inherit" component={Link} to="/dashboard">
-            <Typography variant="h5">Dashboard</Typography>
-          </StyledButton> */}
-          {/* <StyledButton color="inherit" component={Link} to="/faq">
-            <Typography variant="h5">FAQ</Typography>
-          </StyledButton> */}
-          {/* <StyledButton color="inherit" component={Link} to="/tips">
-            <Typography variant="h5">Tips</Typography>
-          </StyledButton> */}
-
           {login === null ? (
             <>
               <StyledButton color="inherit" component={Link} to="/">
@@ -222,7 +197,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/logout"
                       onClick={handleCloseMenu}
-                      style={{ paddingRight: "1rem" }} // Adjust padding
+                      style={{ paddingRight: "1rem" }}
                     >
                       <ExitToAppIcon />
                       <ListItemText primary="Logout" />

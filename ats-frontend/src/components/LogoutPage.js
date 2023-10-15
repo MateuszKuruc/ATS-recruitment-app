@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const LogoutPage = () => {
   const dispatch = useDispatch();
-  const notification = useSelector((state) => state.notification);
+  // const notification = useSelector((state) => state.notification);
 
   useEffect(() => {
     window.localStorage.removeItem("loggedAppUser");
@@ -24,10 +24,10 @@ const LogoutPage = () => {
 
   return (
     <div>
-      <Notification
+      {/* <Notification
         severity={notification.severity}
         message={notification.message}
-      />
+      /> */}
       <Typography variant="italic">
         <p>
           You have been successfully logged out. Please note that you
