@@ -11,7 +11,6 @@ import {
   Hidden,
   Drawer,
   InputBase,
-  Box,
 } from "@mui/material";
 import Notification from "./Notification";
 import SearchIcon from "@mui/icons-material/Search";

@@ -2,34 +2,23 @@ import LoginForm from "./components/LoginForm";
 import InfoTab from "./components/InfoTab";
 import TipsTab from "./components/TipsTab";
 import HomePage from "./components/HomePage";
-import Dashboard from "./components/Dashboard";
 import AddProfile from "./components/AddProfile";
 import AllCandidates from "./components/AllCandidates";
-import MainAppBar from "./components/MainAppBar";
 import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
 import Feedback from "./components/Feedback";
 import CandidateProfiles from "./components/CandidateProfiles";
 import LogoutPage from "./components/LogoutPage";
-
 import { initializeCandidates } from "./reducers/candidateReducer";
 import { setLogin } from "./reducers/loginReducer";
-
 import candidateService from "./services/candidates";
 import loginService from "./services/login";
-
 import { useSelector, useDispatch } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import styled from "styled-components";
-import {
-  Container,
-  createTheme,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
+import { Container, createTheme, ThemeProvider } from "@mui/material";
 import { setNotification } from "./reducers/notificationReducer";
 import PoolDetails from "./components/PoolDetails";
 import NavigationBar from "./components/NavigationBar";
@@ -185,7 +174,6 @@ function App() {
   return (
     <ThemeProvider theme={websiteTheme}>
       <StyledContainer>
-        {/* <MainAppBar />  */}
         <NavigationBar />
 
         <Routes>
@@ -203,94 +191,35 @@ function App() {
             }
           />
           <Route path="/logout" element={<LogoutPage />} />
-          {/* <Route
-            path="/dashboard"
-            element={
-              login === null ? (
-                <div>
-                  <p>
-                    <Typography variant="italic">
-                      Please log in to access your dashboard
-                    </Typography>
-                  </p>
-                  <LoginForm
-                    handleSubmit={handleLogin}
-                    handleUsernameChange={({ target }) =>
-                      setUsername(target.value)
-                    }
-                    handlePasswordChange={({ target }) =>
-                      setPassword(target.value)
-                    }
-                  />
-                </div>
-              ) : (
-                login !== null && <Dashboard />
-              )
-            }
-          /> */}
 
           <Route
             path="/candidates"
             element={
-              <>
-                {/* <Dashboard /> */}
-                <AllCandidates candidates={candidates} userId={login?.id} />
-              </>
+              <AllCandidates candidates={candidates} userId={login?.id} />
             }
           />
-          <Route
-            path="/add"
-            element={
-              <>
-                {/* <Dashboard /> */}
-                <AddProfile />
-              </>
-            }
-          />
+          <Route path="/add" element={<AddProfile />} />
           <Route
             path="/pools"
-            element={
-              <>
-                {/* <Dashboard /> */}
-                <Pools setTechnology={setTechnology} />
-              </>
-            }
+            element={<Pools setTechnology={setTechnology} />}
           />
           <Route
             path="/pools/:technology"
-            element={
-              <>
-                {/* <Dashboard /> */}
-                <PoolDetails candidatesByTech={candidatesByTech} />
-              </>
-            }
+            element={<PoolDetails candidatesByTech={candidatesByTech} />}
           />
           <Route
             path="/hot"
             element={
-              <>
-                {/* <Dashboard /> */}
-                <CandidateProfiles candidates={candidates} userId={login?.id} />
-              </>
+              <CandidateProfiles candidates={candidates} userId={login?.id} />
             }
           />
           <Route
             path="/candidates/:id"
-            element={
-              <>
-                {/* <Dashboard /> */}
-                <CandidateDetails candidates={candidates} />
-              </>
-            }
+            element={<CandidateDetails candidates={candidates} />}
           />
           <Route
             path="/candidates/:id/feedback"
-            element={
-              <>
-                {/* <Dashboard /> */}
-                <Feedback candidates={candidates} />
-              </>
-            }
+            element={<Feedback candidates={candidates} />}
           />
         </Routes>
 

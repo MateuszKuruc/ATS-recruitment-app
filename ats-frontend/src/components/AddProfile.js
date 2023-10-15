@@ -11,28 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import dayjs from "dayjs";
-
 import { createCandidate } from "../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { validateEditForCandidate } from "../utils/validationService";
 import { setNotification } from "../reducers/notificationReducer";
-
-// const FormContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   background-color: #ffffff;
-//   border-radius: 0.5rem;
-//   align-items: center;
-//   padding: 2rem;
-//   gap: 1rem;
-//   // width: 90%;
-
-//   @media (min-width: 768px) {
-//     // width: 40rem;
-//   }
-// `;
 
 const FieldContainer = styled.div`
   && {
@@ -191,10 +174,7 @@ const AddProfile = () => {
   };
 
   return (
-    // <ComponentContainer>
     <StyledForm>
-      {/* <FormContainer> */}
-
       <FieldContainer>
         <StyledHeader>
           <Typography variant="h4">NEW PROFILE FORM</Typography>
@@ -297,18 +277,7 @@ const AddProfile = () => {
           <Typography variant="h5">Add profile</Typography>
         </StyledButton>
       </FieldContainer>
-
-      {/* <StyledButton
-        type="submit"
-        id="addButton"
-        variant="contained"
-        onClick={handleNewCandidate}
-      >
-        <Typography variant="h5">Add profile</Typography>
-      </StyledButton> */}
-      {/* </FormContainer> */}
     </StyledForm>
-    // </ComponentContainer>
   );
 };
 
