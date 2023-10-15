@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   Typography,
   Tooltip,
@@ -11,7 +10,12 @@ import {
   AppBar,
   Hidden,
   Drawer,
+  InputBase,
 } from "@mui/material";
+import Notification from "./Notification";
+import SearchIcon from "@mui/icons-material/Search";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
@@ -19,9 +23,7 @@ import IconButton from "@mui/material/IconButton";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
-import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
-import Dashboard from "./Dashboard";
 
 const StyledButton = styled(Button)`
   font-size: 2.3rem;
@@ -32,13 +34,14 @@ const StyledToolBar = styled(Toolbar)`
   display: flex;
   gap: 2rem;
   justify-content: space-around;
+  // padding: 1rem
 `;
 
 const StyledAppBar = styled(AppBar)`
-  padding: 1rem;
-  margin: 0rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.1rem;
+    padding: 1rem;
+    // margin: 0rem;
+    border-radius: 0.5rem;
+    // margin-bottom: 0.1rem;
 `;
 
 const StyledFlexContainer = styled.div`
@@ -50,11 +53,46 @@ const StyledFlexContainer = styled.div`
   }
 `;
 
-const MainAppBar = () => {
+const Search = styled.div`
+  display: flex;
+  background-color: #800020;
+  opacity: 1;
+  padding: 4px;
+  align-items: center;
+  border-radius: 0.5rem;
+  gap: 0.75rem;
+  padding: 0.5rem;
+`;
+
+const StyledContainer = styled.div``;
+
+// const StyledAppBar = styled(AppBar)`
+//   && {
+//     padding: 1rem;
+//     margin: 0rem;
+//     padding: 0.25rem;
+//     border-radius: 0.5rem;
+//     background-color: #990033;
+//   }
+// `;
+
+// const StyledToolBar = styled(Toolbar)`
+//   //   display: flex;
+//   //   gap: 2rem;
+//   //   justify-content: space-around;
+// `;
+
+const StyledInputBase = styled(InputBase)`
+  && {
+    color: #ffffff;
+  }
+`;
+
+const NavigationBar = () => {
+  const login = useSelector((state) => state.login);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const login = useSelector((state) => state.login);
 
   const open = Boolean(anchorEl);
 
@@ -75,66 +113,33 @@ const MainAppBar = () => {
   };
 
   return (
-    <div>
-    <StyledAppBar position="static">
-      <StyledFlexContainer>
-        <Hidden mdUp>
-          <IconButton onClick={handleOpenMobileMenu}>
-            <MenuIcon fontSize="large" />
-          </IconButton>
-          <Drawer
-            anchor="left"
-            open={isMobileMenuOpen}
-            onClose={handleCloseMobileMenu}
-          >
-            <List>
-              <ListItemButton
-                component={Link}
-                to="/"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="Home" />
-              </ListItemButton>
-              <ListItemButton
-                component={Link}
-                to="/dashboard"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="Dashboard" />
-              </ListItemButton>
-              <ListItemButton
-                component={Link}
-                to="/faq"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="FAQ" />
-              </ListItemButton>
-              <ListItemButton
-                component={Link}
-                to="/tips"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="Tips" />
-              </ListItemButton>
-            </List>
-          </Drawer>
-        </Hidden>
+    <StyledContainer>
+      <StyledAppBar position="sticky">
         <StyledToolBar>
-          <Hidden mdDown>
-            <StyledButton color="inherit" component={Link} to="/">
-              <Typography variant="h4">Home</Typography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/dashboard">
-              <Typography variant="h4">Dashboard</Typography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/faq">
-              <Typography variant="h4">FAQ</Typography>
-            </StyledButton>
-            <StyledButton color="inherit" component={Link} to="/tips">
-              <Typography variant="h4">Tips</Typography>
-            </StyledButton>
-          </Hidden>
-
+          <StyledButton color="inherit" component={Link} to="/">
+            <Typography variant="h5">Home</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/candidates">
+            <Typography variant="h5">All candidates</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/add">
+            <Typography variant="h5">Add profile</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/pools">
+            <Typography variant="h5">Pools</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/hot">
+            <Typography variant="h5">Hot profiles</Typography>
+          </StyledButton>
+          {/* <StyledButton color="inherit" component={Link} to="/dashboard">
+            <Typography variant="h5">Dashboard</Typography>
+          </StyledButton> */}
+          <StyledButton color="inherit" component={Link} to="/faq">
+            <Typography variant="h5">FAQ</Typography>
+          </StyledButton>
+          <StyledButton color="inherit" component={Link} to="/tips">
+            <Typography variant="h5">Tips</Typography>
+          </StyledButton>
           {login === null ? (
             <StyledButton
               color="secondary"
@@ -142,7 +147,7 @@ const MainAppBar = () => {
               component={Link}
               to="/login"
             >
-              <Typography variant="h4">Login</Typography>
+              <Typography variant="h5">Login</Typography>
             </StyledButton>
           ) : (
             <div>
@@ -197,11 +202,9 @@ const MainAppBar = () => {
             </div>
           )}
         </StyledToolBar>
-      </StyledFlexContainer>
-    </StyledAppBar>
-    <Dashboard />
-    </div>
+      </StyledAppBar>
+    </StyledContainer>
   );
 };
 
-export default MainAppBar;
+export default NavigationBar;

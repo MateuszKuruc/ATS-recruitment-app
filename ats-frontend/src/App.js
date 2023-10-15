@@ -32,6 +32,7 @@ import {
 } from "@mui/material";
 import { setNotification } from "./reducers/notificationReducer";
 import PoolDetails from "./components/PoolDetails";
+import NavigationBar from "./components/NavigationBar";
 
 const websiteTheme = createTheme({
   palette: {
@@ -179,7 +180,8 @@ function App() {
   return (
     <ThemeProvider theme={websiteTheme}>
       <StyledContainer>
-        <MainAppBar />
+        {/* <MainAppBar />  */}
+        <NavigationBar />
 
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -196,7 +198,7 @@ function App() {
             }
           />
           <Route path="/logout" element={<LogoutPage />} />
-          <Route
+          {/* <Route
             path="/dashboard"
             element={
               login === null ? (
@@ -220,7 +222,7 @@ function App() {
                 login !== null && <Dashboard />
               )
             }
-          />
+          /> */}
 
           <Route
             path="/candidates"
