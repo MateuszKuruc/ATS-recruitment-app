@@ -124,36 +124,40 @@ const NavigationBar = () => {
               </ListItemButton>
 
               <Hidden mdUp>
-                <ListItemButton
-                  component={Link}
-                  to="/candidates"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Candidates" />
-                </ListItemButton>
+                {login && (
+                  <>
+                    <ListItemButton
+                      component={Link}
+                      to="/candidates"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Candidates" />
+                    </ListItemButton>
 
-                <ListItemButton
-                  component={Link}
-                  to="/add"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Add profile" />
-                </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/add"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Add profile" />
+                    </ListItemButton>
 
-                <ListItemButton
-                  component={Link}
-                  to="/pools"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Pools" />
-                </ListItemButton>
-                <ListItemButton
-                  component={Link}
-                  to="/hot"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Hot profiles" />
-                </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/pools"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Pools" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/hot"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Hot profiles" />
+                    </ListItemButton>
+                  </>
+                )}
               </Hidden>
 
               <ListItemButton
@@ -172,27 +176,31 @@ const NavigationBar = () => {
               </ListItemButton>
 
               <Hidden mdUp>
-                <ListItemButton
-                  component={Link}
-                  to="/feedback"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Feedback" />
-                </ListItemButton>
-                <ListItemButton
-                  component={Link}
-                  to="/logout"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Help" />
-                </ListItemButton>
-                <ListItemButton
-                  component={Link}
-                  to="/help"
-                  onClick={handleCloseMobileMenu}
-                >
-                  <ListItemText primary="Logout" />
-                </ListItemButton>
+                {login && (
+                  <>
+                    <ListItemButton
+                      component={Link}
+                      to="/feedback"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Feedback" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/logout"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Help" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/help"
+                      onClick={handleCloseMobileMenu}
+                    >
+                      <ListItemText primary="Logout" />
+                    </ListItemButton>
+                  </>
+                )}
               </Hidden>
             </List>
           </Drawer>
