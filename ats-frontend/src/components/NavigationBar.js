@@ -36,6 +36,7 @@ const StyledToolBar = styled(Toolbar)`
   display: flex;
   gap: 2rem;
   justify-content: space-around;
+  // align-content: center;
   // padding: 1rem
 `;
 
@@ -136,6 +137,14 @@ const NavigationBar = () => {
           >
             <MenuIcon fontSize="large" />
           </IconButton>
+          {/* {login && (
+              <IconButton
+                onClick={handleOpenMobileMenu}
+                sx={{ display: { md: "none", xs: "block" } }}
+              >
+                <AccountBoxIcon fontSize="large" />
+                {/* <Typography variant="h6">{login.username}</Typography> */}
+
           <Drawer
             anchor="left"
             open={isMobileMenuOpen}
@@ -169,22 +178,20 @@ const NavigationBar = () => {
               </Hidden>
 
               <Hidden mdUp>
-
-              
-              <ListItemButton
-                component={Link}
-                to="/pools"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="Pools" />
-              </ListItemButton>
-              <ListItemButton
-                component={Link}
-                to="/hot"
-                onClick={handleCloseMobileMenu}
-              >
-                <ListItemText primary="Hot profiles" />
-              </ListItemButton>
+                <ListItemButton
+                  component={Link}
+                  to="/pools"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Pools" />
+                </ListItemButton>
+                <ListItemButton
+                  component={Link}
+                  to="/hot"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Hot profiles" />
+                </ListItemButton>
               </Hidden>
 
               <ListItemButton
@@ -201,6 +208,81 @@ const NavigationBar = () => {
               >
                 <ListItemText primary="Tips" />
               </ListItemButton>
+
+              <Hidden smUp>
+                <ListItemButton
+                  component={Link}
+                  to="/feedback"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Feedback" />
+                </ListItemButton>
+                <ListItemButton
+                  component={Link}
+                  to="/logout"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Help" />
+                </ListItemButton>
+                <ListItemButton
+                  component={Link}
+                  to="/help"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Logout" />
+                </ListItemButton>
+              </Hidden>
+
+              {/* <div>
+                <Tooltip title={`${login.username} logged in`}>
+                  <IconButton onClick={handleOpenMenu}>
+                    <AccountBoxIcon style={{ fontSize: "2rem" }} />
+                  </IconButton>
+                </Tooltip>
+                <Popover
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleCloseMenu}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                >
+                  <List>
+                    <ListItemButton
+                      component={Link}
+                      to="/feedback"
+                      onClick={handleCloseMenu}
+                    >
+                      <ChatBubbleIcon />
+                      <ListItemText primary="Feedback" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/help"
+                      onClick={handleCloseMenu}
+                    >
+                      <HelpIcon />
+                      <ListItemText primary="Help" />
+                    </ListItemButton>
+                    <ListItemButton
+                      component={Link}
+                      to="/logout"
+                      onClick={handleCloseMenu}
+                      style={{ paddingRight: "1rem" }}
+                    >
+                      <ExitToAppIcon />
+                      <ListItemText primary="Logout" />
+                    </ListItemButton>
+                  </List>
+                </Popover>
+
+                <Typography variant="italic">{login.username}</Typography>
+              </div> */}
             </List>
           </Drawer>
 
@@ -254,59 +336,74 @@ const NavigationBar = () => {
                 >
                   <Typography variant="h5">Hot profiles</Typography>
                 </StyledButton>
+                {/* </Hidden> */}
+
+                <div>
+                  <Tooltip title={`${login.username} logged in`}>
+                    <IconButton
+                      onClick={handleOpenMenu}
+                      style={{ color: "#ffffff" }}
+                    >
+                      <AccountBoxIcon fontSize="large" />
+                      <Typography variant="italic">{login.username}</Typography>
+                    </IconButton>
+                  </Tooltip>
+                  <Popover
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleCloseMenu}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "left",
+                    }}
+                  >
+                    <List>
+                      <ListItemButton
+                        component={Link}
+                        to="/feedback"
+                        onClick={handleCloseMenu}
+                      >
+                        <ChatBubbleIcon />
+                        <ListItemText primary="Feedback" />
+                      </ListItemButton>
+                      <ListItemButton
+                        component={Link}
+                        to="/help"
+                        onClick={handleCloseMenu}
+                      >
+                        <HelpIcon />
+                        <ListItemText primary="Help" />
+                      </ListItemButton>
+                      <ListItemButton
+                        component={Link}
+                        to="/logout"
+                        onClick={handleCloseMenu}
+                        style={{ paddingRight: "1rem" }}
+                      >
+                        <ExitToAppIcon />
+                        <ListItemText primary="Logout" />
+                      </ListItemButton>
+                    </List>
+                  </Popover>
+
+                  {/* <Typography variant="italic">{login.username}</Typography> */}
+                </div>
               </Hidden>
-
-              <div>
-                <Tooltip title={`${login.username} logged in`}>
-                  <IconButton onClick={handleOpenMenu}>
-                    <AccountBoxIcon style={{ fontSize: "2rem" }} />
-                  </IconButton>
-                </Tooltip>
-                <Popover
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handleCloseMenu}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "right",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                >
-                  <List>
-                    <ListItemButton
-                      component={Link}
-                      to="/feedback"
-                      onClick={handleCloseMenu}
-                    >
-                      <ChatBubbleIcon />
-                      <ListItemText primary="Feedback" />
-                    </ListItemButton>
-                    <ListItemButton
-                      component={Link}
-                      to="/help"
-                      onClick={handleCloseMenu}
-                    >
-                      <HelpIcon />
-                      <ListItemText primary="Help" />
-                    </ListItemButton>
-                    <ListItemButton
-                      component={Link}
-                      to="/logout"
-                      onClick={handleCloseMenu}
-                      style={{ paddingRight: "1rem" }}
-                    >
-                      <ExitToAppIcon />
-                      <ListItemText primary="Logout" />
-                    </ListItemButton>
-                  </List>
-                </Popover>
-
-                <Typography variant="italic">{login.username}</Typography>
-              </div>
             </>
+          )}
+          {login && (
+            <IconButton
+              onClick={handleOpenMobileMenu}
+              sx={{ display: { sm: "none", xs: "block" } }}
+              style={{ color: "#ffffff" }}
+            >
+              <AccountBoxIcon fontSize="large" />
+              <Typography variant="h6">{login.username}</Typography>
+            </IconButton>
           )}
         </StyledToolBar>
       </StyledAppBar>
