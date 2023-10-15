@@ -222,6 +222,7 @@ const CandidateDetails = ({ candidates }) => {
     );
     dispatch(updateCandidate(updatedCandidate));
     setEditMode(false);
+    setEditModeExtended(false);
   };
 
   const cancelEdit = () => {
