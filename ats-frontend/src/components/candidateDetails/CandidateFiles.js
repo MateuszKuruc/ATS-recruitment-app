@@ -219,9 +219,22 @@ const CandidateFiles = ({ candidate }) => {
         </StyledTypography>
         <ButtonContainer>
           <StyledButton variant="contained" color="secondary">
-            <Typography variant="h6">Files</Typography>
+            <Typography variant="h6">Show files</Typography>
           </StyledButton>
-          {/* </div> */}
+          <StyledButton
+        component="label"
+        variant="contained"
+        color="secondary"
+        startIcon={<CloudUploadIcon />}
+      >
+        Upload file
+        <VisuallyHiddenInput
+          type="file"
+          name="file_upload"
+          accept=".pdf, .doc, .docx"
+          onChange={onFileChange}
+        />
+      </StyledButton>
         </ButtonContainer>
       </StyledHeader>
 
