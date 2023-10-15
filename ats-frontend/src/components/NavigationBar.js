@@ -139,9 +139,9 @@ const NavigationBar = () => {
                 >
                   <ListItemText primary="Add profile" />
                 </ListItemButton>
-              </Hidden>
+             
 
-              <Hidden mdUp>
+             
                 <ListItemButton
                   component={Link}
                   to="/pools"
@@ -173,7 +173,7 @@ const NavigationBar = () => {
                 <ListItemText primary="Tips" />
               </ListItemButton>
 
-              <Hidden smUp>
+              <Hidden mdUp>
                 <ListItemButton
                   component={Link}
                   to="/feedback"
