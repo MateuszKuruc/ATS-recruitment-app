@@ -149,13 +149,44 @@ const NavigationBar = () => {
               >
                 <ListItemText primary="Home" />
               </ListItemButton>
+
+              <Hidden smUp>
+                <ListItemButton
+                  component={Link}
+                  to="/candidates"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Candidates" />
+                </ListItemButton>
+
+                <ListItemButton
+                  component={Link}
+                  to="/add"
+                  onClick={handleCloseMobileMenu}
+                >
+                  <ListItemText primary="Add profile" />
+                </ListItemButton>
+              </Hidden>
+
+              <Hidden mdUp>
+
+              
               <ListItemButton
                 component={Link}
-                to="/dashboard"
+                to="/pools"
                 onClick={handleCloseMobileMenu}
               >
-                <ListItemText primary="Dashboard" />
+                <ListItemText primary="Pools" />
               </ListItemButton>
+              <ListItemButton
+                component={Link}
+                to="/hot"
+                onClick={handleCloseMobileMenu}
+              >
+                <ListItemText primary="Hot profiles" />
+              </ListItemButton>
+              </Hidden>
+
               <ListItemButton
                 component={Link}
                 to="/faq"
@@ -200,18 +231,30 @@ const NavigationBar = () => {
             </>
           ) : (
             <>
-              <StyledButton color="inherit" component={Link} to="/candidates">
-                <Typography variant="h5">All candidates</Typography>
-              </StyledButton>
-              <StyledButton color="inherit" component={Link} to="/add">
-                <Typography variant="h5">Add profile</Typography>
-              </StyledButton>
-              <StyledButton color="inherit" component={Link} to="/pools">
-                <Typography variant="h5">Pools</Typography>
-              </StyledButton>
-              <StyledButton color="inherit" component={Link} to="/hot">
-                <Typography variant="h5">Hot profiles</Typography>
-              </StyledButton>
+              <Hidden smDown>
+                <StyledButton color="inherit" component={Link} to="/candidates">
+                  <Typography variant="h5">Candidates</Typography>
+                </StyledButton>
+                <StyledButton color="inherit" component={Link} to="/add">
+                  <Typography variant="h5">Add profile</Typography>
+                </StyledButton>
+                <StyledButton
+                  sx={{ display: { md: "block", sm: "none" } }}
+                  color="inherit"
+                  component={Link}
+                  to="/pools"
+                >
+                  <Typography variant="h5">Pools</Typography>
+                </StyledButton>
+                <StyledButton
+                  sx={{ display: { md: "block", sm: "none" } }}
+                  color="inherit"
+                  component={Link}
+                  to="/hot"
+                >
+                  <Typography variant="h5">Hot profiles</Typography>
+                </StyledButton>
+              </Hidden>
 
               <div>
                 <Tooltip title={`${login.username} logged in`}>
