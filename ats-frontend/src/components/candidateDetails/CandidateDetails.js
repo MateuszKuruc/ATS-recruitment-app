@@ -104,7 +104,7 @@ const UpperButtonContainer = styled.div`
   // flex: 1;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;
 
@@ -249,9 +249,7 @@ const CandidateDetails = ({ candidates }) => {
               <Typography variant="h6">Show feedback</Typography>
             )}
           </StyledButton>
-          
         )}
-      
 
         {!candidate.assessment ? (
           <StyledButton
@@ -272,27 +270,6 @@ const CandidateDetails = ({ candidates }) => {
             <Typography variant="h6">Edit feedback</Typography>
           </StyledButton>
         )}
-
-        {/* <StyledButton
-          variant="contained"
-          color={!editMode ? "secondary" : "primary"}
-          onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
-        >
-          {editMode ? (
-            <Typography variant="h6">Save</Typography>
-          ) : (
-            <Typography variant="h6">Edit</Typography>
-          )}
-        </StyledButton>
-        {editMode ? (
-          <StyledButton
-            variant="contained"
-            color="inherit"
-            onClick={cancelEdit}
-          >
-            <Typography variant="h6">Cancel</Typography>
-          </StyledButton>
-        ) : null} */}
       </UpperButtonContainer>
       <div className="notesShown" style={notesShown}>
         <StyledTextField
@@ -304,17 +281,6 @@ const CandidateDetails = ({ candidates }) => {
           value={candidate.notes}
         />
       </div>
-
-      {/* <div className="notesShown" style={notesShown}>
-        <StyledTextField
-          inputProps={{
-            readOnly: true,
-          }}
-          multiline
-          rows={10}
-          value={candidate.notes}
-        />
-      </div> */}
 
       <StyledHeader>
         <StyledTypography variant="h5">Files</StyledTypography>

@@ -92,8 +92,8 @@ const StyledTypography = styled(Typography)`
 const StyledButton = styled(Button)`
   && {
     flex: 1;
-    // padding: 1rem;
-    background: goldenrod;
+    padding: 1rem;
+   
     max-width: 200px;
   
 
