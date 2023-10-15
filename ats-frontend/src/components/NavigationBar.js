@@ -47,15 +47,6 @@ const StyledAppBar = styled(AppBar)`
   // margin-bottom: 0.1rem;
 `;
 
-const StyledFlexContainer = styled.div`
-  @media (max-width: 900px) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    // gap: 1rem;
-  }
-`;
-
 const Search = styled.div`
   display: flex;
   background-color: #800020;
@@ -71,31 +62,11 @@ const StyledContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-// const StyledAppBar = styled(AppBar)`
-//   && {
-//     padding: 1rem;
-//     margin: 0rem;
-//     padding: 0.25rem;
-//     border-radius: 0.5rem;
-//     background-color: #990033;
-//   }
-// `;
-
-// const StyledToolBar = styled(Toolbar)`
-//   //   display: flex;
-//   //   gap: 2rem;
-//   //   justify-content: space-around;
-// `;
-
 const StyledInputBase = styled(InputBase)`
   && {
     color: #ffffff;
   }
 `;
-
-// const StyledIconButton = styled(IconButton)`
-
-// `
 
 const NavigationBar = () => {
   const login = useSelector((state) => state.login);
@@ -137,13 +108,6 @@ const NavigationBar = () => {
           >
             <MenuIcon fontSize="large" />
           </IconButton>
-          {/* {login && (
-              <IconButton
-                onClick={handleOpenMobileMenu}
-                sx={{ display: { md: "none", xs: "block" } }}
-              >
-                <AccountBoxIcon fontSize="large" />
-                {/* <Typography variant="h6">{login.username}</Typography> */}
 
           <Drawer
             anchor="left"
@@ -232,57 +196,6 @@ const NavigationBar = () => {
                   <ListItemText primary="Logout" />
                 </ListItemButton>
               </Hidden>
-
-              {/* <div>
-                <Tooltip title={`${login.username} logged in`}>
-                  <IconButton onClick={handleOpenMenu}>
-                    <AccountBoxIcon style={{ fontSize: "2rem" }} />
-                  </IconButton>
-                </Tooltip>
-                <Popover
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handleCloseMenu}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "right",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "left",
-                  }}
-                >
-                  <List>
-                    <ListItemButton
-                      component={Link}
-                      to="/feedback"
-                      onClick={handleCloseMenu}
-                    >
-                      <ChatBubbleIcon />
-                      <ListItemText primary="Feedback" />
-                    </ListItemButton>
-                    <ListItemButton
-                      component={Link}
-                      to="/help"
-                      onClick={handleCloseMenu}
-                    >
-                      <HelpIcon />
-                      <ListItemText primary="Help" />
-                    </ListItemButton>
-                    <ListItemButton
-                      component={Link}
-                      to="/logout"
-                      onClick={handleCloseMenu}
-                      style={{ paddingRight: "1rem" }}
-                    >
-                      <ExitToAppIcon />
-                      <ListItemText primary="Logout" />
-                    </ListItemButton>
-                  </List>
-                </Popover>
-
-                <Typography variant="italic">{login.username}</Typography>
-              </div> */}
             </List>
           </Drawer>
 
@@ -336,7 +249,6 @@ const NavigationBar = () => {
                 >
                   <Typography variant="h5">Hot profiles</Typography>
                 </StyledButton>
-                {/* </Hidden> */}
 
                 <div>
                   <Tooltip title={`${login.username} logged in`}>
@@ -389,8 +301,6 @@ const NavigationBar = () => {
                       </ListItemButton>
                     </List>
                   </Popover>
-
-                  {/* <Typography variant="italic">{login.username}</Typography> */}
                 </div>
               </Hidden>
             </>
