@@ -90,7 +90,7 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-const NavigationBar = () => {
+const NavigationBar = ({ theme }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
 
@@ -119,6 +119,51 @@ const NavigationBar = () => {
     <StyledContainer>
       <StyledAppBar position="sticky">
         <StyledToolBar>
+          <IconButton
+            onClick={handleOpenMobileMenu}
+            sx={{
+              display: { md: login !== null ? "block" : "none", sm: "block" },
+            }}
+          >
+            <MenuIcon fontSize="large" />
+          </IconButton>
+          <Drawer
+            anchor="left"
+            open={isMobileMenuOpen}
+            onClose={handleCloseMobileMenu}
+          >
+            <List>
+              <ListItemButton
+                component={Link}
+                to="/"
+                onClick={handleCloseMobileMenu}
+              >
+                <ListItemText primary="Home" />
+              </ListItemButton>
+              <ListItemButton
+                component={Link}
+                to="/dashboard"
+                onClick={handleCloseMobileMenu}
+              >
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+              <ListItemButton
+                component={Link}
+                to="/faq"
+                onClick={handleCloseMobileMenu}
+              >
+                <ListItemText primary="FAQ" />
+              </ListItemButton>
+              <ListItemButton
+                component={Link}
+                to="/tips"
+                onClick={handleCloseMobileMenu}
+              >
+                <ListItemText primary="Tips" />
+              </ListItemButton>
+            </List>
+          </Drawer>
+
           {login === null ? (
             <>
               <StyledButton color="inherit" component={Link} to="/">
