@@ -42,17 +42,6 @@ const StyledTextField = styled(TextField)`
     `}
 `;
 
-const StyledButton = styled(Button)`
-  && {
-    flex: 1;
-    padding: 1rem;
-    // background: goldenrod
-
-    @media (max-width: 768px) {
-    }
-  }
-`;
-
 // const StyledHeader = styled.div`
 //   && {
 //     display: flex;
@@ -72,7 +61,6 @@ const StyledButton = styled(Button)`
 //     }
 //   }
 // `;
-
 
 const StyledHeader = styled.div`
   && {
@@ -116,9 +104,22 @@ const StyledEditTypography = styled(Typography)`
   align-self: center;
 `;
 
+const StyledButton = styled(Button)`
+  && {
+    flex: 1;
+    padding: 1rem;
+    // background: goldenrod;
+// max-width: 200px;
+
+    @media (max-width: 768px) {
+max-width: 100%;
+    }
+  }
+`;
+
 const UpperButtonContainer = styled.div`
   display: flex;
-
+justify-content: center;
   gap: 0.5rem;
   // flex: 1;
 
@@ -174,6 +175,7 @@ const CandidateDetails = ({ candidates }) => {
 
   const notesShown = {
     display: showNotes ? "flex" : "none",
+    marginBottom: "0",
   };
 
   useEffect(() => {
@@ -263,9 +265,9 @@ const CandidateDetails = ({ candidates }) => {
             onClick={toggleNotes}
           >
             {showNotes ? (
-              <Typography variant="h6">Hide feedback</Typography>
+              <Typography variant="h6">Hide notes</Typography>
             ) : (
-              <Typography variant="h6">Show feedback</Typography>
+              <Typography variant="h6">Show notes</Typography>
             )}
           </StyledButton>
         )}

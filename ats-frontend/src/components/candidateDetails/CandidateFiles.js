@@ -51,10 +51,12 @@ const SingleFileDiv = styled.div`
 
 const Container = styled.div`
   display: flex;
-  // justify-content: flex-start;
+  justify-content: flex-start;
   // align-items: center;
   gap: 1rem;
   flex-direction: column;
+  background-color: #c0d9e7;
+  margin: 0;
 
   @media (max-width: 768px) {
     padding: 0;
@@ -82,10 +84,9 @@ const StyledHeader = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 1rem;
     background-color: #084c61;
     border-radius: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 1rem;
     gap: 0.5rem;
 
@@ -116,6 +117,7 @@ const ButtonContainer = styled.div`
 const IconContainer = styled.div`
 border-radius: 0,
 gap: 1.5rem
+// background-color: #084c61;
 
 @media (max-width: 768px) {
   border: 1px solid red;
@@ -126,7 +128,8 @@ gap: 1.5rem
 const FilesContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1rem;
+ 
+
   @media (max-width: 768px) {
   }
 `;
