@@ -131,7 +131,7 @@ const NavigationBar = () => {
                       to="/candidates"
                       onClick={handleCloseMobileMenu}
                     >
-                      <ListItemText primary="Candidates" />
+                      <ListItemText primary="Profiles" />
                     </ListItemButton>
 
                     <ListItemButton
@@ -139,7 +139,7 @@ const NavigationBar = () => {
                       to="/add"
                       onClick={handleCloseMobileMenu}
                     >
-                      <ListItemText primary="New" />
+                      <ListItemText primary="Form" />
                     </ListItemButton>
 
                     <ListItemButton
@@ -154,7 +154,7 @@ const NavigationBar = () => {
                       to="/hot"
                       onClick={handleCloseMobileMenu}
                     >
-                      <ListItemText primary="Hot profiles" />
+                      <ListItemText primary="Hot" />
                     </ListItemButton>
                   </>
                 )}
@@ -234,10 +234,10 @@ const NavigationBar = () => {
             <>
               <Hidden mdDown>
                 <StyledButton color="inherit" component={Link} to="/candidates">
-                  <Typography variant="h5">Candidates</Typography>
+                  <Typography variant="h5">profiles</Typography>
                 </StyledButton>
                 <StyledButton color="inherit" component={Link} to="/add">
-                  <Typography variant="h5">Create</Typography>
+                  <Typography variant="h5">form</Typography>
                 </StyledButton>
 
                 <StyledButton color="inherit" component={Link} to="/pools">
