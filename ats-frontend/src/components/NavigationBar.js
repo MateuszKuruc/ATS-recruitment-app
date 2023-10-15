@@ -139,7 +139,7 @@ const NavigationBar = () => {
                       to="/add"
                       onClick={handleCloseMobileMenu}
                     >
-                      <ListItemText primary="Add profile" />
+                      <ListItemText primary="New" />
                     </ListItemButton>
 
                     <ListItemButton
@@ -237,14 +237,14 @@ const NavigationBar = () => {
                   <Typography variant="h5">Candidates</Typography>
                 </StyledButton>
                 <StyledButton color="inherit" component={Link} to="/add">
-                  <Typography variant="h5">Add profile</Typography>
+                  <Typography variant="h5">Create</Typography>
                 </StyledButton>
 
                 <StyledButton color="inherit" component={Link} to="/pools">
                   <Typography variant="h5">Pools</Typography>
                 </StyledButton>
                 <StyledButton color="inherit" component={Link} to="/hot">
-                  <Typography variant="h5">Hot profiles</Typography>
+                  <Typography variant="h5">Hot</Typography>
                 </StyledButton>
               </Hidden>
 

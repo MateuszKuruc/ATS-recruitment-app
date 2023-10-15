@@ -25,6 +25,8 @@ const FieldContainer = styled.div`
     padding: 6rem;
     border-radius: 0.5rem;
     gap: 1rem;
+    // min-width: 400px;
+    flex: 1;
 
     @media (max-width: 768px) {
       padding: 0rem;
@@ -43,15 +45,17 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 5rem;
-  padding-left: 15rem;
-  padding-right: 15rem;
+  // padding-left: 15rem;
+  // padding-right: 15rem;
   background-color: #c0d9e7;
   margin-bottom: 1rem;
   flex: 1;
   border-radius: 0.5rem;
+  // min-width: 600px;
 
   @media (max-width: 768px) {
     padding: 0;
+    min-width: 0;
   }
 `;
 
