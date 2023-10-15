@@ -56,6 +56,7 @@ const Search = styled.div`
   border-radius: 0.5rem;
   gap: 0.75rem;
   padding: 0.5rem;
+  // flex: 1;
 `;
 
 const StyledContainer = styled.div`
@@ -187,14 +188,14 @@ const NavigationBar = () => {
                     </ListItemButton>
                     <ListItemButton
                       component={Link}
-                      to="/logout"
+                      to="/help"
                       onClick={handleCloseMobileMenu}
                     >
                       <ListItemText primary="Help" />
                     </ListItemButton>
                     <ListItemButton
                       component={Link}
-                      to="/help"
+                      to="/logout"
                       onClick={handleCloseMobileMenu}
                     >
                       <ListItemText primary="Logout" />
@@ -239,9 +240,7 @@ const NavigationBar = () => {
                 <StyledButton color="inherit" component={Link} to="/add">
                   <Typography variant="h5">Add profile</Typography>
                 </StyledButton>
-              </Hidden>
 
-              <Hidden mdDown>
                 <StyledButton color="inherit" component={Link} to="/pools">
                   <Typography variant="h5">Pools</Typography>
                 </StyledButton>

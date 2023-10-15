@@ -30,6 +30,7 @@ const Container = styled.div`
   margin-too: 1rem;
   border-rariuds: 0.5rem;
   display: flex;
+  overflow-x: scroll;
 `;
 
 const StyledTypography = styled(Typography)`
