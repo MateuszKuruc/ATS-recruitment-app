@@ -11,6 +11,7 @@ import {
   Hidden,
   Drawer,
   InputBase,
+  Box,
 } from "@mui/material";
 import Notification from "./Notification";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,6 +25,7 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledButton = styled(Button)`
   font-size: 2.3rem;
@@ -90,7 +92,11 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
-const NavigationBar = ({ theme }) => {
+// const StyledIconButton = styled(IconButton)`
+
+// `
+
+const NavigationBar = () => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
 
@@ -115,6 +121,9 @@ const NavigationBar = ({ theme }) => {
     setIsMobileMenuOpen(false);
   };
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const renderHamburgerMenu = login !== null || isSmallScreen;
+
   return (
     <StyledContainer>
       <StyledAppBar position="sticky">
@@ -122,7 +131,7 @@ const NavigationBar = ({ theme }) => {
           <IconButton
             onClick={handleOpenMobileMenu}
             sx={{
-              display: { md: login !== null ? "block" : "none", sm: "block" },
+              display: renderHamburgerMenu ? "block" : "none",
             }}
           >
             <MenuIcon fontSize="large" />
@@ -166,17 +175,19 @@ const NavigationBar = ({ theme }) => {
 
           {login === null ? (
             <>
-              <StyledButton color="inherit" component={Link} to="/">
-                <Typography variant="h5">Home</Typography>
-              </StyledButton>
+              <Hidden smDown>
+                <StyledButton color="inherit" component={Link} to="/">
+                  <Typography variant="h5">Home</Typography>
+                </StyledButton>
 
-              <StyledButton color="inherit" component={Link} to="/faq">
-                <Typography variant="h5">FAQ</Typography>
-              </StyledButton>
+                <StyledButton color="inherit" component={Link} to="/faq">
+                  <Typography variant="h5">FAQ</Typography>
+                </StyledButton>
 
-              <StyledButton color="inherit" component={Link} to="/tips">
-                <Typography variant="h5">Tips</Typography>
-              </StyledButton>
+                <StyledButton color="inherit" component={Link} to="/tips">
+                  <Typography variant="h5">Tips</Typography>
+                </StyledButton>
+              </Hidden>
 
               <StyledButton
                 color="secondary"

@@ -181,7 +181,7 @@ function App() {
     <ThemeProvider theme={websiteTheme}>
       <StyledContainer>
         {/* <MainAppBar />  */}
-        <NavigationBar theme={websiteTheme} />
+        <NavigationBar />
 
         <Routes>
           <Route path="/" element={<HomePage />} />
