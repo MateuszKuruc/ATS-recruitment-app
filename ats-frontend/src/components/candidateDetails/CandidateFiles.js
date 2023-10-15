@@ -42,24 +42,66 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
+// const Container = styled.div`
+//   display: flex;
+//   // justify-content: flex-start;
+//   // align-items: center;
+//   gap: 1rem;
 
-  @media (max-width: 768px) {
-    padding: 0;
-    background-color: white;
-    flex-direction: column;
+//   @media (max-width: 768px) {
+//     padding: 0;
+//     background-color: white;
+//     flex-direction: column;
+//   }
+// `;
+
+const StyledButton = styled(Button)`
+  && {
+    flex: 1;
+    padding: 1rem;
+
+    max-width: 200px;
+
+    @media (max-width: 768px) {
+      flex: 1;
+      max-width: 100%;
+    }
   }
 `;
 
-const StyledButton = styled(Button)`
-  padding: 1rem;
-  @media (max-width: 768px) {
-    padding: 0;
-  
+const StyledHeader = styled.div`
+  && {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #084c61;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+`;
+
+const ButtonContainer = styled.div`
+  && {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: flex-end;
+    flex: 1;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      gap: 0.5rem;
+    }
   }
 `;
 
@@ -169,8 +211,21 @@ const CandidateFiles = ({ candidate }) => {
   }
 
   return (
-    <Container>
-      <StyledButton
+    // <Container>
+    <>
+      <StyledHeader>
+        <StyledTypography variant="h5" style={{ color: "#ffffff" }}>
+          Files
+        </StyledTypography>
+        <ButtonContainer>
+          <StyledButton variant="contained" color="secondary">
+            <Typography variant="h6">Files</Typography>
+          </StyledButton>
+          {/* </div> */}
+        </ButtonContainer>
+      </StyledHeader>
+
+      {/* <StyledButton
         component="label"
         variant="contained"
         color="secondary"
@@ -183,7 +238,7 @@ const CandidateFiles = ({ candidate }) => {
           accept=".pdf, .doc, .docx"
           onChange={onFileChange}
         />
-      </StyledButton>
+      </StyledButton> */}
       {uploadedFiles.map((file) => (
         <div
           style={{
@@ -244,7 +299,8 @@ const CandidateFiles = ({ candidate }) => {
           </Dialog>
         </div>
       ))}
-    </Container>
+    </>
+    // </Container>
   );
 };
 

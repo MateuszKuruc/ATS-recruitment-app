@@ -282,13 +282,13 @@ const CandidateDetails = ({ candidates }) => {
         />
       </div>
 
-      <StyledHeader>
+      {/* <StyledHeader>
         <StyledTypography variant="h5">Files</StyledTypography>
       </StyledHeader>
 
       <StyledButton variant="contained" color="secondary">
         <Typography variant="h6">Files</Typography>
-      </StyledButton>
+      </StyledButton> */}
 
       <CandidateFiles candidate={candidate} />
 

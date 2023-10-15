@@ -25,7 +25,6 @@ const StyledHeader = styled.div`
     border-radius: 0.5rem;
     margin-top: 2rem;
     padding: 1rem;
-    border: 1px solid red;
     gap: 0.5rem;
 
     @media (max-width: 768px) {
@@ -93,9 +92,8 @@ const StyledButton = styled(Button)`
   && {
     flex: 1;
     padding: 1rem;
-   
+
     max-width: 200px;
-  
 
     @media (max-width: 768px) {
       flex: 1;
