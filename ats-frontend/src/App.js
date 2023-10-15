@@ -228,7 +228,7 @@ function App() {
             path="/candidates"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <AllCandidates candidates={candidates} userId={login?.id} />
               </>
             }
@@ -237,7 +237,7 @@ function App() {
             path="/add"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <AddProfile />
               </>
             }
@@ -246,7 +246,7 @@ function App() {
             path="/pools"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <Pools setTechnology={setTechnology} />
               </>
             }
@@ -255,7 +255,7 @@ function App() {
             path="/pools/:technology"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <PoolDetails candidatesByTech={candidatesByTech} />
               </>
             }
@@ -264,7 +264,7 @@ function App() {
             path="/hot"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <CandidateProfiles candidates={candidates} userId={login?.id} />
               </>
             }
@@ -273,7 +273,7 @@ function App() {
             path="/candidates/:id"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <CandidateDetails candidates={candidates} />
               </>
             }
@@ -282,7 +282,7 @@ function App() {
             path="/candidates/:id/feedback"
             element={
               <>
-                <Dashboard />
+                {/* <Dashboard /> */}
                 <Feedback candidates={candidates} />
               </>
             }
