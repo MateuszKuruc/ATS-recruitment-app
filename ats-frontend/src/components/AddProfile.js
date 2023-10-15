@@ -35,17 +35,17 @@ import { setNotification } from "../reducers/notificationReducer";
 // `;
 
 const FieldContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  padding: 3rem;
-  border-radius: 0.5rem;
-  gap: 1rem;
+  && {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 6rem;
+    border-radius: 0.5rem;
+    gap: 1rem;
 
-
-
-  @media (min-width: 768px) {
-
+    @media (max-width: 768px) {
+      padding: 0rem;
+    }
   }
 `;
 
@@ -59,10 +59,9 @@ export const StyledTextField = styled(TextField)`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  // align-items: center;
   padding: 5rem;
-  padding-left: 12rem;
-  padding-right: 12rem;
+  padding-left: 15rem;
+  padding-right: 15rem;
   background-color: #c0d9e7;
   margin-bottom: 1rem;
   flex: 1;
@@ -81,8 +80,17 @@ const StyledButton = styled(Button)`
   && {
     padding: 1rem;
     border-radius: 0.5rem;
-
   }
+`;
+
+const StyledHeader = styled.div`
+  display: flex;
+  background-color: #990033;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
 `;
 
 const AddProfile = () => {
@@ -188,7 +196,9 @@ const AddProfile = () => {
       {/* <FormContainer> */}
 
       <FieldContainer>
-        <Typography variant="h4">NEW PROFILE FORM</Typography>
+        <StyledHeader>
+          <Typography variant="h4">NEW PROFILE FORM</Typography>
+        </StyledHeader>
         <StyledTextField
           error={firstNameError}
           helperText={
