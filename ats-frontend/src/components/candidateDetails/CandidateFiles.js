@@ -152,6 +152,9 @@ const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
   const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
   const [openDialog, setOpenDialog] = useState(false);
+  const [showFiles, setShowFiles] = useState(false);
+
+  const filesShown = { display: showFiles ? "block" : "none" };
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -255,7 +258,11 @@ const CandidateFiles = ({ candidate }) => {
           Files
         </StyledTypography>
         <ButtonContainer>
-          <StyledButton variant="contained" color="secondary">
+          <StyledButton
+            variant="contained"
+            color="secondary"
+            onClick={() => setShowFiles(!showFiles)}
+          >
             <Typography variant="h6">Show files</Typography>
           </StyledButton>
           <StyledButton
@@ -277,7 +284,7 @@ const CandidateFiles = ({ candidate }) => {
 
       <FilesContainer>
         {uploadedFiles.map((file) => (
-          <SingleFileDiv key={file.fileName}>
+          <SingleFileDiv key={file.fileName} style={filesShown}>
             <IconContainer>
               <IconButton onClick={() => handleDownload(file.fileName)}>
                 {file.fileName.includes(".pdf") ? (
