@@ -12,6 +12,7 @@ import {
   Select,
   MenuItem,
   FormHelperText,
+  Button,
 } from "@mui/material";
 
 const StyledHeader = styled.div`
@@ -82,6 +83,30 @@ const StyledTypography = styled(Typography)`
   color: #ffffff;
 `;
 
+const StyledButton = styled(Button)`
+  && {
+    flex: 1;
+    padding: 1rem;
+    // background: goldenrod
+
+    @media (max-width: 768px) {
+    }
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (max-width: 768px) {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.5rem;
+  }
+`;
+
 const CandidateBasicDetails = ({
   candidate,
   setEditedCandidate,
@@ -92,12 +117,34 @@ const CandidateBasicDetails = ({
   emailError,
   phoneError,
   locationError,
+  enterEditMode,
+  saveEdit,
+  cancelEdit,
 }) => {
   return (
     <>
       <StyledHeader>
         <StyledTypography variant="h5">Basic details</StyledTypography>
       </StyledHeader>
+      <ButtonContainer>
+        <StyledButton
+          variant="contained"
+          color={!editMode ? "secondary" : "primary"}
+          onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
+        >
+          {editMode ? (
+            <Typography variant="h6">Save</Typography>
+          ) : (
+            <Typography variant="h6">Edit</Typography>
+          )}
+        </StyledButton>
+      
+      {editMode ? (
+        <StyledButton variant="contained" color="inherit" onClick={cancelEdit}>
+          <Typography variant="h6">Cancel</Typography>
+        </StyledButton>
+      ) : null}
+      </ButtonContainer>
 
       <StyledGridContainer
         container

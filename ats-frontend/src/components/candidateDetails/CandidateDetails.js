@@ -47,6 +47,9 @@ const StyledButton = styled(Button)`
     flex: 1;
     padding: 1rem;
     // background: goldenrod
+
+    @media (max-width: 768px) {
+    }
   }
 `;
 
@@ -60,6 +63,13 @@ const StyledHeader = styled.div`
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+
+    @media (max-width: 768px) {
+      // padding: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 
@@ -71,6 +81,11 @@ const Container = styled.div`
   margin-top: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const StyledTypography = styled(Typography)`
@@ -84,8 +99,13 @@ const StyledEditTypography = styled(Typography)`
 
 const UpperButtonContainer = styled.div`
   display: flex;
+
   gap: 0.5rem;
-  flex: 1;
+  // flex: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const BottomButtonContainer = styled.div`
@@ -229,7 +249,18 @@ const CandidateDetails = ({ candidates }) => {
               <Typography variant="h6">Show feedback</Typography>
             )}
           </StyledButton>
+          
         )}
+          {/* <div className="notesShown" style={notesShown}>
+        <StyledTextField
+          inputProps={{
+            readOnly: true,
+          }}
+          multiline
+          rows={10}
+          value={candidate.notes}
+        />
+      </div> */}
 
         {!candidate.assessment ? (
           <StyledButton
@@ -251,7 +282,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledButton>
         )}
 
-        <StyledButton
+        {/* <StyledButton
           variant="contained"
           color={!editMode ? "secondary" : "primary"}
           onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
@@ -270,10 +301,10 @@ const CandidateDetails = ({ candidates }) => {
           >
             <Typography variant="h6">Cancel</Typography>
           </StyledButton>
-        ) : null}
+        ) : null} */}
       </UpperButtonContainer>
 
-      <div className="notesShown" style={notesShown}>
+      {/* <div className="notesShown" style={notesShown}>
         <StyledTextField
           inputProps={{
             readOnly: true,
@@ -282,11 +313,15 @@ const CandidateDetails = ({ candidates }) => {
           rows={10}
           value={candidate.notes}
         />
-      </div>
+      </div> */}
 
       <StyledHeader>
         <StyledTypography variant="h5">Files</StyledTypography>
       </StyledHeader>
+
+      <StyledButton variant="contained" color="secondary">
+        <Typography variant="h6">Files</Typography>
+      </StyledButton>
 
       <CandidateFiles candidate={candidate} />
 
@@ -300,6 +335,9 @@ const CandidateDetails = ({ candidates }) => {
         emailError={emailError}
         phoneError={phoneError}
         locationError={locationError}
+        enterEditMode={enterEditMode}
+        saveEdit={saveEdit}
+        cancelEdit={cancelEdit}
       />
 
       <CandidateExtendedFeedback

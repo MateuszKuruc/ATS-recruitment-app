@@ -47,10 +47,20 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    background-color: white;
+    flex-direction: column;
+  }
 `;
 
 const StyledButton = styled(Button)`
   padding: 1rem;
+  @media (max-width: 768px) {
+    padding: 0;
+  
+  }
 `;
 
 const IconContainer = styled.div`

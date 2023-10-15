@@ -31,6 +31,7 @@ const Container = styled.div`
   border-rariuds: 0.5rem;
   display: flex;
   overflow-x: scroll;
+  margin-bottom: 1rem;
 `;
 
 const StyledTypography = styled(Typography)`
@@ -136,6 +137,11 @@ const AllCandidates = ({ candidates, userId }) => {
               paginationModel: {
                 pageSize: 10,
               },
+            },
+          }}
+          props={{
+            pagination: {
+              style: { display: "flex", border: "1px solid red" },
             },
           }}
           pageSizeOptions={[5, 10, 15, 25, 50]}

@@ -104,6 +104,11 @@ const StyledContainer = styled(Container)`
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    @media (max-width: 768px) {
+      padding: 0;
+      margin: 0;
+    }
   }
 `;
 
