@@ -53,22 +53,41 @@ const StyledButton = styled(Button)`
   }
 `;
 
+// const StyledHeader = styled.div`
+//   && {
+//     display: flex;
+//     justify-content: space-around;
+//     align-content: center;
+//     margin-bottom: 1rem;
+//     background-color: #084c61;
+//     padding: 0.25rem;
+//     border-radius: 0.5rem;
+//     margin-top: 2rem;
+
+//     @media (max-width: 768px) {
+//       // padding: 0;
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//     }
+//   }
+// `;
+
+
 const StyledHeader = styled.div`
   && {
     display: flex;
     justify-content: space-around;
-    align-content: center;
+    align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
-    padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+    padding: 1rem;
+    gap: 0.5rem;
 
     @media (max-width: 768px) {
-      // padding: 0;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
   }
 `;
