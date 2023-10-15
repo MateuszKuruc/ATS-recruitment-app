@@ -251,16 +251,7 @@ const CandidateDetails = ({ candidates }) => {
           </StyledButton>
           
         )}
-          {/* <div className="notesShown" style={notesShown}>
-        <StyledTextField
-          inputProps={{
-            readOnly: true,
-          }}
-          multiline
-          rows={10}
-          value={candidate.notes}
-        />
-      </div> */}
+      
 
         {!candidate.assessment ? (
           <StyledButton
@@ -303,6 +294,16 @@ const CandidateDetails = ({ candidates }) => {
           </StyledButton>
         ) : null} */}
       </UpperButtonContainer>
+      <div className="notesShown" style={notesShown}>
+        <StyledTextField
+          inputProps={{
+            readOnly: true,
+          }}
+          multiline
+          rows={10}
+          value={candidate.notes}
+        />
+      </div>
 
       {/* <div className="notesShown" style={notesShown}>
         <StyledTextField

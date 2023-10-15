@@ -19,12 +19,18 @@ const StyledHeader = styled.div`
   && {
     display: flex;
     justify-content: space-around;
-    align-content: center;
+    align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
-    padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid red;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -86,24 +92,33 @@ const StyledTypography = styled(Typography)`
 const StyledButton = styled(Button)`
   && {
     flex: 1;
-    padding: 1rem;
-    // background: goldenrod
+    // padding: 1rem;
+    background: goldenrod;
+    max-width: 200px;
+  
 
     @media (max-width: 768px) {
+      flex: 1;
+      max-width: 100%;
     }
   }
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
-  gap: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-
-  @media (max-width: 768px) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  && {
+    display: flex;
     gap: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: flex-end;
+    flex: 1;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      gap: 0.5rem;
+    }
   }
 `;
 
@@ -125,8 +140,31 @@ const CandidateBasicDetails = ({
     <>
       <StyledHeader>
         <StyledTypography variant="h5">Basic details</StyledTypography>
+        <ButtonContainer>
+          <StyledButton
+            variant="contained"
+            color={!editMode ? "secondary" : "primary"}
+            onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
+          >
+            {editMode ? (
+              <Typography variant="h6">Save</Typography>
+            ) : (
+              <Typography variant="h6">Edit</Typography>
+            )}
+          </StyledButton>
+
+          {editMode ? (
+            <StyledButton
+              variant="contained"
+              color="inherit"
+              onClick={cancelEdit}
+            >
+              <Typography variant="h6">Cancel</Typography>
+            </StyledButton>
+          ) : null}
+        </ButtonContainer>
       </StyledHeader>
-      <ButtonContainer>
+      {/* <ButtonContainer>
         <StyledButton
           variant="contained"
           color={!editMode ? "secondary" : "primary"}
@@ -144,7 +182,7 @@ const CandidateBasicDetails = ({
           <Typography variant="h6">Cancel</Typography>
         </StyledButton>
       ) : null}
-      </ButtonContainer>
+      </ButtonContainer> */}
 
       <StyledGridContainer
         container
