@@ -83,10 +83,6 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
-const StyledListItemText = styled(ListItemText)`
-  font-weight: 700;
-`;
-
 const NavigationBar = () => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
@@ -97,6 +93,14 @@ const NavigationBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const open = Boolean(anchorEl);
+
+  const getStylesForButton = (path, currentPath) => {
+    const isActive = path === currentPath;
+    return {
+      backgroundColor: isActive ? "#800020" : "initial",
+      color: isActive ? "#ffffff" : "initial",
+    };
+  };
 
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -140,10 +144,7 @@ const NavigationBar = () => {
                 component={Link}
                 to="/"
                 onClick={handleCloseMobileMenu}
-                sx={{
-                  backgroundColor:
-                    location.pathname === "/" ? "#800020" : "initial",
-                }}
+                sx={getStylesForButton("/", location.pathname)}
               >
                 <ListItemText primary="Home" />
               </StyledListItemButton>
@@ -155,12 +156,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/candidates"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/candidates"
-                            ? "#800020"
-                            : "initial",
-                      }}
+                      sx={getStylesForButton("/candidates", location.pathname)}
                     >
                       <ListItemText
                         primary="Profiles"
@@ -172,10 +168,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/add"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/add" ? "#800020" : "initial",
-                      }}
+                      sx={getStylesForButton("/add", location.pathname)}
                     >
                       <ListItemText
                         primary="Form"
@@ -187,11 +180,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/pools"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor: location.pathname.startsWith("/pools")
-                          ? "#800020"
-                          : "initial",
-                      }}
+                      sx={getStylesForButton("/pools", location.pathname)}
                     >
                       <ListItemText primary="Pools" secondary="Sort by tech" />
                     </StyledListItemButton>
@@ -199,10 +188,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/hot"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/hot" ? "#800020" : "initial",
-                      }}
+                      sx={getStylesForButton("/hot", location.pathname)}
                     >
                       <ListItemText
                         primary="Hot"
@@ -217,10 +203,7 @@ const NavigationBar = () => {
                 component={Link}
                 to="/faq"
                 onClick={handleCloseMobileMenu}
-                sx={{
-                  backgroundColor:
-                    location.pathname === "/faq" ? "#800020" : "initial",
-                }}
+                sx={getStylesForButton("/faq", location.pathname)}
               >
                 <ListItemText primary="FAQ" />
               </StyledListItemButton>
@@ -228,10 +211,7 @@ const NavigationBar = () => {
                 component={Link}
                 to="/tips"
                 onClick={handleCloseMobileMenu}
-                sx={{
-                  backgroundColor:
-                    location.pathname === "/tips" ? "#800020" : "initial",
-                }}
+                sx={getStylesForButton("/tips", location.pathname)}
               >
                 <ListItemText primary="Tips" />
               </StyledListItemButton>
@@ -243,12 +223,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/feedback"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/feedback"
-                            ? "#800020"
-                            : "initial",
-                      }}
+                      sx={getStylesForButton("/feedback", location.pathname)}
                     >
                       <ListItemText primary="Feedback" />
                     </StyledListItemButton>
@@ -256,10 +231,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/help"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/help" ? "#800020" : "initial",
-                      }}
+                      sx={getStylesForButton("/help", location.pathname)}
                     >
                       <ListItemText primary="Help" />
                     </StyledListItemButton>
@@ -267,12 +239,7 @@ const NavigationBar = () => {
                       component={Link}
                       to="/logout"
                       onClick={handleCloseMobileMenu}
-                      sx={{
-                        backgroundColor:
-                          location.pathname === "/logout"
-                            ? "#800020"
-                            : "initial",
-                      }}
+                      sx={getStylesForButton("/logout", location.pathname)}
                     >
                       <ListItemText primary="Logout" />
                     </StyledListItemButton>
