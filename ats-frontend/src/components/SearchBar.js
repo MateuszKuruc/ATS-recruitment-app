@@ -26,15 +26,13 @@ const Search = styled.div`
 
 const StyledButton = styled(Button)`
   width: 100%;
-//   height: 50px;
-display: flex;
-// align-items: center;
-// color: black;
+  //   height: 50px;
+  display: flex;
+  // align-items: center;
+  // color: black;
 `;
 
-const StyledTypography = styled(Typography)`
-  
-`;
+const StyledTypography = styled(Typography)``;
 
 const CandidateContainer = styled.div`
   && {
@@ -52,12 +50,23 @@ const CandidateContainer = styled.div`
 `;
 
 const SearchBar = ({ candidates }) => {
-  const [allCandidates, setAllCandidates] = useState(null);
-  //   const [value, setValue] = useState("");
+  const [allCandidates, setAllCandidates] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     setAllCandidates(candidates);
   }, [candidates]);
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value.toLowerCase();
+    const newFilter = allCandidates.filter((candidate) => {
+      return (
+        candidate.firstName.toLowerCase().includes(searchWord) ||
+        candidate.lastName.toLowerCase().includes(searchWord)
+      );
+    });
+    setFilteredData(newFilter);
+  };
 
   if (!allCandidates) {
     return null;
@@ -66,18 +75,20 @@ const SearchBar = ({ candidates }) => {
   return (
     <Search>
       <SearchIcon style={{ color: "#ffffff" }} />
-      <StyledInputBase placeholder="Search..." />
-      <CandidateContainer>
-        {allCandidates.map((candidate) => {
-          return (
-            <StyledButton component={Link} to={`/candidates/${candidate.id}`}>
-              <StyledTypography variant="body1">
-                {candidate.firstName} {candidate.lastName}
-              </StyledTypography>
-            </StyledButton>
-          );
-        })}
-      </CandidateContainer>
+      <StyledInputBase placeholder="Search..." onChange={handleFilter} />
+      {filteredData.length !== 0 && (
+        <CandidateContainer>
+          {filteredData.map((candidate) => {
+            return (
+              <StyledButton component={Link} to={`/candidates/${candidate.id}`}>
+                <StyledTypography variant="body1">
+                  {candidate.firstName} {candidate.lastName}
+                </StyledTypography>
+              </StyledButton>
+            );
+          })}
+        </CandidateContainer>
+      )}
     </Search>
   );
 };
