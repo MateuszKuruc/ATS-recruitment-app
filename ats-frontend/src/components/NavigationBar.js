@@ -37,15 +37,11 @@ const StyledToolBar = styled(Toolbar)`
   display: flex;
   gap: 2rem;
   justify-content: space-around;
-  // align-content: center;
-  // padding: 1rem
 `;
 
 const StyledAppBar = styled(AppBar)`
   padding: 1rem;
-  // margin: 0rem;
   border-radius: 0.5rem;
-  // margin-bottom: 0.1rem;
 `;
 
 const StyledContainer = styled.div`
