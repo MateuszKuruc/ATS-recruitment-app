@@ -188,10 +188,9 @@ const NavigationBar = () => {
                       to="/pools"
                       onClick={handleCloseMobileMenu}
                       sx={{
-                        backgroundColor:
-                          location.pathname === "/pools"
-                            ? "#800020"
-                            : "initial",
+                        backgroundColor: location.pathname.startsWith("/pools")
+                          ? "#800020"
+                          : "initial",
                       }}
                     >
                       <ListItemText primary="Pools" secondary="Sort by tech" />
