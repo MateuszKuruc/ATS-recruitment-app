@@ -174,7 +174,7 @@ function App() {
   return (
     <ThemeProvider theme={websiteTheme}>
       <StyledContainer>
-        <NavigationBar />
+        <NavigationBar candidates={candidates} />
 
         <Routes>
           <Route path="/" element={<HomePage />} />

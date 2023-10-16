@@ -27,6 +27,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { useLocation } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const StyledButton = styled(Button)`
   && {
@@ -83,7 +84,7 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
-const NavigationBar = () => {
+const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
 
@@ -350,13 +351,15 @@ const NavigationBar = () => {
                 </StyledButton>
               </Hidden>
 
-              <Search>
+              {/* <Search>
                 <SearchIcon style={{ color: "#ffffff" }} />
                 <StyledInputBase
                   placeholder="Search..."
                   inputProps={{ "aria-label": "search" }}
                 />
-              </Search>
+              </Search> */}
+
+              <SearchBar candidates={candidates}/>
 
               <Hidden mdDown>
                 <div>
