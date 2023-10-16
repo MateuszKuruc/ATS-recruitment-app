@@ -1,7 +1,8 @@
-import { Grid, Paper, Typography, Button } from "@mui/material";
+import { Paper, Typography, Button } from "@mui/material";
 import styled from "styled-components";
 
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledPaper = styled(Paper)`
   // height: 100%;
@@ -13,6 +14,8 @@ const StyledPaper = styled(Paper)`
 
   @media (max-width: 768px) {
     aspect-ratio: auto;
+    // flex: 0;
+    // margin: 0;
   }
 `;
 
@@ -34,32 +37,32 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const StyledGridContainer = styled(Grid)`
-  && {
-    align-self: center;
-    border: 1px solid red;
-  }
-`;
+// const StyledGridContainer = styled(Grid)`
+//   && {
+//     align-self: center;
+//     border: 1px solid red;
+//   }
+// `;
 
-const StyledComponentContainer = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-  border: 1px solid blue;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
-  // max-width: 1200px;
+// const StyledComponentContainer = styled.div`
+//   margin-bottom: 1rem;
+//   display: flex;
+//   border: 1px solid blue;
+//   justify-content: center;
+//   align-items: center;
+//   align-self: center;
+//   padding-top: 1rem;
+//   padding-bottom: 1rem;
+//   padding-right: 3rem;
+//   padding-left: 3rem;
+//   // max-width: 1200px;
 
-  @media (max-width: 768px) {
-    padding: 0rem;
+//   @media (max-width: 768px) {
+//     padding: 0rem;
 
-    width: 100%;
-  }
-`;
+//     width: 100%;
+//   }
+// `;
 
 const MainContainer = styled.div`
   && {
@@ -71,7 +74,10 @@ const MainContainer = styled.div`
     margin-bottom: 1rem;
 
     @margin (max-width: 900px) {
-gap: 0.5rem;
+      // gap: 0.5rem;
+      gap: 0;
+      margin: 0;
+      padding: 0;
     }
   }
 `;
@@ -84,14 +90,16 @@ const SecondaryContainer = styled.div`
 
     @media (max-width: 900px) {
       flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      gap: 0.25rem;
+      // margin-bottom: 0.5rem;
     }
   }
 `;
 
 const Pools = ({ setTechnology }) => {
   const navigate = useNavigate();
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
   const handleTechnologyChoice = (technologyChoice) => {
     setTechnology(technologyChoice);
@@ -202,7 +210,7 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("Java")}
           >
-            <Typography variant="h1">Java</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>Java</Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -211,7 +219,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("Python")}
           >
-            <Typography variant="h1">Python</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              Python
+            </Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -220,7 +230,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("JavaScript")}
           >
-            <Typography variant="h1">JavaScript</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              JavaScript
+            </Typography>
           </StyledButton>
         </StyledPaper>
       </SecondaryContainer>
@@ -230,7 +242,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("C")}
           >
-            <Typography variant="h1">C/C#/C++</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              C/C#/C++
+            </Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -239,7 +253,7 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("Scala")}
           >
-            <Typography variant="h1">Scala</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>Scala</Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -248,7 +262,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("BigData")}
           >
-            <Typography variant="h1">Big Data</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              Big Data
+            </Typography>
           </StyledButton>
         </StyledPaper>
       </SecondaryContainer>
@@ -258,7 +274,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("DevOps")}
           >
-            <Typography variant="h1">DevOps</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              DevOps
+            </Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -267,7 +285,9 @@ const Pools = ({ setTechnology }) => {
             variant="text"
             onClick={() => handleTechnologyChoice("Mobile")}
           >
-            <Typography variant="h1">Mobile</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              Mobile
+            </Typography>
           </StyledButton>
         </StyledPaper>
 
@@ -277,7 +297,9 @@ const Pools = ({ setTechnology }) => {
             onClick={() => handleTechnologyChoice("Golang")}
           >
             {" "}
-            <Typography variant="h1">Golang</Typography>
+            <Typography variant={isSmallScreen ? "h4" : "h1"}>
+              Golang
+            </Typography>
           </StyledButton>
         </StyledPaper>
       </SecondaryContainer>
