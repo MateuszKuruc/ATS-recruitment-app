@@ -12,19 +12,27 @@ const Container = styled.div`
   margin-top: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    // padding: 0rem;
+  }
 `;
 
 const StyledHeaderMain = styled.div`
   && {
     display: flex;
-    // justify-content: center;
-    // align-items: center;
+    justify-content: center;
+    align-items: center;
+    // align-self: center;
     margin-bottom: 1rem;
-    background-color: #084c61;
+    // background-color: #084c61;
     background-color: #990033;
     padding: 0.75rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+    // width: 100%;
+    // border: 1px solid red;
   }
 `;
 
@@ -39,6 +47,11 @@ const StyledHeaderSecondary = styled.div`
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
 `;
 
@@ -54,6 +67,10 @@ const StyledButton = styled(Button)`
   && {
     background-color: #990033;
     flex: 1;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   }
 `;
 
@@ -221,9 +238,7 @@ const PoolDetails = ({ candidatesByTech }) => {
   return (
     <Container>
       <StyledHeaderMain>
-        <StyledTypography variant="h4">
-          {techName} pool in numbers
-        </StyledTypography>
+        <Typography variant="h4" style={{ color: "#ffffff"}}>{techName} pool stats</Typography>
       </StyledHeaderMain>
 
       <StyledHeaderSecondary>
