@@ -51,33 +51,30 @@ const StyledAppBar = styled(AppBar)`
   // margin-bottom: 0.1rem;
 `;
 
-const Search = styled.div`
-  display: flex;
-  background-color: #800020;
-  opacity: 1;
-  padding: 4px;
-  align-items: center;
-  border-radius: 0.5rem;
-  gap: 0.75rem;
-  padding: 0.5rem;
-  // flex: 1;
-`;
+// const Search = styled.div`
+//   display: flex;
+//   background-color: #800020;
+//   opacity: 1;
+//   padding: 4px;
+//   align-items: center;
+//   border-radius: 0.5rem;
+//   gap: 0.75rem;
+//   padding: 0.5rem;
+//   // flex: 1;
+// `;
 
 const StyledContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const StyledInputBase = styled(InputBase)`
-  && {
-    color: #ffffff;
-  }
-`;
+// const StyledInputBase = styled(InputBase)`
+//   && {
+//     color: #ffffff;
+//   }
+// `;
 
 const StyledListItemButton = styled(ListItemButton)`
   && {
-    // background-color: #800020;
-    // // color: #800020;
-
     &:hover {
       background-color: #800020;
     }
@@ -359,7 +356,7 @@ const NavigationBar = ({ candidates }) => {
                 />
               </Search> */}
 
-              <SearchBar candidates={candidates}/>
+              <SearchBar candidates={candidates} />
 
               <Hidden mdDown>
                 <div>

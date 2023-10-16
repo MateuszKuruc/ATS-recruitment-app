@@ -13,7 +13,8 @@ const StyledInputBase = styled(InputBase)`
 `;
 
 const Search = styled.div`
-  //   display: flex;
+  display: flex;
+  position: relative;
   background-color: #800020;
   opacity: 1;
   padding: 4px;
@@ -21,15 +22,13 @@ const Search = styled.div`
   border-radius: 0.5rem;
   gap: 0.75rem;
   padding: 0.5rem;
-  // flex: 1;
+  flex: 1;
 `;
 
 const StyledButton = styled(Button)`
   width: 100%;
-  //   height: 50px;
+
   display: flex;
-  // align-items: center;
-  // color: black;
 `;
 
 const StyledTypography = styled(Typography)``;
@@ -37,11 +36,24 @@ const StyledTypography = styled(Typography)``;
 const CandidateContainer = styled.div`
   && {
     margin-top: 5px;
-    width: 300px;
-    height: 200px;
+    position: absolute;
+    border-radius: 0.5rem;
+    max-height: 200px;
     background-color: white;
     overflow: hidden;
     overflow-y: auto;
+    width: 100%;
+
+    top: 100%;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+
+      right: 0;
+
+      border: 0.1rem solid #800020;
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -52,6 +64,7 @@ const CandidateContainer = styled.div`
 const SearchBar = ({ candidates }) => {
   const [allCandidates, setAllCandidates] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
     setAllCandidates(candidates);
@@ -59,13 +72,25 @@ const SearchBar = ({ candidates }) => {
 
   const handleFilter = (event) => {
     const searchWord = event.target.value.toLowerCase();
+    setSearchWord(searchWord);
+
     const newFilter = allCandidates.filter((candidate) => {
       return (
         candidate.firstName.toLowerCase().includes(searchWord) ||
         candidate.lastName.toLowerCase().includes(searchWord)
       );
     });
-    setFilteredData(newFilter);
+    if (searchWord === "") {
+      setFilteredData([]);
+      setSearchWord("");
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const handleClean = () => {
+    setFilteredData([]);
+    setSearchWord("");
   };
 
   if (!allCandidates) {
@@ -75,12 +100,16 @@ const SearchBar = ({ candidates }) => {
   return (
     <Search>
       <SearchIcon style={{ color: "#ffffff" }} />
-      <StyledInputBase placeholder="Search..." onChange={handleFilter} />
+      <StyledInputBase placeholder="Search..." onChange={handleFilter} value={searchWord} />
       {filteredData.length !== 0 && (
         <CandidateContainer>
-          {filteredData.map((candidate) => {
+          {filteredData.slice(0, 15).map((candidate) => {
             return (
-              <StyledButton component={Link} to={`/candidates/${candidate.id}`}>
+              <StyledButton
+                component={Link}
+                to={`/candidates/${candidate.id}`}
+                onClick={handleClean}
+              >
                 <StyledTypography variant="body1">
                   {candidate.firstName} {candidate.lastName}
                 </StyledTypography>
