@@ -1,6 +1,6 @@
 import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import CandidateProfiles from "./CandidateProfiles";
 
@@ -67,10 +67,10 @@ const StyledButton = styled(Button)`
   && {
     background-color: #990033;
     flex: 1;
-  
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -238,7 +238,9 @@ const PoolDetails = ({ candidatesByTech }) => {
   return (
     <Container>
       <StyledHeaderMain>
-        <Typography variant="h4" style={{ color: "#ffffff"}}>{techName} pool stats</Typography>
+        <Typography variant="h4" style={{ color: "#ffffff" }}>
+          {techName} pool stats
+        </Typography>
       </StyledHeaderMain>
 
       <StyledHeaderSecondary>
@@ -268,9 +270,14 @@ const PoolDetails = ({ candidatesByTech }) => {
             </Grid>
           ) : (
             candidatesNoFeedback.map((candidate) => (
-              <Grid key={candidate.id} item xs={6} md={4}>
+              <Grid key={candidate.id} item xs={12} md={4}>
                 <StyledPaper>
-                  <StyledCandidateButton variant="outlined" key={candidate.id}>
+                  <StyledCandidateButton
+                    variant="outlined"
+                    key={candidate.id}
+                    component={Link}
+                    to={`/candidates/${candidate.id}`}
+                  >
                     <TypographyValue variant="h6">
                       {candidate.firstName} {candidate.lastName}
                     </TypographyValue>
