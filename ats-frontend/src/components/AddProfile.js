@@ -29,7 +29,10 @@ const FieldContainer = styled.div`
     flex: 1;
 
     @media (max-width: 768px) {
-      padding: 0rem;
+      padding: 0.5rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      background-color: #c0d9e7;
     }
   }
 `;
@@ -38,6 +41,15 @@ export const StyledTextField = styled(TextField)`
   && {
     background-color: #ffffff;
     border-radius: 0.5rem;
+
+    label.MuiInputLabel-root.MuiInputLabel-shrink {
+      background-color: #c0d9e7;
+      border-radius: 0.25rem;
+
+      margin: 0;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+    }
   }
 `;
 
@@ -60,7 +72,30 @@ const StyledForm = styled.form`
 `;
 
 const StyledDatePicker = styled(DatePicker)`
-  width: 100%;
+  && {
+    width: 100%;
+    background-color: #ffffff;
+
+    @media (max-width: 768px) {
+      .MuiInputLabel-shrink {
+        background-color: #c0d9e7;
+        border-radius: 0.25rem;
+
+        margin: 0;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+      }
+
+      // &.MuiInputLabel-shrink {
+      //   background-color: #c0d9e7;
+      //   border-radius: 0.25rem;
+
+      //   margin: 0;
+      //   padding-left: 0.2rem;
+      //   padding-right: 0.2rem;
+      // }
+    }
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -78,6 +113,37 @@ const StyledHeader = styled.div`
   justify-content: center;
   align-items: center;
   color: #ffffff;
+`;
+
+const StyledFormControl = styled(FormControl)`
+  && {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+
+    &:focus {
+      background-color: /* your desired background color when focused */ ;
+    }
+
+    label.MuiInputLabel-root {
+      /* Default label style here */
+    }
+
+    label.MuiInputLabel-root.MuiInputLabel-shrink {
+      /* Style for the label when it's in the upper position (shrink state) */
+
+      background-color: #c0d9e7;
+      border-radius: 0.25rem;
+
+      margin: 0;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+    }
+
+    &.MuiFormControl-root {
+      /* Style for the form control itself */
+      /* For example, you can set border styles or padding */
+    }
+  }
 `;
 
 const AddProfile = () => {
@@ -229,7 +295,11 @@ const AddProfile = () => {
           onChange={({ target }) => setPhone(target.value)}
         ></StyledTextField>
 
-        <FormControl fullWidth error={skillError}>
+        <StyledFormControl
+          fullWidth
+          error={skillError}
+          style={{ backgroundColor: "white" }}
+        >
           <InputLabel id="skill">Skill</InputLabel>
           <Select
             labelId="skill"
@@ -247,9 +317,9 @@ const AddProfile = () => {
             <MenuItem value="Mobile">Mobile</MenuItem>
             <MenuItem value="Golang">Golang</MenuItem>
           </Select>
-        </FormControl>
+        </StyledFormControl>
 
-        <FormControl fullWidth error={seniorityError}>
+        <StyledFormControl fullWidth error={seniorityError}>
           <InputLabel id="seniority">Seniority</InputLabel>
           <Select
             labelId="seniority"
@@ -264,7 +334,7 @@ const AddProfile = () => {
             <MenuItem value="Lead">Lead</MenuItem>
             <MenuItem value="Manager">Manager</MenuItem>
           </Select>
-        </FormControl>
+        </StyledFormControl>
 
         <StyledDatePicker
           defaultValue={firstContact}
