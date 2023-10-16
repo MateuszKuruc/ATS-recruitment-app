@@ -67,11 +67,11 @@ const MainContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    gap: 0.5rem;
+    gap: 0.15rem;
     margin-bottom: 1rem;
 
-    @margin (max-width: 768px) {
-
+    @margin (max-width: 900px) {
+gap: 0.5rem;
     }
   }
 `;
@@ -80,10 +80,12 @@ const SecondaryContainer = styled.div`
   && {
     display: flex;
     flex: 1;
-    gap: 0.5rem;
+    gap: 0.15rem;
 
     @media (max-width: 900px) {
       flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
     }
   }
 `;
