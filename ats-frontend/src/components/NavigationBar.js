@@ -26,6 +26,8 @@ import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import { useLocation } from "react-router-dom";
+
 const StyledButton = styled(Button)`
   font-size: 2.3rem;
   font-weight: 900;
@@ -68,9 +70,26 @@ const StyledInputBase = styled(InputBase)`
   }
 `;
 
+const StyledListItemButton = styled(ListItemButton)`
+  && {
+    // background-color: #800020;
+    // // color: #800020;
+
+    &:hover {
+      background-color: #800020;
+    }
+  }
+`;
+
+const StyledListItemText = styled(ListItemText)`
+  font-weight: 700;
+`;
+
 const NavigationBar = () => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
+
+  const location = useLocation();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -115,90 +134,147 @@ const NavigationBar = () => {
             onClose={handleCloseMobileMenu}
           >
             <List>
-              <ListItemButton
+              <StyledListItemButton
                 component={Link}
                 to="/"
                 onClick={handleCloseMobileMenu}
+                sx={{
+                  backgroundColor:
+                    location.pathname === "/" ? "#800020" : "initial",
+                }}
               >
                 <ListItemText primary="Home" />
-              </ListItemButton>
+              </StyledListItemButton>
 
               <Hidden mdUp>
                 {login && (
                   <>
-                    <ListItemButton
+                    <StyledListItemButton
                       component={Link}
                       to="/candidates"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/candidates"
+                            ? "#800020"
+                            : "initial",
+                      }}
                     >
-                      <ListItemText primary="Profiles" />
-                    </ListItemButton>
+                      <ListItemText
+                        primary="Profiles"
+                        secondary="All candidates"
+                      />
+                    </StyledListItemButton>
 
-                    <ListItemButton
+                    <StyledListItemButton
                       component={Link}
                       to="/add"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/add" ? "#800020" : "initial",
+                      }}
                     >
-                      <ListItemText primary="Form" />
-                    </ListItemButton>
+                      <ListItemText
+                        primary="Form"
+                        secondary="Add new profile"
+                      />
+                    </StyledListItemButton>
 
-                    <ListItemButton
+                    <StyledListItemButton
                       component={Link}
                       to="/pools"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/pools"
+                            ? "#800020"
+                            : "initial",
+                      }}
                     >
-                      <ListItemText primary="Pools" />
-                    </ListItemButton>
-                    <ListItemButton
+                      <ListItemText primary="Pools" secondary="Sort by tech" />
+                    </StyledListItemButton>
+                    <StyledListItemButton
                       component={Link}
                       to="/hot"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/hot" ? "#800020" : "initial",
+                      }}
                     >
-                      <ListItemText primary="Hot" />
-                    </ListItemButton>
+                      <ListItemText
+                        primary="Hot"
+                        secondary="Show best talent"
+                      />
+                    </StyledListItemButton>
                   </>
                 )}
               </Hidden>
 
-              <ListItemButton
+              <StyledListItemButton
                 component={Link}
                 to="/faq"
                 onClick={handleCloseMobileMenu}
+                sx={{
+                  backgroundColor:
+                    location.pathname === "/faq" ? "#800020" : "initial",
+                }}
               >
                 <ListItemText primary="FAQ" />
-              </ListItemButton>
-              <ListItemButton
+              </StyledListItemButton>
+              <StyledListItemButton
                 component={Link}
                 to="/tips"
                 onClick={handleCloseMobileMenu}
+                sx={{
+                  backgroundColor:
+                    location.pathname === "/tips" ? "#800020" : "initial",
+                }}
               >
                 <ListItemText primary="Tips" />
-              </ListItemButton>
+              </StyledListItemButton>
 
               <Hidden mdUp>
                 {login && (
                   <>
-                    <ListItemButton
+                    <StyledListItemButton
                       component={Link}
                       to="/feedback"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/feedback"
+                            ? "#800020"
+                            : "initial",
+                      }}
                     >
                       <ListItemText primary="Feedback" />
-                    </ListItemButton>
-                    <ListItemButton
+                    </StyledListItemButton>
+                    <StyledListItemButton
                       component={Link}
                       to="/help"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/help" ? "#800020" : "initial",
+                      }}
                     >
                       <ListItemText primary="Help" />
-                    </ListItemButton>
-                    <ListItemButton
+                    </StyledListItemButton>
+                    <StyledListItemButton
                       component={Link}
                       to="/logout"
                       onClick={handleCloseMobileMenu}
+                      sx={{
+                        backgroundColor:
+                          location.pathname === "/logout"
+                            ? "#800020"
+                            : "initial",
+                      }}
                     >
                       <ListItemText primary="Logout" />
-                    </ListItemButton>
+                    </StyledListItemButton>
                   </>
                 )}
               </Hidden>
@@ -281,23 +357,23 @@ const NavigationBar = () => {
                     }}
                   >
                     <List>
-                      <ListItemButton
+                      <StyledListItemButton
                         component={Link}
                         to="/feedback"
                         onClick={handleCloseMenu}
                       >
                         <ChatBubbleIcon />
                         <ListItemText primary="Feedback" />
-                      </ListItemButton>
-                      <ListItemButton
+                      </StyledListItemButton>
+                      <StyledListItemButton
                         component={Link}
                         to="/help"
                         onClick={handleCloseMenu}
                       >
                         <HelpIcon />
                         <ListItemText primary="Help" />
-                      </ListItemButton>
-                      <ListItemButton
+                      </StyledListItemButton>
+                      <StyledListItemButton
                         component={Link}
                         to="/logout"
                         onClick={handleCloseMenu}
@@ -305,7 +381,7 @@ const NavigationBar = () => {
                       >
                         <ExitToAppIcon />
                         <ListItemText primary="Logout" />
-                      </ListItemButton>
+                      </StyledListItemButton>
                     </List>
                   </Popover>
                 </div>
