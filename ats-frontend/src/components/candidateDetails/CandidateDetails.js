@@ -49,7 +49,7 @@ const StyledHeader = styled.div`
     align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
-    background-color: #25283D;
+    background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 2rem;
     padding: 1rem;
@@ -63,7 +63,7 @@ const StyledHeader = styled.div`
 
 const Container = styled.div`
   background-color: #c0d9e7;
-  background-color: #EBCBF4;
+  background-color: #ebcbf4;
   padding-right: 2rem;
   padding-left: 2rem;
   padding-bottom: 2rem;
@@ -85,18 +85,22 @@ const StyledEditTypography = styled(Typography)`
   align-self: center;
 `;
 
-const StyledButton = styled(Button)`
+const FeedbackButton = styled(Button)`
   && {
     flex: 1;
     padding: 1rem;
-    // background: goldenrod;
-    // max-width: 200px;
+   
+   background-color: #FFBA49;
 
     @media (max-width: 768px) {
       max-width: 100%;
     }
   }
 `;
+
+const FeedbackTypography = styled(Typography)`
+color: #25283D;
+`
 
 const UpperButtonContainer = styled.div`
   display: flex;
@@ -242,37 +246,38 @@ const CandidateDetails = ({ candidates }) => {
 
       <UpperButtonContainer>
         {candidate.assessment && (
-          <StyledButton
+          <FeedbackButton
             variant="contained"
             color="primary"
             onClick={toggleNotes}
           >
             {showNotes ? (
-              <Typography variant="h6">Hide notes</Typography>
+              <FeedbackTypography variant="h6">Hide notes</FeedbackTypography>
             ) : (
-              <Typography variant="h6">Show notes</Typography>
+              <FeedbackTypography variant="h6">Show notes</FeedbackTypography>
             )}
-          </StyledButton>
+          </FeedbackButton>
         )}
 
         {!candidate.assessment ? (
-          <StyledButton
+          <FeedbackButton
             variant="contained"
             color="primary"
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            <Typography variant="h6">Provide feedback</Typography>
-          </StyledButton>
+            <FeedbackTypography variant="h6">Provide feedback</FeedbackTypography>
+          </FeedbackButton>
         ) : (
-          <StyledButton
+          <FeedbackButton
             variant="contained"
-            color="primary"
+            // color="primary"
+            style={{ backgroundColor: "#FFBA49" }}
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            <Typography variant="h6">Edit feedback</Typography>
-          </StyledButton>
+            <FeedbackTypography style={{ color: "black"}} variant="h6">Edit feedback</FeedbackTypography>
+          </FeedbackButton>
         )}
       </UpperButtonContainer>
       <div className="notesShown" style={notesShown}>
@@ -319,13 +324,14 @@ const CandidateDetails = ({ candidates }) => {
       />
 
       <BottomButtonContainer>
-        <StyledButton
+        {/* <StyledButton */}
+        <FeedbackButton
           variant="contained"
           color="primary"
           onClick={openDialogWindow}
         >
-          <Typography variant="h6">Delete profile</Typography>
-        </StyledButton>
+          <FeedbackTypography variant="h6">Delete profile</FeedbackTypography>
+        </FeedbackButton>
         <Dialog
           open={openDialog}
           onClose={closeDialogWindow}

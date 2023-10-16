@@ -50,18 +50,21 @@ const SingleFileDiv = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  // align-items: center;
-  gap: 1rem;
-  flex-direction: column;
-  background-color: #EBCBF4;
-  margin: 0;
-
-  @media (max-width: 768px) {
-    padding: 0;
-    background-color: white;
+  && {
+    display: flex;
+    justify-content: flex-start;
+    // align-items: center;
+    gap: 1rem;
     flex-direction: column;
+    background-color: #ebcbf4;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      padding: 0;
+      background-color: white;
+      flex-direction: column;
+      background-color: #EBCBF4;
+    }
   }
 `;
 
@@ -86,8 +89,8 @@ const StyledHeader = styled.div`
     align-items: center;
     background-color: #084c61;
 
-    background-color: #8F3985;
-    background-color: #25283D;
+    background-color: #8f3985;
+    background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -131,7 +134,6 @@ gap: 1.5rem
 const FilesContainer = styled.div`
   display: flex;
   justify-content: space-around;
- 
 
   @media (max-width: 768px) {
   }
@@ -277,7 +279,7 @@ const CandidateFiles = ({ candidate }) => {
             color="primary"
             startIcon={<CloudUploadIcon />}
           >
-             <Typography variant="h6">Upload file</Typography>
+            <Typography variant="h6">Upload file</Typography>
             <VisuallyHiddenInput
               type="file"
               name="file_upload"
