@@ -29,8 +29,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLocation } from "react-router-dom";
 
 const StyledButton = styled(Button)`
-  font-size: 2.3rem;
-  font-weight: 900;
+  && {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 `;
 
 const StyledToolBar = styled(Toolbar)`
@@ -284,15 +286,39 @@ const NavigationBar = () => {
           {login === null ? (
             <>
               <Hidden smDown>
-                <StyledButton color="inherit" component={Link} to="/">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">Home</Typography>
                 </StyledButton>
 
-                <StyledButton color="inherit" component={Link} to="/faq">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/faq"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/faq" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">FAQ</Typography>
                 </StyledButton>
 
-                <StyledButton color="inherit" component={Link} to="/tips">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/tips"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/tips" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">Tips</Typography>
                 </StyledButton>
               </Hidden>
@@ -309,17 +335,51 @@ const NavigationBar = () => {
           ) : (
             <>
               <Hidden mdDown>
-                <StyledButton color="inherit" component={Link} to="/candidates">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/candidates"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/candidates"
+                        ? "#800020"
+                        : "initial",
+                  }}
+                >
                   <Typography variant="h5">profiles</Typography>
                 </StyledButton>
-                <StyledButton color="inherit" component={Link} to="/add">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/add"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/add" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">form</Typography>
                 </StyledButton>
 
-                <StyledButton color="inherit" component={Link} to="/pools">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/pools"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/pools" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">Pools</Typography>
                 </StyledButton>
-                <StyledButton color="inherit" component={Link} to="/hot">
+                <StyledButton
+                  color="inherit"
+                  component={Link}
+                  to="/hot"
+                  sx={{
+                    backgroundColor:
+                      location.pathname === "/hot" ? "#800020" : "initial",
+                  }}
+                >
                   <Typography variant="h5">Hot</Typography>
                 </StyledButton>
               </Hidden>
