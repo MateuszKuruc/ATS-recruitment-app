@@ -4,13 +4,18 @@ export const validateEditForCandidate = (checkedCandidate) => {
   const errors = {
     firstName:
       checkedCandidate.firstName.length < 2 ||
-      checkedCandidate.firstName === "",
+      checkedCandidate.firstName === "" ||
+      checkedCandidate.firstName.length > 15,
     lastName:
-      checkedCandidate.lastName.length < 2 || checkedCandidate.lastName === "",
+      checkedCandidate.lastName.length < 2 ||
+      checkedCandidate.lastName === "" ||
+      checkedCandidate.lastName.length > 15,
     email: !isEmailValid(checkedCandidate.email),
     phone: !isPhoneNumberValid(checkedCandidate.phone),
     location:
-      checkedCandidate.location.length < 3 || checkedCandidate.location === "",
+      checkedCandidate.location.length < 2 ||
+      checkedCandidate.location === "" ||
+      checkedCandidate.location.length > 15,
     skill: checkedCandidate.skill === "",
     seniority: checkedCandidate.seniority === "",
   };

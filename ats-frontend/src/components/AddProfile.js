@@ -25,7 +25,6 @@ const FieldContainer = styled.div`
     padding: 6rem;
     border-radius: 0.5rem;
     gap: 1rem;
-    // min-width: 400px;
     flex: 1;
 
     @media (max-width: 768px) {
@@ -57,13 +56,10 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 5rem;
-  // padding-left: 15rem;
-  // padding-right: 15rem;
   background-color: #c0d9e7;
   margin-bottom: 1rem;
   flex: 1;
   border-radius: 0.5rem;
-  // min-width: 600px;
 
   @media (max-width: 768px) {
     padding: 0;
@@ -85,15 +81,6 @@ const StyledDatePicker = styled(DatePicker)`
         padding-left: 0.2rem;
         padding-right: 0.2rem;
       }
-
-      // &.MuiInputLabel-shrink {
-      //   background-color: #c0d9e7;
-      //   border-radius: 0.25rem;
-
-      //   margin: 0;
-      //   padding-left: 0.2rem;
-      //   padding-right: 0.2rem;
-      // }
     }
   }
 `;
@@ -120,28 +107,13 @@ const StyledFormControl = styled(FormControl)`
     background-color: #ffffff;
     border-radius: 0.5rem;
 
-    &:focus {
-      background-color: /* your desired background color when focused */ ;
-    }
-
-    label.MuiInputLabel-root {
-      /* Default label style here */
-    }
-
     label.MuiInputLabel-root.MuiInputLabel-shrink {
-      /* Style for the label when it's in the upper position (shrink state) */
-
       background-color: #c0d9e7;
       border-radius: 0.25rem;
 
       margin: 0;
       padding-left: 0.2rem;
       padding-right: 0.2rem;
-    }
-
-    &.MuiFormControl-root {
-      /* Style for the form control itself */
-      /* For example, you can set border styles or padding */
     }
   }
 `;
@@ -252,7 +224,7 @@ const AddProfile = () => {
         <StyledTextField
           error={firstNameError}
           helperText={
-            firstNameError ? "Enter first name (min. 2 characters)" : ""
+            firstNameError ? "Enter first name (2 - 15 characters)" : ""
           }
           value={firstName}
           label="First name"
@@ -261,9 +233,7 @@ const AddProfile = () => {
 
         <StyledTextField
           error={lastNameError}
-          helperText={
-            lastNameError ? "Enter last name (min. 2 characters)" : ""
-          }
+          helperText={lastNameError ? "Enter last name (2 -15 characters)" : ""}
           value={lastName}
           label="Last name"
           onChange={({ target }) => setLastName(target.value)}
@@ -271,7 +241,7 @@ const AddProfile = () => {
 
         <StyledTextField
           error={locationError}
-          helperText={locationError ? "Enter location" : ""}
+          helperText={locationError ? "Enter location (2 - 15 characters" : ""}
           value={location}
           label="Location"
           onChange={({ target }) => setLocation(target.value)}
