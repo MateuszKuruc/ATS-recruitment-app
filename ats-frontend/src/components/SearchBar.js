@@ -43,7 +43,9 @@ const CandidateContainer = styled.div`
     overflow: hidden;
     overflow-y: auto;
     width: 100%;
-
+    border: 0.2rem solid #800020;
+    right: 0;
+    left: 0;
     top: 100%;
 
     @media (max-width: 768px) {
@@ -100,7 +102,11 @@ const SearchBar = ({ candidates }) => {
   return (
     <Search>
       <SearchIcon style={{ color: "#ffffff" }} />
-      <StyledInputBase placeholder="Search..." onChange={handleFilter} value={searchWord} />
+      <StyledInputBase
+        placeholder="Search..."
+        onChange={handleFilter}
+        value={searchWord}
+      />
       {filteredData.length !== 0 && (
         <CandidateContainer>
           {filteredData.slice(0, 15).map((candidate) => {
