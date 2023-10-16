@@ -22,6 +22,8 @@ const StyledHeader = styled.div`
     align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
+
+    background-color: #25283D;
     border-radius: 0.5rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -142,7 +144,8 @@ const CandidateBasicDetails = ({
         <ButtonContainer>
           <StyledButton
             variant="contained"
-            color={!editMode ? "secondary" : "primary"}
+            // color={!editMode ? "secondary" : "primary"}
+            color="primary"
             onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
           >
             {editMode ? (

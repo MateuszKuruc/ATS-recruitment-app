@@ -18,6 +18,7 @@ const Search = styled.div`
   align-items: center;
   position: relative;
   background-color: #800020;
+  background-color: #25283D;
   opacity: 1;
   padding: 4px;
   border-radius: 0.5rem;

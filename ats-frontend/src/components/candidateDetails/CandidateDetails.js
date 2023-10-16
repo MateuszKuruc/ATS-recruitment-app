@@ -49,6 +49,7 @@ const StyledHeader = styled.div`
     align-items: center;
     margin-bottom: 1rem;
     background-color: #084c61;
+    background-color: #25283D;
     border-radius: 0.5rem;
     margin-top: 2rem;
     padding: 1rem;
@@ -62,6 +63,7 @@ const StyledHeader = styled.div`
 
 const Container = styled.div`
   background-color: #c0d9e7;
+  background-color: #EBCBF4;
   padding-right: 2rem;
   padding-left: 2rem;
   padding-bottom: 2rem;
@@ -242,7 +244,7 @@ const CandidateDetails = ({ candidates }) => {
         {candidate.assessment && (
           <StyledButton
             variant="contained"
-            color="secondary"
+            color="primary"
             onClick={toggleNotes}
           >
             {showNotes ? (
@@ -256,7 +258,7 @@ const CandidateDetails = ({ candidates }) => {
         {!candidate.assessment ? (
           <StyledButton
             variant="contained"
-            color="secondary"
+            color="primary"
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
@@ -265,7 +267,7 @@ const CandidateDetails = ({ candidates }) => {
         ) : (
           <StyledButton
             variant="contained"
-            color="secondary"
+            color="primary"
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
@@ -319,7 +321,7 @@ const CandidateDetails = ({ candidates }) => {
       <BottomButtonContainer>
         <StyledButton
           variant="contained"
-          color="secondary"
+          color="primary"
           onClick={openDialogWindow}
         >
           <Typography variant="h6">Delete profile</Typography>
@@ -342,7 +344,7 @@ const CandidateDetails = ({ candidates }) => {
           <DialogActions>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={() => deleteCandidate(candidate.id)}
             >
               <Typography variant="h6">Confirm</Typography>

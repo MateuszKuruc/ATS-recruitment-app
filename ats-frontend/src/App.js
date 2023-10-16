@@ -24,15 +24,31 @@ import PoolDetails from "./components/PoolDetails";
 import NavigationBar from "./components/NavigationBar";
 
 const websiteTheme = createTheme({
+  // palette: {
+  //   primary: {
+  //     main: "#084c61",
+  //   },
+  //   secondary: {
+  //     main: "#990033",
+  //   },
+  //   accent: {
+  //     main: "#c0d9e7",
+  //   },
+  // },
   palette: {
     primary: {
-      main: "#084c61",
+      main: "#8F3985",
     },
     secondary: {
-      main: "#990033",
+      // main: "#FFBA49",
+      main: "#25283D",
     },
     accent: {
-      main: "#c0d9e7",
+      // main: "#25283D",
+      main: "#FFBA49",
+    },
+    accen2: {
+      main: "#EBCBF4",
     },
   },
   typography: {

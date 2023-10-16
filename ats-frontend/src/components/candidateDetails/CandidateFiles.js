@@ -55,7 +55,7 @@ const Container = styled.div`
   // align-items: center;
   gap: 1rem;
   flex-direction: column;
-  background-color: #c0d9e7;
+  background-color: #EBCBF4;
   margin: 0;
 
   @media (max-width: 768px) {
@@ -85,6 +85,9 @@ const StyledHeader = styled.div`
     justify-content: space-around;
     align-items: center;
     background-color: #084c61;
+
+    background-color: #8F3985;
+    background-color: #25283D;
     border-radius: 0.5rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -263,7 +266,7 @@ const CandidateFiles = ({ candidate }) => {
         <ButtonContainer>
           <StyledButton
             variant="contained"
-            color="secondary"
+            color="primary"
             onClick={() => setShowFiles(!showFiles)}
           >
             <Typography variant="h6">Show files</Typography>
@@ -271,10 +274,10 @@ const CandidateFiles = ({ candidate }) => {
           <StyledButton
             component="label"
             variant="contained"
-            color="secondary"
+            color="primary"
             startIcon={<CloudUploadIcon />}
           >
-            Upload file
+             <Typography variant="h6">Upload file</Typography>
             <VisuallyHiddenInput
               type="file"
               name="file_upload"

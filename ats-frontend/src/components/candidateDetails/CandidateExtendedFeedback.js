@@ -17,6 +17,7 @@ const StyledHeader = styled.div`
     align-content: center;
     margin-bottom: 1rem;
     background-color: #084c61;
+    background-color: #25283D;
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
