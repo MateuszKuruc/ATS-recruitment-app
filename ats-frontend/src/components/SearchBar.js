@@ -47,6 +47,7 @@ const CandidateContainer = styled.div`
     right: 0;
     left: 0;
     top: 100%;
+    text-align: center;
 
     @media (max-width: 768px) {
       display: flex;
