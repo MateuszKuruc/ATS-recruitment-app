@@ -10,10 +10,8 @@ import {
   AppBar,
   Hidden,
   Drawer,
-  InputBase,
 } from "@mui/material";
 import Notification from "./Notification";
-import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -25,7 +23,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 import { useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
@@ -51,27 +48,9 @@ const StyledAppBar = styled(AppBar)`
   // margin-bottom: 0.1rem;
 `;
 
-// const Search = styled.div`
-//   display: flex;
-//   background-color: #800020;
-//   opacity: 1;
-//   padding: 4px;
-//   align-items: center;
-//   border-radius: 0.5rem;
-//   gap: 0.75rem;
-//   padding: 0.5rem;
-//   // flex: 1;
-// `;
-
 const StyledContainer = styled.div`
   margin-bottom: 1rem;
 `;
-
-// const StyledInputBase = styled(InputBase)`
-//   && {
-//     color: #ffffff;
-//   }
-// `;
 
 const StyledListItemButton = styled(ListItemButton)`
   && {
@@ -347,14 +326,6 @@ const NavigationBar = ({ candidates }) => {
                   <Typography variant="h5">Hot</Typography>
                 </StyledButton>
               </Hidden>
-
-              {/* <Search>
-                <SearchIcon style={{ color: "#ffffff" }} />
-                <StyledInputBase
-                  placeholder="Search..."
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search> */}
 
               <SearchBar candidates={candidates} />
 

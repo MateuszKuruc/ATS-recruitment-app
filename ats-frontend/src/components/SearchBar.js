@@ -1,7 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { InputBase, Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
-import Autocomplete from "@mui/material/Autocomplete";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,7 +9,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const StyledInputBase = styled(InputBase)`
   && {
     color: #ffffff;
-    // background-color: #800020;
   }
 `;
 
@@ -22,7 +20,6 @@ const Search = styled.div`
   background-color: #800020;
   opacity: 1;
   padding: 4px;
-  //   align-items: center;
   border-radius: 0.5rem;
   gap: 0.75rem;
   padding: 0.5rem;
@@ -31,7 +28,6 @@ const Search = styled.div`
 
 const StyledButton = styled(Button)`
   width: 100%;
-
   display: flex;
 `;
 
@@ -108,7 +104,6 @@ const SearchBar = ({ candidates }) => {
 
   return (
     <Search>
-      {/* {searchWord !== "" ? <SearchIcon style={{ color: "#ffffff" }} /> : null} */}
       <SearchIcon style={{ color: "#ffffff" }} />
       <StyledInputBase
         placeholder="Search..."
@@ -142,13 +137,3 @@ const SearchBar = ({ candidates }) => {
 };
 
 export default SearchBar;
-
-{
-  /* <Search>
-                <SearchIcon style={{ color: "#ffffff" }} />
-                <StyledInputBase
-                  placeholder="Search..."
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search> */
-}
