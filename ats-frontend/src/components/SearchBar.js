@@ -1,9 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { InputBase, Button, Typography } from "@mui/material";
+import { InputBase, Button, Typography, IconButton } from "@mui/material";
 import styled from "styled-components";
 import Autocomplete from "@mui/material/Autocomplete";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledInputBase = styled(InputBase)`
   && {
@@ -14,6 +16,8 @@ const StyledInputBase = styled(InputBase)`
 
 const Search = styled.div`
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   position: relative;
   background-color: #800020;
   opacity: 1;
@@ -69,6 +73,8 @@ const SearchBar = ({ candidates }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchWord, setSearchWord] = useState("");
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
   useEffect(() => {
     setAllCandidates(candidates);
   }, [candidates]);
@@ -102,12 +108,18 @@ const SearchBar = ({ candidates }) => {
 
   return (
     <Search>
+      {/* {searchWord !== "" ? <SearchIcon style={{ color: "#ffffff" }} /> : null} */}
       <SearchIcon style={{ color: "#ffffff" }} />
       <StyledInputBase
         placeholder="Search..."
         onChange={handleFilter}
         value={searchWord}
       />
+      {!isSmallScreen && searchWord !== "" ? (
+        <IconButton style={{ color: "#ffffff" }} onClick={handleClean}>
+          <CloseIcon />
+        </IconButton>
+      ) : null}
       {filteredData.length !== 0 && (
         <CandidateContainer>
           {filteredData.slice(0, 15).map((candidate) => {
