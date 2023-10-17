@@ -327,6 +327,7 @@ const AddProfile = () => {
           type="submit"
           id="addButton"
           variant="contained"
+          color="secondary"
           onClick={handleNewCandidate}
         >
           <Typography variant="h5">Add profile</Typography>
