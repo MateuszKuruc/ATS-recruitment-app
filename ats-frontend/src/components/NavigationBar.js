@@ -56,10 +56,6 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
-const StyledDrawer = styled(Drawer)`
-  width: 20rem;
-`;
-
 const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
@@ -75,7 +71,10 @@ const NavigationBar = ({ candidates }) => {
     let isActive;
     if (currentPath.startsWith("/pools") && path === "/pools") {
       isActive = true;
-    } else if (currentPath.startsWith("/candidates") && path === "/candidates") {
+    } else if (
+      currentPath.startsWith("/candidates") &&
+      path === "/candidates"
+    ) {
       isActive = true;
     } else {
       isActive = path === currentPath;
@@ -120,10 +119,16 @@ const NavigationBar = ({ candidates }) => {
             <MenuIcon fontSize="large" />
           </IconButton>
 
-          <StyledDrawer
+          <Drawer
             anchor="left"
             open={isMobileMenuOpen}
             onClose={handleCloseMobileMenu}
+            PaperProps={{
+              sx: {
+                width: { sm: "50%", xs: "50%" },
+                maxWidth: { md: "200px" },
+              },
+            }}
           >
             <List>
               <StyledListItemButton
@@ -233,7 +238,7 @@ const NavigationBar = ({ candidates }) => {
                 )}
               </Hidden>
             </List>
-          </StyledDrawer>
+          </Drawer>
 
           {login === null ? (
             <>
