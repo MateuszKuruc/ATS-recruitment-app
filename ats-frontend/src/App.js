@@ -101,6 +101,11 @@ const websiteTheme = createTheme({
       fontStyle: "italic",
       lineHeight: 1.5,
     },
+    italic3: {
+      fontSize: "1.4rem",
+      fontStyle: "italic",
+      lineHeight: 1.5,
+    },
   },
 });
 
@@ -154,6 +159,15 @@ function App() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+
+    if (username.length < 4 || username.length > 15) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Username ",
+        })
+      );
+    }
 
     try {
       const loggedUser = await loginService.login({
