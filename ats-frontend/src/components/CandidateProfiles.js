@@ -36,6 +36,13 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const UserTypography = styled(Typography)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-x: auto;
+`;
+
 const CandidateProfiles = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
@@ -135,9 +142,9 @@ const CandidateProfiles = ({ candidates, userId }) => {
               <TableCell>
                 <StyledLink to={`/candidates/${candidate.id}`}>
                   <StyledButton variant="contained" color="secondary">
-                    <Typography variant="h6">
+                    <UserTypography variant="h6">
                       {candidate.firstName} {candidate.lastName}
-                    </Typography>
+                    </UserTypography>
                   </StyledButton>
                 </StyledLink>
               </TableCell>
