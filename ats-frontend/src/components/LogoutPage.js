@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setLogin } from "../reducers/loginReducer";
-import { Typography, Paper } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setNotification } from "../reducers/notificationReducer";

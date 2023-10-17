@@ -1,5 +1,6 @@
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export const StyledTextField = styled(TextField)`
   && {
@@ -11,7 +12,12 @@ const LoginForm = ({
   handleSubmit,
   handleUsernameChange,
   handlePasswordChange,
+  login,
 }) => {
+  const navigate = useNavigate();
+  if (login) {
+    navigate("/candidates");
+  }
   return (
     <div>
       <h2>Login</h2>
@@ -20,7 +26,6 @@ const LoginForm = ({
           <StyledTextField
             label="username"
             onChange={handleUsernameChange}
-            
           ></StyledTextField>
         </div>
         <div>
