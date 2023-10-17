@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 export const StyledTextField = styled(TextField)`
   && {
     // margin-bottom: 1rem;
-    
   }
 `;
 
@@ -65,9 +64,6 @@ const LoginForm = ({
   usernameError,
   passwordError,
 }) => {
-
-  console.log("errors in login form component:", usernameError, passwordError)
-
   const navigate = useNavigate();
   if (login) {
     navigate("/candidates");

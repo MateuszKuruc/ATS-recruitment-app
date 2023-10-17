@@ -166,9 +166,23 @@ function App() {
       dispatch(
         setNotification({
           severity: "error",
-          message: "Username ",
+          message:
+            "Invalid username. Please enter name between 4 and 15 characters.",
         })
       );
+      setUsernameError(true);
+      return;
+    }
+    if (password.length < 6 || password.length > 15) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message:
+            "Invalid password. Please enter password between 6 and 15 characters.",
+        })
+      );
+      setPasswordError(true);
+      return;
     }
 
     try {
@@ -192,7 +206,15 @@ function App() {
       setPassword("");
       navigate("/candidates");
     } catch (exception) {
-      console.log("error logging", exception);
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Incorrect credentials. Please try again.",
+        })
+      );
+
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -222,6 +244,7 @@ function App() {
                 login={login}
                 usernameError={usernameError}
                 passwordError={passwordError}
+               
               />
             }
           />
