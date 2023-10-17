@@ -8,6 +8,9 @@ const StyledPaper = styled(Paper)`
   && {
     padding: 2rem;
     margin-top: auto;
+    background: #990033;
+    background: #25283d;
+    // background: #FFBA49;
 
     @media (max-width: 768px) {
       padding: 0rem;
@@ -37,9 +40,9 @@ const Footer = () => {
       : "Applicant Tracking System by Mateusz Kuruc";
 
   return (
-    <StyledPaper style={{ background: "#990033" }}>
+    <StyledPaper>
       <StyledContainer>
-        <Typography variant="h5" style={{ color: "#FFFFFF" }}>
+        <Typography variant="h5" style={{ color: "#FFBA49" }}>
           {caption}
         </Typography>
         <IconButton>
@@ -48,7 +51,11 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon fontSize="large" color="action" />
+            <GitHubIcon
+              fontSize="large"
+              // color="action"
+              style={{ color: "#FFBA49" }}
+            />
           </a>
         </IconButton>
         <IconButton>
@@ -57,7 +64,11 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedInIcon fontSize="large" color="action" />
+            <LinkedInIcon
+              fontSize="large"
+              // color="action"
+              style={{ color: "#FFBA49" }}
+            />
           </a>
         </IconButton>
       </StyledContainer>
