@@ -45,6 +45,13 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const UserTypography = styled(Typography)`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+`;
+
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
 
@@ -77,7 +84,7 @@ const AllCandidates = ({ candidates, userId }) => {
           style={{ textDecoration: "none" }}
         >
           <StyledButton variant="contained">
-            <Typography variant="h6">{params.row.Name}</Typography>
+            <UserTypography variant="h6">{params.row.Name}</UserTypography>
           </StyledButton>
         </Link>
       ),
