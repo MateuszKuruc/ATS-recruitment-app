@@ -56,6 +56,10 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
+const StyledDrawer = styled(Drawer)`
+  width: 20rem;
+`;
+
 const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
@@ -68,9 +72,18 @@ const NavigationBar = ({ candidates }) => {
   const open = Boolean(anchorEl);
 
   const getStylesForButton = (path, currentPath) => {
-    const isActive = path === currentPath;
+    let isActive;
+    if (currentPath.startsWith("/pools") && path === "/pools") {
+      isActive = true;
+    } else if (currentPath.startsWith("/candidates") && path === "/candidates") {
+      isActive = true;
+    } else {
+      isActive = path === currentPath;
+    }
+    // const isActive = path === currentPath;
     return {
       backgroundColor: isActive ? "#FFBA49" : "initial",
+
       // color: isActive ? "#ffffff" : "initial",
     };
   };
@@ -107,7 +120,7 @@ const NavigationBar = ({ candidates }) => {
             <MenuIcon fontSize="large" />
           </IconButton>
 
-          <Drawer
+          <StyledDrawer
             anchor="left"
             open={isMobileMenuOpen}
             onClose={handleCloseMobileMenu}
@@ -220,7 +233,7 @@ const NavigationBar = ({ candidates }) => {
                 )}
               </Hidden>
             </List>
-          </Drawer>
+          </StyledDrawer>
 
           {login === null ? (
             <>
@@ -233,7 +246,6 @@ const NavigationBar = ({ candidates }) => {
                     backgroundColor:
                       location.pathname === "/" ? "#ffba49" : "initial",
                   }}
-                
                 >
                   <Typography variant="h5">Home</Typography>
                 </StyledButton>
