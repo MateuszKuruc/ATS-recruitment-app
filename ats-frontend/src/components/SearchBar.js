@@ -9,7 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const StyledInputBase = styled(InputBase)`
   && {
     color: #ffffff;
-    // width: 300px;
+    flex: 1;
   }
 `;
 
