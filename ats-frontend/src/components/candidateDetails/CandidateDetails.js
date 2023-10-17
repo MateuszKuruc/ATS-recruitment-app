@@ -119,6 +119,10 @@ const BottomButtonContainer = styled.div`
   margin-top: 1rem;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const CandidateDetails = ({ candidates }) => {

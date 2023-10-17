@@ -88,7 +88,7 @@ const CandidateExtendedFeedback = ({
               <Typography variant="italic">Notice period</Typography>
             )}
             <StyledFormControl>
-              <InputLabel>Notice</InputLabel>
+              {isSmallScreen && <InputLabel>Notice</InputLabel>}
               <Select
                 value={
                   editModeExtended ? editedCandidate.notice : candidate.notice
@@ -120,7 +120,7 @@ const CandidateExtendedFeedback = ({
             )}
 
             <StyledFormControl>
-              <InputLabel>Contract</InputLabel>
+              {isSmallScreen && <InputLabel>Contract</InputLabel>}
               <Select
                 value={
                   editModeExtended
@@ -151,7 +151,7 @@ const CandidateExtendedFeedback = ({
             )}
 
             <StyledFormControl>
-              <InputLabel>English</InputLabel>
+              {isSmallScreen && <InputLabel>English</InputLabel>}
               <Select
                 value={
                   editModeExtended
@@ -187,7 +187,7 @@ const CandidateExtendedFeedback = ({
             )}
 
             <StyledFormControl>
-              <InputLabel>Assessment</InputLabel>
+              {isSmallScreen && <InputLabel>Assessment</InputLabel>}
               <Select
                 value={
                   editModeExtended
