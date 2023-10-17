@@ -291,7 +291,8 @@ const CandidateFiles = ({ candidate }) => {
       </StyledHeader>
 
       <FilesContainer>
-        {uploadedFiles.map((file) => (
+        
+        {uploadedFiles.length > 0 && uploadedFiles.map((file) => (
           <SingleFileDiv key={file.fileName} style={filesShown}>
             <IconContainer>
               <IconButton onClick={() => handleDownload(file.fileName)}>
@@ -305,17 +306,7 @@ const CandidateFiles = ({ candidate }) => {
                 <DeleteIcon fontSize="large" color="primary" />
               </IconButton>
             </IconContainer>
-            <StyledFileTypography
-              variant="body1"
-              style={
-                {
-                  // whiteSpace: "nowrap",
-                  // overflow: "hidden",
-                  // textOverflow: "ellipsis",
-                  // maxWidth: "7rem",
-                }
-              }
-            >
+            <StyledFileTypography variant="body1">
               {file.fileName}
             </StyledFileTypography>
             <Dialog
@@ -352,6 +343,9 @@ const CandidateFiles = ({ candidate }) => {
             </Dialog>
           </SingleFileDiv>
         ))}
+        {uploadedFiles.length === 0 && (
+          <StyledTypography style={filesShown} variant="italic">No files uploaded</StyledTypography>
+        )}
       </FilesContainer>
     </Container>
   );
