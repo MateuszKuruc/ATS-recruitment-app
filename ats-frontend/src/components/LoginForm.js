@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const StyledTextField = styled(TextField)`
   && {
-    // margin-bottom: 1rem;
+   
     border-radius: 0.5rem;
     @media (max-width: 768px) {
       background-color: #ffffff
@@ -48,7 +48,6 @@ const FormContainer = styled.div`
 
   @media (max-width: 768px) {
     background-color: #ebcbf4;
-    // padding: 0.5rem;
   }
 `;
 
@@ -67,6 +66,7 @@ const StyledHeader = styled.div`
 
   @media (max-width: 768px) {
     margin: 0;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -74,6 +74,10 @@ const StyledButton = styled(Button)`
   && {
     padding: 1rem;
     margin-top: 1.5rem;
+
+    @media (max-width: 768px) {
+      margin-top: 2rem;
+    }
   }
 `;
 

@@ -42,7 +42,6 @@ export const StyledTextField = styled(TextField)`
     label.MuiInputLabel-root.MuiInputLabel-shrink {
       background-color: #c0d9e7;
       border-radius: 0.25rem;
-
       margin: 0;
       padding-left: 0.2rem;
       padding-right: 0.2rem;
@@ -54,15 +53,12 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 5rem;
-  // background-color: #c0d9e7;
-
   background-color: #ebcbf4;
   margin-bottom: 1rem;
   flex: 1;
   border-radius: 0.5rem;
 
   @media (max-width: 768px) {
-    // background-color: #EBCBF4;
     padding: 0;
     min-width: 0;
   }
@@ -75,8 +71,6 @@ const StyledDatePicker = styled(DatePicker)`
 
     @media (max-width: 768px) {
       .MuiInputLabel-shrink {
-        // background-color: #c0d9e7;
-
         background-color: #ebcbf4;
         border-radius: 0.25rem;
 
@@ -97,10 +91,7 @@ const StyledButton = styled(Button)`
 
 const StyledHeader = styled.div`
   display: flex;
-  background-color: #990033;
-
   background-color: #25283d;
-
   padding: 1rem;
   border-radius: 0.5rem;
   justify-content: center;
@@ -115,10 +106,8 @@ const StyledFormControl = styled(FormControl)`
 
     label.MuiInputLabel-root.MuiInputLabel-shrink {
       background-color: #c0d9e7;
-
       background-color: #ebcbf4;
       border-radius: 0.25rem;
-
       margin: 0;
       padding-left: 0.2rem;
       padding-right: 0.2rem;
