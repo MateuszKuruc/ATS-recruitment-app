@@ -115,12 +115,18 @@ const PoolDetails = ({ candidatesByTech }) => {
   const [candidatesNoFeedback, setCandidatesNoFeedback] = useState([]);
   const [candidatesAvailableSoon, setCandidatesAvailableSoon] = useState([]);
 
+  const handleOpenHeader = (headerNumber) => {
+    if (openHeader === headerNumber) {
+      setOpenHeader("");
+    } else if (openHeader !== headerNumber) {
+      setOpenHeader(headerNumber);
+    }
+  };
+
   useEffect(() => {
     if (!technology || !candidatesByTech) {
       navigate("/pools");
     }
-
-    window.addEventListener("beforeunload", handlePageRefresh)
 
     if (technology) {
       const techName = getTechName(technology);
@@ -237,18 +243,6 @@ const PoolDetails = ({ candidatesByTech }) => {
 
   if (!candidatesByTech || !technology) {
     return null;
-  }
-
-  const handleOpenHeader = (headerNumber) => {
-    if (openHeader === headerNumber) {
-      setOpenHeader("");
-    } else if (openHeader !== headerNumber) {
-      setOpenHeader(headerNumber);
-    }
-  };
-
-  const handlePageRefresh = (event) => {
-    event.preventDefault();
   }
 
   return (
