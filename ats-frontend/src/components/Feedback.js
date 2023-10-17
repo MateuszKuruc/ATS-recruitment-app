@@ -15,13 +15,14 @@ import { useNavigate } from "react-router-dom";
 import { updateCandidate } from "../reducers/candidateReducer";
 import format from "date-fns/format";
 import { setNotification } from "../reducers/notificationReducer";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  background-color: #c0d9e7;
+  background-color: #ebcbf4;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
@@ -53,6 +54,18 @@ const StyledButtonContainer = styled.div`
   gap: 1rem;
 `;
 
+const StyledHeader = styled.div`
+  display: flex;
+
+  background-color: #25283d;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+  justify-content: center;
+  
+  color: #ffffff;
+`;
+
 const StyledTypography = styled(Typography)``;
 
 const Feedback = ({ candidates }) => {
@@ -63,6 +76,8 @@ const Feedback = ({ candidates }) => {
   const [candidate, setCandidate] = useState(null);
   const [notesError, setNotesError] = useState(false);
   const [editedCandidate, setEditedCandidate] = useState(null);
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const defaultValues = {
     assessment: "6 - Rockstar",
@@ -132,14 +147,19 @@ const Feedback = ({ candidates }) => {
 
   return (
     <StyledContainer>
-      <StyledTypography variant="h3">Meeting feedback</StyledTypography>
+      <StyledHeader>
+        <StyledTypography variant="h3">Meeting feedback</StyledTypography>
+      </StyledHeader>
       <StyledLine>
-        <Typography variant="h6">Final assessment</Typography>
+        {!isSmallScreen && (
+          <Typography variant="h6">Final assessment</Typography>
+        )}
         <FormControl fullWidth>
-          <InputLabel id="assessment">Assessment</InputLabel>
+          {isSmallScreen && <InputLabel id="assessment">Assessment</InputLabel>}
+          {/* <InputLabel id="assessment">Assessment</InputLabel> */}
           <Select
             labelId="assessment"
-            label="assessment"
+            label={isSmallScreen ? "Assessment" : null}
             value={
               editedCandidate.assessment !== ""
                 ? editedCandidate.assessment
@@ -162,12 +182,12 @@ const Feedback = ({ candidates }) => {
         </FormControl>
       </StyledLine>
       <StyledLine>
-        <Typography variant="h6">Notice period</Typography>
+        {!isSmallScreen && <Typography variant="h6">Notice period</Typography>}
         <FormControl fullWidth>
-          <InputLabel id="notice">Notice period</InputLabel>
+          {isSmallScreen && <InputLabel id="notice">Notice period</InputLabel>}
           <Select
             labelId="noticeperiod"
-            label="notice-period"
+            label={isSmallScreen ? "Notice-period" : null}
             value={
               editedCandidate.notice !== ""
                 ? editedCandidate.notice
@@ -186,12 +206,12 @@ const Feedback = ({ candidates }) => {
         </FormControl>
       </StyledLine>
       <StyledLine>
-        <Typography variant="h6">English level</Typography>
+        {!isSmallScreen && <Typography variant="h6">English level</Typography>}
         <FormControl fullWidth>
-          <InputLabel id="language">English</InputLabel>
+          {isSmallScreen && <InputLabel id="language">English</InputLabel>}
           <Select
             labelId="language"
-            label="english"
+            label={isSmallScreen ? "English" : null}
             value={
               editedCandidate.language !== ""
                 ? editedCandidate.language
@@ -212,12 +232,14 @@ const Feedback = ({ candidates }) => {
         </FormControl>
       </StyledLine>
       <StyledLine>
-        <Typography variant="h6">Contract type</Typography>
+        {!isSmallScreen && <Typography variant="h6">Contract type</Typography>}
         <FormControl fullWidth>
-          <InputLabel id="contract">Contract type</InputLabel>
+          {isSmallScreen && (
+            <InputLabel id="contract">Contract type</InputLabel>
+          )}
           <Select
             labelId="contract"
-            label="contract-type"
+            label={isSmallScreen ? "contract-type" : null}
             value={
               editedCandidate.contract !== ""
                 ? editedCandidate.contract
@@ -233,9 +255,9 @@ const Feedback = ({ candidates }) => {
         </FormControl>
       </StyledLine>
       <StyledLine>
-        <Typography variant="h6">Notes</Typography>
+        {!isSmallScreen && <Typography variant="h6">Notes</Typography>}
         <StyledTextField
-          label={editedCandidate.notes === "" ? "Add notes here..." : ""}
+          label={editedCandidate.notes === "" ? "Add notes here..." : null}
           error={notesError}
           helperText={
             notesError ? "Notes need to be min. 6 characters long" : ""
@@ -243,6 +265,7 @@ const Feedback = ({ candidates }) => {
           multiline
           rows={8}
           fullWidth
+          // label={isSmallScreen ? "Notes" : null}
           value={
             editedCandidate.notes !== ""
               ? editedCandidate.notes
@@ -254,10 +277,18 @@ const Feedback = ({ candidates }) => {
         />
       </StyledLine>
       <StyledButtonContainer>
-        <StyledButton variant="contained" onClick={() => handleFeedback()}>
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => handleFeedback()}
+        >
           <Typography variant="h6">Submit</Typography>
         </StyledButton>
-        <StyledButton variant="outlined" onClick={handleGoingBack}>
+        <StyledButton
+          variant="contained"
+          color="inherit"
+          onClick={handleGoingBack}
+        >
           <Typography variant="h6">Cancel</Typography>
         </StyledButton>
       </StyledButtonContainer>
