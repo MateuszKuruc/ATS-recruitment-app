@@ -120,6 +120,8 @@ const PoolDetails = ({ candidatesByTech }) => {
       navigate("/pools");
     }
 
+    window.addEventListener("beforeunload", handlePageRefresh)
+
     if (technology) {
       const techName = getTechName(technology);
       setTechName(techName);
@@ -244,6 +246,10 @@ const PoolDetails = ({ candidatesByTech }) => {
       setOpenHeader(headerNumber);
     }
   };
+
+  const handlePageRefresh = (event) => {
+    event.preventDefault();
+  }
 
   return (
     <Container>
