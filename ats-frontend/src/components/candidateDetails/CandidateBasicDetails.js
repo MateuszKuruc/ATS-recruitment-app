@@ -114,9 +114,6 @@ const StyledGridContainer = styled(Grid)`
   }
 
   @media (max-width: 768px) {
-    // padding: 0;
-    // border: 1px solid red;
-    // padding: 0.5rem
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }

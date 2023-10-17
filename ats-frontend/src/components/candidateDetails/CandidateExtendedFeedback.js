@@ -8,6 +8,7 @@ import {
   Select,
   MenuItem,
   FormHelperText,
+  InputLabel,
 } from "@mui/material";
 
 const StyledHeader = styled.div`
@@ -17,7 +18,7 @@ const StyledHeader = styled.div`
     align-content: center;
     margin-bottom: 1rem;
     background-color: #084c61;
-    background-color: #25283D;
+    background-color: #25283d;
     padding: 0.25rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -42,6 +43,11 @@ const StyledFormControl = styled(FormControl)`
   background-color: #ffffff;
   border-radius: 0.5rem;
   width: 15rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+  }
 `;
 
 const StyledTypography = styled(Typography)`
@@ -51,6 +57,10 @@ const StyledTypography = styled(Typography)`
 const StyledGridContainer = styled(Grid)`
   &.grid-container-class {
     margin-top: 1rem;
+    @media (max-width: 768px) {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
   }
 `;
 
@@ -59,6 +69,7 @@ const CandidateExtendedFeedback = ({
   editedCandidate,
   setEditedCandidate,
   editModeExtended,
+  isSmallScreen,
 }) => {
   return (
     <>
@@ -73,13 +84,17 @@ const CandidateExtendedFeedback = ({
       >
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Notice period</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Notice period</Typography>
+            )}
             <StyledFormControl>
+              <InputLabel>Notice</InputLabel>
               <Select
                 value={
                   editModeExtended ? editedCandidate.notice : candidate.notice
                 }
                 disabled={!editModeExtended}
+                label={isSmallScreen ? "Notice" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -100,9 +115,12 @@ const CandidateExtendedFeedback = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Contract type</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Contract type</Typography>
+            )}
 
             <StyledFormControl>
+              <InputLabel>Contract</InputLabel>
               <Select
                 value={
                   editModeExtended
@@ -110,6 +128,7 @@ const CandidateExtendedFeedback = ({
                     : candidate.contract
                 }
                 disabled={!editModeExtended}
+                label={isSmallScreen ? "Contract" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -127,9 +146,12 @@ const CandidateExtendedFeedback = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">English</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">English</Typography>
+            )}
 
             <StyledFormControl>
+              <InputLabel>English</InputLabel>
               <Select
                 value={
                   editModeExtended
@@ -137,6 +159,7 @@ const CandidateExtendedFeedback = ({
                     : candidate.language
                 }
                 disabled={!editModeExtended}
+                label={isSmallScreen ? "English" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -159,9 +182,12 @@ const CandidateExtendedFeedback = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Assessment</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Assessment</Typography>
+            )}
 
             <StyledFormControl>
+              <InputLabel>Assessment</InputLabel>
               <Select
                 value={
                   editModeExtended
@@ -169,6 +195,7 @@ const CandidateExtendedFeedback = ({
                     : candidate.assessment
                 }
                 disabled={!editModeExtended}
+                label={isSmallScreen ? "Assessment" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
