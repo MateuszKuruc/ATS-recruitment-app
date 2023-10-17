@@ -376,7 +376,7 @@ const NavigationBar = ({ candidates }) => {
                     onClose={handleCloseMenu}
                     anchorOrigin={{
                       vertical: "bottom",
-                      horizontal: "right",
+                      horizontal: "left",
                     }}
                     transformOrigin={{
                       vertical: "top",

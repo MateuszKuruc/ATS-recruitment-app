@@ -4,12 +4,27 @@ import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setNotification } from "../reducers/notificationReducer";
-import Notification from "./Notification";
-import { useSelector } from "react-redux";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  padding: 5rem;
+  padding-top: 1rem;
+`;
+
+const InnerContainer = styled.div`
+  margin-top: 2rem;
+`;
+
+const HeaderTypography = styled(Typography)`
+  padding-bottom: 1rem;
+`;
+
+const BodyTypography = styled(Typography)`
+  padding-bottom: 1rem;
+`;
 
 const LogoutPage = () => {
   const dispatch = useDispatch();
-  // const notification = useSelector((state) => state.notification);
 
   useEffect(() => {
     window.localStorage.removeItem("loggedAppUser");
@@ -23,11 +38,7 @@ const LogoutPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {/* <Notification
-        severity={notification.severity}
-        message={notification.message}
-      /> */}
+    <MainContainer>
       <Typography variant="italic">
         <p>
           You have been successfully logged out. Please note that you
@@ -39,7 +50,28 @@ const LogoutPage = () => {
           If you want to log in again, <Link to="/login">click here.</Link>
         </p>
       </Typography>
-    </div>
+      <InnerContainer>
+        <HeaderTypography variant="h5">
+          Wish to leave feedback?
+        </HeaderTypography>
+        <BodyTypography variant="body1">
+          Don't hesitate to let me know about the user experience, so I can
+          provide further quality of life improvements to the application. If
+          there are particular parts of the app that you enjoy, share your
+          thoughts, too!
+        </BodyTypography>
+        <HeaderTypography variant="h5">
+          Not sure how the ATS can help you?
+        </HeaderTypography>
+        <BodyTypography variant="body1">
+          Visit the <Link to="/">home page</Link> and read about uses of
+          Applicant Tracking Systems in the recruitment industry.
+        </BodyTypography>
+        <HeaderTypography variant="h5">
+          Not sure how the ATS can help you?
+        </HeaderTypography>
+      </InnerContainer>
+    </MainContainer>
   );
 };
 
