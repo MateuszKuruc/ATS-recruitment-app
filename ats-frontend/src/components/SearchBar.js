@@ -9,6 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const StyledInputBase = styled(InputBase)`
   && {
     color: #ffffff;
+    // width: 300px;
   }
 `;
 
@@ -18,7 +19,7 @@ const Search = styled.div`
   align-items: center;
   position: relative;
   background-color: #800020;
-  background-color: #25283D;
+  background-color: #25283d;
   opacity: 1;
   padding: 4px;
   border-radius: 0.5rem;
@@ -28,8 +29,15 @@ const Search = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  width: 100%;
-  display: flex;
+  && {
+    width: 100%;
+    display: flex;
+
+    &:hover {
+      background-color: #ffba49;
+      color: #000000;
+    }
+  }
 `;
 
 const StyledTypography = styled(Typography)``;
