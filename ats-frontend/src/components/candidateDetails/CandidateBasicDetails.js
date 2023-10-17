@@ -33,6 +33,7 @@ const StyledHeader = styled.div`
     @media (max-width: 768px) {
       flex-direction: column;
       margin-top: 1rem;
+
     }
   }
 `;

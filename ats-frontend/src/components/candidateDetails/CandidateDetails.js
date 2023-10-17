@@ -75,6 +75,8 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 0;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 `;
 
