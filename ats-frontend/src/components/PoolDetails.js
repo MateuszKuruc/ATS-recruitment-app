@@ -6,6 +6,9 @@ import CandidateProfiles from "./CandidateProfiles";
 
 const Container = styled.div`
   background-color: #c0d9e7;
+
+  background-color: #ebcbf4;
+
   padding-right: 2rem;
   padding-left: 2rem;
   padding-bottom: 2rem;
@@ -26,8 +29,10 @@ const StyledHeaderMain = styled.div`
     align-items: center;
     // align-self: center;
     margin-bottom: 1rem;
-    // background-color: #084c61;
-    background-color: #990033;
+
+    background-color: #25283d;
+    background-color: #8f3985;
+
     padding: 0.75rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -43,7 +48,11 @@ const StyledHeaderSecondary = styled.div`
     align-items: center;
     margin-bottom: 1rem;
     // background-color: #990033;
-    background-color: #084c61;
+    // background-color: #084c61;
+
+    background-color: #8f3985;
+    background-color: #25283d;
+
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -60,12 +69,13 @@ const StyledCandidateButton = styled(Button)`
     display: flex;
     flex-direction: column;
     flex: 1;
+    // background-color: #8F3985;
   }
 `;
 
 const StyledButton = styled(Button)`
   && {
-    background-color: #990033;
+    // background-color: #990033;
     flex: 1;
 
     @media (max-width: 768px) {
@@ -251,8 +261,16 @@ const PoolDetails = ({ candidatesByTech }) => {
         <TypographyValue variant="h4">
           {candidatesNoFeedback.length}
         </TypographyValue>
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("0")}>
-          {openHeader === "0" ? "Hide" : "Show more"}
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => handleOpenHeader("0")}
+        >
+          {openHeader === "0" ? (
+            <Typography variant="h6">Hide</Typography>
+          ) : (
+            <Typography variant="h6">Show more</Typography>
+          )}
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "0" ? {} : { display: "none" }}>
@@ -304,8 +322,16 @@ const PoolDetails = ({ candidatesByTech }) => {
           {candidatesByTech.length}
         </TypographyValue>
 
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("1")}>
-          {openHeader === "1" ? "Hide" : "Show more"}
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => handleOpenHeader("1")}
+        >
+          {openHeader === "1" ? (
+            <Typography variant="h6">Hide</Typography>
+          ) : (
+            <Typography variant="h6">Show more</Typography>
+          )}
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "1" ? {} : { display: "none" }}>
@@ -319,9 +345,14 @@ const PoolDetails = ({ candidatesByTech }) => {
 
           <StyledButton
             variant="contained"
+            color="secondary"
             onClick={() => handleOpenHeader("2")}
           >
-            {openHeader === "2" ? "Hide" : "Show more"}
+            {openHeader === "2" ? (
+              <Typography variant="h6">Hide</Typography>
+            ) : (
+              <Typography variant="h6">Show more</Typography>
+            )}
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "2" ? {} : { display: "none" }}>
@@ -333,8 +364,16 @@ const PoolDetails = ({ candidatesByTech }) => {
         <StyledTypography variant="h6">Most common seniority</StyledTypography>
         <TypographyValue variant="h4"> {mostCommonSeniority}</TypographyValue>
 
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("3")}>
-          {openHeader === "3" ? "Hide" : "Show more"}
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => handleOpenHeader("3")}
+        >
+          {openHeader === "3" ? (
+            <Typography variant="h6">Hide</Typography>
+          ) : (
+            <Typography variant="h6">Show more</Typography>
+          )}
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "3" ? {} : { display: "none" }}>
@@ -349,8 +388,16 @@ const PoolDetails = ({ candidatesByTech }) => {
           {candidatesAvailableSoon.length}
         </TypographyValue>
 
-        <StyledButton variant="contained" onClick={() => handleOpenHeader("4")}>
-          {openHeader === "4" ? "Hide" : "Show more"}
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => handleOpenHeader("4")}
+        >
+          {openHeader === "4" ? (
+            <Typography variant="h6">Hide</Typography>
+          ) : (
+            <Typography variant="h6">Show more</Typography>
+          )}
         </StyledButton>
       </StyledHeaderSecondary>
       <div style={openHeader === "4" ? {} : { display: "none" }}>
