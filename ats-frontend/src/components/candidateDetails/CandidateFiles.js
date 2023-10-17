@@ -63,7 +63,7 @@ const Container = styled.div`
       padding: 0;
       background-color: white;
       flex-direction: column;
-      background-color: #EBCBF4;
+      background-color: #ebcbf4;
     }
   }
 `;
@@ -296,9 +296,9 @@ const CandidateFiles = ({ candidate }) => {
             <IconContainer>
               <IconButton onClick={() => handleDownload(file.fileName)}>
                 {file.fileName.includes(".pdf") ? (
-                  <PictureAsPdf color="secondary" fontSize="large" />
+                  <PictureAsPdf fontSize="large" style={{ color: "#25283D" }} />
                 ) : (
-                  <Description fontSize="large" color="info" />
+                  <Description fontSize="large" style={{ color: "#25283D" }} />
                 )}
               </IconButton>
               <IconButton onClick={() => openDialogWindow()}>
