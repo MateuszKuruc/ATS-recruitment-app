@@ -98,14 +98,18 @@ const LoginForm = ({
 
         <StyledTextField
           error={usernameError}
-          helperText={usernameError ? "Enter valid username" : ""}
+          helperText={
+            usernameError ? "Enter valid username (4 - 15 characters" : ""
+          }
           label="Username"
           onChange={handleUsernameChange}
         ></StyledTextField>
 
         <StyledTextField
           error={passwordError}
-          helperText={passwordError ? "Enter valid password" : ""}
+          helperText={
+            passwordError ? "Enter valid password (6 - 15 characters" : ""
+          }
           type="password"
           label="Password"
           onChange={handlePasswordChange}

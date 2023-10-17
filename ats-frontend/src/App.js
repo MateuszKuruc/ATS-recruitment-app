@@ -169,9 +169,11 @@ function App() {
       dispatch(
         setNotification({
           severity: "error",
-          message: "Invalid credentials. Please try again.",
+          message: "Invalid format. Please try again.",
         })
       );
+      setUsernameError(true);
+      setPasswordError(true);
       return;
     } else if (username.length < 4 || username.length > 15) {
       dispatch(
