@@ -13,9 +13,8 @@ import {
   MenuItem,
   FormHelperText,
   Button,
+  InputLabel,
 } from "@mui/material";
-
-import isSmallScreen
 
 const StyledHeader = styled.div`
   && {
@@ -65,7 +64,7 @@ const StyledTextField = styled(TextField)`
     width: 15rem;
 
     @media (max-width: 768px) {
-      margin-top: 0rem;
+      margin-top: 1rem;
       margin-bottom: 0rem;
   
 
@@ -89,7 +88,7 @@ const StyledDatePicker = styled(DatePicker)`
     width: 15rem;
 
     @media (max-width: 768px) {
-      margin-top: 0rem;
+      margin-top: 1rem;
       margin-bottom: 0rem;
 
   }
@@ -104,7 +103,7 @@ const StyledFormControl = styled(FormControl)`
   width: 15rem;
 
   @media (max-width: 768px) {
-    margin-top: 0rem;
+    margin-top: 1rem;
     margin-bottom: 0rem;
   }
 `;
@@ -172,6 +171,7 @@ const CandidateBasicDetails = ({
   enterEditMode,
   saveEdit,
   cancelEdit,
+  isSmallScreen,
 }) => {
   return (
     <>
@@ -180,8 +180,7 @@ const CandidateBasicDetails = ({
         <ButtonContainer>
           <StyledButton
             variant="contained"
-            // color={!editMode ? "secondary" : "primary"}
-            color="primary"
+            color={!editMode ? "primary" : "secondary"}
             onClick={!editMode ? () => enterEditMode() : () => saveEdit()}
           >
             {editMode ? (
@@ -210,11 +209,14 @@ const CandidateBasicDetails = ({
       >
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">First name</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">First name</Typography>
+            )}
             <StyledTextField
               value={editMode ? editedCandidate.firstName : candidate.firstName}
               disabled={!editMode}
               error={firstNameError}
+              label={isSmallScreen ? "First name" : null}
               helperText={
                 firstNameError ? "Enter valid name, min. 2 characters" : " "
               }
@@ -230,11 +232,14 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Last name</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Last name</Typography>
+            )}
             <StyledTextField
               value={editMode ? editedCandidate.lastName : candidate.lastName}
               disabled={!editMode}
               error={lastNameError}
+              label={isSmallScreen ? "Last name" : null}
               helperText={
                 lastNameError ? "Enter valid name, min. 2 characters" : " "
               }
@@ -250,11 +255,14 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Email address</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Email address</Typography>
+            )}
             <StyledTextField
               value={editMode ? editedCandidate.email : candidate.email}
               disabled={!editMode}
               error={emailError}
+              label={isSmallScreen ? "Email" : null}
               helperText={emailError ? "Enter email in valid format" : " "}
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, email: target.value })
@@ -265,11 +273,14 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Phone number</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Phone number</Typography>
+            )}
             <StyledTextField
               value={editMode ? editedCandidate.phone : candidate.phone}
               disabled={!editMode}
               error={phoneError}
+              label={isSmallScreen ? "Phone" : null}
               helperText={phoneError ? "Enter number in valid format" : " "}
               onChange={({ target }) =>
                 setEditedCandidate({ ...editedCandidate, phone: target.value })
@@ -280,10 +291,13 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Location</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Location</Typography>
+            )}
             <StyledTextField
               value={editMode ? editedCandidate.location : candidate.location}
               error={locationError}
+              label={isSmallScreen ? "Location" : null}
               helperText={locationError ? "Enter location" : " "}
               disabled={!editMode}
               onChange={({ target }) =>
@@ -298,12 +312,16 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Skill</Typography>
+            {!isSmallScreen && <Typography variant="italic">Skill</Typography>}
 
             <StyledFormControl>
+              {isSmallScreen && <InputLabel>Skill</InputLabel>}
+
               <Select
                 value={editMode ? editedCandidate.skill : candidate.skill}
                 disabled={!editMode}
+                label={isSmallScreen ? "Skill" : null}
+                // InputLabel={isSmallScreen ? "Skill" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
@@ -328,13 +346,17 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">Seniority</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">Seniority</Typography>
+            )}
 
             <StyledFormControl>
+              {isSmallScreen && <InputLabel>Seniority</InputLabel>}
               <Select
                 value={
                   editMode ? editedCandidate.seniority : candidate.seniority
                 }
+                label={isSmallScreen ? "Seniority" : null}
                 disabled={!editMode}
                 onChange={({ target }) =>
                   setEditedCandidate({
@@ -357,7 +379,9 @@ const CandidateBasicDetails = ({
 
         <Grid item xs={12} md={6} lg={3}>
           <StyledPaper>
-            <Typography variant="italic">First contact</Typography>
+            {!isSmallScreen && (
+              <Typography variant="italic">First contact</Typography>
+            )}
 
             <StyledDatePicker
               slotProps={{
@@ -371,6 +395,7 @@ const CandidateBasicDetails = ({
                   : dayjs(candidate.firstContact)
               }
               disabled={!editMode}
+              label={isSmallScreen ? "First contact" : null}
               onChange={(target) =>
                 setEditedCandidate({
                   ...editedCandidate,

@@ -91,8 +91,8 @@ const FeedbackButton = styled(Button)`
   && {
     flex: 1;
     padding: 1rem;
-   
-   background-color: #FFBA49;
+
+    background-color: #ffba49;
 
     @media (max-width: 768px) {
       max-width: 100%;
@@ -101,8 +101,8 @@ const FeedbackButton = styled(Button)`
 `;
 
 const FeedbackTypography = styled(Typography)`
-color: #25283D;
-`
+  color: #25283d;
+`;
 
 const UpperButtonContainer = styled.div`
   display: flex;
@@ -139,6 +139,8 @@ const CandidateDetails = ({ candidates }) => {
   const [locationError, setLocationError] = useState(false);
 
   const [editedCandidate, setEditedCandidate] = useState({ ...candidate });
+
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const handleCandidateValidation = () => {
     const errors = validateEditForCandidate(editedCandidate);
@@ -268,7 +270,9 @@ const CandidateDetails = ({ candidates }) => {
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            <FeedbackTypography variant="h6">Provide feedback</FeedbackTypography>
+            <FeedbackTypography variant="h6">
+              Provide feedback
+            </FeedbackTypography>
           </FeedbackButton>
         ) : (
           <FeedbackButton
@@ -278,7 +282,9 @@ const CandidateDetails = ({ candidates }) => {
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            <FeedbackTypography style={{ color: "black"}} variant="h6">Edit feedback</FeedbackTypography>
+            <FeedbackTypography style={{ color: "black" }} variant="h6">
+              Edit feedback
+            </FeedbackTypography>
           </FeedbackButton>
         )}
       </UpperButtonContainer>
@@ -316,6 +322,7 @@ const CandidateDetails = ({ candidates }) => {
         enterEditMode={enterEditMode}
         saveEdit={saveEdit}
         cancelEdit={cancelEdit}
+        isSmallScreen={isSmallScreen}
       />
 
       <CandidateExtendedFeedback
@@ -323,6 +330,7 @@ const CandidateDetails = ({ candidates }) => {
         setEditedCandidate={setEditedCandidate}
         editedCandidate={editedCandidate}
         editModeExtended={editModeExtended}
+        isSmallScreen={isSmallScreen}
       />
 
       <BottomButtonContainer>
