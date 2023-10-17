@@ -13,12 +13,21 @@ const MainContainer = styled.div`
   flex: 1;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const InnerContainer = styled.div`
   margin-top: 2rem;
   padding-left: 3rem;
   padding-right: 3rem;
+
+  @media (max-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 `;
 
 const HeaderTypography = styled(Typography)`
@@ -26,14 +35,23 @@ const HeaderTypography = styled(Typography)`
 `;
 
 const BodyTypography = styled(Typography)`
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
+  @media (max-width: 768px) {
+    padding: 0rem;
+  }
 `;
 
 const TopContainer = styled.div`
   margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   padding-left: 3rem;
   padding-right: 3rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 `;
 
 const LogoutPage = () => {
@@ -53,7 +71,6 @@ const LogoutPage = () => {
   return (
     <MainContainer>
       <TopContainer>
-       
         <HeaderTypography variant="h3">Logout completed</HeaderTypography>
         <Typography variant="italic3">
           <p>
@@ -69,17 +86,18 @@ const LogoutPage = () => {
             If you want to log in again, <Link to="/login">click here.</Link>
           </p>
         </Typography>
-       
       </TopContainer>
       <InnerContainer>
         <HeaderTypography variant="h5">
           Wish to leave feedback?
         </HeaderTypography>
         <BodyTypography variant="body1">
-          Don't hesitate to let me know about the user experience, so I can
-          provide further quality of life improvements to the application. If
-          there are particular parts of the app that you enjoy, share your
-          thoughts, too!{" "}
+          <p>
+            Don't hesitate to let me know about the user experience, so I can
+            provide further quality of life improvements to the application. If
+            there are particular parts of the app that you enjoy, share your
+            thoughts, too!{" "}
+          </p>
           <p>
             Please use{" "}
             <Link to="/feedback">
