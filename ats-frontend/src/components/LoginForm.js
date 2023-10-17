@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const StyledTextField = styled(TextField)`
   && {
     // margin-bottom: 1rem;
+    
   }
 `;
 
@@ -27,7 +28,7 @@ const FormContainer = styled.div`
   width: 300px;
   // justify-content: flex-start;
   // align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   // padding-top: 4rem;
   // background-color: #25283d;
   background-color: #ffffff;
@@ -40,18 +41,19 @@ const StyledHeader = styled.div`
   flex-direction: column;
 
   background-color: #25283d;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
   border-radius: 0.5rem;
   justify-content: center;
   align-items: center;
   color: #ffffff;
+  margin-top: 1rem;
 `;
 
 const StyledButton = styled(Button)`
   && {
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -60,7 +62,12 @@ const LoginForm = ({
   handleUsernameChange,
   handlePasswordChange,
   login,
+  usernameError,
+  passwordError,
 }) => {
+
+  console.log("errors in login form component:", usernameError, passwordError)
+
   const navigate = useNavigate();
   if (login) {
     navigate("/candidates");
@@ -71,20 +78,22 @@ const LoginForm = ({
         <StyledHeader>
           <Typography variant="h4">LOGIN</Typography>
         </StyledHeader>
-        {/* <form onSubmit={handleSubmit}> */}
-        {/* <div> */}
+
         <StyledTextField
-          label="username"
+          error={usernameError}
+          helperText={usernameError ? "Enter valid username" : ""}
+          label="Username"
           onChange={handleUsernameChange}
         ></StyledTextField>
-        {/* </div> */}
-        {/* <div> */}
+
         <StyledTextField
+          error={passwordError}
+          helperText={passwordError ? "Enter valid password" : ""}
           type="password"
-          label="password"
+          label="Password"
           onChange={handlePasswordChange}
         ></StyledTextField>
-        {/* </div> */}
+
         <StyledButton
           id="login-button"
           type="submit"
@@ -94,7 +103,6 @@ const LoginForm = ({
         >
           <Typography variant="h6">Log in</Typography>
         </StyledButton>
-        {/* </form> */}
       </FormContainer>
     </MainContainer>
   );

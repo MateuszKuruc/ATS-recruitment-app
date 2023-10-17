@@ -131,6 +131,8 @@ function App() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const [technology, setTechnology] = useState("");
   const [candidatesByTech, setCandidatesByTech] = useState(null);
@@ -218,6 +220,8 @@ function App() {
                 handleUsernameChange={({ target }) => setUsername(target.value)}
                 handlePasswordChange={({ target }) => setPassword(target.value)}
                 login={login}
+                usernameError={usernameError}
+                passwordError={passwordError}
               />
             }
           />
