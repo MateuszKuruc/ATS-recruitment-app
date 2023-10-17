@@ -29,10 +29,7 @@ const FieldContainer = styled.div`
 
     @media (max-width: 768px) {
       padding: 0.5rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      // background-color: #c0d9e7;
-      background-color: #EBCBF4;
+      background-color: #ebcbf4;
     }
   }
 `;
@@ -59,7 +56,7 @@ const StyledForm = styled.form`
   padding: 5rem;
   // background-color: #c0d9e7;
 
-  background-color: #EBCBF4;
+  background-color: #ebcbf4;
   margin-bottom: 1rem;
   flex: 1;
   border-radius: 0.5rem;
@@ -80,7 +77,7 @@ const StyledDatePicker = styled(DatePicker)`
       .MuiInputLabel-shrink {
         // background-color: #c0d9e7;
 
-        background-color: #EBCBF4;
+        background-color: #ebcbf4;
         border-radius: 0.25rem;
 
         margin: 0;
@@ -102,8 +99,8 @@ const StyledHeader = styled.div`
   display: flex;
   background-color: #990033;
 
-  background-color: #25283D;
- 
+  background-color: #25283d;
+
   padding: 1rem;
   border-radius: 0.5rem;
   justify-content: center;
@@ -119,7 +116,7 @@ const StyledFormControl = styled(FormControl)`
     label.MuiInputLabel-root.MuiInputLabel-shrink {
       background-color: #c0d9e7;
 
-      background-color: #EBCBF4;
+      background-color: #ebcbf4;
       border-radius: 0.25rem;
 
       margin: 0;

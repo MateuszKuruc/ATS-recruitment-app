@@ -162,7 +162,18 @@ function App() {
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    if (username.length < 4 || username.length > 15) {
+    if (
+      (username.length < 4 || username.length > 15) &&
+      (password.length < 6 || password.length > 15)
+    ) {
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Invalid credentials. Please try again.",
+        })
+      );
+      return;
+    } else if (username.length < 4 || username.length > 15) {
       dispatch(
         setNotification({
           severity: "error",
@@ -172,8 +183,7 @@ function App() {
       );
       setUsernameError(true);
       return;
-    }
-    if (password.length < 6 || password.length > 15) {
+    } else if (password.length < 6 || password.length > 15) {
       dispatch(
         setNotification({
           severity: "error",
@@ -244,7 +254,6 @@ function App() {
                 login={login}
                 usernameError={usernameError}
                 passwordError={passwordError}
-               
               />
             }
           />

@@ -5,6 +5,19 @@ import { useNavigate } from "react-router-dom";
 export const StyledTextField = styled(TextField)`
   && {
     // margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    @media (max-width: 768px) {
+      background-color: #ffffff
+    }
+
+
+    label.MuiInputLabel-root.MuiInputLabel-shrink {
+      background-color: #ebcbf4;
+      border-radius: 0.25rem;
+
+      margin: 0;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
   }
 `;
 
@@ -17,22 +30,26 @@ const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // border: 1px solid black;
   height: 400px;
   width: 300px;
-  // justify-content: flex-start;
-  // align-items: center;
   gap: 1rem;
-  // padding-top: 4rem;
-  // background-color: #25283d;
   background-color: #ffffff;
   border-radius: 0.5rem;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    background-color: #ebcbf4;
+    // padding: 0.5rem;
+  }
 `;
 
 const StyledHeader = styled.div`
@@ -47,6 +64,10 @@ const StyledHeader = styled.div`
   align-items: center;
   color: #ffffff;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 `;
 
 const StyledButton = styled(Button)`
