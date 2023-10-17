@@ -51,7 +51,7 @@ const StyledContainer = styled.div`
 const StyledListItemButton = styled(ListItemButton)`
   && {
     &:hover {
-      background-color: #800020;
+      background-color: #ffba49;
     }
   }
 `;
@@ -70,8 +70,8 @@ const NavigationBar = ({ candidates }) => {
   const getStylesForButton = (path, currentPath) => {
     const isActive = path === currentPath;
     return {
-      backgroundColor: isActive ? "#800020" : "initial",
-      color: isActive ? "#ffffff" : "initial",
+      backgroundColor: isActive ? "#FFBA49" : "initial",
+      // color: isActive ? "#ffffff" : "initial",
     };
   };
 
@@ -231,8 +231,9 @@ const NavigationBar = ({ candidates }) => {
                   to="/"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/" ? "#800020" : "initial",
+                      location.pathname === "/" ? "#ffba49" : "initial",
                   }}
+                
                 >
                   <Typography variant="h5">Home</Typography>
                 </StyledButton>
@@ -243,7 +244,7 @@ const NavigationBar = ({ candidates }) => {
                   to="/faq"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/faq" ? "#800020" : "initial",
+                      location.pathname === "/faq" ? "#ffba49" : "initial",
                   }}
                 >
                   <Typography variant="h5">FAQ</Typography>
@@ -255,7 +256,7 @@ const NavigationBar = ({ candidates }) => {
                   to="/tips"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/tips" ? "#800020" : "initial",
+                      location.pathname === "/tips" ? "#ffba49" : "initial",
                   }}
                 >
                   <Typography variant="h5">Tips</Typography>
@@ -281,7 +282,7 @@ const NavigationBar = ({ candidates }) => {
                   sx={{
                     backgroundColor:
                       location.pathname === "/candidates"
-                        ? "#800020"
+                        ? "#ffba49"
                         : "initial",
                   }}
                 >
@@ -293,7 +294,7 @@ const NavigationBar = ({ candidates }) => {
                   to="/add"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/add" ? "#800020" : "initial",
+                      location.pathname === "/add" ? "#ffba49" : "initial",
                   }}
                 >
                   <Typography variant="h5">form</Typography>
@@ -305,7 +306,7 @@ const NavigationBar = ({ candidates }) => {
                   to="/pools"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/pools" ? "#800020" : "initial",
+                      location.pathname === "/pools" ? "#ffba49" : "initial",
                   }}
                 >
                   <Typography variant="h5">Pools</Typography>
@@ -316,7 +317,7 @@ const NavigationBar = ({ candidates }) => {
                   to="/hot"
                   sx={{
                     backgroundColor:
-                      location.pathname === "/hot" ? "#800020" : "initial",
+                      location.pathname === "/hot" ? "#ffba49" : "initial",
                   }}
                 >
                   <Typography variant="h5">Hot</Typography>

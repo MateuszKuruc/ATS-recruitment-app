@@ -15,6 +15,8 @@ import {
   Button,
 } from "@mui/material";
 
+import isSmallScreen
+
 const StyledHeader = styled.div`
   && {
     display: flex;
@@ -23,7 +25,7 @@ const StyledHeader = styled.div`
     margin-bottom: 1rem;
     background-color: #084c61;
 
-    background-color: #25283D;
+    background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 1rem;
     padding: 1rem;
@@ -45,6 +47,12 @@ const StyledPaper = styled(Paper)`
   padding-right: 2rem;
   padding-left: 2rem;
   gap: 0.25rem;
+
+  @media (max-width: 768px) {
+    // padding-right: 1rem;
+    // padding-left: 1rem;
+    // border: 1px solid red;
+  }
 `;
 
 const StyledTextField = styled(TextField)`
@@ -56,12 +64,21 @@ const StyledTextField = styled(TextField)`
 
     width: 15rem;
 
+    @media (max-width: 768px) {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+  
+
+    }
+
 
     ${(props) =>
       props.disabled &&
       `
     color: #ffffff
     `}
+
+   
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -69,6 +86,12 @@ const StyledDatePicker = styled(DatePicker)`
     margin-top: 2rem;
     margin-bottom: 2rem;
     border-radius: 0.5rem;
+    width: 15rem;
+
+    @media (max-width: 768px) {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+
   }
 `;
 
@@ -79,11 +102,24 @@ const StyledFormControl = styled(FormControl)`
   background-color: #ffffff;
   border-radius: 0.5rem;
   width: 15rem;
+
+  @media (max-width: 768px) {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
 `;
 
 const StyledGridContainer = styled(Grid)`
   &.grid-container-class {
     margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    // padding: 0;
+    // border: 1px solid red;
+    // padding: 0.5rem
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 `;
 

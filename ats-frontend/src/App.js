@@ -37,18 +37,18 @@ const websiteTheme = createTheme({
   // },
   palette: {
     primary: {
-      main: "#8F3985",
+      main: "#8F3985", // plum
     },
     secondary: {
-      // main: "#FFBA49",
-      main: "#25283D",
+      main: "#FFBA49", // gold
+      // main: "#25283D",
     },
     accent: {
-      // main: "#25283D",
-      main: "#FFBA49",
+      main: "#25283D", // space cadet
+      // main: "#FFBA49",
     },
     accen2: {
-      main: "#EBCBF4",
+      main: "#EBCBF4", // lavender
     },
   },
   typography: {

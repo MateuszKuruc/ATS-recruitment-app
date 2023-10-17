@@ -28,6 +28,8 @@ import { validateEditForCandidate } from "../../utils/validationService";
 
 import { setNotification } from "../../reducers/notificationReducer";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 const StyledTextField = styled(TextField)`
   && {
     margin-top: 2rem;
