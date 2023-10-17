@@ -87,14 +87,6 @@ const Feedback = ({ candidates }) => {
     notes: "",
   };
 
-  console.log("cand and edit cand in feedback", candidate, editedCandidate);
-
-  // useEffect(() => {
-  //   if (!candidate && editedCandidate) {
-  //     window.history.back();
-  //   }
-  // }, [candidate, editedCandidate]);
-
   useEffect(() => {
     const candidate = candidates.find((candidate) => candidate.id === id);
     setCandidate(candidate);
@@ -164,15 +156,10 @@ const Feedback = ({ candidates }) => {
         )}
         <FormControl fullWidth>
           {isSmallScreen && <InputLabel id="assessment">Assessment</InputLabel>}
-          {/* <InputLabel id="assessment">Assessment</InputLabel> */}
+
           <Select
             labelId="assessment"
             label={isSmallScreen ? "Assessment" : null}
-            // value={
-            //   editedCandidate.assessment !== ""
-            //     ? editedCandidate.assessment
-            //     : defaultValues.assessment
-            // }
             value={editedCandidate.assessment || "6 - Rockstar"}
             onChange={({ target }) =>
               setEditedCandidate({
@@ -197,11 +184,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="noticeperiod"
             label={isSmallScreen ? "Notice-period" : null}
-            // value={
-            //   editedCandidate.notice !== ""
-            //     ? editedCandidate.notice
-            //     : defaultValues.notice
-            // }
             value={editedCandidate.notice || "Available now"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, notice: target.value })
@@ -222,11 +204,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="language"
             label={isSmallScreen ? "English" : null}
-            // value={
-            //   editedCandidate.language !== ""
-            //     ? editedCandidate.language
-            //     : defaultValues.language
-            // }
             value={editedCandidate.language || "A1"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, language: target.value })
@@ -251,11 +228,6 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="contract"
             label={isSmallScreen ? "contract-type" : null}
-            // value={
-            //   editedCandidate.contract !== ""
-            //     ? editedCandidate.contract
-            //     : defaultValues.contract
-            // }
             value={editedCandidate.contract || "UoP"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, contract: target.value })
@@ -277,12 +249,7 @@ const Feedback = ({ candidates }) => {
           multiline
           rows={8}
           fullWidth
-          // label={isSmallScreen ? "Notes" : null}
-          value={
-            editedCandidate.notes !== ""
-              ? editedCandidate.notes
-              : defaultValues.notes
-          }
+          value={editedCandidate.notes !== "" ? editedCandidate.notes : ""}
           onChange={({ target }) =>
             setEditedCandidate({ ...editedCandidate, notes: target.value })
           }
