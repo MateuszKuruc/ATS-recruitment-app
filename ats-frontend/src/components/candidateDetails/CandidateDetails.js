@@ -92,7 +92,7 @@ const FeedbackButton = styled(Button)`
     flex: 1;
     padding: 1rem;
 
-    background-color: #ffba49;
+    // background-color: #ffba49;
 
     @media (max-width: 768px) {
       max-width: 100%;
@@ -101,7 +101,7 @@ const FeedbackButton = styled(Button)`
 `;
 
 const FeedbackTypography = styled(Typography)`
-  color: #25283d;
+  // color: #25283d;
 `;
 
 const UpperButtonContainer = styled.div`
@@ -256,7 +256,7 @@ const CandidateDetails = ({ candidates }) => {
         {candidate.assessment && (
           <FeedbackButton
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={toggleNotes}
           >
             {showNotes ? (
@@ -270,7 +270,7 @@ const CandidateDetails = ({ candidates }) => {
         {!candidate.assessment ? (
           <FeedbackButton
             variant="contained"
-            color="primary"
+            color="secondary"
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
@@ -281,14 +281,11 @@ const CandidateDetails = ({ candidates }) => {
         ) : (
           <FeedbackButton
             variant="contained"
-            // color="primary"
-            style={{ backgroundColor: "#FFBA49" }}
+            color="secondary"
             component={Link}
             to={`/candidates/${candidate.id}/feedback`}
           >
-            <FeedbackTypography style={{ color: "black" }} variant="h6">
-              Edit feedback
-            </FeedbackTypography>
+            <FeedbackTypography variant="h6">Edit feedback</FeedbackTypography>
           </FeedbackButton>
         )}
       </UpperButtonContainer>
@@ -341,7 +338,7 @@ const CandidateDetails = ({ candidates }) => {
         {/* <StyledButton */}
         <FeedbackButton
           variant="contained"
-          color="primary"
+          color="secondary"
           onClick={openDialogWindow}
         >
           <FeedbackTypography variant="h6">Delete profile</FeedbackTypography>
@@ -364,12 +361,12 @@ const CandidateDetails = ({ candidates }) => {
           <DialogActions>
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
               onClick={() => deleteCandidate(candidate.id)}
             >
               <Typography variant="h6">Confirm</Typography>
             </Button>
-            <Button variant="outlined" onClick={closeDialogWindow} autoFocus>
+            <Button variant="outlined" color="secondary" onClick={closeDialogWindow} autoFocus>
               <Typography variant="h6">Cancel</Typography>
             </Button>
           </DialogActions>
