@@ -60,6 +60,21 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
+const LoginButton = styled(Button)`
+&& {
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  background-color: #25283D;
+  color: #ffba49;
+
+  &:hover {
+    background-color: #ffba49;
+    color: #000000
+  }
+}
+`
+
 const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
@@ -288,14 +303,14 @@ const NavigationBar = ({ candidates }) => {
                 </StyledButton>
               </Hidden>
 
-              <StyledButton
+              <LoginButton
                 color="secondary"
                 variant="contained"
                 component={Link}
                 to="/login"
               >
                 <Typography variant="h5">Login</Typography>
-              </StyledButton>
+              </LoginButton>
             </>
           ) : (
             <>
