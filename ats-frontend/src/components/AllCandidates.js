@@ -72,7 +72,10 @@ const AllCandidates = ({ candidates, userId }) => {
       ),
       minWidth: 350,
       renderCell: (params) => (
-        <Link to={`/candidates/${params.row.id}`}>
+        <Link
+          to={`/candidates/${params.row.id}`}
+          style={{ textDecoration: "none" }}
+        >
           <StyledButton variant="contained">
             <Typography variant="h6">{params.row.Name}</Typography>
           </StyledButton>
@@ -137,11 +140,6 @@ const AllCandidates = ({ candidates, userId }) => {
               paginationModel: {
                 pageSize: 10,
               },
-            },
-          }}
-          props={{
-            pagination: {
-              style: { display: "flex", border: "1px solid red" },
             },
           }}
           pageSizeOptions={[5, 10, 15, 25, 50]}
