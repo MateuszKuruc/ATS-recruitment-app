@@ -16,7 +16,7 @@ export const getColorForAssessment = (assessment) => {
     case "4 - Good candidate":
       return "#8bc34a";
     case "3 - Maybe":
-      return "#ffd966";
+      return "#FFBA49";
     case "2 - No hire":
       return "#cc0000";
     case "1 - Disqualified":

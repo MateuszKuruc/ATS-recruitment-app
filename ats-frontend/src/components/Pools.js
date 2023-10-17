@@ -5,34 +5,34 @@ import { useNavigate } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledPaper = styled(Paper)`
-  // height: 100%;
-  // width: 100%;
-  // aspect-ratio: 1 / 1;
-  // max-width: 300px;
   display: flex;
   flex: 1;
 
   @media (max-width: 768px) {
     aspect-ratio: auto;
-    // flex: 0;
-    // margin: 0;
   }
 `;
 
 const StyledButton = styled(Button)`
   && {
-    // width: 100%;
-    background-color: #c0d9e7;
-    // height: 100%;
+    background-color: #ffba49;
+    background-color: #25283d;
+
+    color: #ffba49;
     border-radius: 0.5rem;
-    border: 0.3rem solid #084c61;
+    border: 0.3rem solid #ffba49;
     transition: background-color 0.3s ease;
 
     flex: 1;
 
     &:hover {
-      background-color: #084c61;
+      background-color: #ffba49;
       color: #ffffff;
+      border: 0.3rem solid #25283d;
+    }
+
+    @media (max-width: 768px) {
+      border: 0.15rem solid #ffba49;
     }
   }
 `;
