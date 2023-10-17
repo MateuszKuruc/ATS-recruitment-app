@@ -62,7 +62,7 @@ const StyledHeader = styled.div`
   padding: 1rem;
   border-radius: 0.5rem;
   justify-content: center;
-  
+
   color: #ffffff;
 `;
 
@@ -86,6 +86,14 @@ const Feedback = ({ candidates }) => {
     contract: "UoP",
     notes: "",
   };
+
+  console.log("cand and edit cand in feedback", candidate, editedCandidate);
+
+  // useEffect(() => {
+  //   if (!candidate && editedCandidate) {
+  //     window.history.back();
+  //   }
+  // }, [candidate, editedCandidate]);
 
   useEffect(() => {
     const candidate = candidates.find((candidate) => candidate.id === id);
@@ -160,11 +168,12 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="assessment"
             label={isSmallScreen ? "Assessment" : null}
-            value={
-              editedCandidate.assessment !== ""
-                ? editedCandidate.assessment
-                : defaultValues.assessment
-            }
+            // value={
+            //   editedCandidate.assessment !== ""
+            //     ? editedCandidate.assessment
+            //     : defaultValues.assessment
+            // }
+            value={editedCandidate.assessment || "6 - Rockstar"}
             onChange={({ target }) =>
               setEditedCandidate({
                 ...editedCandidate,
@@ -188,11 +197,12 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="noticeperiod"
             label={isSmallScreen ? "Notice-period" : null}
-            value={
-              editedCandidate.notice !== ""
-                ? editedCandidate.notice
-                : defaultValues.notice
-            }
+            // value={
+            //   editedCandidate.notice !== ""
+            //     ? editedCandidate.notice
+            //     : defaultValues.notice
+            // }
+            value={editedCandidate.notice || "Available now"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, notice: target.value })
             }
@@ -212,11 +222,12 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="language"
             label={isSmallScreen ? "English" : null}
-            value={
-              editedCandidate.language !== ""
-                ? editedCandidate.language
-                : defaultValues.language
-            }
+            // value={
+            //   editedCandidate.language !== ""
+            //     ? editedCandidate.language
+            //     : defaultValues.language
+            // }
+            value={editedCandidate.language || "A1"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, language: target.value })
             }
@@ -240,11 +251,12 @@ const Feedback = ({ candidates }) => {
           <Select
             labelId="contract"
             label={isSmallScreen ? "contract-type" : null}
-            value={
-              editedCandidate.contract !== ""
-                ? editedCandidate.contract
-                : defaultValues.contract
-            }
+            // value={
+            //   editedCandidate.contract !== ""
+            //     ? editedCandidate.contract
+            //     : defaultValues.contract
+            // }
+            value={editedCandidate.contract || "UoP"}
             onChange={({ target }) =>
               setEditedCandidate({ ...editedCandidate, contract: target.value })
             }
