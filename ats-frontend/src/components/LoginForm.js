@@ -35,7 +35,7 @@ const MainContainer = styled.div`
   }
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   height: 400px;
@@ -89,7 +89,7 @@ const LoginForm = ({
 }) => {
   return (
     <MainContainer>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <StyledHeader>
           <Typography variant="h4">LOGIN</Typography>
         </StyledHeader>
@@ -118,7 +118,6 @@ const LoginForm = ({
           type="submit"
           variant="contained"
           color="secondary"
-          onClick={handleSubmit}
         >
           <Typography variant="h6">Log in</Typography>
         </StyledButton>
