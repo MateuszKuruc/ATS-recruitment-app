@@ -15,7 +15,7 @@ import { setLogin } from "./reducers/loginReducer";
 import candidateService from "./services/candidates";
 import loginService from "./services/login";
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container, createTheme, ThemeProvider } from "@mui/material";
@@ -25,6 +25,7 @@ import NavigationBar from "./components/Layout/NavigationBar";
 import NotFound from "./components/Info/NotFound";
 import UserFeedback from "./components/Info/UserFeedback";
 import Help from "./components/Info/Help";
+import { AnimatePresence } from "framer-motion";
 
 const websiteTheme = createTheme({
   palette: {
@@ -118,6 +119,7 @@ export const secondaryColor = websiteTheme.palette.secondary.main;
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -232,66 +234,68 @@ function App() {
       <StyledContainer>
         <NavigationBar candidates={candidates} />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/tips" element={<TipsTab />} />
-          <Route
-            path="/login"
-            element={
-              login ? (
-                <AllCandidates candidates={candidates} userId={login.id} />
-              ) : (
-                <LoginForm
-                  handleSubmit={handleLogin}
-                  handleUsernameChange={({ target }) =>
-                    setUsername(target.value)
-                  }
-                  handlePasswordChange={({ target }) =>
-                    setPassword(target.value)
-                  }
-                  login={login}
-                  usernameError={usernameError}
-                  passwordError={passwordError}
-                />
-              )
-            }
-          />
-          <Route path="/logout" element={<LogoutPage />} />
+        <AnimatePresence mode="wait">
+          <Routes key={location.pathname} location={location}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/tips" element={<TipsTab />} />
+            <Route
+              path="/login"
+              element={
+                login ? (
+                  <AllCandidates candidates={candidates} userId={login.id} />
+                ) : (
+                  <LoginForm
+                    handleSubmit={handleLogin}
+                    handleUsernameChange={({ target }) =>
+                      setUsername(target.value)
+                    }
+                    handlePasswordChange={({ target }) =>
+                      setPassword(target.value)
+                    }
+                    login={login}
+                    usernameError={usernameError}
+                    passwordError={passwordError}
+                  />
+                )
+              }
+            />
+            <Route path="/logout" element={<LogoutPage />} />
 
-          <Route
-            path="/candidates"
-            element={
-              <AllCandidates candidates={candidates} userId={login?.id} />
-            }
-          />
-          <Route path="/add" element={<AddProfile />} />
-          <Route
-            path="/pools"
-            element={<Pools setTechnology={setTechnology} />}
-          />
-          <Route
-            path="/pools/:technology"
-            element={<PoolDetails candidatesByTech={candidatesByTech} />}
-          />
-          <Route
-            path="/hot"
-            element={
-              <CandidateProfiles candidates={candidates} userId={login?.id} />
-            }
-          />
-          <Route
-            path="/candidates/:id"
-            element={<CandidateDetails candidates={candidates} />}
-          />
-          <Route
-            path="/candidates/:id/feedback"
-            element={<Feedback candidates={candidates} />}
-          />
-          <Route path="/feedback" element={<UserFeedback />} />
-          <Route path="/help" element={<Help />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route
+              path="/candidates"
+              element={
+                <AllCandidates candidates={candidates} userId={login?.id} />
+              }
+            />
+            <Route path="/add" element={<AddProfile />} />
+            <Route
+              path="/pools"
+              element={<Pools setTechnology={setTechnology} />}
+            />
+            <Route
+              path="/pools/:technology"
+              element={<PoolDetails candidatesByTech={candidatesByTech} />}
+            />
+            <Route
+              path="/hot"
+              element={
+                <CandidateProfiles candidates={candidates} userId={login?.id} />
+              }
+            />
+            <Route
+              path="/candidates/:id"
+              element={<CandidateDetails candidates={candidates} />}
+            />
+            <Route
+              path="/candidates/:id/feedback"
+              element={<Feedback candidates={candidates} />}
+            />
+            <Route path="/feedback" element={<UserFeedback />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
 
         <Footer />
       </StyledContainer>
