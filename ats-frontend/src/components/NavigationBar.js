@@ -86,6 +86,15 @@ const LoginButton = styled(Button)`
   }
 `;
 
+const ProfileIconButton = styled(IconButton)`
+  && {
+    color: #ffffff;
+    &:hover {
+      color: #FFBA49;
+    }
+  }
+`;
+
 const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
   const notification = useSelector((state) => state.notification);
@@ -388,13 +397,10 @@ const NavigationBar = ({ candidates }) => {
               <Hidden mdDown>
                 <div>
                   <Tooltip title={`${login.username} logged in`}>
-                    <IconButton
-                      onClick={handleOpenMenu}
-                      style={{ color: "#ffffff" }}
-                    >
+                    <ProfileIconButton onClick={handleOpenMenu}>
                       <AccountBoxIcon fontSize="large" />
                       <Typography variant="h6">{login.username}</Typography>
-                    </IconButton>
+                    </ProfileIconButton>
                   </Tooltip>
                   <Popover
                     open={open}
