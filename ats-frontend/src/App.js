@@ -24,6 +24,7 @@ import PoolDetails from "./components/CandidateDetails/PoolDetails";
 import NavigationBar from "./components/Layout/NavigationBar";
 import NotFound from "./components/Info/NotFound";
 import UserFeedback from "./components/Info/UserFeedback";
+import Help from "./components/Info/Help";
 
 const websiteTheme = createTheme({
   palette: {
@@ -288,6 +289,7 @@ function App() {
             element={<Feedback candidates={candidates} />}
           />
           <Route path="/feedback" element={<UserFeedback />} />
+          <Route path="/help" element={<Help />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
