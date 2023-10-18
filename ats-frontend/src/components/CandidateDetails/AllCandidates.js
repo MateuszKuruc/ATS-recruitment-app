@@ -31,7 +31,6 @@ export const getColorForAssessment = (assessment) => {
 const Container = styled.div`
   margin-too: 1rem;
   border-rariuds: 0.5rem;
-  display: flex;
   overflow-x: scroll;
   margin-bottom: 1rem;
 `;
