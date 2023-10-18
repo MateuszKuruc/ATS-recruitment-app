@@ -12,9 +12,9 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { updateCandidate } from "../reducers/candidateReducer";
+import { updateCandidate } from "../../reducers/candidateReducer";
 import format from "date-fns/format";
-import { setNotification } from "../reducers/notificationReducer";
+import { setNotification } from "../../reducers/notificationReducer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const StyledContainer = styled.div`

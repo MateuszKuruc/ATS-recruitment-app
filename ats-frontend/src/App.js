@@ -7,7 +7,7 @@ import AllCandidates from "./components/AllCandidates";
 import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 import Footer from "./components/Footer";
 import Pools from "./components/Pools";
-import Feedback from "./components/Feedback";
+import Feedback from "./components/candidateDetails/CandidateFeedback";
 import CandidateProfiles from "./components/CandidateProfiles";
 import LogoutPage from "./components/LogoutPage";
 import { initializeCandidates } from "./reducers/candidateReducer";
@@ -23,30 +23,18 @@ import { setNotification } from "./reducers/notificationReducer";
 import PoolDetails from "./components/PoolDetails";
 import NavigationBar from "./components/NavigationBar";
 import NotFound from "./components/NotFound";
+import UserFeedback from "./components/UserFeedback";
 
 const websiteTheme = createTheme({
-  // palette: {
-  //   primary: {
-  //     main: "#084c61",
-  //   },
-  //   secondary: {
-  //     main: "#990033",
-  //   },
-  //   accent: {
-  //     main: "#c0d9e7",
-  //   },
-  // },
   palette: {
     primary: {
       main: "#8F3985", // plum
     },
     secondary: {
       main: "#FFBA49", // gold
-      // main: "#25283D",
     },
     accent: {
       main: "#25283D", // space cadet
-      // main: "#FFBA49",
     },
     accen2: {
       main: "#EBCBF4", // lavender
@@ -249,17 +237,23 @@ function App() {
           <Route path="/tips" element={<TipsTab />} />
           <Route
             path="/login"
-            element={login ? <AllCandidates candidates={candidates} userId={login.id} /> : (
-
-              <LoginForm
-                handleSubmit={handleLogin}
-                handleUsernameChange={({ target }) => setUsername(target.value)}
-                handlePasswordChange={({ target }) => setPassword(target.value)}
-                login={login}
-                usernameError={usernameError}
-                passwordError={passwordError}
+            element={
+              login ? (
+                <AllCandidates candidates={candidates} userId={login.id} />
+              ) : (
+                <LoginForm
+                  handleSubmit={handleLogin}
+                  handleUsernameChange={({ target }) =>
+                    setUsername(target.value)
+                  }
+                  handlePasswordChange={({ target }) =>
+                    setPassword(target.value)
+                  }
+                  login={login}
+                  usernameError={usernameError}
+                  passwordError={passwordError}
                 />
-                )
+              )
             }
           />
           <Route path="/logout" element={<LogoutPage />} />
@@ -293,6 +287,7 @@ function App() {
             path="/candidates/:id/feedback"
             element={<Feedback candidates={candidates} />}
           />
+          <Route path="/feedback" element={<UserFeedback />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
