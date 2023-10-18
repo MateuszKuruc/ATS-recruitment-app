@@ -71,7 +71,6 @@ const LogoutPage = () => {
   return (
     <MainContainer>
       <TopContainer>
-        <HeaderTypography variant="h3">Logout completed</HeaderTypography>
         <Typography variant="italic3">
           <p>
             You have been successfully logged out. Please note that you
