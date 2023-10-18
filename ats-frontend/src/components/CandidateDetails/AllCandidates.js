@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 
+import AnimatedPage from "../Layout/AnimatedPage";
+
 export const getColorForAssessment = (assessment) => {
   switch (assessment) {
     case "6 - Rockstar":
@@ -136,23 +138,25 @@ const AllCandidates = ({ candidates, userId }) => {
   ];
 
   return (
-    <Container>
-      <Paper>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          disableRowSelectionOnClick
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
+    <AnimatedPage>
+      <Container>
+        <Paper>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            disableRowSelectionOnClick
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 10,
+                },
               },
-            },
-          }}
-          pageSizeOptions={[5, 10, 15, 25, 50]}
-        />
-      </Paper>
-    </Container>
+            }}
+            pageSizeOptions={[5, 10, 15, 25, 50]}
+          />
+        </Paper>
+      </Container>
+    </AnimatedPage>
   );
 };
 

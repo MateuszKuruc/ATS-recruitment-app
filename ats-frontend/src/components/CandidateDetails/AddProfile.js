@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { validateEditForCandidate } from "../../utils/validationService";
 import { setNotification } from "../../reducers/notificationReducer";
 
+import AnimatedPage from "../Layout/AnimatedPage";
+
 const FieldContainer = styled.div`
   && {
     display: flex;
@@ -223,113 +225,119 @@ const AddProfile = () => {
   };
 
   return (
-    <StyledForm>
-      <FieldContainer>
-        <StyledHeader>
-          <Typography variant="h4">NEW PROFILE FORM</Typography>
-        </StyledHeader>
-        <StyledTextField
-          error={firstNameError}
-          helperText={
-            firstNameError ? "Enter first name (2 - 15 characters)" : ""
-          }
-          value={firstName}
-          label="First name"
-          onChange={({ target }) => setFirstName(target.value)}
-        ></StyledTextField>
+    <AnimatedPage>
+      <StyledForm>
+        <FieldContainer>
+          <StyledHeader>
+            <Typography variant="h4">NEW PROFILE FORM</Typography>
+          </StyledHeader>
+          <StyledTextField
+            error={firstNameError}
+            helperText={
+              firstNameError ? "Enter first name (2 - 15 characters)" : ""
+            }
+            value={firstName}
+            label="First name"
+            onChange={({ target }) => setFirstName(target.value)}
+          ></StyledTextField>
 
-        <StyledTextField
-          error={lastNameError}
-          helperText={lastNameError ? "Enter last name (2 -15 characters)" : ""}
-          value={lastName}
-          label="Last name"
-          onChange={({ target }) => setLastName(target.value)}
-        ></StyledTextField>
+          <StyledTextField
+            error={lastNameError}
+            helperText={
+              lastNameError ? "Enter last name (2 -15 characters)" : ""
+            }
+            value={lastName}
+            label="Last name"
+            onChange={({ target }) => setLastName(target.value)}
+          ></StyledTextField>
 
-        <StyledTextField
-          error={locationError}
-          helperText={locationError ? "Enter location (2 - 15 characters" : ""}
-          value={location}
-          label="Location"
-          onChange={({ target }) => setLocation(target.value)}
-        ></StyledTextField>
+          <StyledTextField
+            error={locationError}
+            helperText={
+              locationError ? "Enter location (2 - 15 characters" : ""
+            }
+            value={location}
+            label="Location"
+            onChange={({ target }) => setLocation(target.value)}
+          ></StyledTextField>
 
-        <StyledTextField
-          error={emailError}
-          helperText={emailError ? "Enter email in correct format" : ""}
-          value={email}
-          label="Email address"
-          onChange={({ target }) => setEmail(target.value)}
-        ></StyledTextField>
+          <StyledTextField
+            error={emailError}
+            helperText={emailError ? "Enter email in correct format" : ""}
+            value={email}
+            label="Email address"
+            onChange={({ target }) => setEmail(target.value)}
+          ></StyledTextField>
 
-        <StyledTextField
-          error={phoneError}
-          helperText={
-            phoneError ? "Enter phone number (9 - 11 characters)" : ""
-          }
-          value={phone}
-          label="Phone number"
-          onChange={({ target }) => setPhone(target.value)}
-        ></StyledTextField>
+          <StyledTextField
+            error={phoneError}
+            helperText={
+              phoneError ? "Enter phone number (9 - 11 characters)" : ""
+            }
+            value={phone}
+            label="Phone number"
+            onChange={({ target }) => setPhone(target.value)}
+          ></StyledTextField>
 
-        <StyledFormControl
-          fullWidth
-          error={skillError}
-          style={{ backgroundColor: "white" }}
-        >
-          <InputLabel id="skill">Skill</InputLabel>
-          <Select
-            labelId="skill"
-            label="Skill"
-            value={skill}
-            onChange={({ target }) => setSkill(target.value)}
+          <StyledFormControl
+            fullWidth
+            error={skillError}
+            style={{ backgroundColor: "white" }}
           >
-            <MenuItem value="Java">Java</MenuItem>
-            <MenuItem value="Python">Python</MenuItem>
-            <MenuItem value="JavaScript">JavaScript</MenuItem>
-            <MenuItem value="C">C/C#/C++</MenuItem>
-            <MenuItem value="Scala">Scala</MenuItem>
-            <MenuItem value="BigData">Big Data</MenuItem>
-            <MenuItem value="DevOps">DevOps</MenuItem>
-            <MenuItem value="Mobile">Mobile</MenuItem>
-            <MenuItem value="Golang">Golang</MenuItem>
-          </Select>
-        </StyledFormControl>
+            <InputLabel id="skill">Skill</InputLabel>
+            <Select
+              labelId="skill"
+              label="Skill"
+              value={skill}
+              onChange={({ target }) => setSkill(target.value)}
+            >
+              <MenuItem value="Java">Java</MenuItem>
+              <MenuItem value="Python">Python</MenuItem>
+              <MenuItem value="JavaScript">JavaScript</MenuItem>
+              <MenuItem value="C">C/C#/C++</MenuItem>
+              <MenuItem value="Scala">Scala</MenuItem>
+              <MenuItem value="BigData">Big Data</MenuItem>
+              <MenuItem value="DevOps">DevOps</MenuItem>
+              <MenuItem value="Mobile">Mobile</MenuItem>
+              <MenuItem value="Golang">Golang</MenuItem>
+            </Select>
+          </StyledFormControl>
 
-        <StyledFormControl fullWidth error={seniorityError}>
-          <InputLabel id="seniority">Seniority</InputLabel>
-          <Select
-            labelId="seniority"
-            label="Seniority"
-            value={seniority}
-            onChange={({ target }) => setSeniority(target.value)}
+          <StyledFormControl fullWidth error={seniorityError}>
+            <InputLabel id="seniority">Seniority</InputLabel>
+            <Select
+              labelId="seniority"
+              label="Seniority"
+              value={seniority}
+              onChange={({ target }) => setSeniority(target.value)}
+            >
+              <MenuItem value="Intern">Intern</MenuItem>
+              <MenuItem value="Junior">Junior</MenuItem>
+              <MenuItem value="Regular">Regular</MenuItem>
+              <MenuItem value="Senior">Senior</MenuItem>
+              <MenuItem value="Lead">Lead</MenuItem>
+              <MenuItem value="Manager">Manager</MenuItem>
+            </Select>
+          </StyledFormControl>
+
+          <StyledDatePicker
+            defaultValue={firstContact}
+            label="First contact"
+            onChange={(newValue) => setFirstContact(dayjs(newValue))}
+          />
+
+          <StyledButton
+            type="submit"
+            id="addButton"
+            variant="contained"
+            color="secondary"
+            onClick={handleNewCandidate}
           >
-            <MenuItem value="Intern">Intern</MenuItem>
-            <MenuItem value="Junior">Junior</MenuItem>
-            <MenuItem value="Regular">Regular</MenuItem>
-            <MenuItem value="Senior">Senior</MenuItem>
-            <MenuItem value="Lead">Lead</MenuItem>
-            <MenuItem value="Manager">Manager</MenuItem>
-          </Select>
-        </StyledFormControl>
-
-        <StyledDatePicker
-          defaultValue={firstContact}
-          label="First contact"
-          onChange={(newValue) => setFirstContact(dayjs(newValue))}
-        />
-
-        <StyledButton
-          type="submit"
-          id="addButton"
-          variant="contained"
-          color="secondary"
-          onClick={handleNewCandidate}
-        >
-          <Typography variant="h5">Add profile</Typography>
-        </StyledButton>
-      </FieldContainer>
-    </StyledForm>
+            <Typography variant="h5">Add profile</Typography>
+          </StyledButton>
+        </FieldContainer>
+      </StyledForm>
+    </AnimatedPage>
   );
 };
 
