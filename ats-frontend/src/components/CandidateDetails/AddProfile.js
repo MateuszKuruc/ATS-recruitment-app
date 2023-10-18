@@ -28,11 +28,8 @@ const FieldContainer = styled.div`
     border-radius: 0.5rem;
     gap: 1rem;
     flex: 1;
-
-    // @media (max-width: 1440px) {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    // }
 
     @media (max-width: 768px) {
       padding: 0.5rem;

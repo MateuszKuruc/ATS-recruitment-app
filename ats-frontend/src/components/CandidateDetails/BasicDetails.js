@@ -1,8 +1,6 @@
 import dayjs from "dayjs";
 import styled from "styled-components";
-
 import { DatePicker } from "@mui/x-date-pickers";
-
 import {
   Grid,
   Paper,
@@ -15,7 +13,6 @@ import {
   Button,
   InputLabel,
 } from "@mui/material";
-import AnimatedPage from "../Layout/AnimatedPage";
 
 const StyledHeader = styled.div`
   && {
@@ -23,8 +20,6 @@ const StyledHeader = styled.div`
     justify-content: space-around;
     align-items: center;
     margin-bottom: 1rem;
-    background-color: #084c61;
-
     background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 1rem;
@@ -47,12 +42,6 @@ const StyledPaper = styled(Paper)`
   padding-right: 2rem;
   padding-left: 2rem;
   gap: 0.25rem;
-
-  @media (max-width: 768px) {
-    // padding-right: 1rem;
-    // padding-left: 1rem;
-    // border: 1px solid red;
-  }
 `;
 
 const StyledTextField = styled(TextField)`
@@ -67,18 +56,13 @@ const StyledTextField = styled(TextField)`
     @media (max-width: 768px) {
       margin-top: 1rem;
       margin-bottom: 0rem;
-  
-
     }
-
 
     ${(props) =>
       props.disabled &&
       `
     color: #ffffff
     `}
-
-   
 `;
 
 const StyledDatePicker = styled(DatePicker)`
@@ -128,7 +112,6 @@ const StyledButton = styled(Button)`
   && {
     flex: 1;
     padding: 1rem;
-
     max-width: 200px;
 
     @media (max-width: 768px) {

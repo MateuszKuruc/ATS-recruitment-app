@@ -1,12 +1,9 @@
 import { Paper, Button, Typography } from "@mui/material";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import { DataGrid } from "@mui/x-data-grid";
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import styled from "styled-components";
-
 import AnimatedPage from "../Layout/AnimatedPage";
 
 export const getColorForAssessment = (assessment) => {
