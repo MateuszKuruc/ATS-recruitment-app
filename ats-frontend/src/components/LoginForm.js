@@ -1,6 +1,5 @@
 import { TextField, Button, Typography } from "@mui/material";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 export const StyledTextField = styled(TextField)`
   && {
@@ -85,14 +84,9 @@ const LoginForm = ({
   handleSubmit,
   handleUsernameChange,
   handlePasswordChange,
-  login,
   usernameError,
   passwordError,
 }) => {
-  const navigate = useNavigate();
-  if (login) {
-    navigate("/candidates");
-  }
   return (
     <MainContainer>
       <FormContainer>

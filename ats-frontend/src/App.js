@@ -22,6 +22,7 @@ import { Container, createTheme, ThemeProvider } from "@mui/material";
 import { setNotification } from "./reducers/notificationReducer";
 import PoolDetails from "./components/PoolDetails";
 import NavigationBar from "./components/NavigationBar";
+import NotFound from "./components/NotFound";
 
 const websiteTheme = createTheme({
   // palette: {
@@ -248,7 +249,8 @@ function App() {
           <Route path="/tips" element={<TipsTab />} />
           <Route
             path="/login"
-            element={
+            element={login ? <AllCandidates candidates={candidates} userId={login.id} /> : (
+
               <LoginForm
                 handleSubmit={handleLogin}
                 handleUsernameChange={({ target }) => setUsername(target.value)}
@@ -256,7 +258,8 @@ function App() {
                 login={login}
                 usernameError={usernameError}
                 passwordError={passwordError}
-              />
+                />
+                )
             }
           />
           <Route path="/logout" element={<LogoutPage />} />
@@ -290,6 +293,7 @@ function App() {
             path="/candidates/:id/feedback"
             element={<Feedback candidates={candidates} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <Footer />
