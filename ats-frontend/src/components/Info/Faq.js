@@ -1,4 +1,4 @@
-import { Typography, Button, Paper } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -18,7 +18,9 @@ const SingleBlock = styled.div``;
 
 const QuestionContainer = styled.div`
   display: flex;
-
+  background-color: #ffba49;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
   justify-content: space-between;
   padding: 1rem;
   padding-left: 2rem;
@@ -30,18 +32,9 @@ const QuestionContainer = styled.div`
   }
 `;
 
-const StyledButton = styled(Button)`
-  && {
-    padding: 1rem;
-
-    @media (max-width: 768px) {
-      width: 100%;
-    }
-  }
-`;
-
 const StyledPaper = styled(Paper)`
   padding: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const TopHeader = styled.div`
@@ -50,12 +43,22 @@ const TopHeader = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const Faq = () => {
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [selected, setSelected] = useState(null);
 
-  const answerShown = { display: showAnswer ? "block" : "none" };
+  const toggleSelected = (i) => {
+    if (selected === i) {
+      return setSelected(null);
+    }
+    setSelected(i);
+  };
 
   const content = [
     {
@@ -108,20 +111,19 @@ const Faq = () => {
     <MainContainer>
       <TopHeader>
         <Typography variant="h1">FAQ</Typography>
-        <StyledButton
-          variant="contained"
-          color="secondary"
-          onClick={() => setShowAnswer(!showAnswer)}
-        >
-          <Typography variant="h6">Show answers</Typography>
-        </StyledButton>
       </TopHeader>
-      {content.map((c) => (
-        <SingleBlock key={c.id}>
-          <QuestionContainer>
+
+      {content.map((c, i) => (
+        <SingleBlock>
+          <QuestionContainer onClick={() => toggleSelected(i)}>
             <Typography variant="h6">{c.question}</Typography>
+            <span>
+              <Typography variant="h6">{selected === i ? "-" : "+"}</Typography>
+            </span>
           </QuestionContainer>
-          <StyledPaper style={answerShown}>
+          <StyledPaper
+            style={selected === i ? { display: "block" } : { display: "none" }}
+          >
             <Typography variant="body1">{c.answer}</Typography>
           </StyledPaper>
         </SingleBlock>
