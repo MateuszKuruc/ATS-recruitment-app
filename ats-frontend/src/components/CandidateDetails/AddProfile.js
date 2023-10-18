@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { DatePicker } from "@mui/x-date-pickers";
+
 import {
   FormControl,
   Select,
@@ -10,13 +11,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import dayjs from "dayjs";
 import { createCandidate } from "../../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { validateEditForCandidate } from "../../utils/validationService";
 import { setNotification } from "../../reducers/notificationReducer";
-
 import AnimatedPage from "../Layout/AnimatedPage";
 
 const FieldContainer = styled.div`

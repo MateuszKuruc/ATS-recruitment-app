@@ -17,7 +17,6 @@ const StyledHeader = styled.div`
     justify-content: space-around;
     align-content: center;
     margin-bottom: 1rem;
-    background-color: #084c61;
     background-color: #25283d;
     padding: 0.25rem;
     border-radius: 0.5rem;

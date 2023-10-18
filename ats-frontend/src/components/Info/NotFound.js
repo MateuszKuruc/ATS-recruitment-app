@@ -13,12 +13,10 @@ const MainContainer = styled.div`
 
     @media (max-width: 1440px) {
       padding-top: 3rem;
-    
     }
 
     @media (max-width: 768px) {
       padding-top: 2rem;
-      // justify-content: center;
       padding-right: 2rem;
       padding-left: 2rem;
       padding-bottom: 5rem;
@@ -26,15 +24,17 @@ const MainContainer = styled.div`
   }
 `;
 
+const StyledTypography = styled(Typography)`
+  && {
+    color: #8f3985;
+  }
+`;
+
 const NotFound = () => {
   return (
     <MainContainer>
-      <Typography variant="h1" style={{ color: "#8F3985" }}>
-        404
-      </Typography>
-      <Typography variant="h2" style={{ color: "#8F3985" }}>
-        Page not found
-      </Typography>
+      <StyledTypography variant="h1">404</StyledTypography>
+      <StyledTypography variant="h2">Page not found</StyledTypography>
       <p>
         <Typography variant="italic3">
           <p>

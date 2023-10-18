@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import {
   Typography,
   TextField,
@@ -10,24 +11,18 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import styled from "styled-components";
 
+import styled from "styled-components";
 import { removeCandidate } from "../../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { updateCandidate } from "../../reducers/candidateReducer";
-
 import { format } from "date-fns";
-
 import CandidateBasicDetails from "./BasicDetails";
 import CandidateExtendedFeedback from "./ExtendedFeedback";
 import CandidateFiles from "./Files";
-
 import { validateEditForCandidate } from "../../utils/validationService";
-
 import { setNotification } from "../../reducers/notificationReducer";
-
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AnimatedPage from "../Layout/AnimatedPage";
 
@@ -51,7 +46,6 @@ const StyledHeader = styled.div`
     justify-content: space-around;
     align-items: center;
     margin-bottom: 1rem;
-    background-color: #084c61;
     background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -65,7 +59,6 @@ const StyledHeader = styled.div`
 `;
 
 const Container = styled.div`
-  background-color: #c0d9e7;
   background-color: #ebcbf4;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -73,8 +66,6 @@ const Container = styled.div`
   margin-top: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
-  // display: flex;
-  // flex: 1;
 
   @media (max-width: 768px) {
     padding: 0;
@@ -97,23 +88,16 @@ const FeedbackButton = styled(Button)`
     flex: 1;
     padding: 1rem;
 
-    // background-color: #ffba49;
-
     @media (max-width: 768px) {
       max-width: 100%;
     }
   }
 `;
 
-const FeedbackTypography = styled(Typography)`
-  // color: #25283d;
-`;
-
 const UpperButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  // flex: 1;
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;
@@ -266,9 +250,9 @@ const CandidateDetails = ({ candidates }) => {
               onClick={toggleNotes}
             >
               {showNotes ? (
-                <FeedbackTypography variant="h6">Hide notes</FeedbackTypography>
+                <Typography variant="h6">Hide notes</Typography>
               ) : (
-                <FeedbackTypography variant="h6">Show notes</FeedbackTypography>
+                <Typography variant="h6">Show notes</Typography>
               )}
             </FeedbackButton>
           )}
@@ -280,9 +264,7 @@ const CandidateDetails = ({ candidates }) => {
               component={Link}
               to={`/candidates/${candidate.id}/feedback`}
             >
-              <FeedbackTypography variant="h6">
-                Provide feedback
-              </FeedbackTypography>
+              <Typography variant="h6">Provide feedback</Typography>
             </FeedbackButton>
           ) : (
             <FeedbackButton
@@ -291,9 +273,7 @@ const CandidateDetails = ({ candidates }) => {
               component={Link}
               to={`/candidates/${candidate.id}/feedback`}
             >
-              <FeedbackTypography variant="h6">
-                Edit feedback
-              </FeedbackTypography>
+              <Typography variant="h6">Edit feedback</Typography>
             </FeedbackButton>
           )}
         </UpperButtonContainer>
@@ -340,7 +320,7 @@ const CandidateDetails = ({ candidates }) => {
             color="secondary"
             onClick={openDialogWindow}
           >
-            <FeedbackTypography variant="h6">Delete profile</FeedbackTypography>
+            <Typography variant="h6">Delete profile</Typography>
           </FeedbackButton>
           <Dialog
             open={openDialog}

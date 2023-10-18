@@ -54,7 +54,6 @@ const Container = styled.div`
   && {
     display: flex;
     justify-content: flex-start;
-    // align-items: center;
     gap: 1rem;
     flex-direction: column;
     background-color: #ebcbf4;
@@ -74,7 +73,6 @@ const StyledButton = styled(Button)`
   && {
     flex: 1;
     padding: 1rem;
-
     max-width: 200px;
 
     @media (max-width: 768px) {
@@ -89,9 +87,6 @@ const StyledHeader = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #084c61;
-
-    background-color: #8f3985;
     background-color: #25283d;
     border-radius: 0.5rem;
     margin-top: 1rem;
@@ -125,7 +120,6 @@ const ButtonContainer = styled.div`
 const IconContainer = styled.div`
 border-radius: 0,
 gap: 1.5rem
-// background-color: #084c61;
 
 @media (max-width: 768px) {
   border: 1px solid red;

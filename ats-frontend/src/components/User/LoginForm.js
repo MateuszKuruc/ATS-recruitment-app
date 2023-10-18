@@ -3,17 +3,15 @@ import styled from "styled-components";
 
 export const StyledTextField = styled(TextField)`
   && {
-   
     border-radius: 0.5rem;
+
     @media (max-width: 768px) {
       background-color: #ffffff
     }
 
-
     label.MuiInputLabel-root.MuiInputLabel-shrink {
       background-color: #ebcbf4;
       border-radius: 0.25rem;
-
       margin: 0;
       padding-left: 0.2rem;
       padding-right: 0.2rem;
@@ -53,7 +51,6 @@ const FormContainer = styled.form`
 const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
-
   background-color: #25283d;
   margin-bottom: 1.5rem;
   padding: 1rem;

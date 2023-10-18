@@ -49,7 +49,7 @@ const CandidateContainer = styled.div`
     overflow: hidden;
     overflow-y: auto;
     width: 100%;
-    border: 0.2rem solid #800020;
+    border: 0.2rem solid #25283d;
     right: 0;
     left: 0;
     top: 100%;
@@ -59,7 +59,7 @@ const CandidateContainer = styled.div`
       display: flex;
       flex-direction: column;
       right: 0;
-      border: 0.1rem solid #800020;
+      border: 0.1rem solid #25283d;
     }
 
     &::-webkit-scrollbar {

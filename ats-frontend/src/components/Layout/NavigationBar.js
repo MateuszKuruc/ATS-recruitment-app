@@ -11,6 +11,7 @@ import {
   Hidden,
   Drawer,
 } from "@mui/material";
+
 import Notification from "./Notification";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -75,7 +76,6 @@ const LoginButton = styled(Button)`
   && {
     padding-right: 1rem;
     padding-left: 1rem;
-
     background-color: #25283d;
     color: #ffba49;
 
@@ -119,11 +119,8 @@ const NavigationBar = ({ candidates }) => {
     } else {
       isActive = path === currentPath;
     }
-    // const isActive = path === currentPath;
     return {
       backgroundColor: isActive ? "#FFBA49" : "initial",
-
-      // color: isActive ? "#ffffff" : "initial",
     };
   };
 

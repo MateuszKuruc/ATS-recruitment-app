@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import {
   FormControl,
   Select,
@@ -8,6 +9,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -58,13 +60,10 @@ const StyledButtonContainer = styled.div`
 
 const StyledHeader = styled.div`
   display: flex;
-
   background-color: #25283d;
-
   padding: 1rem;
   border-radius: 0.5rem;
   justify-content: center;
-
   color: #ffffff;
 `;
 

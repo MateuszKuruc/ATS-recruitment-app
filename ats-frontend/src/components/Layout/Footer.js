@@ -1,6 +1,5 @@
 import { Typography, Paper, IconButton } from "@mui/material";
 import styled from "styled-components";
-
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -8,9 +7,7 @@ const StyledPaper = styled(Paper)`
   && {
     padding: 2rem;
     margin-top: auto;
-    background: #990033;
     background: #25283d;
-    // background: #FFBA49;
 
     @media (max-width: 768px) {
       padding: 0rem;
@@ -51,11 +48,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHubIcon
-              fontSize="large"
-              // color="action"
-              style={{ color: "#FFBA49" }}
-            />
+            <GitHubIcon fontSize="large" style={{ color: "#FFBA49" }} />
           </a>
         </IconButton>
         <IconButton>
@@ -64,11 +57,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <LinkedInIcon
-              fontSize="large"
-              // color="action"
-              style={{ color: "#FFBA49" }}
-            />
+            <LinkedInIcon fontSize="large" style={{ color: "#FFBA49" }} />
           </a>
         </IconButton>
       </StyledContainer>
