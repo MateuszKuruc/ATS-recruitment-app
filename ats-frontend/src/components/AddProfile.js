@@ -27,6 +27,11 @@ const FieldContainer = styled.div`
     gap: 1rem;
     flex: 1;
 
+    @media (max-width: 1440px) {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
     @media (max-width: 768px) {
       padding: 0.5rem;
       background-color: #ebcbf4;
@@ -57,6 +62,11 @@ const StyledForm = styled.form`
   margin-bottom: 1rem;
   flex: 1;
   border-radius: 0.5rem;
+
+  @media (max-width: 1440px) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 
   @media (max-width: 768px) {
     padding: 0;
