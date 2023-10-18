@@ -112,6 +112,7 @@ const UpperButtonContainer = styled.div`
   gap: 0.5rem;
   // flex: 1;
 
+
   @media (max-width: 768px) {
     flex-direction: column-reverse;
   }

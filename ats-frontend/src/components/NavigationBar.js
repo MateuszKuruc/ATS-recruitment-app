@@ -60,20 +60,31 @@ const StyledListItemButton = styled(ListItemButton)`
   }
 `;
 
-const LoginButton = styled(Button)`
-&& {
-  padding-right: 1rem;
-  padding-left: 1rem;
+const ProfileListItemButton = styled(ListItemButton)`
+  && {
+    display: flex;
+    gap: 0.5rem;
 
-  background-color: #25283D;
-  color: #ffba49;
-
-  &:hover {
-    background-color: #ffba49;
-    color: #000000
+    &:hover {
+      background-color: #ffba49;
+    }
   }
-}
-`
+`;
+
+const LoginButton = styled(Button)`
+  && {
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    background-color: #25283d;
+    color: #ffba49;
+
+    &:hover {
+      background-color: #ffba49;
+      color: #000000;
+    }
+  }
+`;
 
 const NavigationBar = ({ candidates }) => {
   const login = useSelector((state) => state.login);
@@ -399,23 +410,23 @@ const NavigationBar = ({ candidates }) => {
                     }}
                   >
                     <List>
-                      <StyledListItemButton
+                      <ProfileListItemButton
                         component={Link}
                         to="/feedback"
                         onClick={handleCloseMenu}
                       >
                         <ChatBubbleIcon />
                         <ListItemText primary="Feedback" />
-                      </StyledListItemButton>
-                      <StyledListItemButton
+                      </ProfileListItemButton>
+                      <ProfileListItemButton
                         component={Link}
                         to="/help"
                         onClick={handleCloseMenu}
                       >
                         <HelpIcon />
                         <ListItemText primary="Help" />
-                      </StyledListItemButton>
-                      <StyledListItemButton
+                      </ProfileListItemButton>
+                      <ProfileListItemButton
                         component={Link}
                         to="/logout"
                         onClick={handleCloseMenu}
@@ -423,7 +434,7 @@ const NavigationBar = ({ candidates }) => {
                       >
                         <ExitToAppIcon />
                         <ListItemText primary="Logout" />
-                      </StyledListItemButton>
+                      </ProfileListItemButton>
                     </List>
                   </Popover>
                 </div>
