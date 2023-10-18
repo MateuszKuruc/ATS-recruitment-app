@@ -11,11 +11,11 @@ import {
   Typography,
 } from "@mui/material";
 import dayjs from "dayjs";
-import { createCandidate } from "../reducers/candidateReducer";
+import { createCandidate } from "../../reducers/candidateReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { validateEditForCandidate } from "../utils/validationService";
-import { setNotification } from "../reducers/notificationReducer";
+import { validateEditForCandidate } from "../../utils/validationService";
+import { setNotification } from "../../reducers/notificationReducer";
 
 const FieldContainer = styled.div`
   && {

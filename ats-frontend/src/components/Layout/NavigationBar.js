@@ -24,7 +24,7 @@ import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLocation } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import SearchBar from "../CandidateDetails/SearchBar";
 
 const StyledButton = styled(Button)`
   && {
@@ -90,7 +90,7 @@ const ProfileIconButton = styled(IconButton)`
   && {
     color: #ffffff;
     &:hover {
-      color: #FFBA49;
+      color: #ffba49;
     }
   }
 `;

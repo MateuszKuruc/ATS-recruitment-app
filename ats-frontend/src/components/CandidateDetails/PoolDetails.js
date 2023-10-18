@@ -2,7 +2,7 @@ import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import CandidateProfiles from "./CandidateProfiles";
+import CandidateProfiles from "./TablesRender";
 
 const Container = styled.div`
   background-color: #c0d9e7;

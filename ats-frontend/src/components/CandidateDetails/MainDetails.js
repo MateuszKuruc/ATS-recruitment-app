@@ -20,9 +20,9 @@ import { updateCandidate } from "../../reducers/candidateReducer";
 
 import { format } from "date-fns";
 
-import CandidateBasicDetails from "./CandidateBasicDetails";
-import CandidateExtendedFeedback from "./CandidateExtendedFeedback";
-import CandidateFiles from "./CandidateFiles";
+import CandidateBasicDetails from "./BasicDetails";
+import CandidateExtendedFeedback from "./ExtendedFeedback";
+import CandidateFiles from "./Files";
 
 import { validateEditForCandidate } from "../../utils/validationService";
 

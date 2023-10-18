@@ -1,7 +1,7 @@
 import { Button, InputBase, Typography, AppBar, Toolbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
-import Notification from "./Notification";
+import Notification from "./Layout/Notification";
 
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";

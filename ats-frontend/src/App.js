@@ -1,15 +1,15 @@
-import LoginForm from "./components/LoginForm";
-import InfoTab from "./components/InfoTab";
-import TipsTab from "./components/TipsTab";
-import HomePage from "./components/HomePage";
-import AddProfile from "./components/AddProfile";
-import AllCandidates from "./components/AllCandidates";
-import CandidateDetails from "./components/candidateDetails/CandidateDetails";
-import Footer from "./components/Footer";
-import Pools from "./components/Pools";
-import Feedback from "./components/candidateDetails/CandidateFeedback";
-import CandidateProfiles from "./components/CandidateProfiles";
-import LogoutPage from "./components/LogoutPage";
+import LoginForm from "./components/User/LoginForm";
+import InfoTab from "./components/Info/Faq";
+import TipsTab from "./components/Info/Tips";
+import HomePage from "./components/Info/HomePage";
+import AddProfile from "./components/CandidateDetails/AddProfile";
+import AllCandidates from "./components/CandidateDetails/AllCandidates";
+import CandidateDetails from "./components/CandidateDetails/MainDetails";
+import Footer from "./components/Layout/Footer";
+import Pools from "./components/CandidateDetails/Pools";
+import Feedback from "./components/CandidateDetails/Feedback";
+import CandidateProfiles from "./components/CandidateDetails/TablesRender";
+import LogoutPage from "./components/User/LogoutPage";
 import { initializeCandidates } from "./reducers/candidateReducer";
 import { setLogin } from "./reducers/loginReducer";
 import candidateService from "./services/candidates";
@@ -20,10 +20,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Container, createTheme, ThemeProvider } from "@mui/material";
 import { setNotification } from "./reducers/notificationReducer";
-import PoolDetails from "./components/PoolDetails";
-import NavigationBar from "./components/NavigationBar";
-import NotFound from "./components/NotFound";
-import UserFeedback from "./components/UserFeedback";
+import PoolDetails from "./components/CandidateDetails/PoolDetails";
+import NavigationBar from "./components/Layout/NavigationBar";
+import NotFound from "./components/Info/NotFound";
+import UserFeedback from "./components/Info/UserFeedback";
 
 const websiteTheme = createTheme({
   palette: {

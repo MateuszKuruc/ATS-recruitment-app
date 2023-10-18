@@ -1,7 +1,7 @@
 import { Alert, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeNotification } from "../reducers/notificationReducer";
+import { removeNotification } from "../../reducers/notificationReducer";
 import styled from "styled-components";
 
 const StyledAlert = styled(Alert)`
