@@ -1,4 +1,4 @@
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Paper } from "@mui/material";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -7,27 +7,52 @@ const MainContainer = styled.div`
   flex: 1;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
-const SingleBlock = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // border: 1px solid blue;
-`;
+const SingleBlock = styled.div``;
 
 const QuestionContainer = styled.div`
   display: flex;
-  // border: 1px solid red;
-  // flex: 1;
+
   justify-content: space-between;
   padding: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    padding-top: 1rem;
+  }
 `;
 
-const StyledButton = styled(Button)``;
+const StyledButton = styled(Button)`
+  && {
+    padding: 1rem;
 
-const InfoTab = () => {
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+`;
+
+const StyledPaper = styled(Paper)`
+  padding: 1rem;
+`;
+
+const TopHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Faq = () => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const answerShown = { display: showAnswer ? "block" : "none" };
@@ -64,103 +89,45 @@ const InfoTab = () => {
         "Yes, check 'Pools' tab and choose the technology you are interested in. The stats include the most common location and seniority among candidates, as well as the candidates who are still lacking meeting feedback in their profile.",
       id: 5,
     },
+    {
+      question:
+        "6. Can this app be used for candidates outside the IT industry?",
+      answer:
+        "It was designed specifically for the needs of a recruiter working in IT sector, so a lot of options are unique to this field.",
+      id: 6,
+    },
+    {
+      question: "7. How can I contact the author?",
+      answer:
+        "Please visit the 'Feedback' section to find details or just use the email: mateuszkuruc@gmail.com",
+      id: 7,
+    },
   ];
 
   return (
     <MainContainer>
-      <Typography variant="h1">FAQ</Typography>
+      <TopHeader>
+        <Typography variant="h1">FAQ</Typography>
+        <StyledButton
+          variant="contained"
+          color="secondary"
+          onClick={() => setShowAnswer(!showAnswer)}
+        >
+          <Typography variant="h6">Show answers</Typography>
+        </StyledButton>
+      </TopHeader>
       {content.map((c) => (
         <SingleBlock key={c.id}>
           <QuestionContainer>
-            <Typography variant="h4">{c.question}</Typography>
-            <StyledButton variant="contained" color="secondary">
-              Show answer
-            </StyledButton>
+            <Typography variant="h6">{c.question}</Typography>
           </QuestionContainer>
-          <Typography variant="body1">{c.answer}</Typography>
+          <StyledPaper style={answerShown}>
+            <Typography variant="body1">{c.answer}</Typography>
+          </StyledPaper>
         </SingleBlock>
       ))}
-
-      {/* <SingleBlock>
-        <Typography variant="h5">1. What is an ATS?</Typography>
-        <Typography variant="body1">
-          <p>
-            ATS stands for <em>Applicant Tracking System</em> and the term
-            describes an automated tool for storing candidates' profiles with
-            details such as name, address, resume, skills, summary etc.
-            Typically such tools are used by recruitment agencies and most of
-            the companies that have their own recruitment branch.
-          </p>
-        </Typography>
-      </SingleBlock> */}
-      {/* <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock>
-      <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock>
-      <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock>
-      <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock>
-      <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock>
-      <SingleBlock>
-        <Typography variant="h5">Q</Typography>
-        <Typography variant="body1">
-          <p>A</p>
-        </Typography>
-      </SingleBlock> */}
     </MainContainer>
   );
 };
 
-export default InfoTab;
-
-<div>
-  <h1>FAQ</h1>
-  <p>
-    If you are facing any issues with the app or have some questions, you might
-    want to read the list of frequently asked questions below.
-  </p>
-  <h3>1. What is an ATS?</h3>
-  <p>
-    ATS stands for{" "}
-    <b>
-      <i>Applicant Tracking System</i>
-    </b>{" "}
-    and it is an automated tool for storing candidates' profiles with details
-    such as name, address, resume, skills, summary etc. Typically such tools are
-    used by recruitment agencies and most of the companies that have their own
-    recruitment branch.
-  </p>
-  <h3>2. How can I create an account?</h3>
-  <p>
-    In its current version, the application only offers access to the demo mode
-    with the ready-made account. Credentials and login instructions can be found
-    in the README file on GitHub.
-  </p>
-  <h3>3. Can I use this ATS app for free?</h3>
-  <p>
-    Yes, this is a completely free application that offers help in handling
-    day-to-day activities typical of recruiter's work.
-  </p>
-</div>;
+export default Faq;

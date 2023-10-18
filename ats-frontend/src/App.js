@@ -1,5 +1,5 @@
 import LoginForm from "./components/User/LoginForm";
-import InfoTab from "./components/Info/Faq";
+import Faq from "./components/Info/Faq";
 import TipsTab from "./components/Info/Tips";
 import HomePage from "./components/Info/HomePage";
 import AddProfile from "./components/CandidateDetails/AddProfile";
@@ -234,7 +234,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/faq" element={<InfoTab />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/tips" element={<TipsTab />} />
           <Route
             path="/login"
