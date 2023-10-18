@@ -89,6 +89,7 @@ const LoginButton = styled(Button)`
 const ProfileIconButton = styled(IconButton)`
   && {
     color: #ffffff;
+    gap: 0.25rem;
     &:hover {
       color: #ffba49;
     }
