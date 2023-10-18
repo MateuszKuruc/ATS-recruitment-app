@@ -7,6 +7,7 @@ import candidateService from "../../services/candidates";
 import { setNotification } from "../../reducers/notificationReducer";
 import { useState } from "react";
 import { getById } from "../../services/candidates";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 import {
   PictureAsPdf,
@@ -260,94 +261,104 @@ const CandidateFiles = ({ candidate }) => {
   }
 
   return (
-    <Container>
-      <StyledHeader>
-        <StyledTypography variant="h5" style={{ color: "#ffffff" }}>
-          Files
-        </StyledTypography>
-        <ButtonContainer>
-          <StyledButton
-            variant="contained"
-            color="primary"
-            onClick={() => setShowFiles(!showFiles)}
-          >
-            <Typography variant="h6">Show files</Typography>
-          </StyledButton>
-          <StyledButton
-            component="label"
-            variant="contained"
-            color="primary"
-            startIcon={<CloudUploadIcon />}
-          >
-            <Typography variant="h6">Upload file</Typography>
-            <VisuallyHiddenInput
-              type="file"
-              name="file_upload"
-              accept=".pdf, .doc, .docx"
-              onChange={onFileChange}
-            />
-          </StyledButton>
-        </ButtonContainer>
-      </StyledHeader>
-
-      <FilesContainer>
-        
-        {uploadedFiles.length > 0 && uploadedFiles.map((file) => (
-          <SingleFileDiv key={file.fileName} style={filesShown}>
-            <IconContainer>
-              <IconButton onClick={() => handleDownload(file.fileName)}>
-                {file.fileName.includes(".pdf") ? (
-                  <PictureAsPdf fontSize="large" style={{ color: "#25283D" }} />
-                ) : (
-                  <Description fontSize="large" style={{ color: "#25283D" }} />
-                )}
-              </IconButton>
-              <IconButton onClick={() => openDialogWindow()}>
-                <DeleteIcon fontSize="large" color="primary" />
-              </IconButton>
-            </IconContainer>
-            <StyledFileTypography variant="body1">
-              {file.fileName}
-            </StyledFileTypography>
-            <Dialog
-              open={openDialog}
-              onClose={closeDialogWindow}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
+    <AnimatedPage>
+      <Container>
+        <StyledHeader>
+          <StyledTypography variant="h5" style={{ color: "#ffffff" }}>
+            Files
+          </StyledTypography>
+          <ButtonContainer>
+            <StyledButton
+              variant="contained"
+              color="primary"
+              onClick={() => setShowFiles(!showFiles)}
             >
-              <DialogTitle id="alert-dialog-title">
-                {"Delete file?"}
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  This action will delete the file from database. Deleting a
-                  file is irreversible.
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => handleDelete(file.fileName)}
+              <Typography variant="h6">Show files</Typography>
+            </StyledButton>
+            <StyledButton
+              component="label"
+              variant="contained"
+              color="primary"
+              startIcon={<CloudUploadIcon />}
+            >
+              <Typography variant="h6">Upload file</Typography>
+              <VisuallyHiddenInput
+                type="file"
+                name="file_upload"
+                accept=".pdf, .doc, .docx"
+                onChange={onFileChange}
+              />
+            </StyledButton>
+          </ButtonContainer>
+        </StyledHeader>
+
+        <FilesContainer>
+          {uploadedFiles.length > 0 &&
+            uploadedFiles.map((file) => (
+              <SingleFileDiv key={file.fileName} style={filesShown}>
+                <IconContainer>
+                  <IconButton onClick={() => handleDownload(file.fileName)}>
+                    {file.fileName.includes(".pdf") ? (
+                      <PictureAsPdf
+                        fontSize="large"
+                        style={{ color: "#25283D" }}
+                      />
+                    ) : (
+                      <Description
+                        fontSize="large"
+                        style={{ color: "#25283D" }}
+                      />
+                    )}
+                  </IconButton>
+                  <IconButton onClick={() => openDialogWindow()}>
+                    <DeleteIcon fontSize="large" color="primary" />
+                  </IconButton>
+                </IconContainer>
+                <StyledFileTypography variant="body1">
+                  {file.fileName}
+                </StyledFileTypography>
+                <Dialog
+                  open={openDialog}
+                  onClose={closeDialogWindow}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
                 >
-                  <Typography variant="h6">Confirm</Typography>
-                </Button>
-                <Button
-                  variant="outlined"
-                  onClick={closeDialogWindow}
-                  autoFocus
-                >
-                  <Typography variant="h6">Cancel</Typography>
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </SingleFileDiv>
-        ))}
-        {uploadedFiles.length === 0 && (
-          <StyledTypography style={filesShown} variant="italic">No files uploaded</StyledTypography>
-        )}
-      </FilesContainer>
-    </Container>
+                  <DialogTitle id="alert-dialog-title">
+                    {"Delete file?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      This action will delete the file from database. Deleting a
+                      file is irreversible.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => handleDelete(file.fileName)}
+                    >
+                      <Typography variant="h6">Confirm</Typography>
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      onClick={closeDialogWindow}
+                      autoFocus
+                    >
+                      <Typography variant="h6">Cancel</Typography>
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </SingleFileDiv>
+            ))}
+          {uploadedFiles.length === 0 && (
+            <StyledTypography style={filesShown} variant="italic">
+              No files uploaded
+            </StyledTypography>
+          )}
+        </FilesContainer>
+      </Container>
+    </AnimatedPage>
   );
 };
 

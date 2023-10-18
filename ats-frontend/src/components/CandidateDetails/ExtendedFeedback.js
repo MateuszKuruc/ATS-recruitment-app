@@ -10,6 +10,7 @@ import {
   FormHelperText,
   InputLabel,
 } from "@mui/material";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const StyledHeader = styled.div`
   && {
@@ -72,154 +73,156 @@ const CandidateExtendedFeedback = ({
   isSmallScreen,
 }) => {
   return (
-    <>
-      <StyledHeader>
-        <StyledTypography variant="h5">Extended feedback</StyledTypography>
-      </StyledHeader>
+    <AnimatedPage>
+      <>
+        <StyledHeader>
+          <StyledTypography variant="h5">Extended feedback</StyledTypography>
+        </StyledHeader>
 
-      <StyledGridContainer
-        container
-        spacing={0.5}
-        className="grid-container-class"
-      >
-        <Grid item xs={12} md={6} lg={3}>
-          <StyledPaper>
-            {!isSmallScreen && (
-              <Typography variant="italic">Notice period</Typography>
-            )}
-            <StyledFormControl>
-              {isSmallScreen && <InputLabel>Notice</InputLabel>}
-              <Select
-                value={
-                  editModeExtended ? editedCandidate.notice : candidate.notice
-                }
-                disabled={!editModeExtended}
-                label={isSmallScreen ? "Notice" : null}
-                onChange={({ target }) =>
-                  setEditedCandidate({
-                    ...editedCandidate,
-                    notice: target.value,
-                  })
-                }
-              >
-                <MenuItem value="Available now">Available now</MenuItem>
-                <MenuItem value="2 weeks">2 weeks</MenuItem>
-                <MenuItem value="1 month">1 month</MenuItem>
-                <MenuItem value="2 months">2 months</MenuItem>
-                <MenuItem value="3 months">3 months</MenuItem>
-              </Select>
-              <FormHelperText> </FormHelperText>
-            </StyledFormControl>
-          </StyledPaper>
-        </Grid>
+        <StyledGridContainer
+          container
+          spacing={0.5}
+          className="grid-container-class"
+        >
+          <Grid item xs={12} md={6} lg={3}>
+            <StyledPaper>
+              {!isSmallScreen && (
+                <Typography variant="italic">Notice period</Typography>
+              )}
+              <StyledFormControl>
+                {isSmallScreen && <InputLabel>Notice</InputLabel>}
+                <Select
+                  value={
+                    editModeExtended ? editedCandidate.notice : candidate.notice
+                  }
+                  disabled={!editModeExtended}
+                  label={isSmallScreen ? "Notice" : null}
+                  onChange={({ target }) =>
+                    setEditedCandidate({
+                      ...editedCandidate,
+                      notice: target.value,
+                    })
+                  }
+                >
+                  <MenuItem value="Available now">Available now</MenuItem>
+                  <MenuItem value="2 weeks">2 weeks</MenuItem>
+                  <MenuItem value="1 month">1 month</MenuItem>
+                  <MenuItem value="2 months">2 months</MenuItem>
+                  <MenuItem value="3 months">3 months</MenuItem>
+                </Select>
+                <FormHelperText> </FormHelperText>
+              </StyledFormControl>
+            </StyledPaper>
+          </Grid>
 
-        <Grid item xs={12} md={6} lg={3}>
-          <StyledPaper>
-            {!isSmallScreen && (
-              <Typography variant="italic">Contract type</Typography>
-            )}
+          <Grid item xs={12} md={6} lg={3}>
+            <StyledPaper>
+              {!isSmallScreen && (
+                <Typography variant="italic">Contract type</Typography>
+              )}
 
-            <StyledFormControl>
-              {isSmallScreen && <InputLabel>Contract</InputLabel>}
-              <Select
-                value={
-                  editModeExtended
-                    ? editedCandidate.contract
-                    : candidate.contract
-                }
-                disabled={!editModeExtended}
-                label={isSmallScreen ? "Contract" : null}
-                onChange={({ target }) =>
-                  setEditedCandidate({
-                    ...editedCandidate,
-                    contract: target.value,
-                  })
-                }
-              >
-                <MenuItem value="UoP">UoP - contract of employment</MenuItem>
-                <MenuItem value="B2B">B2B</MenuItem>
-              </Select>
-              <FormHelperText> </FormHelperText>
-            </StyledFormControl>
-          </StyledPaper>
-        </Grid>
+              <StyledFormControl>
+                {isSmallScreen && <InputLabel>Contract</InputLabel>}
+                <Select
+                  value={
+                    editModeExtended
+                      ? editedCandidate.contract
+                      : candidate.contract
+                  }
+                  disabled={!editModeExtended}
+                  label={isSmallScreen ? "Contract" : null}
+                  onChange={({ target }) =>
+                    setEditedCandidate({
+                      ...editedCandidate,
+                      contract: target.value,
+                    })
+                  }
+                >
+                  <MenuItem value="UoP">UoP - contract of employment</MenuItem>
+                  <MenuItem value="B2B">B2B</MenuItem>
+                </Select>
+                <FormHelperText> </FormHelperText>
+              </StyledFormControl>
+            </StyledPaper>
+          </Grid>
 
-        <Grid item xs={12} md={6} lg={3}>
-          <StyledPaper>
-            {!isSmallScreen && (
-              <Typography variant="italic">English</Typography>
-            )}
+          <Grid item xs={12} md={6} lg={3}>
+            <StyledPaper>
+              {!isSmallScreen && (
+                <Typography variant="italic">English</Typography>
+              )}
 
-            <StyledFormControl>
-              {isSmallScreen && <InputLabel>English</InputLabel>}
-              <Select
-                value={
-                  editModeExtended
-                    ? editedCandidate.language
-                    : candidate.language
-                }
-                disabled={!editModeExtended}
-                label={isSmallScreen ? "English" : null}
-                onChange={({ target }) =>
-                  setEditedCandidate({
-                    ...editedCandidate,
-                    language: target.value,
-                  })
-                }
-              >
-                <MenuItem value="A1">A1</MenuItem>
-                <MenuItem value="A2">A2</MenuItem>
-                <MenuItem value="B1">B1</MenuItem>
-                <MenuItem value="B2">B2</MenuItem>
-                <MenuItem value="C1">C1</MenuItem>
-                <MenuItem value="C2">C2</MenuItem>
-                <MenuItem value="Native">Native</MenuItem>
-              </Select>
-              <FormHelperText> </FormHelperText>
-            </StyledFormControl>
-          </StyledPaper>
-        </Grid>
+              <StyledFormControl>
+                {isSmallScreen && <InputLabel>English</InputLabel>}
+                <Select
+                  value={
+                    editModeExtended
+                      ? editedCandidate.language
+                      : candidate.language
+                  }
+                  disabled={!editModeExtended}
+                  label={isSmallScreen ? "English" : null}
+                  onChange={({ target }) =>
+                    setEditedCandidate({
+                      ...editedCandidate,
+                      language: target.value,
+                    })
+                  }
+                >
+                  <MenuItem value="A1">A1</MenuItem>
+                  <MenuItem value="A2">A2</MenuItem>
+                  <MenuItem value="B1">B1</MenuItem>
+                  <MenuItem value="B2">B2</MenuItem>
+                  <MenuItem value="C1">C1</MenuItem>
+                  <MenuItem value="C2">C2</MenuItem>
+                  <MenuItem value="Native">Native</MenuItem>
+                </Select>
+                <FormHelperText> </FormHelperText>
+              </StyledFormControl>
+            </StyledPaper>
+          </Grid>
 
-        <Grid item xs={12} md={6} lg={3}>
-          <StyledPaper>
-            {!isSmallScreen && (
-              <Typography variant="italic">Assessment</Typography>
-            )}
+          <Grid item xs={12} md={6} lg={3}>
+            <StyledPaper>
+              {!isSmallScreen && (
+                <Typography variant="italic">Assessment</Typography>
+              )}
 
-            <StyledFormControl>
-              {isSmallScreen && <InputLabel>Assessment</InputLabel>}
-              <Select
-                value={
-                  editModeExtended
-                    ? editedCandidate.assessment
-                    : candidate.assessment
-                }
-                disabled={!editModeExtended}
-                label={isSmallScreen ? "Assessment" : null}
-                onChange={({ target }) =>
-                  setEditedCandidate({
-                    ...editedCandidate,
-                    assessment: target.value,
-                  })
-                }
-              >
-                <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
-                <MenuItem value="2 - No hire">2 - No hire</MenuItem>
-                <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
-                <MenuItem value="4 - Good candidate">
-                  4 - Good candidate
-                </MenuItem>
-                <MenuItem value="5 - Great candidate">
-                  5 - Great candidate
-                </MenuItem>
-                <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
-              </Select>
-              <FormHelperText> </FormHelperText>
-            </StyledFormControl>
-          </StyledPaper>
-        </Grid>
-      </StyledGridContainer>
-    </>
+              <StyledFormControl>
+                {isSmallScreen && <InputLabel>Assessment</InputLabel>}
+                <Select
+                  value={
+                    editModeExtended
+                      ? editedCandidate.assessment
+                      : candidate.assessment
+                  }
+                  disabled={!editModeExtended}
+                  label={isSmallScreen ? "Assessment" : null}
+                  onChange={({ target }) =>
+                    setEditedCandidate({
+                      ...editedCandidate,
+                      assessment: target.value,
+                    })
+                  }
+                >
+                  <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
+                  <MenuItem value="2 - No hire">2 - No hire</MenuItem>
+                  <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
+                  <MenuItem value="4 - Good candidate">
+                    4 - Good candidate
+                  </MenuItem>
+                  <MenuItem value="5 - Great candidate">
+                    5 - Great candidate
+                  </MenuItem>
+                  <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
+                </Select>
+                <FormHelperText> </FormHelperText>
+              </StyledFormControl>
+            </StyledPaper>
+          </Grid>
+        </StyledGridContainer>
+      </>
+    </AnimatedPage>
   );
 };
 

@@ -1,6 +1,7 @@
 import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
 import { useState } from "react";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const MainContainer = styled.div`
   background-color: #ebcbf4;
@@ -108,27 +109,33 @@ const Faq = () => {
   ];
 
   return (
-    <MainContainer>
-      <TopHeader>
-        <Typography variant="h1">FAQ</Typography>
-      </TopHeader>
+    <AnimatedPage style={{ border: "1px solid red" }}>
+      <MainContainer>
+        <TopHeader>
+          <Typography variant="h1">FAQ</Typography>
+        </TopHeader>
 
-      {content.map((c, i) => (
-        <SingleBlock>
-          <QuestionContainer onClick={() => toggleSelected(i)}>
-            <Typography variant="h6">{c.question}</Typography>
-            <span>
-              <Typography variant="h6">{selected === i ? "-" : "+"}</Typography>
-            </span>
-          </QuestionContainer>
-          <StyledPaper
-            style={selected === i ? { display: "block" } : { display: "none" }}
-          >
-            <Typography variant="body1">{c.answer}</Typography>
-          </StyledPaper>
-        </SingleBlock>
-      ))}
-    </MainContainer>
+        {content.map((c, i) => (
+          <SingleBlock key={i}>
+            <QuestionContainer onClick={() => toggleSelected(i)}>
+              <Typography variant="h6">{c.question}</Typography>
+              <span>
+                <Typography variant="h6">
+                  {selected === i ? "-" : "+"}
+                </Typography>
+              </span>
+            </QuestionContainer>
+            <StyledPaper
+              style={
+                selected === i ? { display: "block" } : { display: "none" }
+              }
+            >
+              <Typography variant="body1">{c.answer}</Typography>
+            </StyledPaper>
+          </SingleBlock>
+        ))}
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 

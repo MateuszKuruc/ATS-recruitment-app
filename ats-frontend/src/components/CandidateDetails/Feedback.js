@@ -16,6 +16,7 @@ import { updateCandidate } from "../../reducers/candidateReducer";
 import format from "date-fns/format";
 import { setNotification } from "../../reducers/notificationReducer";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const StyledContainer = styled.div`
   display: flex;
@@ -146,132 +147,152 @@ const Feedback = ({ candidates }) => {
   }
 
   return (
-    <StyledContainer>
-      <StyledHeader>
-        <StyledTypography variant="h3">Meeting feedback</StyledTypography>
-      </StyledHeader>
-      <StyledLine>
-        {!isSmallScreen && (
-          <Typography variant="h6">Final assessment</Typography>
-        )}
-        <FormControl fullWidth>
-          {isSmallScreen && <InputLabel id="assessment">Assessment</InputLabel>}
-
-          <Select
-            labelId="assessment"
-            label={isSmallScreen ? "Assessment" : null}
-            value={editedCandidate.assessment || "6 - Rockstar"}
-            onChange={({ target }) =>
-              setEditedCandidate({
-                ...editedCandidate,
-                assessment: target.value,
-              })
-            }
-          >
-            <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
-            <MenuItem value="2 - No hire">2 - No hire</MenuItem>
-            <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
-            <MenuItem value="4 - Good candidate">4 - Good candidate</MenuItem>
-            <MenuItem value="5 - Great candidate">5 - Great candidate</MenuItem>
-            <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
-          </Select>
-        </FormControl>
-      </StyledLine>
-      <StyledLine>
-        {!isSmallScreen && <Typography variant="h6">Notice period</Typography>}
-        <FormControl fullWidth>
-          {isSmallScreen && <InputLabel id="notice">Notice period</InputLabel>}
-          <Select
-            labelId="noticeperiod"
-            label={isSmallScreen ? "Notice-period" : null}
-            value={editedCandidate.notice || "Available now"}
-            onChange={({ target }) =>
-              setEditedCandidate({ ...editedCandidate, notice: target.value })
-            }
-          >
-            <MenuItem value="Available now">Available now</MenuItem>
-            <MenuItem value="2 weeks">2 weeks</MenuItem>
-            <MenuItem value="1 month">1 month</MenuItem>
-            <MenuItem value="2 months">2 months</MenuItem>
-            <MenuItem value="3 months">3 months</MenuItem>
-          </Select>
-        </FormControl>
-      </StyledLine>
-      <StyledLine>
-        {!isSmallScreen && <Typography variant="h6">English level</Typography>}
-        <FormControl fullWidth>
-          {isSmallScreen && <InputLabel id="language">English</InputLabel>}
-          <Select
-            labelId="language"
-            label={isSmallScreen ? "English" : null}
-            value={editedCandidate.language || "A1"}
-            onChange={({ target }) =>
-              setEditedCandidate({ ...editedCandidate, language: target.value })
-            }
-          >
-            <MenuItem value="A1">A1</MenuItem>
-            <MenuItem value="A2">A2</MenuItem>
-            <MenuItem value="B1">B1</MenuItem>
-            <MenuItem value="B2">B2</MenuItem>
-            <MenuItem value="C1">C1</MenuItem>
-            <MenuItem value="C2">C2</MenuItem>
-            <MenuItem value="Native">Native</MenuItem>
-          </Select>
-        </FormControl>
-      </StyledLine>
-      <StyledLine>
-        {!isSmallScreen && <Typography variant="h6">Contract type</Typography>}
-        <FormControl fullWidth>
-          {isSmallScreen && (
-            <InputLabel id="contract">Contract type</InputLabel>
+    <AnimatedPage>
+      <StyledContainer>
+        <StyledHeader>
+          <StyledTypography variant="h3">Meeting feedback</StyledTypography>
+        </StyledHeader>
+        <StyledLine>
+          {!isSmallScreen && (
+            <Typography variant="h6">Final assessment</Typography>
           )}
-          <Select
-            labelId="contract"
-            label={isSmallScreen ? "contract-type" : null}
-            value={editedCandidate.contract || "UoP"}
-            onChange={({ target }) =>
-              setEditedCandidate({ ...editedCandidate, contract: target.value })
+          <FormControl fullWidth>
+            {isSmallScreen && (
+              <InputLabel id="assessment">Assessment</InputLabel>
+            )}
+
+            <Select
+              labelId="assessment"
+              label={isSmallScreen ? "Assessment" : null}
+              value={editedCandidate.assessment || "6 - Rockstar"}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  assessment: target.value,
+                })
+              }
+            >
+              <MenuItem value="1 - Disqualified">1 - Disqualified</MenuItem>
+              <MenuItem value="2 - No hire">2 - No hire</MenuItem>
+              <MenuItem value="3 - Maybe">3 - Maybe</MenuItem>
+              <MenuItem value="4 - Good candidate">4 - Good candidate</MenuItem>
+              <MenuItem value="5 - Great candidate">
+                5 - Great candidate
+              </MenuItem>
+              <MenuItem value="6 - Rockstar">6 - Rockstar</MenuItem>
+            </Select>
+          </FormControl>
+        </StyledLine>
+        <StyledLine>
+          {!isSmallScreen && (
+            <Typography variant="h6">Notice period</Typography>
+          )}
+          <FormControl fullWidth>
+            {isSmallScreen && (
+              <InputLabel id="notice">Notice period</InputLabel>
+            )}
+            <Select
+              labelId="noticeperiod"
+              label={isSmallScreen ? "Notice-period" : null}
+              value={editedCandidate.notice || "Available now"}
+              onChange={({ target }) =>
+                setEditedCandidate({ ...editedCandidate, notice: target.value })
+              }
+            >
+              <MenuItem value="Available now">Available now</MenuItem>
+              <MenuItem value="2 weeks">2 weeks</MenuItem>
+              <MenuItem value="1 month">1 month</MenuItem>
+              <MenuItem value="2 months">2 months</MenuItem>
+              <MenuItem value="3 months">3 months</MenuItem>
+            </Select>
+          </FormControl>
+        </StyledLine>
+        <StyledLine>
+          {!isSmallScreen && (
+            <Typography variant="h6">English level</Typography>
+          )}
+          <FormControl fullWidth>
+            {isSmallScreen && <InputLabel id="language">English</InputLabel>}
+            <Select
+              labelId="language"
+              label={isSmallScreen ? "English" : null}
+              value={editedCandidate.language || "A1"}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  language: target.value,
+                })
+              }
+            >
+              <MenuItem value="A1">A1</MenuItem>
+              <MenuItem value="A2">A2</MenuItem>
+              <MenuItem value="B1">B1</MenuItem>
+              <MenuItem value="B2">B2</MenuItem>
+              <MenuItem value="C1">C1</MenuItem>
+              <MenuItem value="C2">C2</MenuItem>
+              <MenuItem value="Native">Native</MenuItem>
+            </Select>
+          </FormControl>
+        </StyledLine>
+        <StyledLine>
+          {!isSmallScreen && (
+            <Typography variant="h6">Contract type</Typography>
+          )}
+          <FormControl fullWidth>
+            {isSmallScreen && (
+              <InputLabel id="contract">Contract type</InputLabel>
+            )}
+            <Select
+              labelId="contract"
+              label={isSmallScreen ? "contract-type" : null}
+              value={editedCandidate.contract || "UoP"}
+              onChange={({ target }) =>
+                setEditedCandidate({
+                  ...editedCandidate,
+                  contract: target.value,
+                })
+              }
+            >
+              <MenuItem value="UoP">UoP - contract of employment</MenuItem>
+              <MenuItem value="B2B">B2B</MenuItem>
+            </Select>
+          </FormControl>
+        </StyledLine>
+        <StyledLine>
+          {!isSmallScreen && <Typography variant="h6">Notes</Typography>}
+          <StyledTextField
+            label={editedCandidate.notes === "" ? "Add notes here..." : null}
+            error={notesError}
+            helperText={
+              notesError ? "Notes need to be min. 6 characters long" : ""
             }
+            multiline
+            rows={8}
+            fullWidth
+            value={editedCandidate.notes !== "" ? editedCandidate.notes : ""}
+            onChange={({ target }) =>
+              setEditedCandidate({ ...editedCandidate, notes: target.value })
+            }
+          />
+        </StyledLine>
+        <StyledButtonContainer>
+          <StyledButton
+            variant="contained"
+            color="secondary"
+            onClick={() => handleFeedback()}
           >
-            <MenuItem value="UoP">UoP - contract of employment</MenuItem>
-            <MenuItem value="B2B">B2B</MenuItem>
-          </Select>
-        </FormControl>
-      </StyledLine>
-      <StyledLine>
-        {!isSmallScreen && <Typography variant="h6">Notes</Typography>}
-        <StyledTextField
-          label={editedCandidate.notes === "" ? "Add notes here..." : null}
-          error={notesError}
-          helperText={
-            notesError ? "Notes need to be min. 6 characters long" : ""
-          }
-          multiline
-          rows={8}
-          fullWidth
-          value={editedCandidate.notes !== "" ? editedCandidate.notes : ""}
-          onChange={({ target }) =>
-            setEditedCandidate({ ...editedCandidate, notes: target.value })
-          }
-        />
-      </StyledLine>
-      <StyledButtonContainer>
-        <StyledButton
-          variant="contained"
-          color="secondary"
-          onClick={() => handleFeedback()}
-        >
-          <Typography variant="h6">Submit</Typography>
-        </StyledButton>
-        <StyledButton
-          variant="contained"
-          color="inherit"
-          onClick={handleGoingBack}
-        >
-          <Typography variant="h6">Cancel</Typography>
-        </StyledButton>
-      </StyledButtonContainer>
-    </StyledContainer>
+            <Typography variant="h6">Submit</Typography>
+          </StyledButton>
+          <StyledButton
+            variant="contained"
+            color="inherit"
+            onClick={handleGoingBack}
+          >
+            <Typography variant="h6">Cancel</Typography>
+          </StyledButton>
+        </StyledButtonContainer>
+      </StyledContainer>
+    </AnimatedPage>
   );
 };
 

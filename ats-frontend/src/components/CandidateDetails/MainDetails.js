@@ -29,6 +29,7 @@ import { validateEditForCandidate } from "../../utils/validationService";
 import { setNotification } from "../../reducers/notificationReducer";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const StyledTextField = styled(TextField)`
   && {
@@ -111,7 +112,6 @@ const UpperButtonContainer = styled.div`
   justify-content: center;
   gap: 0.5rem;
   // flex: 1;
-
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;
@@ -243,139 +243,139 @@ const CandidateDetails = ({ candidates }) => {
   }
 
   return (
-    <Container>
-      <StyledHeader>
-        <StyledTypography variant="h3">
-          <i>
-            {candidate.firstName} {candidate.lastName}
-          </i>
-        </StyledTypography>
-        <StyledEditTypography variant="italic2">
-          Last edited: {candidate.edit}
-        </StyledEditTypography>
-      </StyledHeader>
+    <AnimatedPage>
+      <Container>
+        <StyledHeader>
+          <StyledTypography variant="h3">
+            <i>
+              {candidate.firstName} {candidate.lastName}
+            </i>
+          </StyledTypography>
+          <StyledEditTypography variant="italic2">
+            Last edited: {candidate.edit}
+          </StyledEditTypography>
+        </StyledHeader>
 
-      <UpperButtonContainer>
-        {candidate.assessment && (
-          <FeedbackButton
-            variant="contained"
-            color="secondary"
-            onClick={toggleNotes}
-          >
-            {showNotes ? (
-              <FeedbackTypography variant="h6">Hide notes</FeedbackTypography>
-            ) : (
-              <FeedbackTypography variant="h6">Show notes</FeedbackTypography>
-            )}
-          </FeedbackButton>
-        )}
-
-        {!candidate.assessment ? (
-          <FeedbackButton
-            variant="contained"
-            color="secondary"
-            component={Link}
-            to={`/candidates/${candidate.id}/feedback`}
-          >
-            <FeedbackTypography variant="h6">
-              Provide feedback
-            </FeedbackTypography>
-          </FeedbackButton>
-        ) : (
-          <FeedbackButton
-            variant="contained"
-            color="secondary"
-            component={Link}
-            to={`/candidates/${candidate.id}/feedback`}
-          >
-            <FeedbackTypography variant="h6">Edit feedback</FeedbackTypography>
-          </FeedbackButton>
-        )}
-      </UpperButtonContainer>
-      <div className="notesShown" style={notesShown}>
-        <StyledTextField
-          inputProps={{
-            readOnly: true,
-          }}
-          multiline
-          rows={10}
-          value={candidate.notes}
-        />
-      </div>
-
-      {/* <StyledHeader>
-        <StyledTypography variant="h5">Files</StyledTypography>
-      </StyledHeader>
-
-      <StyledButton variant="contained" color="secondary">
-        <Typography variant="h6">Files</Typography>
-      </StyledButton> */}
-
-      <CandidateFiles candidate={candidate} />
-
-      <CandidateBasicDetails
-        candidate={candidate}
-        setEditedCandidate={setEditedCandidate}
-        editedCandidate={editedCandidate}
-        editMode={editMode}
-        firstNameError={firstNameError}
-        lastNameError={lastNameError}
-        emailError={emailError}
-        phoneError={phoneError}
-        locationError={locationError}
-        enterEditMode={enterEditMode}
-        saveEdit={saveEdit}
-        cancelEdit={cancelEdit}
-        isSmallScreen={isSmallScreen}
-      />
-
-      <CandidateExtendedFeedback
-        candidate={candidate}
-        setEditedCandidate={setEditedCandidate}
-        editedCandidate={editedCandidate}
-        editModeExtended={editModeExtended}
-        isSmallScreen={isSmallScreen}
-      />
-
-      <BottomButtonContainer>
-        {/* <StyledButton */}
-        <FeedbackButton
-          variant="contained"
-          color="secondary"
-          onClick={openDialogWindow}
-        >
-          <FeedbackTypography variant="h6">Delete profile</FeedbackTypography>
-        </FeedbackButton>
-        <Dialog
-          open={openDialog}
-          onClose={closeDialogWindow}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Delete candidate's profile?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              This action will delete all data connected with candidate from the
-              database. Deleting a profile is irreversible.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
+        <UpperButtonContainer>
+          {candidate.assessment && (
+            <FeedbackButton
               variant="contained"
               color="secondary"
-              onClick={() => deleteCandidate(candidate.id)}
+              onClick={toggleNotes}
             >
-              <Typography variant="h6">Confirm</Typography>
-            </Button>
-            <Button variant="outlined" color="secondary" onClick={closeDialogWindow} autoFocus>
-              <Typography variant="h6">Cancel</Typography>
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </BottomButtonContainer>
-    </Container>
+              {showNotes ? (
+                <FeedbackTypography variant="h6">Hide notes</FeedbackTypography>
+              ) : (
+                <FeedbackTypography variant="h6">Show notes</FeedbackTypography>
+              )}
+            </FeedbackButton>
+          )}
+
+          {!candidate.assessment ? (
+            <FeedbackButton
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to={`/candidates/${candidate.id}/feedback`}
+            >
+              <FeedbackTypography variant="h6">
+                Provide feedback
+              </FeedbackTypography>
+            </FeedbackButton>
+          ) : (
+            <FeedbackButton
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to={`/candidates/${candidate.id}/feedback`}
+            >
+              <FeedbackTypography variant="h6">
+                Edit feedback
+              </FeedbackTypography>
+            </FeedbackButton>
+          )}
+        </UpperButtonContainer>
+        <div className="notesShown" style={notesShown}>
+          <StyledTextField
+            inputProps={{
+              readOnly: true,
+            }}
+            multiline
+            rows={10}
+            value={candidate.notes}
+          />
+        </div>
+
+        <CandidateFiles candidate={candidate} />
+
+        <CandidateBasicDetails
+          candidate={candidate}
+          setEditedCandidate={setEditedCandidate}
+          editedCandidate={editedCandidate}
+          editMode={editMode}
+          firstNameError={firstNameError}
+          lastNameError={lastNameError}
+          emailError={emailError}
+          phoneError={phoneError}
+          locationError={locationError}
+          enterEditMode={enterEditMode}
+          saveEdit={saveEdit}
+          cancelEdit={cancelEdit}
+          isSmallScreen={isSmallScreen}
+        />
+
+        <CandidateExtendedFeedback
+          candidate={candidate}
+          setEditedCandidate={setEditedCandidate}
+          editedCandidate={editedCandidate}
+          editModeExtended={editModeExtended}
+          isSmallScreen={isSmallScreen}
+        />
+
+        <BottomButtonContainer>
+          <FeedbackButton
+            variant="contained"
+            color="secondary"
+            onClick={openDialogWindow}
+          >
+            <FeedbackTypography variant="h6">Delete profile</FeedbackTypography>
+          </FeedbackButton>
+          <Dialog
+            open={openDialog}
+            onClose={closeDialogWindow}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Delete candidate's profile?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                This action will delete all data connected with candidate from
+                the database. Deleting a profile is irreversible.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => deleteCandidate(candidate.id)}
+              >
+                <Typography variant="h6">Confirm</Typography>
+              </Button>
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={closeDialogWindow}
+                autoFocus
+              >
+                <Typography variant="h6">Cancel</Typography>
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </BottomButtonContainer>
+      </Container>
+    </AnimatedPage>
   );
 };
 
