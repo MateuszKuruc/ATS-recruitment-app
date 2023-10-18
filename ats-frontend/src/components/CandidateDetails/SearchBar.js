@@ -18,7 +18,6 @@ const Search = styled.div`
   justify-content: space-around;
   align-items: center;
   position: relative;
-  background-color: #800020;
   background-color: #25283d;
   opacity: 1;
   padding: 4px;
@@ -40,8 +39,6 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const StyledTypography = styled(Typography)``;
-
 const CandidateContainer = styled.div`
   && {
     margin-top: 5px;
@@ -61,9 +58,7 @@ const CandidateContainer = styled.div`
     @media (max-width: 768px) {
       display: flex;
       flex-direction: column;
-
       right: 0;
-
       border: 0.1rem solid #800020;
     }
 
@@ -133,9 +128,9 @@ const SearchBar = ({ candidates }) => {
                 to={`/candidates/${candidate.id}`}
                 onClick={handleClean}
               >
-                <StyledTypography variant="body1">
+                <Typography variant="body1">
                   {candidate.firstName} {candidate.lastName}
-                </StyledTypography>
+                </Typography>
               </StyledButton>
             );
           })}

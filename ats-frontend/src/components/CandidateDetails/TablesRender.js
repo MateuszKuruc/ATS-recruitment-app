@@ -14,12 +14,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import styled from "styled-components";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const StyledTableContainer = styled(TableContainer)`
   && {
     margin-top: 1rem;
     border-radius: 0.5rem;
   }
+`;
+
+const MainContainer = styled.div`
+  width: 100%;
 `;
 
 const StyledButton = styled(Button)`
@@ -96,114 +101,126 @@ const CandidateProfiles = ({ candidates, userId }) => {
   };
 
   return (
-    <StyledTableContainer component={Paper}>
-      <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              <Typography variant="h4" style={{ textAlign: "center" }}>
-                Name
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Location</Typography>
-            </TableCell>
-            {userId && (
-              <TableCell>
-                <Typography variant="h4">Skill</Typography>
-              </TableCell>
-            )}
-
-            <TableCell>
-              <Typography variant="h4">Seniority</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h4">Notice</Typography>
-            </TableCell>
-
-            {userId && (
-              <TableCell>
-                <Typography variant="h4">Contract</Typography>
-              </TableCell>
-            )}
-            <TableCell>
-              <Typography variant="h4">Assessment</Typography>
-            </TableCell>
-          </TableRow>
-
-          {(rowsPerPage > 0
-            ? filteredCandidates.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
-              )
-            : filteredCandidates
-          ).map((candidate) => (
-            <TableRow key={candidate.id}>
-              <TableCell>
-                <StyledLink to={`/candidates/${candidate.id}`}>
-                  <StyledButton variant="contained" color="secondary">
-                    <UserTypography variant="h6">
-                      {candidate.firstName} {candidate.lastName}
-                    </UserTypography>
-                  </StyledButton>
-                </StyledLink>
-              </TableCell>
-              <TableCell>
-                <Typography variant="body1">{candidate.location}</Typography>
-              </TableCell>
-              {userId && (
+    <AnimatedPage>
+      <MainContainer>
+        <StyledTableContainer component={Paper}>
+          <Table>
+            <TableBody>
+              <TableRow>
                 <TableCell>
-                  <Typography variant="body1">{candidate.skill}</Typography>
+                  <Typography variant="h4" style={{ textAlign: "center" }}>
+                    Name
+                  </Typography>
                 </TableCell>
-              )}
-              <TableCell>
-                <Typography variant="body1">{candidate.seniority}</Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant="body1">{candidate.notice}</Typography>
-              </TableCell>
-
-              {userId && (
                 <TableCell>
-                  <Typography variant="body1">{candidate.contract}</Typography>
+                  <Typography variant="h4">Location</Typography>
                 </TableCell>
-              )}
-              <TableCell>
-                <Typography
-                  variant="h6"
-                  style={{ color: getColorForAssessment(candidate.assessment) }}
-                >
-                  {candidate.assessment === "6 - Rockstar" ||
-                  candidate.assessment === "5 - Great candidate" ? (
-                    <>
-                      {candidate.assessment}
-                      <WhatshotIcon style={{ color: "red" }} />
-                    </>
-                  ) : (
-                    <>{candidate.assessment}</>
+                {userId && (
+                  <TableCell>
+                    <Typography variant="h4">Skill</Typography>
+                  </TableCell>
+                )}
+
+                <TableCell>
+                  <Typography variant="h4">Seniority</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="h4">Notice</Typography>
+                </TableCell>
+
+                {userId && (
+                  <TableCell>
+                    <Typography variant="h4">Contract</Typography>
+                  </TableCell>
+                )}
+                <TableCell>
+                  <Typography variant="h4">Assessment</Typography>
+                </TableCell>
+              </TableRow>
+
+              {(rowsPerPage > 0
+                ? filteredCandidates.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : filteredCandidates
+              ).map((candidate) => (
+                <TableRow key={candidate.id}>
+                  <TableCell>
+                    <StyledLink to={`/candidates/${candidate.id}`}>
+                      <StyledButton variant="contained" color="secondary">
+                        <UserTypography variant="h6">
+                          {candidate.firstName} {candidate.lastName}
+                        </UserTypography>
+                      </StyledButton>
+                    </StyledLink>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">
+                      {candidate.location}
+                    </Typography>
+                  </TableCell>
+                  {userId && (
+                    <TableCell>
+                      <Typography variant="body1">{candidate.skill}</Typography>
+                    </TableCell>
                   )}
-                </Typography>
-              </TableCell>
-            </TableRow>
-          ))}
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 69.5 * emptyRows }}>
-              <TableCell colSpan={7} />
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+                  <TableCell>
+                    <Typography variant="body1">
+                      {candidate.seniority}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{candidate.notice}</Typography>
+                  </TableCell>
 
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
-        component="div"
-        count={filteredCandidates.length}
-        page={page}
-        onPageChange={handleChangePage}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </StyledTableContainer>
+                  {userId && (
+                    <TableCell>
+                      <Typography variant="body1">
+                        {candidate.contract}
+                      </Typography>
+                    </TableCell>
+                  )}
+                  <TableCell>
+                    <Typography
+                      variant="h6"
+                      style={{
+                        color: getColorForAssessment(candidate.assessment),
+                      }}
+                    >
+                      {candidate.assessment === "6 - Rockstar" ||
+                      candidate.assessment === "5 - Great candidate" ? (
+                        <>
+                          {candidate.assessment}
+                          <WhatshotIcon style={{ color: "red" }} />
+                        </>
+                      ) : (
+                        <>{candidate.assessment}</>
+                      )}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ))}
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 69.5 * emptyRows }}>
+                  <TableCell colSpan={7} />
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 15, { label: "All", value: -1 }]}
+            component="div"
+            count={filteredCandidates.length}
+            page={page}
+            onPageChange={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </StyledTableContainer>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 
