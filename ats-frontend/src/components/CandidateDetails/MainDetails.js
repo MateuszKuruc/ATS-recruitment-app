@@ -73,6 +73,8 @@ const Container = styled.div`
   margin-top: 1rem;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
+  // display: flex;
+  // flex: 1;
 
   @media (max-width: 768px) {
     padding: 0;

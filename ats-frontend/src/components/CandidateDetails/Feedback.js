@@ -27,6 +27,7 @@ const StyledContainer = styled.div`
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
+  flex: 1;
 `;
 
 const StyledTextField = styled(TextField)`
