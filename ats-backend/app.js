@@ -10,7 +10,7 @@ const loginRouter = require("./controllers/login");
 const middleware = require("./utils/middleware");
 require("express-async-errors");
 
-const frontendDomain = "https://ats-mateuszkuruc.onrender.com/";
+// const frontendDomain = "https://ats-mateuszkuruc.onrender.com/";
 
 mongoose
   .connect(config.MONGODB_URI)
@@ -24,13 +24,13 @@ mongoose
 app.use(middleware.tokenExtractor);
 app.use(middleware.errorHandler);
 
-// app.use(cors());
+app.use(cors());
 
-app.use(
-  cors({
-    origin: frontendDomain,
-  })
-);
+// app.use(
+//   cors({
+//     origin: frontendDomain,
+//   })
+// );
 
 app.use(express.json());
 
