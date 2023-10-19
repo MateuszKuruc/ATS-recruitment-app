@@ -50,7 +50,6 @@ const Header = styled.div`
 
 const HeaderTypography = styled(Typography)`
   color: #ffba49;
-  // color: #ffffff;
 `;
 
 const TipsTab = () => {

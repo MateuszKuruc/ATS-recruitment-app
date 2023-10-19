@@ -43,12 +43,20 @@ const TopHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  background-color: #25283d;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
   }
+`;
+
+const HeaderTypography = styled(Typography)`
+  color: #ffba49;
 `;
 
 const Faq = () => {
@@ -112,7 +120,7 @@ const Faq = () => {
     <AnimatedPage style={{ border: "1px solid red" }}>
       <MainContainer>
         <TopHeader>
-          <Typography variant="h1">FAQ</Typography>
+          <HeaderTypography variant="h4">FAQ</HeaderTypography>
         </TopHeader>
 
         {content.map((c, i) => (
