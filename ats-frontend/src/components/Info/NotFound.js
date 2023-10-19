@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const MainContainer = styled.div`
   && {
@@ -32,25 +33,27 @@ const StyledTypography = styled(Typography)`
 
 const NotFound = () => {
   return (
-    <MainContainer>
-      <StyledTypography variant="h1">404</StyledTypography>
-      <StyledTypography variant="h2">Page not found</StyledTypography>
-      <p>
-        <Typography variant="italic3">
-          <p>
-            Sorry, the page you are trying to reach does not exist. Please use
-            correct address to display content.
-          </p>
-          <p>
-            If you think something is broken and wish to report it, use{" "}
-            <Link to="/feedback">
-              <em>feedback page</em>
-            </Link>
-            .
-          </p>
-        </Typography>
-      </p>
-    </MainContainer>
+    <AnimatedPage>
+      <MainContainer>
+        <StyledTypography variant="h1">404</StyledTypography>
+        <StyledTypography variant="h2">Page not found</StyledTypography>
+        <p>
+          <Typography variant="italic3">
+            <p>
+              Sorry, the page you are trying to reach does not exist. Please use
+              correct address to display content.
+            </p>
+            <p>
+              If you think something is broken and wish to report it, use{" "}
+              <Link to="/feedback">
+                <em>feedback page</em>
+              </Link>
+              .
+            </p>
+          </Typography>
+        </p>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 

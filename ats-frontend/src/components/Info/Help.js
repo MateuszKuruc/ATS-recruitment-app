@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Typography, Button } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import { Link } from "react-router-dom";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const MainContainer = styled.div`
   background-color: #ebcbf4;
@@ -46,35 +47,37 @@ const StyledButton = styled(Button)`
 
 const Help = () => {
   return (
-    <MainContainer>
-      <Typography variant="h3">Need help?</Typography>
-      <Typography variant="body1">
-        <p>
-          If you are facing difficulties with the ATS app, please get in touch
-          and report them, so the app can be improved.
-        </p>
-        <Typography variant="h6">Please describe:</Typography>
-        <p>
-          <ul>
-            <li>Problem or bug you are facing</li>
-            <li>When it occurs</li>
-            <li>Web browsers where the issue occurs</li>
-          </ul>
-        </p>
-      </Typography>
+    <AnimatedPage>
+      <MainContainer>
+        <Typography variant="h3">Need help?</Typography>
+        <Typography variant="body1">
+          <p>
+            If you are facing difficulties with the ATS app, please get in touch
+            and report them, so the app can be improved.
+          </p>
+          <Typography variant="h6">Please describe:</Typography>
+          <p>
+            <ul>
+              <li>Problem or bug you are facing</li>
+              <li>When it occurs</li>
+              <li>Web browsers where the issue occurs</li>
+            </ul>
+          </p>
+        </Typography>
 
-      <Contact>
-        <StyledButton
-          variant="contained"
-          color="secondary"
-          component={Link}
-          to="mailto:mateuszkuruc@gmail.com"
-        >
-          <EmailIcon fontSize="large" />
-          <Typography variant="h5">Report</Typography>
-        </StyledButton>
-      </Contact>
-    </MainContainer>
+        <Contact>
+          <StyledButton
+            variant="contained"
+            color="secondary"
+            component={Link}
+            to="mailto:mateuszkuruc@gmail.com"
+          >
+            <EmailIcon fontSize="large" />
+            <Typography variant="h5">Report</Typography>
+          </StyledButton>
+        </Contact>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 

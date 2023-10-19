@@ -1,5 +1,6 @@
 import { TextField, Button, Typography } from "@mui/material";
 import styled from "styled-components";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 export const StyledTextField = styled(TextField)`
   && {
@@ -85,41 +86,43 @@ const LoginForm = ({
   passwordError,
 }) => {
   return (
-    <MainContainer>
-      <FormContainer onSubmit={handleSubmit}>
-        <StyledHeader>
-          <Typography variant="h4">LOGIN</Typography>
-        </StyledHeader>
+    <AnimatedPage>
+      <MainContainer>
+        <FormContainer onSubmit={handleSubmit}>
+          <StyledHeader>
+            <Typography variant="h4">LOGIN</Typography>
+          </StyledHeader>
 
-        <StyledTextField
-          error={usernameError}
-          helperText={
-            usernameError ? "Enter valid username (4 - 15 characters" : ""
-          }
-          label="Username"
-          onChange={handleUsernameChange}
-        ></StyledTextField>
+          <StyledTextField
+            error={usernameError}
+            helperText={
+              usernameError ? "Enter valid username (4 - 15 characters" : ""
+            }
+            label="Username"
+            onChange={handleUsernameChange}
+          ></StyledTextField>
 
-        <StyledTextField
-          error={passwordError}
-          helperText={
-            passwordError ? "Enter valid password (6 - 15 characters" : ""
-          }
-          type="password"
-          label="Password"
-          onChange={handlePasswordChange}
-        ></StyledTextField>
+          <StyledTextField
+            error={passwordError}
+            helperText={
+              passwordError ? "Enter valid password (6 - 15 characters" : ""
+            }
+            type="password"
+            label="Password"
+            onChange={handlePasswordChange}
+          ></StyledTextField>
 
-        <StyledButton
-          id="login-button"
-          type="submit"
-          variant="contained"
-          color="secondary"
-        >
-          <Typography variant="h6">Log in</Typography>
-        </StyledButton>
-      </FormContainer>
-    </MainContainer>
+          <StyledButton
+            id="login-button"
+            type="submit"
+            variant="contained"
+            color="secondary"
+          >
+            <Typography variant="h6">Log in</Typography>
+          </StyledButton>
+        </FormContainer>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { setNotification } from "../../reducers/notificationReducer";
 import styled from "styled-components";
+import AnimatedPage from "../Layout/AnimatedPage";
 
 const MainContainer = styled.div`
   padding: 5rem;
@@ -69,69 +70,71 @@ const LogoutPage = () => {
   }, [dispatch]);
 
   return (
-    <MainContainer>
-      <TopContainer>
-        <Typography variant="italic3">
-          <p>
-            You have been successfully logged out. Please note that you
-            <strong>
+    <AnimatedPage>
+      <MainContainer>
+        <TopContainer>
+          <Typography variant="italic3">
+            <p>
+              You have been successfully logged out. Please note that you
+              <strong>
+                {" "}
+                will not be able to use dashboard before logging in.{" "}
+              </strong>
+              The key functionalities of the ATS application are user-oriented
+              and require an active account.
+            </p>
+            <p>
+              If you want to log in again, <Link to="/login">click here.</Link>
+            </p>
+          </Typography>
+        </TopContainer>
+        <InnerContainer>
+          <HeaderTypography variant="h5">
+            Wish to leave feedback?
+          </HeaderTypography>
+          <BodyTypography variant="body1">
+            <p>
+              Don't hesitate to let me know about the user experience, so I can
+              provide further quality of life improvements to the application.
+              If there are particular parts of the app that you enjoy, share
+              your thoughts, too!{" "}
+            </p>
+            <p>
+              Please use{" "}
+              <Link to="/feedback">
+                <em>this link</em>
+              </Link>
+              .
+            </p>
+          </BodyTypography>
+          <HeaderTypography variant="h5">
+            Not sure how the ATS can help you?
+          </HeaderTypography>
+          <BodyTypography variant="body1">
+            <p>
               {" "}
-              will not be able to use dashboard before logging in.{" "}
-            </strong>
-            The key functionalities of the ATS application are user-oriented and
-            require an active account.
-          </p>
-          <p>
-            If you want to log in again, <Link to="/login">click here.</Link>
-          </p>
-        </Typography>
-      </TopContainer>
-      <InnerContainer>
-        <HeaderTypography variant="h5">
-          Wish to leave feedback?
-        </HeaderTypography>
-        <BodyTypography variant="body1">
-          <p>
-            Don't hesitate to let me know about the user experience, so I can
-            provide further quality of life improvements to the application. If
-            there are particular parts of the app that you enjoy, share your
-            thoughts, too!{" "}
-          </p>
-          <p>
-            Please use{" "}
-            <Link to="/feedback">
-              <em>this link</em>
-            </Link>
-            .
-          </p>
-        </BodyTypography>
-        <HeaderTypography variant="h5">
-          Not sure how the ATS can help you?
-        </HeaderTypography>
-        <BodyTypography variant="body1">
-          <p>
-            {" "}
-            Visit the{" "}
-            <Link to="/tips">
-              <em>tips</em>
-            </Link>{" "}
-            tab and read about uses of Applicant Tracking Systems in the
-            recruitment industry.
-          </p>
-        </BodyTypography>
-        <HeaderTypography variant="h5">More questions?</HeaderTypography>
-        <BodyTypography>
-          <p>
-            {" "}
-            Please check FAQ section{" "}
-            <Link to="faq">
-              <em>here</em>
-            </Link>
-            .
-          </p>
-        </BodyTypography>
-      </InnerContainer>
-    </MainContainer>
+              Visit the{" "}
+              <Link to="/tips">
+                <em>tips</em>
+              </Link>{" "}
+              tab and read about uses of Applicant Tracking Systems in the
+              recruitment industry.
+            </p>
+          </BodyTypography>
+          <HeaderTypography variant="h5">More questions?</HeaderTypography>
+          <BodyTypography>
+            <p>
+              {" "}
+              Please check FAQ section{" "}
+              <Link to="faq">
+                <em>here</em>
+              </Link>
+              .
+            </p>
+          </BodyTypography>
+        </InnerContainer>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 
