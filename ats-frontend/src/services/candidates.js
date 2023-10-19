@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "/api/candidates";
+// const baseUrl = "/api/candidates";  before deployment, only local
+
+const baseUrl = "https://ats-mateuszkuruc.onrender.com";
 
 const generateUniqueFilename = (originalFilename) => {
   const timestamp = new Date().getTime();

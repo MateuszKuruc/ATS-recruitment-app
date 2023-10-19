@@ -6,6 +6,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import App from "./App";
 import store from "./store";
 import { BrowserRouter as Router } from "react-router-dom";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
+disableReactDevTools();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
