@@ -105,9 +105,8 @@ const HomePage = () => {
         </StyledPaper>
         <Typography variant="italic">
           For more details visit the <Link to="/tips">Tips</Link> and{" "}
-          <Link to="/faq">FAQ </Link>
-          tabs. To leave feedback, visit{" "}
-          <Link to="userfeedback">Feedback </Link>tab.
+          <Link to="/faq">FAQ</Link> tabs. To leave feedback, visit{" "}
+          <Link to="userfeedback">Feedback</Link> tab.
         </Typography>
         <BottomContainer>
           <Typography variant="h4">ENJOY!</Typography>
