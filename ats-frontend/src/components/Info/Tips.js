@@ -1,6 +1,7 @@
 import AnimatedPage from "../Layout/AnimatedPage";
 import styled from "styled-components";
 import { Typography, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const MainContainer = styled.div`
   background-color: #ebcbf4;
@@ -21,6 +22,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 `;
 const StyledPaper = styled(Paper)`
   padding: 1rem;
@@ -150,7 +152,12 @@ const TipsTab = () => {
               </ul>
             </Typography>
           </StyledPaper>
-        </Content>
+        </Content>{" "}
+        <Typography variant="italic">
+          In case of further questions, please refer to{" "}
+          <Link to="/help">Help</Link> or <Link to="/feedback">Feedback</Link>{" "}
+          tabs.
+        </Typography>
       </MainContainer>
     </AnimatedPage>
   );
