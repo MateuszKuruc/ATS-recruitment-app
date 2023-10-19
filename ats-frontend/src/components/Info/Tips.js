@@ -1,63 +1,185 @@
 import AnimatedPage from "../Layout/AnimatedPage";
 import styled from "styled-components";
-
+import { Typography, Paper } from "@mui/material";
 
 const MainContainer = styled.div`
+  background-color: #ebcbf4;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+`;
 
-`
+const Intro = styled.div``;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+const StyledPaper = styled(Paper)`
+  padding: 1rem;
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #25283d;
+  padding: 2rem;
+  border-radius: 0.5rem;
+`;
+
+const HeaderTypography = styled(Typography)`
+  color: #ffba49;
+  // color: #ffffff;
+`;
 
 const TipsTab = () => {
   return (
-  <AnimatedPage>
-    <MainContainer>
-
-    </MainContainer>
-  </AnimatedPage>
+    <AnimatedPage>
+      <MainContainer>
+        <Header>
+          <HeaderTypography variant="h4">TIPS</HeaderTypography>
+        </Header>
+        <Intro>
+          <Typography>
+            <p>
+              This short guide aims to help you successfully navigate the
+              application and make the best use of it. Remember that the main
+              functionalities are available upon logging in.
+            </p>
+          </Typography>
+        </Intro>
+        <Content>
+          <StyledPaper>
+            <Typography variant="h6">Candidate profile actions</Typography>
+            <Typography variant="body1">
+              <ul>
+                <li>
+                  <strong>Add new candidate:</strong> Navigate to "Form" tab,
+                  fill out all the fields and click "Add profile". If there
+                  aren't any validation errors, the profile of the candidate is
+                  created.
+                </li>
+                <li>
+                  <strong>Show all candidates:</strong> Open "Profiles" tab to
+                  display all candidates connected with your account. You can
+                  sort the data by clicking on the header name or three dot icon
+                  to access filtering menu.
+                </li>
+                <li>
+                  <strong>Add meeting feedback:</strong> Open candidate profile
+                  (either use search bar in the navigation menu or find the
+                  candidate in the list) and click "Provide feedback". Choose
+                  appropriate options from drop down menu, add written notes and
+                  click "Submit" to add feedback or "Cancel" if you want to
+                  abort changes.
+                </li>
+                <li>
+                  <strong>Edit candidate profile:</strong> Open candidate
+                  profile and click "Edit". Modify the fields you want to change
+                  and click "Save" to keep them, or "Cancel" if you want to
+                  abort changes.
+                </li>
+                <li>
+                  <strong>Show the best profiles:</strong> Go to "Hot" tab,
+                  which displays candidates with the best assessment grade (set
+                  during meeting feedback stage).
+                </li>
+              </ul>
+            </Typography>
+          </StyledPaper>
+          <StyledPaper>
+            <Typography variant="h6">Statistics and technologies</Typography>
+            <Typography variant="body1">
+              <ul>
+                <li>
+                  <strong>Show all technologies:</strong> Open "Pools" tab and
+                  choose a tile with the name of technology you are interested
+                  in.
+                </li>
+                <li>
+                  <strong>Show statistics per technology:</strong> Click on
+                  technology name in "Pools tab" to display additional
+                  information. The page includes details e.g. on candidates'
+                  most popular location, seniority and earliest availability.
+                  Click on "Show more" button next to category to display tab
+                  data. From there, you can also access individual candidate's
+                  profile by clicking their name.
+                </li>
+              </ul>
+            </Typography>
+          </StyledPaper>
+          <StyledPaper>
+            <Typography variant="h6">User actions</Typography>
+            <Typography variant="body1">
+              <ul>
+                <li>
+                  <strong>Log in:</strong> Open "Login" tab and enter account
+                  credentials, click "log in" and await login confirmation.
+                </li>
+                <li>
+                  <strong>Log out:</strong> Click on user icon in navigation
+                  menu and choose "Logout".
+                </li>
+                <li>
+                  <strong>Share feedback:</strong> Click on "Feedback" button in
+                  navigation menu on follow instructions.
+                </li>
+                <li>
+                  <strong>Get help:</strong> Click on "Help" button in
+                  navigation menu and follow instructions.
+                </li>
+              </ul>
+            </Typography>
+          </StyledPaper>
+        </Content>
+      </MainContainer>
+    </AnimatedPage>
   );
 };
 
 export default TipsTab;
 
-
-
 <div>
-<h1>Tips</h1>
-<p>
-  This short guide was written with the aim of helping you successfully
-  navigate the application and make the best use of it. ATS apps are
-  becoming increasingly widespread and currently most, if not all,
-  recruitment agencies and internal recruitment teams use it, but the
-  concept of ATS is still foreign to most people outside of career in
-  recruitment.
-</p>
-<p>
-  Let us make clear how such systems are built and what their
-  functionalities are, so you can improve your recruiting experience and
-  keep track of the candidates' pipeline that you are working on.
-</p>
-<h2>What are advantages of using ATS?</h2>
-<p>
-  First of all, ATS is a way of keeping all the important details
-  regarding candidates in one place. It eliminates the need to employ
-  additional separate trackers (e.g. in Excel), which makes it a very
-  universal tool.
-</p>
+  <h1>Tips</h1>
+  <p>
+    This short guide was written with the aim of helping you successfully
+    navigate the application and make the best use of it. ATS apps are becoming
+    increasingly widespread and currently most, if not all, recruitment agencies
+    and internal recruitment teams use it, but the concept of ATS is still
+    foreign to most people outside of career in recruitment.
+  </p>
+  <p>
+    Let us make clear how such systems are built and what their functionalities
+    are, so you can improve your recruiting experience and keep track of the
+    candidates' pipeline that you are working on.
+  </p>
+  <h2>What are advantages of using ATS?</h2>
+  <p>
+    First of all, ATS is a way of keeping all the important details regarding
+    candidates in one place. It eliminates the need to employ additional
+    separate trackers (e.g. in Excel), which makes it a very universal tool.
+  </p>
 
-<div>
-  <p>Some of the funcionalities include:</p>
-  <ul>
-    <li>Adding, removing and editing candidate profiles</li>
-    <li>Uploading resumes and other related documents to a profile</li>
-    <li>
-      Tracking recruitment process stages to quickly gather information on
-      the given candidate's progress in terms of hiring
-    </li>
-    <li>
-      Acting as a database of candidates for the future reference. If the
-      candidate has been rejected from one process, they could still be a
-      perfect match for the future recruitments - ATS allows easier access
-      to such individuals
-    </li>
-  </ul>
-</div>
-</div>
+  <div>
+    <p>Some of the funcionalities include:</p>
+    <ul>
+      <li>Adding, removing and editing candidate profiles</li>
+      <li>Uploading resumes and other related documents to a profile</li>
+      <li>
+        Tracking recruitment process stages to quickly gather information on the
+        given candidate's progress in terms of hiring
+      </li>
+      <li>
+        Acting as a database of candidates for the future reference. If the
+        candidate has been rejected from one process, they could still be a
+        perfect match for the future recruitments - ATS allows easier access to
+        such individuals
+      </li>
+    </ul>
+  </div>
+</div>;
