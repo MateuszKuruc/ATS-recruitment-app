@@ -1,15 +1,20 @@
 POST http://localhost:3001/api/candidates
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1c3playIsImlkIjoiNjUyMTQwOWJlM2RmZDYzYjI4MGQzYTgxIiwiaWF0IjoxNjk2NjgxNDY5fQ.QZY5ys674hgiwFd9A1qG40lRQte9w_2ydbssUfTwy1o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hdGkiLCJpZCI6IjY1MjFhZTNlNjBhODg1YmE4NzA4ODYwNiIsImlhdCI6MTY5NzE5MTM0Mn0.cvKcZ8p7p1ofsEXHjqn5vsN-O67Vo_Wc3hIzE5n68O8
 
 
 {
-      "firstName": "qqqqqqq",
-      "lastName": "baqqqqqqti",
-      "phone": "423232322123",
-      "email": "cheqqqqqck@gmail.com",
-      "location": "Przewowwrsk",
-      "firstContact": "2023-05-12",
-      "skill": "JavaScript",
-      "seniority": "Junior"
+"firstName": "Noah",
+"lastName": "Wagner",
+"phone": "527891425",
+"email": "noahwagner@gmail.com",
+"location": "Gdansk",
+"firstContact": "2023-10-25T16:50:11.375Z",
+"skill": "JavaScript",
+"seniority": "Intern",
+"contract": "B2B",
+"notice": "Available now",
+"assessment": "",
+"language": "B1",
+"notes": "This candidate has potential but needs more evaluation."
 }
