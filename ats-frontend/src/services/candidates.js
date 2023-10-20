@@ -1,11 +1,11 @@
 import axios from "axios";
 
-// const baseUrl = "/api/candidates";
+const baseUrl = "/api/candidates";
 // before deployment, only local
 
 // const baseUrl = "https://ats-backend.onrender.com/api/candidates"; fails
 
-const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates"; // works
+// const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates"; // works
 
 const generateUniqueFilename = (originalFilename) => {
   const timestamp = new Date().getTime();
@@ -114,30 +114,54 @@ const uploadFile = async (id, file) => {
   }
 };
 
+// aws
+
 const downloadFile = async (fileName) => {
   const config = {
     headers: {
       Authorization: token,
     },
   };
+
   try {
     const response = await axios.get(`${baseUrl}/download/${fileName}`, config);
+    const s3Url = response.data.downloadUrl;
 
-    const url = window.URL.createObjectURL(new Blob([response.data]));
-    const link = document.createElement("a");
+    console.log("s3url from response", s3Url);
 
-    link.href = url;
-    link.setAttribute("download", fileName);
+    window.open(s3Url, "_blank");
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
     return true;
   } catch (error) {
     console.error("Error while downloading file:", error);
     return false;
   }
 };
+
+// const downloadFile = async (fileName) => {
+//   const config = {
+//     headers: {
+//       Authorization: token,
+//     },
+//   };
+//   try {
+//     const response = await axios.get(`${baseUrl}/download/${fileName}`, config);
+
+//     const url = window.URL.createObjectURL(new Blob([response.data]));
+//     const link = document.createElement("a");
+
+//     link.href = url;
+//     link.setAttribute("download", fileName);
+
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+//     return true;
+//   } catch (error) {
+//     console.error("Error while downloading file:", error);
+//     return false;
+//   }
+// };
 
 const deleteFile = async (id, fileName) => {
   const config = {

@@ -142,7 +142,7 @@ function App() {
     if (loggedUserJSON) {
       const loggedUser = JSON.parse(loggedUserJSON);
       candidateService.setToken(loggedUser.token);
-      console.log("logged user", loggedUser);
+
       dispatch(setLogin(loggedUser));
     }
   }, []);
