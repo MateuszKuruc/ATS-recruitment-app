@@ -167,6 +167,7 @@ const deleteFile = async (id, fileName) => {
   const config = {
     headers: { Authorization: token },
   };
+
   try {
     const response = await axios.delete(
       `${baseUrl}/delete/${id}/${fileName}`,
@@ -177,6 +178,21 @@ const deleteFile = async (id, fileName) => {
     console.error("Error while deleting file", error);
   }
 };
+
+// const deleteFile = async (id, fileName) => {
+//   const config = {
+//     headers: { Authorization: token },
+//   };
+//   try {
+//     const response = await axios.delete(
+//       `${baseUrl}/delete/${id}/${fileName}`,
+//       config
+//     );
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error while deleting file", error);
+//   }
+// };
 
 export default {
   getAll,
