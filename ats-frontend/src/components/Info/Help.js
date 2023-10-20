@@ -51,19 +51,18 @@ const Help = () => {
       <MainContainer>
         <Typography variant="h3">Need help?</Typography>
         <Typography variant="body1">
-          <p>
-            If you are facing difficulties with the ATS app, please get in touch
-            and report them, so the app can be improved.
-          </p>
-          <Typography variant="h6">Please describe:</Typography>
-          <p>
-            <ul>
-              <li>Problem or bug you are facing</li>
-              <li>When it occurs</li>
-              <li>Web browsers where the issue occurs</li>
-            </ul>
-          </p>
+          If you are facing difficulties with the ATS app, please get in touch
+          and report them, so the app can be improved.
         </Typography>
+
+        <Typography variant="h6">Please describe:</Typography>
+        <ul>
+          <Typography variant="body1">
+            <li>Problem or bug you are facing</li>
+            <li>When it occurs</li>
+            <li>Web browsers where the issue occurs</li>
+          </Typography>
+        </ul>
 
         <Contact>
           <StyledButton

@@ -77,21 +77,17 @@ const HomePage = () => {
           </HeaderCaption>
         </Header>
         <Typography variant="body1">
-          <p>
-            ATS is a valuable tool in the recruiter's arsenal, allowing
-            intuitive data storage, feedback management and status control.
-          </p>
-          <p>
-            The application was deisgned <em>specifically</em> with IT sector
-            recruitment in mind. It is reflected in the field types of the
-            candidate profile, technologies in pools section and job titles.
-          </p>
+          ATS is a valuable tool in the recruiter's arsenal, allowing intuitive
+          data storage, feedback management and status control. The application
+          was deisgned <em>specifically</em> with IT sector recruitment in mind.
+          It is reflected in the field types of the candidate profile,
+          technologies in pools section and job titles.
         </Typography>
         <StyledPaper>
           <Typography variant="h6">Core features:</Typography>
 
-          <Typography variant="body1">
-            <ul>
+          <ul>
+            <Typography variant="body1">
               <li>Add new candidate profile with basic details</li>
               <li>Provide written feedback after the meeting with candidate</li>
               <li>Upload and delete candidate CV</li>
@@ -100,13 +96,13 @@ const HomePage = () => {
               <li>Show the list of 'hot' profiles based on assessment score</li>
               <li>Show pools with division based on technologies</li>
               <li>Display basic statistics about each pool</li>
-            </ul>
-          </Typography>
+            </Typography>
+          </ul>
         </StyledPaper>
         <Typography variant="italic">
           For more details visit the <Link to="/tips">Tips</Link> and{" "}
           <Link to="/faq">FAQ</Link> tabs. To leave feedback, visit{" "}
-          <Link to="userfeedback">Feedback</Link> tab.
+          <Link to="/feedback">Feedback</Link> tab.
         </Typography>
         <BottomContainer>
           <Typography variant="h4">ENJOY!</Typography>

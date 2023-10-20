@@ -14,13 +14,16 @@ const MainContainer = styled.div`
   justify-content: flex-start;
   margin-bottom: 1rem;
   align-items: center;
+  gap: 1rem;
 
   @media (min-width: 1441px) {
+    gap: 0rem;
   }
 
   @media (max-width: 768px) {
     padding: 2rem;
     padding-top: 3rem;
+    gap: 0rem;
   }
 `;
 
@@ -55,10 +58,8 @@ const UserFeedback = () => {
       <MainContainer>
         <Typography variant="h3">Thank you for using the ATS app!</Typography>
         <Typography variant="body1">
-          <p>
-            I would love to hear your feedback, so let me know about parts which
-            need improvement and the ones you enjoyed!
-          </p>
+          I would love to hear your feedback, so let me know about parts which
+          need improvement and the ones you enjoyed!
         </Typography>
 
         <Contact>

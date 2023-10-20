@@ -37,21 +37,16 @@ const NotFound = () => {
       <MainContainer>
         <StyledTypography variant="h1">404</StyledTypography>
         <StyledTypography variant="h2">Page not found</StyledTypography>
-        <p>
-          <Typography variant="italic3">
-            <p>
-              Sorry, the page you are trying to reach does not exist. Please use
-              correct address to display content.
-            </p>
-            <p>
-              If you think something is broken and wish to report it, use{" "}
-              <Link to="/feedback">
-                <em>feedback page</em>
-              </Link>
-              .
-            </p>
-          </Typography>
-        </p>
+
+        <Typography variant="italic3">
+          Sorry, the page you are trying to reach does not exist. Please use
+          correct address to display content. If you think something is broken
+          and wish to report it, use{" "}
+          <Link to="/feedback">
+            <em>feedback page</em>
+          </Link>
+          .
+        </Typography>
       </MainContainer>
     </AnimatedPage>
   );

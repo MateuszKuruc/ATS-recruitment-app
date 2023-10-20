@@ -17,7 +17,12 @@ const MainContainer = styled.div`
   }
 `;
 
-const Intro = styled.div``;
+const Intro = styled.div`
+  && {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+`;
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,19 +65,17 @@ const TipsTab = () => {
           <HeaderTypography variant="h4">TIPS</HeaderTypography>
         </Header>
         <Intro>
-          <Typography>
-            <p>
-              This short guide aims to help you successfully navigate the
-              application and make the best use of it. Remember that the main
-              functionalities are available upon logging in.
-            </p>
+          <Typography variant="body1">
+            This short guide aims to help you successfully navigate the
+            application and make the best use of it. Remember that the main
+            functionalities are available upon logging in.
           </Typography>
         </Intro>
         <Content>
           <StyledPaper>
             <Typography variant="h6">Candidate profile actions</Typography>
-            <Typography variant="body1">
-              <ul>
+            <ul>
+              <Typography variant="body1">
                 <li>
                   <strong>Add new candidate:</strong> Navigate to "Form" tab,
                   fill out all the fields and click "Add profile". If there
@@ -104,13 +107,13 @@ const TipsTab = () => {
                   which displays candidates with the best assessment grade (set
                   during meeting feedback stage).
                 </li>
-              </ul>
-            </Typography>
+              </Typography>
+            </ul>
           </StyledPaper>
           <StyledPaper>
             <Typography variant="h6">Statistics and technologies</Typography>
-            <Typography variant="body1">
-              <ul>
+            <ul>
+              <Typography variant="body1">
                 <li>
                   <strong>Show all technologies:</strong> Open "Pools" tab and
                   choose a tile with the name of technology you are interested
@@ -125,13 +128,13 @@ const TipsTab = () => {
                   data. From there, you can also access individual candidate's
                   profile by clicking their name.
                 </li>
-              </ul>
-            </Typography>
+              </Typography>
+            </ul>
           </StyledPaper>
           <StyledPaper>
             <Typography variant="h6">User actions</Typography>
-            <Typography variant="body1">
-              <ul>
+            <ul>
+              <Typography variant="body1">
                 <li>
                   <strong>Log in:</strong> Open "Login" tab and enter account
                   credentials, click "log in" and await login confirmation.
@@ -148,8 +151,8 @@ const TipsTab = () => {
                   <strong>Get help:</strong> Click on "Help" button in
                   navigation menu and follow instructions.
                 </li>
-              </ul>
-            </Typography>
+              </Typography>
+            </ul>
           </StyledPaper>
         </Content>{" "}
         <Typography variant="italic">
