@@ -132,13 +132,9 @@ function App() {
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
 
-  console.log("technology", technology);
-
   useEffect(() => {
     dispatch(initializeCandidates());
   }, [dispatch]);
-
-  console.log("candidates app", candidates);
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedAppUser");
