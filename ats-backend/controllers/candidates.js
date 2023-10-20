@@ -171,7 +171,7 @@ candidatesRouter.post(
         return response.status(404).json({ error: "Candidate not found" });
       }
       const fileName = request.file.originalname;
-      // const filePath = request.file.path;
+
       const uploadDate = new Date().toISOString();
 
       //new
