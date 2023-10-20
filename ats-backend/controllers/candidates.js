@@ -183,7 +183,7 @@ candidatesRouter.post(
 
       s3.upload(params, (err, data) => {
         if (err) {
-          console.error(error);
+          console.error(err);
           response.status(500).json({ error: "Error uploading to S3" });
         } else {
           console.log("File uploaded to S3");
@@ -223,10 +223,7 @@ candidatesRouter.get("/download/:filename", async (request, response) => {
 
     const s3Url = `https://${process.env.BUCKET}.s3.${process.env.REGION}.amazonaws.com/${fileName}`;
 
-   
     response.json({ downloadUrl: s3Url });
-
-
   } catch (error) {
     console.error("Error during file download", error);
     response.status(500).json({ error: "Internal server error" });
