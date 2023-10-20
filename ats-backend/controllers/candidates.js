@@ -223,7 +223,7 @@ candidatesRouter.get("/download/:filename", async (request, response) => {
 
     const s3Url = `https://${process.env.BUCKET}.s3.${process.env.REGION}.amazonaws.com/${fileName}`;
 
-    // response.redirect(s3Url);
+   
     response.json({ downloadUrl: s3Url });
 
 
