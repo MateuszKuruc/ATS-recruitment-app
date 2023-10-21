@@ -41,6 +41,7 @@ const VisuallyHiddenInput = styled("input")({
 
 const StyledTypography = styled(Typography)`
   && {
+    color: #ffffff;
   }
 `;
 
@@ -158,13 +159,7 @@ const CandidateFiles = ({ candidate }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [showFiles, setShowFiles] = useState(false);
 
-  // const [candidateData, setCandidateData] = useState(candidate);
-
   const filesShown = { display: showFiles ? "block" : "none" };
-
-  // useEffect(() => {
-  //   setCandidateData(candidate);
-  // }, [candidate]);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -269,9 +264,7 @@ const CandidateFiles = ({ candidate }) => {
     <AnimatedPage>
       <Container>
         <StyledHeader>
-          <StyledTypography variant="h5" style={{ color: "#ffffff" }}>
-            Files
-          </StyledTypography>
+          <StyledTypography variant="h5">Files</StyledTypography>
           <ButtonContainer>
             <StyledButton
               variant="contained"
@@ -357,9 +350,9 @@ const CandidateFiles = ({ candidate }) => {
               </SingleFileDiv>
             ))}
           {candidate.uploadedFiles.length === 0 && (
-            <StyledTypography style={filesShown} variant="italic">
+            <Typography style={filesShown} variant="italic">
               No files uploaded
-            </StyledTypography>
+            </Typography>
           )}
         </FilesContainer>
       </Container>
