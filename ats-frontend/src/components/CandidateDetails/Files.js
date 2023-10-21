@@ -181,8 +181,6 @@ const CandidateFiles = ({ candidate }) => {
 
     try {
       dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
-        // getById(candidate.id).then((response) => {
-        // dispatch(updateCandidate(response));
         dispatch(
           setNotification({
             severity: "success",

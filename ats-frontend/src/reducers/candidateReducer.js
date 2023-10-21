@@ -88,19 +88,8 @@ export const uploadCandidateFile = (id, file) => {
       id,
       file
     );
-    console.log('uploaded response', uploadedCandidateResponse)
-    // if (uploadedCandidateResponse.success) {
-      // dispatch(
-      //   updateCandidateFileInStore({
-      //     candidateId: id,
-      //     uploadedFile: uploadedCandidateResponse,
-      //   })
-      // );
 
-      dispatch(updateCandidateInStore(uploadedCandidateResponse));
-    // } else {
-    //   return;
-    // }
+    dispatch(updateCandidateInStore(uploadedCandidateResponse));
   };
 };
 
@@ -110,8 +99,7 @@ export const deleteCandidateFile = (id, fileName) => {
       id,
       fileName
     );
-    console.log("deleted file cadn", deletedCandidateFileResponse);
-    // dispatch(updateCandidateAllFiles(id, deletedCandidateFileResponse));
+
     dispatch(updateCandidateInStore(deletedCandidateFileResponse));
   };
 };
