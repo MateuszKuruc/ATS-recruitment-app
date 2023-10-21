@@ -122,8 +122,6 @@ const uploadFile = async (id, file) => {
   }
 };
 
-// aws
-
 const downloadFile = async (fileName) => {
   const config = {
     headers: {
@@ -146,31 +144,6 @@ const downloadFile = async (fileName) => {
   }
 };
 
-// const downloadFile = async (fileName) => {
-//   const config = {
-//     headers: {
-//       Authorization: token,
-//     },
-//   };
-//   try {
-//     const response = await axios.get(`${baseUrl}/download/${fileName}`, config);
-
-//     const url = window.URL.createObjectURL(new Blob([response.data]));
-//     const link = document.createElement("a");
-
-//     link.href = url;
-//     link.setAttribute("download", fileName);
-
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-//     return true;
-//   } catch (error) {
-//     console.error("Error while downloading file:", error);
-//     return false;
-//   }
-// };
-
 const deleteFile = async (id, fileName) => {
   const config = {
     headers: { Authorization: token },
@@ -189,21 +162,6 @@ const deleteFile = async (id, fileName) => {
     }
   }
 };
-
-// const deleteFile = async (id, fileName) => {
-//   const config = {
-//     headers: { Authorization: token },
-//   };
-//   try {
-//     const response = await axios.delete(
-//       `${baseUrl}/delete/${id}/${fileName}`,
-//       config
-//     );
-//     return response.data;
-//   } catch (error) {
-//     console.error("Error while deleting file", error);
-//   }
-// };
 
 export default {
   getAll,
