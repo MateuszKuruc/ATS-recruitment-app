@@ -164,11 +164,6 @@ const CandidateFiles = ({ candidate }) => {
 
   useEffect(() => {
     setCandidateData(candidate);
-    console.log("candidate and data", candidate, candidateData);
-  }, [candidate, candidateData]);
-
-  useEffect(() => {
-    setCandidateData(candidate);
   }, [candidate]);
 
   const onFileChange = async (e) => {
@@ -192,7 +187,6 @@ const CandidateFiles = ({ candidate }) => {
     try {
       dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
         getById(candidate.id).then((response) => {
-          console.log("upload response", response);
           dispatch(updateCandidate(response));
           dispatch(
             setNotification({
@@ -219,15 +213,14 @@ const CandidateFiles = ({ candidate }) => {
       dispatch(deleteCandidateFile(candidate.id, fileName)).then(() => {
         getById(candidate.id).then((response) => {
           dispatch(updateCandidate(response));
+          dispatch(
+            setNotification({
+              severity: "success",
+              message: "File deleted successfully!",
+            })
+          );
         });
       });
-
-      dispatch(
-        setNotification({
-          severity: "success",
-          message: "File deleted successfully!",
-        })
-      );
     } catch (error) {
       console.error(error);
       dispatch(

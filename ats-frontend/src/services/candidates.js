@@ -40,7 +40,9 @@ const create = async (newCandidate) => {
 
     return response.data;
   } catch (error) {
-    console.error("error while making POST request:", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("error while making POST request:", error);
+    }
   }
 };
 
@@ -65,7 +67,9 @@ const deleteCandidateById = async (id) => {
 
     return response.data;
   } catch (error) {
-    console.error("error while making DELETE request", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("error while making DELETE request", error);
+    }
   }
 };
 
@@ -82,7 +86,9 @@ const updateCandidateById = async (updatedCandidate) => {
 
     return response.data;
   } catch (error) {
-    console.error("error while making PUT request", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("error while making PUT request", error);
+    }
   }
 };
 
@@ -110,7 +116,9 @@ const uploadFile = async (id, file) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error while uploading file:", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("Error while uploading file:", error);
+    }
   }
 };
 
@@ -127,13 +135,13 @@ const downloadFile = async (fileName) => {
     const response = await axios.get(`${baseUrl}/download/${fileName}`, config);
     const s3Url = response.data.downloadUrl;
 
-    console.log("s3url from response", s3Url);
-
     window.open(s3Url, "_blank");
 
     return true;
   } catch (error) {
-    console.error("Error while downloading file:", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("Error while downloading file:", error);
+    }
     return false;
   }
 };
@@ -173,14 +181,12 @@ const deleteFile = async (id, fileName) => {
       `${baseUrl}/delete/${id}/${fileName}`,
       config
     );
-    console.log(
-      "response and response data from backend",
-      response,
-      response.data
-    );
+
     return response.data;
   } catch (error) {
-    console.error("Error while deleting file", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("Error while deleting file", error);
+    }
   }
 };
 
