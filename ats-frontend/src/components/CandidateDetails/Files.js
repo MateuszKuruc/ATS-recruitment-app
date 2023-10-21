@@ -5,9 +5,10 @@ import { uploadCandidateFile } from "../../reducers/candidateReducer";
 import { deleteCandidateFile } from "../../reducers/candidateReducer";
 import candidateService from "../../services/candidates";
 import { setNotification } from "../../reducers/notificationReducer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getById } from "../../services/candidates";
 import AnimatedPage from "../Layout/AnimatedPage";
+import { updateCandidate } from "../../reducers/candidateReducer";
 
 import {
   PictureAsPdf,
@@ -154,11 +155,21 @@ const StyledFileTypography = styled(Typography)`
 
 const CandidateFiles = ({ candidate }) => {
   const dispatch = useDispatch();
-  const [uploadedFiles, setUploadedFiles] = useState(candidate.uploadedFiles);
   const [openDialog, setOpenDialog] = useState(false);
   const [showFiles, setShowFiles] = useState(false);
 
+  const [candidateData, setCandidateData] = useState(candidate);
+
   const filesShown = { display: showFiles ? "block" : "none" };
+
+  useEffect(() => {
+    setCandidateData(candidate);
+    console.log("candidate and data", candidate, candidateData);
+  }, [candidate, candidateData]);
+
+  useEffect(() => {
+    setCandidateData(candidate);
+  }, [candidate]);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -179,16 +190,21 @@ const CandidateFiles = ({ candidate }) => {
     }
 
     try {
-      await dispatch(uploadCandidateFile(candidate.id, file));
-      const response = await getById(candidate.id);
-      setUploadedFiles(response.uploadedFiles);
-      dispatch(
-        setNotification({
-          severity: "success",
-          message: "File uploaded successfully!",
-        })
-      );
+      dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
+        getById(candidate.id).then((response) => {
+          console.log("upload response", response);
+          dispatch(updateCandidate(response));
+          dispatch(
+            setNotification({
+              severity: "success",
+              message: "File uploaded successfully!",
+            })
+          );
+          setShowFiles(true);
+        });
+      });
     } catch (error) {
+      console.log(error);
       dispatch(
         setNotification({
           severity: "error",
@@ -197,6 +213,45 @@ const CandidateFiles = ({ candidate }) => {
       );
     }
   };
+
+  const handleDelete = (fileName) => {
+    try {
+      dispatch(deleteCandidateFile(candidate.id, fileName)).then(() => {
+        getById(candidate.id).then((response) => {
+          dispatch(updateCandidate(response));
+        });
+      });
+
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "File deleted successfully!",
+        })
+      );
+    } catch (error) {
+      console.error(error);
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "Error deleting the file. Please try again",
+        })
+      );
+    }
+    setOpenDialog(false);
+  };
+
+  const openDialogWindow = () => {
+    setOpenDialog(true);
+  };
+
+  const closeDialogWindow = () => {
+    setOpenDialog(false);
+  };
+
+  if (!candidate) {
+    return null;
+  }
+
   const handleDownload = async (fileName) => {
     const success = await candidateService.downloadFile(fileName);
 
@@ -216,44 +271,6 @@ const CandidateFiles = ({ candidate }) => {
       );
     }
   };
-
-  const handleDelete = (fileName) => {
-    dispatch(deleteCandidateFile(candidate.id, fileName))
-      .then(() => {
-        getById(candidate.id).then((response) => {
-          setUploadedFiles(response.uploadedFiles);
-        });
-
-        dispatch(
-          setNotification({
-            severity: "success",
-            message: "File deleted successfully!",
-          })
-        );
-      })
-      .catch((error) => {
-        console.error(error);
-        dispatch(
-          setNotification({
-            severity: "error",
-            message: "Error deleting the file. Please try again",
-          })
-        );
-      });
-    setOpenDialog(false);
-  };
-
-  const openDialogWindow = () => {
-    setOpenDialog(true);
-  };
-
-  const closeDialogWindow = () => {
-    setOpenDialog(false);
-  };
-
-  if (!candidate) {
-    return null;
-  }
 
   return (
     <AnimatedPage>
@@ -288,8 +305,8 @@ const CandidateFiles = ({ candidate }) => {
         </StyledHeader>
 
         <FilesContainer>
-          {uploadedFiles.length > 0 &&
-            uploadedFiles.map((file) => (
+          {candidateData.uploadedFiles.length > 0 &&
+            candidateData.uploadedFiles.map((file) => (
               <SingleFileDiv key={file.fileName} style={filesShown}>
                 <IconContainer>
                   <IconButton onClick={() => handleDownload(file.fileName)}>
@@ -346,7 +363,7 @@ const CandidateFiles = ({ candidate }) => {
                 </Dialog>
               </SingleFileDiv>
             ))}
-          {uploadedFiles.length === 0 && (
+          {candidateData.uploadedFiles.length === 0 && (
             <StyledTypography style={filesShown} variant="italic">
               No files uploaded
             </StyledTypography>
