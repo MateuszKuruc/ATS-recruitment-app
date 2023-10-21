@@ -27,14 +27,6 @@ const candidateSlice = createSlice({
           : candidate
       );
     },
-    // updateCandidateAllFiles(state, action) {
-    //   const { candidateId, changedUploadedFiles } = action.payload;
-    //   return state.map((candidate) =>
-    //     candidate.id === candidateId
-    //       ? { ...candidate, uploadedFiles: changedUploadedFiles }
-    //       : candidate
-    //   );
-    // },
   },
 });
 
