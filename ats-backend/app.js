@@ -29,14 +29,5 @@ app.use(express.json());
 app.use("/api/candidates", candidatesRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
-app.use("/uploads", express.static("uploads"));
-
-// serve static react site
-
-// app.use(express.static("build"));
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
 
 module.exports = app;
