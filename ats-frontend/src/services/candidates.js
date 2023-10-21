@@ -3,8 +3,6 @@ import axios from "axios";
 const baseUrl = "/api/candidates";
 // before deployment, only local
 
-// const baseUrl = "https://ats-backend.onrender.com/api/candidates"; fails
-
 // const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates"; // works
 
 const generateUniqueFilename = (originalFilename) => {

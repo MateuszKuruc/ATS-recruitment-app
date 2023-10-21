@@ -158,13 +158,13 @@ const CandidateFiles = ({ candidate }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [showFiles, setShowFiles] = useState(false);
 
-  const [candidateData, setCandidateData] = useState(candidate);
+  // const [candidateData, setCandidateData] = useState(candidate);
 
   const filesShown = { display: showFiles ? "block" : "none" };
 
-  useEffect(() => {
-    setCandidateData(candidate);
-  }, [candidate]);
+  // useEffect(() => {
+  //   setCandidateData(candidate);
+  // }, [candidate]);
 
   const onFileChange = async (e) => {
     const file = e.target.files[0];
@@ -180,7 +180,7 @@ const CandidateFiles = ({ candidate }) => {
             "Maximum of 3 files per candidate. Please remove one of the existing files before uploading a new file",
         })
       );
-
+      setShowFiles(true);
       return;
     }
 
@@ -298,8 +298,8 @@ const CandidateFiles = ({ candidate }) => {
         </StyledHeader>
 
         <FilesContainer>
-          {candidateData.uploadedFiles.length > 0 &&
-            candidateData.uploadedFiles.map((file) => (
+          {candidate.uploadedFiles.length > 0 &&
+            candidate.uploadedFiles.map((file) => (
               <SingleFileDiv key={file.fileName} style={filesShown}>
                 <IconContainer>
                   <IconButton onClick={() => handleDownload(file.fileName)}>
@@ -356,7 +356,7 @@ const CandidateFiles = ({ candidate }) => {
                 </Dialog>
               </SingleFileDiv>
             ))}
-          {candidateData.uploadedFiles.length === 0 && (
+          {candidate.uploadedFiles.length === 0 && (
             <StyledTypography style={filesShown} variant="italic">
               No files uploaded
             </StyledTypography>
