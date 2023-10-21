@@ -27,14 +27,14 @@ const candidateSlice = createSlice({
           : candidate
       );
     },
-    updateCandidateAllFiles(state, action) {
-      const { candidateId, changedUploadedFiles } = action.payload;
-      return state.map((candidate) =>
-        candidate.id === candidateId
-          ? { ...candidate, uploadedFiles: changedUploadedFiles }
-          : candidate
-      );
-    },
+    // updateCandidateAllFiles(state, action) {
+    //   const { candidateId, changedUploadedFiles } = action.payload;
+    //   return state.map((candidate) =>
+    //     candidate.id === candidateId
+    //       ? { ...candidate, uploadedFiles: changedUploadedFiles }
+    //       : candidate
+    //   );
+    // },
   },
 });
 
@@ -89,12 +89,14 @@ export const uploadCandidateFile = (id, file) => {
       file
     );
     if (uploadedCandidateResponse.success) {
-      dispatch(
-        updateCandidateFileInStore({
-          candidateId: id,
-          uploadedFile: uploadedCandidateResponse,
-        })
-      );
+      // dispatch(
+      //   updateCandidateFileInStore({
+      //     candidateId: id,
+      //     uploadedFile: uploadedCandidateResponse,
+      //   })
+      // );
+
+      dispatch(updateCandidateInStore(uploadedCandidateResponse));
     } else {
       return;
     }
@@ -107,6 +109,8 @@ export const deleteCandidateFile = (id, fileName) => {
       id,
       fileName
     );
-    dispatch(updateCandidateAllFiles(id, deletedCandidateFileResponse));
+    console.log("deleted file cadn", deletedCandidateFileResponse);
+    // dispatch(updateCandidateAllFiles(id, deletedCandidateFileResponse));
+    dispatch(updateCandidateInStore(deletedCandidateFileResponse));
   };
 };

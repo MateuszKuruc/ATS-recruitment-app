@@ -181,16 +181,15 @@ const CandidateFiles = ({ candidate }) => {
 
     try {
       dispatch(uploadCandidateFile(candidate.id, file)).then(() => {
-        getById(candidate.id).then((response) => {
-          dispatch(updateCandidate(response));
-          dispatch(
-            setNotification({
-              severity: "success",
-              message: "File uploaded successfully!",
-            })
-          );
-          setShowFiles(true);
-        });
+        // getById(candidate.id).then((response) => {
+        // dispatch(updateCandidate(response));
+        dispatch(
+          setNotification({
+            severity: "success",
+            message: "File uploaded successfully!",
+          })
+        );
+        setShowFiles(true);
       });
     } catch (error) {
       console.log(error);
@@ -206,15 +205,12 @@ const CandidateFiles = ({ candidate }) => {
   const handleDelete = (fileName) => {
     try {
       dispatch(deleteCandidateFile(candidate.id, fileName)).then(() => {
-        getById(candidate.id).then((response) => {
-          dispatch(updateCandidate(response));
-          dispatch(
-            setNotification({
-              severity: "success",
-              message: "File deleted successfully!",
-            })
-          );
-        });
+        dispatch(
+          setNotification({
+            severity: "success",
+            message: "File deleted successfully!",
+          })
+        );
       });
     } catch (error) {
       console.error(error);
