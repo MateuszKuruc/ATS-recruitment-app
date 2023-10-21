@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const baseUrl = "/api/candidates";
-// before deployment, only local
+// development mode
+// const baseUrl = "/api/candidates";
 
-// const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates"; // works
+// production mode
+const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates";
 
 const generateUniqueFilename = (originalFilename) => {
   const timestamp = new Date().getTime();
