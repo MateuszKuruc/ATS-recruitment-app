@@ -46,7 +46,9 @@ candidatesRouter.post("/", async (request, response) => {
 
     response.json(savedCandidate);
   } catch (error) {
-    console.error(error);
+    if (process.env.NODE_ENV === "development") {
+      console.error(error);
+    }
     response.status(500).json({ error: "Internal server error" });
   }
 });
@@ -75,7 +77,9 @@ candidatesRouter.delete("/:id", async (request, response) => {
     await Candidate.findByIdAndRemove(id);
     response.status(204).end();
   } catch (error) {
-    console.error(error);
+    if (process.env.NODE_ENV === "development") {
+      console.error(error);
+    }
     response.status(500).json({ error: "Internal server error" });
   }
 });
@@ -114,7 +118,9 @@ candidatesRouter.put("/:id", async (request, response) => {
 
     response.json(updatedCandidate);
   } catch (error) {
-    console.error(error);
+    if (process.env.NODE_ENV === "development") {
+      console.error(error);
+    }
     response.status(500).json({ error: "Internal server error" });
   }
 });
@@ -196,7 +202,9 @@ candidatesRouter.post(
         }
       });
     } catch (error) {
-      console.error(error);
+      if (process.env.NODE_ENV === "development") {
+        console.error(error);
+      }
       response.status(500).json({ error: "Internal server error" });
     }
   }
@@ -221,7 +229,9 @@ candidatesRouter.get("/download/:filename", async (request, response) => {
 
     response.json({ downloadUrl: s3Url });
   } catch (error) {
-    console.error("Error during file download", error);
+    if (process.env.NODE_ENV === "development") {
+      console.error("Error during file download", error);
+    }
     response.status(500).json({ error: "Internal server error" });
   }
 });
@@ -256,15 +266,21 @@ candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
 
     s3.deleteObject(params, (err, data) => {
       if (err) {
-        console.error("Error deleting file from S3:", err);
+        if (process.env.NODE_ENV === "development") {
+          console.error("Error deleting file from S3:", err);
+        }
         response.status(500).json({ error: "Internal server error" });
       } else {
-        console.log("File deleted from S3:", data);
+        if (process.env.NODE_ENV === "development") {
+          console.log("File deleted from S3:", data);
+        }
         return response.json(candidate);
       }
     });
   } catch (error) {
-    console.error(error);
+    if (process.env.NODE_ENV === "development") {
+      console.error(error);
+    }
     response.status(500).json({ error: "Internal server error" });
   }
 });
