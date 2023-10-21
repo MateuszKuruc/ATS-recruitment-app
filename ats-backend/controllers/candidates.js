@@ -3,7 +3,6 @@ const Candidate = require("../models/candidate");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const upload = require("../utils/multerConfig");
-const path = require("path");
 
 candidatesRouter.get("/", async (request, response) => {
   const candidates = await Candidate.find({});
@@ -127,8 +126,6 @@ candidatesRouter.get("/:id", async (request, response) => {
   response.json(candidate);
 });
 
-// AWS
-
 const AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -170,11 +167,10 @@ candidatesRouter.post(
       if (!candidate) {
         return response.status(404).json({ error: "Candidate not found" });
       }
-      const fileName = request.file.originalname;
 
+      const fileName = request.file.originalname;
       const uploadDate = new Date().toISOString();
 
-      //new
       const params = {
         Bucket: process.env.BUCKET,
         Key: fileName,
@@ -183,20 +179,19 @@ candidatesRouter.post(
 
       s3.upload(params, (err, data) => {
         if (err) {
-          console.error(err);
+          if (process.env.NODE_ENV === "development") {
+            console.error(err);
+          }
           response.status(500).json({ error: "Error uploading to S3" });
         } else {
-          console.log("File uploaded to S3");
-          // response.status(200).json({ message: "File uploaded successfully" });
           candidate.uploadedFiles = candidate.uploadedFiles.concat({
             fileName,
-            // filePath,
+
             uploadDate,
           });
 
           candidate.save();
 
-          // response.status(200).json({ message: "File uploaded successfully" });
           return response.json(candidate);
         }
       });
@@ -273,109 +268,5 @@ candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
     response.status(500).json({ error: "Internal server error" });
   }
 });
-
-// candidatesRouter.post(
-//   "/upload/:id",
-//   upload.single("file"),
-//   async (request, response) => {
-//     try {
-//       const candidateId = request.params.id;
-
-//       const decodedToken = jwt.verify(request.token, process.env.SECRET);
-//       if (!decodedToken) {
-//         response.status(401).json({ error: "token invalid" });
-//       }
-
-//       const candidate = await Candidate.findById(candidateId);
-//       const user = await User.findById(decodedToken.id);
-
-//       if (user._id.toString() !== candidate.user.toString()) {
-//         response
-//           .status(401)
-//           .json({ error: "No authorization to edit this candidate" });
-//       }
-
-//       if (!user) {
-//         response.status(400).json({ error: "User does not exist" });
-//       }
-
-//       if (!request.file) {
-//         return response.status(400).json({ error: "No file uploaded" });
-//       }
-//       const fileName = request.file.originalname;
-//       const filePath = request.file.path;
-//       const uploadDate = new Date().toISOString();
-
-//       if (!candidate) {
-//         return response.status(404).json({ error: "Candidate not found" });
-//       }
-
-//       candidate.uploadedFiles = candidate.uploadedFiles.concat({
-//         fileName,
-//         filePath,
-//         uploadDate,
-//       });
-
-//       await candidate.save();
-
-//       response.status(200).json({ message: "File uploaded successfully" });
-//     } catch (error) {
-//       console.error(error);
-//       response.status(500).json({ error: "Internal server error" });
-//     }
-//   }
-// );
-
-// candidatesRouter.get("/download/:filename", async (request, response) => {
-//   try {
-//     const decodedToken = jwt.verify(request.token, process.env.SECRET);
-//     if (!decodedToken) {
-//       response.status(401).json({ error: "token invalid" });
-//     }
-
-//     const user = await User.findById(decodedToken.id);
-
-//     if (!user) {
-//       response.status(400).json({ error: "User does not exist" });
-//     }
-
-//     const fileName = request.params.filename;
-//     const filePath = path.join(__dirname, "../uploads", fileName);
-
-//     response.download(filePath, fileName, (err) => {
-//       if (err) {
-//         response.status(404).send("File not found");
-//       }
-//     });
-//   } catch (error) {
-//     console.error("Error during file download", error);
-//     response.status(500).json({ error: "Internal server error" });
-//   }
-// });
-
-// candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
-//   const { id, fileName } = request.params;
-
-//   try {
-//     const candidate = await Candidate.findById(id);
-
-//     if (!candidate) {
-//       return response.status(404).json({ error: "Candidate not found" });
-//     }
-
-//     const updatedFiles = candidate.uploadedFiles.filter(
-//       (file) => file.fileName !== fileName
-//     );
-
-//     candidate.uploadedFiles = updatedFiles;
-
-//     await candidate.save();
-
-//     response.status(204).end();
-//   } catch (error) {
-//     console.error(error);
-//     response.status(500).json({ error: "Internal server error" });
-//   }
-// });
 
 module.exports = candidatesRouter;
