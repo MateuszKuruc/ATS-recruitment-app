@@ -88,7 +88,8 @@ export const uploadCandidateFile = (id, file) => {
       id,
       file
     );
-    if (uploadedCandidateResponse.success) {
+    console.log('uploaded response', uploadedCandidateResponse)
+    // if (uploadedCandidateResponse.success) {
       // dispatch(
       //   updateCandidateFileInStore({
       //     candidateId: id,
@@ -97,9 +98,9 @@ export const uploadCandidateFile = (id, file) => {
       // );
 
       dispatch(updateCandidateInStore(uploadedCandidateResponse));
-    } else {
-      return;
-    }
+    // } else {
+    //   return;
+    // }
   };
 };
 
