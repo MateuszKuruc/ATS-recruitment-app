@@ -196,7 +196,8 @@ candidatesRouter.post(
 
           candidate.save();
 
-          response.status(200).json({ message: "File uploaded successfully" });
+          // response.status(200).json({ message: "File uploaded successfully" });
+          return response.json(candidate);
         }
       });
     } catch (error) {
@@ -248,7 +249,25 @@ candidatesRouter.delete("/delete/:id/:fileName", async (request, response) => {
 
     await candidate.save();
 
-    response.status(204).end();
+    const s3 = new AWS.S3({
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    });
+
+    const params = {
+      Bucket: process.env.BUCKET,
+      Key: fileName,
+    };
+
+    s3.deleteObject(params, (err, data) => {
+      if (err) {
+        console.error("Error deleting file from S3:", err);
+        response.status(500).json({ error: "Internal server error" });
+      } else {
+        console.log("File deleted from S3:", data);
+        return response.json(candidate);
+      }
+    });
   } catch (error) {
     console.error(error);
     response.status(500).json({ error: "Internal server error" });
