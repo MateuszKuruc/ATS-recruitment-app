@@ -19,8 +19,13 @@ const MainContainer = styled.div`
 
 const Intro = styled.div`
   && {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
   }
 `;
 const Content = styled.div`
