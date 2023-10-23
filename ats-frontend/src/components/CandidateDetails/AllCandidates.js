@@ -30,12 +30,7 @@ const Container = styled.div`
   border-rariuds: 0.5rem;
   overflow-x: scroll;
   margin-bottom: 1rem;
-
   flex: 1;
-
-  @media (max-width: 768px) {
-    // padding-left: 0.75rem;
-  }
 `;
 
 const StyledTypography = styled(Typography)`
@@ -66,7 +61,10 @@ const ToggleButton = styled(Button)`
 
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
-  const [details, setDetails] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [details, setDetails] = useState(
+    window.innerWidth < 900 ? false : true
+  );
 
   useEffect(() => {
     const filtered = candidates.filter(
@@ -74,6 +72,12 @@ const AllCandidates = ({ candidates, userId }) => {
     );
     setFilteredCandidates(filtered);
   }, [candidates, userId]);
+
+  useEffect(() => {
+    if (window.innerWidth < 900) {
+      setIsSmallScreen(true);
+    }
+  }, [isSmallScreen]);
 
   const handleDisplay = () => {
     setDetails(!details);
@@ -160,15 +164,19 @@ const AllCandidates = ({ candidates, userId }) => {
   ];
 
   return (
-    <AnimatedPage style={{ display: "flex" }}>
+    <AnimatedPage>
       <Container>
-        <ToggleButton
-          variant="contained"
-          color="secondary"
-          onClick={handleDisplay}
-        >
-          <Typography variant="h6">Detailed view: ON</Typography>
-        </ToggleButton>
+        {isSmallScreen && (
+          <ToggleButton
+            variant="contained"
+            color="secondary"
+            onClick={handleDisplay}
+          >
+            <Typography variant="h6">
+              {details ? "Detailed view: ON" : "Detailed view: OFF"}
+            </Typography>
+          </ToggleButton>
+        )}
         <Paper>
           <DataGrid
             rows={rows}
