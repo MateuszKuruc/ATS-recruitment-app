@@ -50,8 +50,17 @@ const UserTypography = styled(Typography)`
   max-width: 250px;
 `;
 
+const ToggleButton = styled(Button)`
+  && {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+`;
+
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
+  
 
   useEffect(() => {
     const filtered = candidates.filter(
@@ -136,7 +145,11 @@ const AllCandidates = ({ candidates, userId }) => {
   return (
     <AnimatedPage>
       <Container>
+      <ToggleButton variant="contained" color="secondary">
+            <Typography variant="h6">Detailed view: ON</Typography>
+          </ToggleButton>
         <Paper>
+       
           <DataGrid
             rows={rows}
             columns={columns}
