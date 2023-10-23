@@ -30,6 +30,12 @@ const Container = styled.div`
   border-rariuds: 0.5rem;
   overflow-x: scroll;
   margin-bottom: 1rem;
+
+  flex: 1;
+
+  @media (max-width: 768px) {
+    // padding-left: 0.75rem;
+  }
 `;
 
 const StyledTypography = styled(Typography)`
@@ -60,7 +66,7 @@ const ToggleButton = styled(Button)`
 
 const AllCandidates = ({ candidates, userId }) => {
   const [filteredCandidates, setFilteredCandidates] = useState([]);
-  
+  const [details, setDetails] = useState(false);
 
   useEffect(() => {
     const filtered = candidates.filter(
@@ -68,6 +74,10 @@ const AllCandidates = ({ candidates, userId }) => {
     );
     setFilteredCandidates(filtered);
   }, [candidates, userId]);
+
+  const handleDisplay = () => {
+    setDetails(!details);
+  };
 
   const rows = filteredCandidates.map((candidate) => ({
     id: candidate.id,
@@ -96,60 +106,70 @@ const AllCandidates = ({ candidates, userId }) => {
         </Link>
       ),
     },
-    {
-      field: "Location",
-      renderHeader: () => <Typography variant="h4">Location</Typography>,
-      renderCell: (params) => (
-        <Typography variant="body1">{params.row.Location}</Typography>
-      ),
-      width: 200,
-    },
-    {
-      field: "Skill",
-      renderHeader: () => <Typography variant="h4">Skill</Typography>,
-      renderCell: (params) => (
-        <Typography variant="body1">{params.row.Skill}</Typography>
-      ),
-      width: 200,
-    },
-    {
-      field: "Seniority",
-      renderHeader: () => <Typography variant="h4">Seniority</Typography>,
-      renderCell: (params) => (
-        <Typography variant="body1">{params.row.Seniority}</Typography>
-      ),
-      width: 200,
-    },
-    {
-      field: "Assessment",
-      renderHeader: () => <Typography variant="h4">Assessment</Typography>,
-      width: 200,
-      renderCell: (params) => (
-        <Typography
-          variant="h6"
-          style={{ color: getColorForAssessment(params.value) }}
-        >
-          {params.value === "6 - Rockstar" ||
-          params.value === "5 - Great candidate" ? (
-            <>
-              {params.value} <WhatshotIcon style={{ color: "red" }} />
-            </>
-          ) : (
-            params.value
-          )}
-        </Typography>
-      ),
-    },
+
+    ...(details
+      ? [
+          {
+            field: "Location",
+            renderHeader: () => <Typography variant="h4">Location</Typography>,
+            renderCell: (params) => (
+              <Typography variant="body1">{params.row.Location}</Typography>
+            ),
+            width: 200,
+          },
+          {
+            field: "Skill",
+            renderHeader: () => <Typography variant="h4">Skill</Typography>,
+            renderCell: (params) => (
+              <Typography variant="body1">{params.row.Skill}</Typography>
+            ),
+            width: 200,
+          },
+          {
+            field: "Seniority",
+            renderHeader: () => <Typography variant="h4">Seniority</Typography>,
+            renderCell: (params) => (
+              <Typography variant="body1">{params.row.Seniority}</Typography>
+            ),
+            width: 200,
+          },
+          {
+            field: "Assessment",
+            renderHeader: () => (
+              <Typography variant="h4">Assessment</Typography>
+            ),
+            width: 200,
+            renderCell: (params) => (
+              <Typography
+                variant="h6"
+                style={{ color: getColorForAssessment(params.value) }}
+              >
+                {params.value === "6 - Rockstar" ||
+                params.value === "5 - Great candidate" ? (
+                  <>
+                    {params.value} <WhatshotIcon style={{ color: "red" }} />
+                  </>
+                ) : (
+                  params.value
+                )}
+              </Typography>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
-    <AnimatedPage>
+    <AnimatedPage style={{ display: "flex" }}>
       <Container>
-      <ToggleButton variant="contained" color="secondary">
-            <Typography variant="h6">Detailed view: ON</Typography>
-          </ToggleButton>
+        <ToggleButton
+          variant="contained"
+          color="secondary"
+          onClick={handleDisplay}
+        >
+          <Typography variant="h6">Detailed view: ON</Typography>
+        </ToggleButton>
         <Paper>
-       
           <DataGrid
             rows={rows}
             columns={columns}
