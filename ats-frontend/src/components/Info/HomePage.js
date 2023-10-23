@@ -61,9 +61,18 @@ const BottomContainer = styled.div`
   border-radius: 0.5rem;
 `;
 
+const StyledTypography = styled(Typography)`
+  && {
+    @media (max-width: 768px) {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+`;
+
 const HomePage = () => {
   const title =
-    window.innerWidth <= 768
+    window.innerWidth <= 900
       ? "ATS FOR IT RECRUITERS"
       : "APPLICANT TRACKING SYSTEM FOR IT RECRUITERS";
 
@@ -76,13 +85,14 @@ const HomePage = () => {
             Get your pipeline under control!
           </HeaderCaption>
         </Header>
-        <Typography variant="body1">
+
+        <StyledTypography variant="body1">
           ATS is a valuable tool in the recruiter's arsenal, allowing intuitive
           data storage, feedback management and status control. The application
           was deisgned <em>specifically</em> with IT sector recruitment in mind.
           It is reflected in the field types of the candidate profile,
           technologies in pools section and job titles.
-        </Typography>
+        </StyledTypography>
         <StyledPaper>
           <Typography variant="h6">Core features:</Typography>
 
