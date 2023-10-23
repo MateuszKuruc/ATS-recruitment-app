@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // development mode
-// const baseUrl = "/api/candidates";
+const baseUrl = "/api/candidates";
 
 // production mode
 // const baseUrl = "https://ats-backend-dvrg.onrender.com/api/candidates";
