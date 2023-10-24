@@ -60,6 +60,16 @@ const TablesRender = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
   const [filteredCandidates, setfilteredCandidates] = useState([]);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [details, setDetails] = useState(
+    window.innerWidth < 900 ? false : true
+  );
+
+  useEffect(() => {
+    if (window.innerWidth < 900) {
+      setIsSmallScreen(true);
+    }
+  }, [isSmallScreen]);
 
   useEffect(() => {
     if (userId) {
@@ -71,8 +81,6 @@ const TablesRender = ({ candidates, userId }) => {
           candidate.assessment === "6 - Rockstar" ||
           candidate.assessment === "5 - Great candidate"
       );
-
-      console.log("filtered + hot", filtered, hot);
 
       const assessmentValue = {
         "6 - Rockstar": 6,
@@ -108,14 +116,26 @@ const TablesRender = ({ candidates, userId }) => {
     setPage(0);
   };
 
+  const handleDisplay = () => {
+    setDetails(!details);
+  };
+
   return (
     <AnimatedPage>
       <MainContainer>
         <StyledTableContainer component={Paper}>
-          <Table>
-            <ToggleButton variant="contained" color="primary">
-              <Typography>Detailed View: OFF</Typography>
+          {isSmallScreen ? (
+            <ToggleButton
+              variant="contained"
+              color="primary"
+              onClick={handleDisplay}
+            >
+              <Typography variant="h6">
+                {details ? "Detailed View: OFF" : "Detailed View: ON"}
+              </Typography>
             </ToggleButton>
+          ) : null}
+          <Table>
             <TableBody>
               <TableRow>
                 <TableCell>
@@ -166,6 +186,7 @@ const TablesRender = ({ candidates, userId }) => {
                       </StyledButton>
                     </StyledLink>
                   </TableCell>
+
                   <TableCell>
                     <Typography variant="body1">
                       {candidate.location}

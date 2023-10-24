@@ -132,8 +132,6 @@ function App() {
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
 
-  console.log('login', login)
-
   useEffect(() => {
     dispatch(initializeCandidates());
   }, [dispatch]);
