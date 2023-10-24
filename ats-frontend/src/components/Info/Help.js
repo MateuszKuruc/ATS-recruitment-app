@@ -18,7 +18,7 @@ const MainContainer = styled.div`
   @media (max-width: 768px) {
     padding: 2rem;
     padding-top: 3rem;
-    gap: 0rem;
+    gap: 1rem;
   }
 `;
 
@@ -45,6 +45,8 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const Content = styled.div``;
+
 const Help = () => {
   return (
     <AnimatedPage>
@@ -55,14 +57,16 @@ const Help = () => {
           and report them, so the app can be improved.
         </Typography>
 
-        <Typography variant="h6">Please describe:</Typography>
-        <ul>
-          <Typography variant="body1">
-            <li>Problem or bug you are facing</li>
-            <li>When it occurs</li>
-            <li>Web browsers where the issue occurs</li>
-          </Typography>
-        </ul>
+        <Content>
+          <Typography variant="h6">Please describe:</Typography>
+          <ul>
+            <Typography variant="body1">
+              <li>Problem or bug you are facing</li>
+              <li>When it occurs</li>
+              <li>Web browsers where the issue occurs</li>
+            </Typography>
+          </ul>
+        </Content>
 
         <Contact>
           <StyledButton
