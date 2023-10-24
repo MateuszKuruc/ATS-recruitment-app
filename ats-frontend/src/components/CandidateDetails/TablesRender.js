@@ -49,6 +49,13 @@ const UserTypography = styled(Typography)`
   width: 300px;
 `;
 
+const ToggleButton = styled(Button)`
+  && {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+`;
+
 const TablesRender = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
@@ -106,6 +113,9 @@ const TablesRender = ({ candidates, userId }) => {
       <MainContainer>
         <StyledTableContainer component={Paper}>
           <Table>
+            <ToggleButton variant="contained" color="primary">
+              <Typography>Detailed View: OFF</Typography>
+            </ToggleButton>
             <TableBody>
               <TableRow>
                 <TableCell>

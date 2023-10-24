@@ -309,7 +309,6 @@ const CandidateBasicDetails = ({
                 value={editMode ? editedCandidate.skill : candidate.skill}
                 disabled={!editMode}
                 label={isSmallScreen ? "Skill" : null}
-                // InputLabel={isSmallScreen ? "Skill" : null}
                 onChange={({ target }) =>
                   setEditedCandidate({
                     ...editedCandidate,
