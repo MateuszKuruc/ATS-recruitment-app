@@ -36,15 +36,18 @@ const HeaderTypography = styled(Typography)`
 `;
 
 const BodyTypography = styled(Typography)`
-  padding-bottom: 1rem;
-  @media (max-width: 768px) {
-    padding: 0rem;
+  && {
+    padding-bottom: 1rem;
+    @media (max-width: 768px) {
+      padding: 0rem;
+      margin-bottom: 1rem;
+    }
   }
 `;
 
 const TopContainer = styled.div`
   margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   padding-left: 3rem;
   padding-right: 3rem;
 
