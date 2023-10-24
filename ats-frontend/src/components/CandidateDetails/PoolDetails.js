@@ -2,7 +2,7 @@ import { Typography, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import CandidateProfiles from "./TablesRender";
+import TablesRender from "./TablesRender";
 import AnimatedPage from "../Layout/AnimatedPage";
 
 const Container = styled.div`
@@ -321,10 +321,10 @@ const PoolDetails = ({ candidatesByTech }) => {
               <Typography variant="h6">Show more</Typography>
             )}
           </StyledButton>
+          <TablesRender candidates={candidatesByTech} />
         </StyledHeaderSecondary>
-        <div style={openHeader === "1" ? {} : { display: "none" }}>
-          <CandidateProfiles candidates={candidatesByTech} />
-        </div>
+        {/* <div style={openHeader === "1" ? {} : { display: "none" }}> */}
+        {/* </div> */}
 
         <div>
           <StyledHeaderSecondary>
@@ -349,7 +349,7 @@ const PoolDetails = ({ candidatesByTech }) => {
             </StyledButton>
           </StyledHeaderSecondary>
           <div style={openHeader === "2" ? {} : { display: "none" }}>
-            <CandidateProfiles candidates={candidatesTopLocation} />
+            <TablesRender candidates={candidatesTopLocation} />
           </div>
         </div>
 
@@ -372,7 +372,7 @@ const PoolDetails = ({ candidatesByTech }) => {
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "3" ? {} : { display: "none" }}>
-          <CandidateProfiles candidates={candidatesTopSeniority} />
+          <TablesRender candidates={candidatesTopSeniority} />
         </div>
         <StyledHeaderSecondary>
           <StyledTypography variant="h6">
@@ -396,7 +396,7 @@ const PoolDetails = ({ candidatesByTech }) => {
           </StyledButton>
         </StyledHeaderSecondary>
         <div style={openHeader === "4" ? {} : { display: "none" }}>
-          <CandidateProfiles candidates={candidatesAvailableSoon} />
+          <TablesRender candidates={candidatesAvailableSoon} />
         </div>
       </Container>
     </AnimatedPage>

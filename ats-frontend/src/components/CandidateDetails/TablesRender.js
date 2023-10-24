@@ -48,7 +48,7 @@ const UserTypography = styled(Typography)`
   overflow-x: auto;
 `;
 
-const CandidateProfiles = ({ candidates, userId }) => {
+const TablesRender = ({ candidates, userId }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(userId ? 10 : 5);
   const [filteredCandidates, setfilteredCandidates] = useState([]);
@@ -224,4 +224,4 @@ const CandidateProfiles = ({ candidates, userId }) => {
   );
 };
 
-export default CandidateProfiles;
+export default TablesRender;
