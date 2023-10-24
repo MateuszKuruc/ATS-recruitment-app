@@ -46,8 +46,6 @@ const StyledHeaderSecondary = styled.div`
     border-radius: 0.5rem;
     margin-top: 2rem;
 
-    overflow: hidden;
-
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 0.5rem;

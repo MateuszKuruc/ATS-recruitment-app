@@ -45,7 +45,8 @@ const UserTypography = styled(Typography)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  overflow-x: auto;
+  overflow-x: hidden;
+  width: 300px;
 `;
 
 const TablesRender = ({ candidates, userId }) => {
