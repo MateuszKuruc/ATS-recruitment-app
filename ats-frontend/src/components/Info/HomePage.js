@@ -64,8 +64,8 @@ const BottomContainer = styled.div`
 const StyledTypography = styled(Typography)`
   && {
     @media (max-width: 768px) {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
   }
 `;
