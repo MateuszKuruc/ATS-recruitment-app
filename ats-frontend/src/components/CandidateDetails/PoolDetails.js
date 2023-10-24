@@ -17,6 +17,8 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 0.5rem;
+
+    max-width: 100%;
   }
 `;
 
@@ -43,6 +45,8 @@ const StyledHeaderSecondary = styled.div`
     padding: 0.5rem;
     border-radius: 0.5rem;
     margin-top: 2rem;
+
+    overflow: hidden;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -321,10 +325,10 @@ const PoolDetails = ({ candidatesByTech }) => {
               <Typography variant="h6">Show more</Typography>
             )}
           </StyledButton>
-          <TablesRender candidates={candidatesByTech} />
         </StyledHeaderSecondary>
-        {/* <div style={openHeader === "1" ? {} : { display: "none" }}> */}
-        {/* </div> */}
+        <div style={openHeader === "1" ? {} : { display: "none" }}>
+          <TablesRender candidates={candidatesByTech} />
+        </div>
 
         <div>
           <StyledHeaderSecondary>
