@@ -16,10 +16,6 @@ const MainContainer = styled.div`
   align-items: center;
   gap: 1rem;
 
-  @media (min-width: 1441px) {
-    gap: 0rem;
-  }
-
   @media (max-width: 768px) {
     padding: 2rem;
     padding-top: 3rem;
@@ -32,10 +28,6 @@ const Contact = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   align-self: center;
-
-  @media (min-width: 1441px) {
-    margin-top: 5rem;
-  }
 
   @media (max-width: 768px) {
     margin-top: 1rem;
@@ -52,15 +44,22 @@ const StyledButton = styled(Button)`
   }
 `;
 
+const Intro = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+`;
+
 const UserFeedback = () => {
   return (
     <AnimatedPage>
       <MainContainer>
         <Typography variant="h3">Thank you for using the ATS app!</Typography>
-        <Typography variant="body1">
-          I would love to hear your feedback, so let me know about parts which
-          need improvement and the ones you enjoyed!
-        </Typography>
+        <Intro>
+          <Typography variant="body1">
+            I would love to hear your feedback, so let me know about parts which
+            need improvement and the ones you enjoyed!
+          </Typography>
+        </Intro>
 
         <Contact>
           <Typography variant="italic3">You can contact me here:</Typography>
