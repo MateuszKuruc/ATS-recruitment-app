@@ -131,7 +131,7 @@ const TablesRender = ({ candidates, userId }) => {
               onClick={handleDisplay}
             >
               <Typography variant="h6">
-                {details ? "Detailed View: OFF" : "Detailed View: ON"}
+                {details ? "Detailed View: ON" : "Detailed View: OFF"}
               </Typography>
             </ToggleButton>
           ) : null}
@@ -143,30 +143,34 @@ const TablesRender = ({ candidates, userId }) => {
                     Name
                   </Typography>
                 </TableCell>
-                <TableCell>
-                  <Typography variant="h4">Location</Typography>
-                </TableCell>
-                {userId && (
-                  <TableCell>
-                    <Typography variant="h4">Skill</Typography>
-                  </TableCell>
-                )}
+                {details ? (
+                  <>
+                    <TableCell>
+                      <Typography variant="h4">Location</Typography>
+                    </TableCell>
+                    {userId && (
+                      <TableCell>
+                        <Typography variant="h4">Skill</Typography>
+                      </TableCell>
+                    )}
 
-                <TableCell>
-                  <Typography variant="h4">Seniority</Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="h4">Notice</Typography>
-                </TableCell>
+                    <TableCell>
+                      <Typography variant="h4">Seniority</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant="h4">Notice</Typography>
+                    </TableCell>
 
-                {userId && (
-                  <TableCell>
-                    <Typography variant="h4">Contract</Typography>
-                  </TableCell>
-                )}
-                <TableCell>
-                  <Typography variant="h4">Assessment</Typography>
-                </TableCell>
+                    {userId && (
+                      <TableCell>
+                        <Typography variant="h4">Contract</Typography>
+                      </TableCell>
+                    )}
+                    <TableCell>
+                      <Typography variant="h4">Assessment</Typography>
+                    </TableCell>
+                  </>
+                ) : null}
               </TableRow>
 
               {(rowsPerPage > 0
@@ -187,50 +191,58 @@ const TablesRender = ({ candidates, userId }) => {
                     </StyledLink>
                   </TableCell>
 
-                  <TableCell>
-                    <Typography variant="body1">
-                      {candidate.location}
-                    </Typography>
-                  </TableCell>
-                  {userId && (
-                    <TableCell>
-                      <Typography variant="body1">{candidate.skill}</Typography>
-                    </TableCell>
-                  )}
-                  <TableCell>
-                    <Typography variant="body1">
-                      {candidate.seniority}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body1">{candidate.notice}</Typography>
-                  </TableCell>
-
-                  {userId && (
-                    <TableCell>
-                      <Typography variant="body1">
-                        {candidate.contract}
-                      </Typography>
-                    </TableCell>
-                  )}
-                  <TableCell>
-                    <Typography
-                      variant="h6"
-                      style={{
-                        color: getColorForAssessment(candidate.assessment),
-                      }}
-                    >
-                      {candidate.assessment === "6 - Rockstar" ||
-                      candidate.assessment === "5 - Great candidate" ? (
-                        <>
-                          {candidate.assessment}
-                          <WhatshotIcon style={{ color: "red" }} />
-                        </>
-                      ) : (
-                        <>{candidate.assessment}</>
+                  {details ? (
+                    <>
+                      <TableCell>
+                        <Typography variant="body1">
+                          {candidate.location}
+                        </Typography>
+                      </TableCell>
+                      {userId && (
+                        <TableCell>
+                          <Typography variant="body1">
+                            {candidate.skill}
+                          </Typography>
+                        </TableCell>
                       )}
-                    </Typography>
-                  </TableCell>
+                      <TableCell>
+                        <Typography variant="body1">
+                          {candidate.seniority}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body1">
+                          {candidate.notice}
+                        </Typography>
+                      </TableCell>
+
+                      {userId && (
+                        <TableCell>
+                          <Typography variant="body1">
+                            {candidate.contract}
+                          </Typography>
+                        </TableCell>
+                      )}
+                      <TableCell>
+                        <Typography
+                          variant="h6"
+                          style={{
+                            color: getColorForAssessment(candidate.assessment),
+                          }}
+                        >
+                          {candidate.assessment === "6 - Rockstar" ||
+                          candidate.assessment === "5 - Great candidate" ? (
+                            <>
+                              {candidate.assessment}
+                              <WhatshotIcon style={{ color: "red" }} />
+                            </>
+                          ) : (
+                            <>{candidate.assessment}</>
+                          )}
+                        </Typography>
+                      </TableCell>
+                    </>
+                  ) : null}
                 </TableRow>
               ))}
               {emptyRows > 0 && (
