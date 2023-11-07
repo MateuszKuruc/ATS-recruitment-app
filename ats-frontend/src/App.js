@@ -129,6 +129,8 @@ function App() {
   const [technology, setTechnology] = useState("");
   const [candidatesByTech, setCandidatesByTech] = useState(null);
 
+  const [loading, setLoading] = useState(true);
+
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
 
@@ -186,6 +188,14 @@ function App() {
     }
 
     try {
+      setLoading(true);
+      dispatch(
+        setNotification({
+          severity: "error",
+          message: "loading",
+        })
+      );
+
       const loggedUser = await loginService.login({
         username,
         password,
@@ -201,6 +211,13 @@ function App() {
           message: "You were logged in successfully!",
         })
       );
+      dispatch(
+        setNotification({
+          severity: "success",
+          message: "loading ended",
+        })
+      );
+      setLoading(false);
 
       setUsername("");
       setPassword("");
