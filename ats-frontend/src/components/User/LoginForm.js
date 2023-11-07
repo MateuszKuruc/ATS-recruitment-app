@@ -4,13 +4,6 @@ import AnimatedPage from "../Layout/AnimatedPage";
 
 import { CircleLoader } from "react-spinners";
 
-const override = {
-  // display: "block",
-  // margin: "0 auto",
-  // borderColor: "blue",
-  // paddingLeft: "2rem",
-};
-
 export const StyledTextField = styled(TextField)`
   && {
     border-radius: 0.5rem;
@@ -141,7 +134,6 @@ const LoginForm = ({
                 <CircleLoader
                   color="red"
                   loading={loading}
-                  cssOverride={override}
                   size={15}
                   aria-label="Loading Spinner"
                   data-testid="loader"
