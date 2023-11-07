@@ -128,8 +128,6 @@ const LoginForm = ({
             onChange={handlePasswordChange}
           ></StyledTextField>
 
-          {loading ? <p>loading, please wait</p> : null}
-
           <StyledButton
             id="login-button"
             type="submit"

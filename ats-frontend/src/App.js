@@ -129,7 +129,7 @@ function App() {
   const [technology, setTechnology] = useState("");
   const [candidatesByTech, setCandidatesByTech] = useState(null);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const login = useSelector((state) => state.login);
   const candidates = useSelector((state) => state.candidates);
@@ -162,6 +162,7 @@ function App() {
           message: "Invalid format. Please try again.",
         })
       );
+      // setLoading(false);
       setUsernameError(true);
       setPasswordError(true);
       return;
@@ -173,6 +174,7 @@ function App() {
             "Invalid username. Please enter name between 4 and 15 characters.",
         })
       );
+      // setLoading(false);
       setUsernameError(true);
       return;
     } else if (password.length < 6 || password.length > 15) {
@@ -183,6 +185,7 @@ function App() {
             "Invalid password. Please enter password between 6 and 15 characters.",
         })
       );
+      // setLoading(false);
       setPasswordError(true);
       return;
     }
@@ -211,7 +214,6 @@ function App() {
           message: "You were logged in successfully!",
         })
       );
-     
 
       setLoading(false);
 
@@ -225,7 +227,7 @@ function App() {
           message: "Incorrect credentials. Please try again.",
         })
       );
-
+      setLoading(false);
       setUsername("");
       setPassword("");
     }
