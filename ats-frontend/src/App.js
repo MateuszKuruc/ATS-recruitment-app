@@ -258,44 +258,63 @@ function App() {
             />
             <Route path="/logout" element={<LogoutPage />} />
 
-            {login ? (
-              <>
-                <Route
-                  path="/candidates"
-                  element={
-                    <AllCandidates candidates={candidates} userId={login?.id} />
-                  }
-                />
-                <Route path="/add" element={<AddProfile />} />
-                <Route
-                  path="/pools"
-                  element={<Pools setTechnology={setTechnology} />}
-                />
-                <Route
-                  path="/pools/:technology"
-                  element={<PoolDetails candidatesByTech={candidatesByTech} />}
-                />
-                <Route
-                  path="/hot"
-                  element={
-                    <CandidateProfiles
-                      candidates={candidates}
-                      userId={login?.id}
-                    />
-                  }
-                />
-                <Route
-                  path="/candidates/:id"
-                  element={<CandidateDetails candidates={candidates} />}
-                />
-                <Route
-                  path="/candidates/:id/feedback"
-                  element={<Feedback candidates={candidates} />}
-                />
-              </>
-            ) : (
-              <NotFound />
-            )}
+            <Route
+              path="/candidates"
+              element={
+                login ? (
+                  <AllCandidates candidates={candidates} userId={login?.id} />
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
+            <Route path="/add" element={<AddProfile />} />
+            <Route
+              path="/pools"
+              element={
+                login ? <Pools setTechnology={setTechnology} /> : <NotFound />
+              }
+            />
+            <Route
+              path="/pools/:technology"
+              element={
+                login ? (
+                  <PoolDetails candidatesByTech={candidatesByTech} />
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
+            <Route
+              path="/hot"
+              element={
+                login ? (
+                  <CandidateProfiles
+                    candidates={candidates}
+                    userId={login?.id}
+                  />
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
+            <Route
+              path="/candidates/:id"
+              element={
+                login ? (
+                  <CandidateDetails candidates={candidates} />
+                ) : (
+                  <NotFound />
+                )
+              }
+            />
+            <Route
+              path="/candidates/:id/feedback"
+              element={
+                login ? <Feedback candidates={candidates} /> : <NotFound />
+              }
+            />
+
             <Route path="/feedback" element={<UserFeedback />} />
             <Route path="/help" element={<Help />} />
             <Route path="*" element={<NotFound />} />
