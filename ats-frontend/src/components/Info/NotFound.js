@@ -36,7 +36,9 @@ const NotFound = () => {
     <AnimatedPage>
       <MainContainer>
         <StyledTypography variant="h1">404</StyledTypography>
-        <StyledTypography variant="h2">Page not found</StyledTypography>
+        <StyledTypography variant="h2" style={{ paddingBottom: "2rem" }}>
+          Page not found
+        </StyledTypography>
 
         <Typography variant="italic3">
           Sorry, the page you are trying to reach does not exist. Please use
