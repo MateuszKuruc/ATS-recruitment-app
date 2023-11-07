@@ -191,8 +191,8 @@ function App() {
       setLoading(true);
       dispatch(
         setNotification({
-          severity: "error",
-          message: "loading",
+          severity: "info",
+          message: "Loading, please wait...",
         })
       );
 
@@ -211,12 +211,8 @@ function App() {
           message: "You were logged in successfully!",
         })
       );
-      dispatch(
-        setNotification({
-          severity: "success",
-          message: "loading ended",
-        })
-      );
+     
+
       setLoading(false);
 
       setUsername("");
@@ -269,6 +265,7 @@ function App() {
                     login={login}
                     usernameError={usernameError}
                     passwordError={passwordError}
+                    loading={loading}
                   />
                 )
               }

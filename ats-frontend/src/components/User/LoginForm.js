@@ -2,6 +2,15 @@ import { TextField, Button, Typography } from "@mui/material";
 import styled from "styled-components";
 import AnimatedPage from "../Layout/AnimatedPage";
 
+import { CircleLoader } from "react-spinners";
+
+const override = {
+  // display: "block",
+  // margin: "0 auto",
+  // borderColor: "blue",
+  // paddingLeft: "2rem",
+};
+
 export const StyledTextField = styled(TextField)`
   && {
     border-radius: 0.5rem;
@@ -71,6 +80,12 @@ const StyledButton = styled(Button)`
   && {
     padding: 1rem;
     margin-top: 1.5rem;
+    
+    flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
 
     @media (max-width: 768px) {
       margin-top: 2rem;
@@ -84,6 +99,7 @@ const LoginForm = ({
   handlePasswordChange,
   usernameError,
   passwordError,
+  loading,
 }) => {
   return (
     <AnimatedPage>
@@ -112,13 +128,30 @@ const LoginForm = ({
             onChange={handlePasswordChange}
           ></StyledTextField>
 
+          {loading ? <p>loading, please wait</p> : null}
+
           <StyledButton
             id="login-button"
             type="submit"
             variant="contained"
             color="secondary"
+            disabled={loading}
           >
-            <Typography variant="h6">Log in</Typography>
+            {loading ? (
+              <>
+                <Typography variant="h6">Loading...</Typography>
+                <CircleLoader
+                  color="red"
+                  loading={loading}
+                  cssOverride={override}
+                  size={15}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              </>
+            ) : (
+              <Typography variant="h6">Log in</Typography>
+            )}
           </StyledButton>
         </FormContainer>
       </MainContainer>
