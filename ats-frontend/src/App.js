@@ -219,6 +219,10 @@ function App() {
 
       setUsername("");
       setPassword("");
+
+      setUsernameError(false);
+      setPasswordError(false);
+
       navigate("/candidates");
     } catch (exception) {
       dispatch(
