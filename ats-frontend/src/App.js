@@ -195,7 +195,8 @@ function App() {
       dispatch(
         setNotification({
           severity: "info",
-          message: "Loading, please wait...",
+          message:
+            "First login may take 1-2 minutes before server is running. Please wait and refresh page after this time, if needed - it will work.",
         })
       );
 

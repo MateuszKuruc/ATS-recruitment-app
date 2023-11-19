@@ -15,7 +15,10 @@ const Notification = ({ severity, message }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (notification.message) {
+    if (
+      (notification.message && notification.severity === "success") ||
+      notification.severity === "error"
+    ) {
       const notificationTimer = setTimeout(() => {
         dispatch(removeNotification());
       }, 5000);
