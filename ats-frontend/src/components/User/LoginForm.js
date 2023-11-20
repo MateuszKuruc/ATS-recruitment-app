@@ -99,7 +99,9 @@ const LoginForm = ({
       <MainContainer>
         <FormContainer onSubmit={handleSubmit}>
           <StyledHeader>
-            <Typography variant="h4">LOGIN</Typography>
+            <Typography variant="h4">DEMO ACCOUNT</Typography>
+            <Typography variant="body1">Username: demo</Typography>
+            <Typography variant="body1">Password: mati123</Typography>
           </StyledHeader>
 
           <StyledTextField
