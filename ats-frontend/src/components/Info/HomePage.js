@@ -89,7 +89,7 @@ const HomePage = () => {
         <StyledTypography variant="body1">
           ATS is a valuable tool in the recruiter's arsenal, allowing intuitive
           data storage, feedback management and status control. The application
-          was deisgned <em>specifically</em> with IT sector recruitment in mind.
+          was designed <em>specifically</em> with IT sector recruitment in mind.
           It is reflected in the field types of the candidate profile,
           technologies in pools section and job titles.
         </StyledTypography>
