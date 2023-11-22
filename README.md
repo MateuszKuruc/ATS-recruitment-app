@@ -23,6 +23,8 @@ The app allows a recruiter to better organise the recruitment process and make i
 <img align="left" alt="Express" width="30px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
 <img align="left" alt="Amazon Web Services" width="45px" src="ats-frontend/public/aws-icon.svg" />
 
+<br/><br/>
+
 <h2>Key features</h2>
 <ul>
   <li>Login with token-based authentication (JWT)</li>
@@ -56,3 +58,22 @@ The app allows a recruiter to better organise the recruitment process and make i
 Each recruiter's data (meaning the data of their applicants, too) is only available to themselves, as the app provides data based on currently logged in user. This means that candidate's details will only be shown to the user who added them to the database, thus restraining app users from sharing sensitive data of others by the means of ATS app.
 
 <h2>Visual representation</h2>
+<div style="display: flex;">
+  <img width="500px" src="ats-frontend/public/ats_desktop_1.png" alt="ATS desktop view of candidate profile" />
+  <img width="200px" src="ats-frontend/public/ats_mobile_1.png" alt="ATS mobile view of candidate profile" />
+  <img width="200px" src="ats-frontend/public/ats_mobile_2.png" alt="ATS mobile view of extended feedback section" />
+  <img width="500px" src="ats-frontend/public/ats_desktop_3.png" alt="ATS desktop view of statistics" />
+  <img width="200px" src="ats-frontend/public/ats_mobile_4.png" alt="ATS mobile view of statistics" />
+</div>
+
+<h2>ATS Code repositories</h2>
+<p>The code for backend and frontend parts can be found in separate repositories below:</p>
+
+
+🌐 [ATS Backend code](https://github.com/MateuszKuruc/ATS-recruitment-app/tree/main/ats-backend)
+
+
+🌐 [ATS Frontend code](https://github.com/MateuszKuruc/ATS-recruitment-app/tree/main/ats-frontend)
+
+
+In case of any questions, feel free to contact me directly.
