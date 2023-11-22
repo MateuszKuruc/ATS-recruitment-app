@@ -61,8 +61,11 @@ Each recruiter's data (meaning the data of their applicants, too) is only availa
 <div style="display: flex;">
   <img width="500px" src="ats-frontend/public/ats_desktop_1.png" alt="ATS desktop view of candidate profile" />
   <img width="200px" src="ats-frontend/public/ats_mobile_1.png" alt="ATS mobile view of candidate profile" />
+  <br/>
   <img width="200px" src="ats-frontend/public/ats_mobile_2.png" alt="ATS mobile view of extended feedback section" />
   <img width="500px" src="ats-frontend/public/ats_desktop_3.png" alt="ATS desktop view of statistics" />
+  <br/>
+  <img width="500px" src="ats-frontend/public/ats_desktop_2.png" alt="ATS desktop view of all candidates" />
   <img width="200px" src="ats-frontend/public/ats_mobile_4.png" alt="ATS mobile view of statistics" />
 </div>
 
