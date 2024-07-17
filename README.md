@@ -79,4 +79,9 @@ Each recruiter's data (meaning the data of their applicants, too) is only availa
 🌐 [ATS Frontend code](https://github.com/MateuszKuruc/ATS-recruitment-app/tree/main/ats-frontend)
 
 
+For more information on this and other projects, please check my website:
+
+
+🌐 [Mateusz Kuruc - JavaScript Developer](https://www.mateuszkuruc.com/)
+
 In case of any questions, feel free to contact me directly.
