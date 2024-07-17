@@ -1,8 +1,8 @@
 # ATS-recruitment-app
 
 <p>The goal is to develop full fledged Applicant Tracking System (ATS) app for recruiters, streamlining the pipeline management. This is a full stack app based on modern tools like React, Node.js, AWS cloud, MongoDB and related technologies.</p>
-<p>Since <b>I work as IT Recruiter</b> myself, the idea to build complex pipeline management system came to me naturally, allowing me to combine all the knowledge I have about industry to present my variation of a convenient ATS.</p>
-<p>This is by far the biggest project I have worked on and I am excited about sharing the final results.</p>
+<p>Since <b>I used to work as IT Recruiter</b> myself, the idea to build complex pipeline management system came to me naturally, allowing me to combine all the knowledge I have about industry to present my variation of a convenient ATS.</p>
+<p>This is a pretty big fullstack project.</p>
 
 🌐 [ATS app live](https://ats-mateuszkuruc.onrender.com/)
 
